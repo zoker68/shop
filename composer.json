@@ -1,0 +1,21 @@
+{
+    "name": "zoker68/shop",
+    "description": "Shop script",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Zoker68\\Shop\\": "/packages/zoker68/shop/src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Maksim",
+            "email": "zokermm@gmail.com",
+            "homepage": "https://github.com/zoker68"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^11.9"
+    }
+}
