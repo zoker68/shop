@@ -1,0 +1,40 @@
+<div class="col-span-1">
+    <div :class="isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'"
+         class="lg:opacity-100 lg:visible transition-all duration-300 absolute bg-white top-[80px] left-0 lg:static w-[320px] shadow lg:w-full p-4 z-20">
+        {{-- TODO: Sort FOR MOBILE --}}
+        <div class="sm:hidden">
+            <div class="flex justify-between items-center">
+                <h4 class="text-xl uppercase">Sort by</h4>
+                <button @click="isOpen=false" class="text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                         stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="border-b pb-14 rounded mt-5">
+                <select class="nice_select nice-select">
+                    <option selected>Default sorting</option>
+                    <option>Price low-high</option>
+                    <option>Price high-low</option>
+                </select>
+            </div>
+        </div>
+
+
+        <form wire:change.debounce.600ms="filter()">
+            <div class="mt-6 sm:mt-2">
+                <x-product-filter.subcategories :category="$category"/>
+
+                <x-product-filter.brands :brands="$brands"/>
+
+                <x-product-filter.price :priceRange="$priceRange" :priceStart="$priceStart"/>
+
+                @foreach($properties as $property)
+                    <x-product-filter.property :property="$property" :filters="$filters"/>
+                @endforeach
+
+            </div>
+        </form>
+    </div>
+</div>
