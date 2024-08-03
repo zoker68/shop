@@ -41,3 +41,31 @@ php artisan vendor:publish --tag=shop-lang
 php artisan storage:link
 ```
 
+- Add Tailwind:
+
+```text
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+- Edit tailwind.config.js 
+```text
+content: [
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        './app/Filament/**/*.php',
+        './resources/views/filament/**/*.blade.php',
+        './vendor/filament/**/*.blade.php',
+        './resources/views/**/*.blade.php',
+        './resources/js/**/*.js',
+    ],
+```
+
+- NPM install
+```text
+npm install
+```
+
+# Seeder
+```text
+php artisan migrate:fresh --seed
+```
