@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
+use Zoker\Shop\Livewire\Header\CartWidget;
+use Zoker\Shop\Livewire\Header\SearchWidget;
+use Zoker\Shop\Livewire\Header\WishlistWidget;
+use Zoker\Shop\Livewire\ProductsFilter;
 use Zoker\Shop\View\Components\Partials\Breadcrumbs;
 use Zoker\Shop\View\Components\Partials\Navbar;
 
@@ -56,6 +60,11 @@ class ShopServiceProvider extends ServiceProvider
     private function registerLivewireComponents(): void
     {
         Livewire::component('shop.products', \Zoker\Shop\Livewire\Products::class);
+        Livewire::component('shop.product-filter', ProductsFilter::class);
+        Livewire::component('shop.widget.cart', CartWidget::class);
+        Livewire::component('shop.widget.wishlist', WishlistWidget::class);
+        Livewire::component('shop.widget.search', SearchWidget::class);
+
     }
 
     private function loadAllData(): void

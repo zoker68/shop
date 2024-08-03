@@ -5,7 +5,7 @@
         <div class="container">
             <div x-data="{isOpen:false}" class="grid grid-cols-4 relative gap-6">
 
-                @livewire(\Zoker\Shop\Livewire\ProductsFilter::class, ['category' => $category], key($category->id))
+                <livewire:shop.product-filter :category="$category"/>
 
 
                 <div x-data class="col-span-4 lg:col-span-3">

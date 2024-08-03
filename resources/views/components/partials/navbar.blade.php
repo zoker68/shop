@@ -27,16 +27,16 @@
         </div>
 
         <!-- searchbar -->
-        @livewire(\Zoker\Shop\Livewire\Header\SearchWidget::class)
+        <livewire:shop.widget.search/>
 
 
         <!-- header icone -->
         <div class="flex items-center">
             <!-- Wish List -->
-            @livewire(\Zoker\Shop\Livewire\Header\WishlistWidget::class)
+            <livewire:shop.widget.wishlist/>
 
             <!-- Cart -->
-            @livewire(\Zoker\Shop\Livewire\Header\CartWidget::class)
+            <livewire:shop.widget.cart/>
 
             <!-- Account-->
             <div class="relative group">
