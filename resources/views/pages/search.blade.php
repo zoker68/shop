@@ -10,7 +10,7 @@
                     <div class="flex items-center">
                         <div class="cursor-pointer hidden sm:block">
                             <select class="nice-select z-1 w-48 products_sortings" x-on:change="$dispatch('changeSort', { sort: $event.target.value })">
-                                <option value="" disabled selected>{{ __('products.sort_by') }}</option>
+                                <option value="" disabled selected>{{ __('zoker68.shop::products.sort_by') }}</option>
                                 @foreach($sortOptions as $key => $option)
                                     <option value="{{ $key }}">{{ $option }}</option>
                                 @endforeach

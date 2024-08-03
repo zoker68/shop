@@ -12,12 +12,12 @@
                         <div class="lg:hidden block pr-4">
                             <button @click="isOpen=true"
                                     class="pt-2 pb-[9px] border border-primary px-2.5 min-w-[150px] primary-btn"
-                                    id="mobile_filter_btn">{{ __('products.filter.mobile_link') }}</button>
+                                    id="mobile_filter_btn">{{ __('zoker68.shop::products.filter.mobile_link') }}</button>
                         </div>
 
                         <div class="cursor-pointer hidden sm:block">
                             <select class="nice-select z-1 w-48 products_sortings" x-on:change="$dispatch('changeSort', { sort: $event.target.value })">
-                                <option value="" disabled selected>{{ __('products.sort_by') }}</option>
+                                <option value="" disabled selected>{{ __('zoker68.shop::products.sort_by') }}</option>
                                 @foreach($sortOptions as $key => $option)
                                     <option value="{{ $key }}">{{ $option }}</option>
                                 @endforeach

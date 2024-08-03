@@ -2,19 +2,43 @@
 
 namespace Zoker68\Shop\Providers;
 
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Zoker68\Shop\View\Components\Partials\Navbar;
 
 class ShopServiceProvider extends ServiceProvider
 {
-    public function register()
-    {
-    }
+    public function register() {}
 
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__.'/../../routes/shop.php');
-        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'zoker68.shop');
-        $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
-    }
+        Model::unguard();
+        Model::preventLazyLoading(! app()->isProduction());
 
+        $this->loadRoutesFrom(__DIR__ . '/../../routes/shop.php');
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'zoker68.shop');
+        $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'zoker68.shop');
+
+        Factory::guessFactoryNamesUsing(function (string $modelName) {
+            return '\\Zoker68\\Shop\\Database\\Factories\\' . class_basename($modelName) . 'Factory';
+        });
+
+        Blade::component('zoker68.shop::partials.navbar', Navbar::class);
+
+        $this->publishesMigrations([
+            __DIR__ . '/../../database/seeders/' => database_path('seeders'),
+            __DIR__ . '/../../database/migrations/' => database_path('migrations'),
+        ], 'shop-factories');
+
+        $this->publishes([
+            __DIR__ . '/../../resources/views' => resource_path('views/vendor/zoker68.shop'),
+        ], 'shop-views');
+
+        $this->publishes([
+            __DIR__ . '/../../resources/lang' => $this->app->langPath('vendor/zoker68.shop'),
+        ], 'shop-lang');
+
+    }
 }

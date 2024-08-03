@@ -1,17 +1,17 @@
 <div class="w-full max-w-[500px] mx-auto box_shadow rounded px-[30px] py-[24px] mb-14">
-    <h4 class="text-[28px] uppercase font-medium">{{ __('auth.login.title') }}</h4>
-    <p class="mb-4 text_md">{{ __('auth.login.text') }}</p>
+    <h4 class="text-[28px] uppercase font-medium">{{ __('zoker68.shop::auth.login.title') }}</h4>
+    <p class="mb-4 text_md">{{ __('zoker68.shop::auth.login.text') }}</p>
     <form wire:submit="login">
         <div>
             <div>
-                <x-form.label :required="true">{{ __('auth.login.form.email') }}</x-form.label>
+                <x-form.label :required="true">{{ __('zoker68.shop::auth.login.form.email') }}</x-form.label>
                 <x-form.input :required="true" type="email" wire:model.blur="email" name="email"
                               placeholder="mail@example.com"/>
                 <x-form.error name="email"/>
             </div>
 
             <div class="mt-4">
-                <x-form.label :reqired="true">{{ __('auth.login.form.password') }}</x-form.label>
+                <x-form.label :reqired="true">{{ __('zoker68.shop::auth.login.form.password') }}</x-form.label>
                 <x-form.input :reqired="true" type="password" wire:model="password" placeholder="********"/>
                 <x-form.error name="password"/>
             </div>
@@ -21,14 +21,14 @@
                 </div>
                 <div>
                     <a href="{{  route('forgot-password') }}" class="text-primary text-sm sm:text-base">
-                        {{ __('auth.login.forgot_password') }}
+                        {{ __('zoker68.shop::auth.login.forgot_password') }}
                     </a>
                 </div>
             </div>
 
         </div>
         <div class="mt-4">
-            <x-form.button>{{ __('auth.login.form.submit') }}</x-form.button>
+            <x-form.button>{{ __('zoker68.shop::auth.login.form.submit') }}</x-form.button>
         </div>
     </form>
 </div>

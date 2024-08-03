@@ -1,7 +1,7 @@
 <x-layouts.account>
     <div class="col-span-12 lg:col-span-9 box_shadow px-6 py-8">
         <div class="acprof_info_wrap shadow_sm">
-            <h4 class="text-lg mb-3">{{ __('auth.profile.title') }}</h4>
+            <h4 class="text-lg mb-3">{{ __('zoker68.shop::auth.profile.title') }}</h4>
 
             @if (session('success'))
                 <x-partials.flash-alert type="success">{{ session('success') }}</x-partials.flash-alert>
@@ -17,7 +17,7 @@
                     <div class="sm:flex gap-6">
                         <div class="w-full">
                             <x-form.label for="first_name"
-                                          required="true">{{ __('auth.profile.first_name') }}</x-form.label>
+                                          required="true">{{ __('zoker68.shop::auth.profile.first_name') }}</x-form.label>
                             <x-form.input id="first_name" type="text" required="true"
                                           value="{{ old('name') ?? auth()->user()->name }}"
                                           name="name"/>
@@ -25,7 +25,7 @@
                         </div>
                         <div class="w-full mt-6 sm:mt-0">
                             <x-form.label for="last_name"
-                                          required="true">{{ __('auth.profile.last_name') }}</x-form.label>
+                                          required="true">{{ __('zoker68.shop::auth.profile.last_name') }}</x-form.label>
                             <x-form.input id="last_name" type="text" required="true"
                                           value="{{ old('surname') ?? auth()->user()->surname }}"
                                           name="surname"/>
@@ -34,14 +34,14 @@
                     </div>
                     <div class="sm:flex gap-6 mt-6">
                         <div class="w-full">
-                            <x-form.label for="email" required="true">{{ __('auth.profile.email') }}</x-form.label>
+                            <x-form.label for="email" required="true">{{ __('zoker68.shop::auth.profile.email') }}</x-form.label>
                             <x-form.input id="email" type="email" required="true" name="email"
                                           value="{{ old('email') ?? auth()->user()->email }}"/>
                             <x-form.error name="email"/>
                         </div>
                         <div class="w-full mt-6 sm:mt-0">
                             <x-form.label for="phone_number"
-                                          required="true">{{ __('auth.profile.phone') }}</x-form.label>
+                                          required="true">{{ __('zoker68.shop::auth.profile.phone') }}</x-form.label>
                             <x-form.input id="phone_number" type="text" required="true"
                                           value="{{ old('phone') ?? auth()->user()->phone }}"
                                           name="phone"/>
@@ -51,7 +51,7 @@
                     <div class="sm:flex gap-6 mt-16 sm:mt-6">
                         <div class="w-full">
                             <x-form.label for="birthday"
-                                          required="true">{{ __('auth.profile.birthday') }}</x-form.label>
+                                          required="true">{{ __('zoker68.shop::auth.profile.birthday') }}</x-form.label>
                             <x-form.input id="birthday" type="date" required="true"
                                           value="{{ date('Y-m-d' ,strtotime( old('birthday') ?? auth()->user()->birthday))}}"
                                           min="{{ now()->subYears(100)->format('Y-m-d') }}"
@@ -64,21 +64,21 @@
                     </div>
                     <div class="sm:flex gap-6 mt-16 sm:mt-6">
                         <div class="w-full">
-                            <x-form.label for="company_name">{{ __('auth.profile.company') }}</x-form.label>
+                            <x-form.label for="company_name">{{ __('zoker68.shop::auth.profile.company') }}</x-form.label>
                             <x-form.input id="company_name" type="text"
                                           value="{{ old('company') ?? auth()->user()->company }}"
                                           name="company"/>
                             <x-form.error name="company"/>
                         </div>
                         <div class="w-full mt-6 sm:mt-0">
-                            <x-form.label for="vat_number">{{ __('auth.profile.vat') }}</x-form.label>
+                            <x-form.label for="vat_number">{{ __('zoker68.shop::auth.profile.vat') }}</x-form.label>
                             <x-form.input id="vat_number" type="text" value="{{ old('vat') ?? auth()->user()->vat }}"
                                           name="vat"/>
                             <x-form.error name="vat"/>
                         </div>
                     </div>
                     <div class="mt-8">
-                        <button type="submit" class="default_btn rounded small">{{ __('auth.profile.save') }}</button>
+                        <button type="submit" class="default_btn rounded small">{{ __('zoker68.shop::auth.profile.save') }}</button>
                     </div>
                 </div>
             </form>

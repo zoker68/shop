@@ -6,7 +6,7 @@
     </div>
 
     @if($products->count() == 0)
-        <x-partials.flash-alert type="info" class="w-full col-span-2">{{ __('products.search.no_results') }}</x-partials.flash-alert>
+        <x-partials.flash-alert type="info" class="w-full col-span-2">{{ __('zoker68.shop::products.search.no_results') }}</x-partials.flash-alert>
     @endif
 
     {{ $products->links('components.partials.pagination') }}

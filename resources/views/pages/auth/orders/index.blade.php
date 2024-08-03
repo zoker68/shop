@@ -3,7 +3,7 @@
         @forelse($orders as $order)
             <x-partials.account.order-card :order="$order"/>
         @empty
-            <x-partials.flash-alert type="info">{{ __('auth.orders.no_orders') }}</x-partials.flash-alert>
+            <x-partials.flash-alert type="info">{{ __('zoker68.shop::auth.orders.no_orders') }}</x-partials.flash-alert>
         @endforelse
     </div>
 </x-layouts.account>

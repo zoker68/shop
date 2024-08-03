@@ -22,11 +22,11 @@
                                 </div>
                                 <div class="space-y-2 mt-4">
                                     <p>
-                                        <span class="font-medium pr-3">{{ __('product.stock') }}</span>
+                                        <span class="font-medium pr-3">{{ __('zoker68.shop::product.stock') }}</span>
                                         <x-partials.availability :product="$product"/>
                                     </p>
                                     <p><span
-                                            class="font-medium pr-3">{{ __('product.brand') }}</span>{{ $product->brand->name }}
+                                            class="font-medium pr-3">{{ __('zoker68.shop::product.brand') }}</span>{{ $product->brand->name }}
                                     </p>
                                 </div>
                                 <div class="mt-3 flex gap-3 items-center overflow-hidden">
@@ -43,7 +43,7 @@
 
                                 <!-- quantity -->
                                 <div class="cart_qnty ms-md-auto mt-5">
-                                    <p>{{ __('product.quantity') }}</p>
+                                    <p>{{ __('zoker68.shop::product.quantity') }}</p>
                                     <div class="flex items-center  mt-1">
                                         <input type="number" wire:model="quantityForCart"
                                                class="w-16 h-8 border flex justify-center items-center"
@@ -61,7 +61,7 @@
                                                   d="M15.55 13c.75 0 1.41-.41 1.75-1.03l3.58-6.49A.996.996 0 0 0 20.01 4H5.21l-.94-2H1v2h2l3.6 7.59l-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45zM6.16 6h12.15l-2.76 5H8.53L6.16 6zM7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2s-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2s2-.9 2-2s-.9-2-2-2z"/>
                                         </svg>
                                     </span>
-                                    {{ __('product.add_to_cart') }}
+                                    {{ __('zoker68.shop::product.add_to_cart') }}
                                 </x-form.button>
                                 <button wire:click.prevent="toggleWishlist('{{ $product->hash }}')"
                                    class="flex gap-2 items-center border border-primary hover:bg-primary text-primary hover:text-white transition duration-300 px-2 sm:px-8 py-2 rounded uppercase group w-60">
@@ -78,9 +78,9 @@
                                         </svg>
                                     </span>
                                     @if(in_array($product->id, $wishlist))
-                                        {{ __('product.wishlist.remove') }}
+                                        {{ __('zoker68.shop::product.wishlist.remove') }}
                                     @else
-                                        {{ __('product.wishlist.add') }}
+                                        {{ __('zoker68.shop::product.wishlist.add') }}
                                     @endif
                                 </button>
                             </div>
@@ -119,16 +119,16 @@
                 <div class="flex gap-2 border-b mb-4">
                     <div @click="activeTab='info'" :class="{'!border-primary !text-primary' : activeTab ==='info' }"
                          class="border px-1 sm:px-4 py-2 rounded text-xs sm:text-base cursor-pointer rounded-b-none border-[#2B2D42] border-b-0">
-                        {{ __('product.tabs.properties') }}
+                        {{ __('zoker68.shop::product.tabs.properties') }}
                     </div>
                     <div @click="activeTab='question'"
                          :class="{'!border-primary !text-primary' : activeTab ==='question' }"
                          class="border px-1 sm:px-4 py-2 rounded text-xs sm:text-base cursor-pointer rounded-b-none border-[#2B2D42] border-b-0">
-                        {{ __('product.tabs.questions') }}
+                        {{ __('zoker68.shop::product.tabs.questions') }}
                     </div>
                     <div @click="activeTab='review'" :class="{'!border-primary !text-primary' : activeTab ==='review' }"
                          class="border px-1 sm:px-4 py-2 rounded text-xs sm:text-base cursor-pointer  rounded-b-none border-[#2B2D42] border-b-0">
-                        {{ __('product.tabs.reviews', ['count_reviews' => count($reviews)]) }}
+                        {{ __('zoker68.shop::product.tabs.reviews', ['count_reviews' => count($reviews)]) }}
                     </div>
                 </div>
                 <!-- product info -->
@@ -195,7 +195,7 @@
                                 </div>
                                 <div class="pbqna_content">
                                     <p class="text-secondary">{!! $question->answer !!}</p>
-                                    <p class="text-sm">{{ __('product.questions.store_admin') }}
+                                    <p class="text-sm">{{ __('zoker68.shop::product.questions.store_admin') }}
                                         - {{ $question->updated_at->format('d.m.Y') }}</p>
                                 </div>
                             </div>
@@ -206,15 +206,15 @@
                     <div class="my-6">
                         <form wire:submit="newQuestion">
                             <textarea
-                                @guest()placeholder="{{ __('product.questions.new.placeholder_guest') }}" @endguest
-                            @auth()placeholder="{{ __('product.questions.new.placeholder') }}" @endguest
+                                @guest()placeholder="{{ __('zoker68.shop::product.questions.new.placeholder_guest') }}" @endguest
+                            @auth()placeholder="{{ __('zoker68.shop::product.questions.new.placeholder') }}" @endguest
                                 wire:model="question"
                                 class="w-full p-5 border focus:border-primary focus:ring-0 rounded"
                                 @guest() disabled @endguest
                                 required
                             ></textarea>
                             <x-form.error name="question"/>
-                            <x-form.button class="mt-6">{{ __('product.questions.new.submit') }}</x-form.button>
+                            <x-form.button class="mt-6">{{ __('zoker68.shop::product.questions.new.submit') }}</x-form.button>
                         </form>
                     </div>
                 </div>
@@ -241,7 +241,7 @@
                         </div>
                     </div>
                     <div class="flex gap-8 sm:gap-40 md:justify-between items-center mt-6">
-                        <p class="m-0 text-semibold">{{ __('product.reviews.title') }}</p>
+                        <p class="m-0 text-semibold">{{ __('zoker68.shop::product.reviews.title') }}</p>
 
                         {{--
                         TODO: Add filter
@@ -272,7 +272,7 @@
                         <form wire:submit="newReview">
                             <div class="flex items-center gap-3">
                                 <div>
-                                    {{ __('product.reviews.new.rating') }}
+                                    {{ __('zoker68.shop::product.reviews.new.rating') }}
                                 </div>
                                 <div wire:ignore>
                                     <select wire:model="rating" class="nice-select" required>
@@ -285,15 +285,15 @@
                             <x-form.error name="rating"/>
                             <div class="pt-3">
                                 <textarea
-                                    @guest()placeholder="{{ __('product.reviews.new.placeholder_guest') }}" @endguest
-                                    @auth()placeholder="{{ __('product.reviews.new.placeholder') }}" @endguest
+                                    @guest()placeholder="{{ __('zoker68.shop::product.reviews.new.placeholder_guest') }}" @endguest
+                                    @auth()placeholder="{{ __('zoker68.shop::product.reviews.new.placeholder') }}" @endguest
                                     wire:model="review"
                                     class="w-full p-5 border focus:border-primary focus:ring-0 rounded"
                                     @guest() disabled @endguest
                                 ></textarea>
                                 <x-form.error name="review"/>
                             </div>
-                            <x-form.button class="mt-6">{{ __('product.reviews.new.submit') }}</x-form.button>
+                            <x-form.button class="mt-6">{{ __('zoker68.shop::product.reviews.new.submit') }}</x-form.button>
                         </form>
                     </div>
                 </div>

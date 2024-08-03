@@ -1,5 +1,5 @@
 <x-layouts.app>
-    <x-partials.breadcrumbs :data="[['title' => __('layout.account.breadcrumbs.account'), 'url' => route('account.profile.dashboard')]]"/>
+    <x-partials.breadcrumbs :data="[['title' => __('zoker68.shop::layout.account.breadcrumbs.account'), 'url' => route('account.profile.dashboard')]]"/>
     <div class="container grid grid-cols-12 gap-6 pb-14">
         <!--  account sidebar  -->
         <div x-data="{isOpen: false}" class="col-span-12 lg:col-span-3 relative">
@@ -14,7 +14,7 @@
                     </div>--}}
 
                     <div class="acprof_cont">
-                        <p>{{ __('layout.account.welcome') }}</p>
+                        <p>{{ __('zoker68.shop::layout.account.welcome') }}</p>
                         <h4>{{ auth()->user()->name }} {{ auth()->user()->surname }}</h4>
                     </div>
 
@@ -37,11 +37,11 @@
                                           d="M22 3H2c-1.09.04-1.96.91-2 2v14c.04 1.09.91 1.96 2 2h20c1.09-.04 1.96-.91 2-2V5a2.074 2.074 0 0 0-2-2m0 16H2V5h20v14m-8-2v-1.25c0-1.66-3.34-2.5-5-2.5c-1.66 0-5 .84-5 2.5V17h10M9 7a2.5 2.5 0 0 0-2.5 2.5A2.5 2.5 0 0 0 9 12a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 9 7m5 0v1h6V7h-6m0 2v1h6V9h-6m0 2v1h4v-1h-4"/>
                                 </svg>
                             </span>
-                            {{ __('layout.account.dashboard') }}
+                            {{ __('zoker68.shop::layout.account.dashboard') }}
                         </x-partials.account.nav-top>
-                        <x-partials.account.nav-second route="account.profile.index">{{ __('layout.account.profile') }}</x-partials.account.nav-second>
-                        <x-partials.account.nav-second route="account.profile.address.index">{{ __('layout.account.address') }}</x-partials.account.nav-second>
-                        <x-partials.account.nav-second route="account.profile.password.edit">{{ __('layout.account.password') }}</x-partials.account.nav-second>
+                        <x-partials.account.nav-second route="account.profile.index">{{ __('zoker68.shop::layout.account.profile') }}</x-partials.account.nav-second>
+                        <x-partials.account.nav-second route="account.profile.address.index">{{ __('zoker68.shop::layout.account.address') }}</x-partials.account.nav-second>
+                        <x-partials.account.nav-second route="account.profile.password.edit">{{ __('zoker68.shop::layout.account.password') }}</x-partials.account.nav-second>
                     </div>
                     <div class="border-b mt-3 pb-3">
                         <x-partials.account.nav-top :active="request()->routeIs('account.orders.*')" href="{{ route('account.orders.index') }}">
@@ -51,7 +51,7 @@
                                           d="M12 5c-1.645 0-3 1.355-3 3c0 .353.073.684.188 1H4v6h1v13h22V15h1V9h-5.188c.115-.316.188-.647.188-1c0-1.645-1.355-3-3-3c-1.75 0-2.94 1.33-3.72 2.438c-.103.148-.188.292-.28.437c-.092-.145-.177-.29-.28-.438C14.94 6.33 13.75 5 12 5zm0 2c.626 0 1.436.67 2.063 1.563c.152.217.13.23.25.437H12c-.565 0-1-.435-1-1s.435-1 1-1zm8 0c.565 0 1 .435 1 1s-.435 1-1 1h-2.313c.12-.206.098-.22.25-.438C18.564 7.672 19.375 7 20 7zM6 11h20v2h-9v-1h-2v1H6v-2zm1 4h18v11h-8V16h-2v10H7V15z" />
                                 </svg>
                             </span>
-                            {{ __('layout.account.orders') }}
+                            {{ __('zoker68.shop::layout.account.orders') }}
                         </x-partials.account.nav-top>
                     </div>
                     <div class="border-b mt-3 pb-3">
@@ -62,7 +62,7 @@
                                           d="M128 220.2a13.6 13.6 0 0 1-9.9-4.1L35 133a58 58 0 0 1 2.2-84.2a56.5 56.5 0 0 1 41.6-14a62.8 62.8 0 0 1 40.3 18.3L128 62l11-11a57.9 57.9 0 0 1 84.1 2.2a56.2 56.2 0 0 1 14.1 41.6a62.8 62.8 0 0 1-18.3 40.3l-81 81a13.6 13.6 0 0 1-9.9 4.1Zm5.6-8.3ZM75 46.7a44 44 0 0 0-29.7 11.1a45.8 45.8 0 0 0-1.8 66.7l83.1 83.1a1.9 1.9 0 0 0 2.8 0l81-81c18.2-18.2 19.9-47.5 3.8-65.3a45.8 45.8 0 0 0-66.7-1.8l-15.3 15.2a6.1 6.1 0 0 1-8.5 0l-13.1-13.1A50.3 50.3 0 0 0 75 46.7Z" />
                                 </svg>
                             </span>
-                            {{ __('layout.account.wishlist') }}
+                            {{ __('zoker68.shop::layout.account.wishlist') }}
                         </x-partials.account.nav-top>
                     </div>
                     <div class="mt-4">
@@ -77,7 +77,7 @@
                                               d="M10.5 2.5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0v-6ZM13.743 4a.5.5 0 1 0-.499.867a6.5 6.5 0 1 1-6.494.004a.5.5 0 1 0-.5-.866A7.5 7.5 0 1 0 13.743 4Z" />
                                     </svg>
                                 </span>
-                                {{ __('layout.account.logout') }}
+                                {{ __('zoker68.shop::layout.account.logout') }}
                             </button>
                         </form>
                     </div>

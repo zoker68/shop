@@ -1,6 +1,6 @@
 <div class="container grid grid-cols-12 gap-6 pb-14">
     <div class="col-span-12 lg:col-span-8">
-        <h4 class="bg-secondary text-white px-3 py-2">{{ __('checkout.payment.title') }}</h4>
+        <h4 class="bg-secondary text-white px-3 py-2">{{ __('zoker68.shop::checkout.payment.title') }}</h4>
 
         <div x-data="{activeTab: 'shipping_method_{{ $cart->payment_method_id ?? $paymentMethods->first()->id }}'}">
             <div class="flex gap-2 sm:gap-5 mt-10">
@@ -37,16 +37,16 @@
                                 <p>{{ $paymentMethod->description }}</p>
                             @endif
 
-                            <p>{{ __('checkout.payment.fee') }} <span
+                            <p>{{ __('zoker68.shop::checkout.payment.fee') }} <span
                                     class="font-semibold">@money($paymentMethod->fee)</span></p>
                             @if($paymentMethod->fee_percent > 0)
                                 <p>
-                                    {{ __('checkout.payment.fee_percent') }} <span
+                                    {{ __('zoker68.shop::checkout.payment.fee_percent') }} <span
                                         class="font-semibold">{{ $paymentMethod->fee_percent }}%</span>
                                 </p>
                             @endif
                             <x-form.button class="mt-4"
-                                           wire:click="setPaymentMethod('{{ $paymentMethod->id }}')">{{ __('checkout.payment.submit') }}</x-form.button>
+                                           wire:click="setPaymentMethod('{{ $paymentMethod->id }}')">{{ __('zoker68.shop::checkout.payment.submit') }}</x-form.button>
                         </div>
                     </div>
                 </div>
