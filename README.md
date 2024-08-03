@@ -2,7 +2,7 @@
 
 # Install
 
-- Delete map "database"
+- Delete folder "database"
 
 - composer require zoker68/shop
 - Publish Seeders:
@@ -16,7 +16,7 @@ php artisan vendor:publish --tag=shop-seeders
 ```text
 php artisan vendor:publish --tag=shop-views
 ```
-- Publish Views (if you want!!!:
+- Publish Views (if you want!!!):
 
 ```text
 php artisan vendor:publish --tag=shop-lang
