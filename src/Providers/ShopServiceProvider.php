@@ -30,7 +30,6 @@ class ShopServiceProvider extends ServiceProvider
 
         $this->publishesMigrations([
             __DIR__ . '/../../database/seeders/' => database_path('seeders'),
-            __DIR__ . '/../../database/migrations/' => database_path('migrations'),
         ], 'shop-seeders');
 
         $this->publishes([

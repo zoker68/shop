@@ -3,8 +3,21 @@
 # Install
 
 - Delete folder "database"
+- Add to composer.json:
 
-- composer require zoker68/shop
+```text
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://zoker.repo.repman.io"
+        }
+    ]
+```
+- Require script:
+
+```text
+composer require zoker68/shop
+```
 - Publish Seeders:
   
 ```text
@@ -16,7 +29,7 @@ php artisan vendor:publish --tag=shop-seeders
 ```text
 php artisan vendor:publish --tag=shop-views
 ```
-- Publish Views (if you want!!!):
+- Publish Translates (if you want!!!):
 
 ```text
 php artisan vendor:publish --tag=shop-lang
