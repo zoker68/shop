@@ -17,7 +17,7 @@
                                     <div class="flex gap-3 items-center mt-4">
                                         <x-shop::partials.rating :rating="$ratings->avg('rating')"
                                                            class="gap-1 items-center"/>
-                                        <p class="text-sm">{{ trans_choice('product.ratings.count', count($ratings)) }}</p>
+                                        <p class="text-sm">{{ trans_choice('shop::product.ratings.count', count($ratings)) }}</p>
                                     </div>
                                 </div>
                                 <div class="space-y-2 mt-4">
@@ -165,7 +165,7 @@
                 </div>
                 <!-- question & answer -->
                 <div x-show="activeTab==='question'" class="mt-6">
-                    <h4>{{ trans_choice('product.questions.count', count($questions )) }}</h4>
+                    <h4>{{ trans_choice('shop::product.questions.count', count($questions )) }}</h4>
                     @foreach($questions as $question)
                         <div class="mt-6 @if (!$loop->last) border-b @endif pb-5">
                             <div class="flex items-center gap-4">
@@ -228,7 +228,7 @@
                             </div>
                             <!-- rating -->
                             <x-shop::partials.rating :rating="$ratings->avg('rating')" class="mt-2"/>
-                            <div class="text-sm mt-2">{{ trans_choice('product.ratings.count', count($ratings)) }}</div>
+                            <div class="text-sm mt-2">{{ trans_choice('shop::product.ratings.count', count($ratings)) }}</div>
                         </div>
                         <div>
                             @foreach(range(1, 5) as $i)

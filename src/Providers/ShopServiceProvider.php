@@ -16,6 +16,7 @@ use Zoker\Shop\Livewire\Header\CartWidget;
 use Zoker\Shop\Livewire\Header\SearchWidget;
 use Zoker\Shop\Livewire\Header\WishlistWidget;
 use Zoker\Shop\Livewire\Payment;
+use Zoker\Shop\Livewire\Product;
 use Zoker\Shop\Livewire\Products;
 use Zoker\Shop\Livewire\ProductsFilter;
 use Zoker\Shop\Livewire\SearchResults;
@@ -76,6 +77,7 @@ class ShopServiceProvider extends ServiceProvider
     private function registerLivewireComponents(): void
     {
         Livewire::component('shop.products', Products::class);
+        Livewire::component('shop.product', Product::class);
         Livewire::component('shop.product-filter', ProductsFilter::class);
         Livewire::component('shop.search-results', SearchResults::class);
 

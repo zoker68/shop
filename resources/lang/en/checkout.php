@@ -78,6 +78,7 @@ return [
         'company' => 'Company Name',
         'birthday' => 'Birthday',
         'vat' => 'Vat Number',
+        'edit' => 'Edit profile data',
     ],
     'shipping_address' => [
         'title' => 'Shipping Address',

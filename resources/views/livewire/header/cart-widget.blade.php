@@ -14,7 +14,7 @@
     <div
         class="absolute top-full right-0 bg-white z-20 p-4 w-[300px] rounded-b-[3px] mt-3.5 group-hover:mt-[5px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
         <div class="mb-3 border-b border-[#d8d8d8]">
-            <h4 class="text-base text-secondary mb-2">{{ trans_choice('layout.header.cart.items', $cartCountProducts) }}</h4>
+            <h4 class="text-base text-secondary mb-2">{{ trans_choice('shop::layout.header.cart.items', $cartCountProducts) }}</h4>
         </div>
         @foreach($cart->products as $item)
             <div class="relative">

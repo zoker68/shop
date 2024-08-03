@@ -89,7 +89,8 @@
                 @auth()
                     <div class="grid grid-cols-3 my-4 border">
                         <div class="px-3 py-2">{{ __('shop::checkout.customer.first_name') }}:</div>
-                        <div class="px-3 py-2 col-span-2">{{ auth()->user()->name }}</div>
+                        <div class="px-3 py-2">{{ auth()->user()->name }}</div>
+                        <div class="px-3 py-2 text-right"><a href="{{ route('account.profile.index') }}" class="text-primary hover:text-secondary transition duration-300">{{ __('shop::checkout.customer.edit') }}</a></div>
                         <div class="px-3 py-2">{{ __('shop::checkout.customer.last_name') }}:</div>
                         <div class="px-3 py-2 col-span-2">{{ auth()->user()->surname }}</div>
                         <div class="px-3 py-2">{{ __('shop::checkout.customer.email') }}:</div>
@@ -104,7 +105,6 @@
                             <div class="px-3 py-2">{{ __('shop::checkout.customer.vat') }}:</div>
                             <div class="px-3 py-2 col-span-2">{{ auth()->user()->vat }}</div>
                         @endif
-                        {{-- TODO: Add Link to edit profile info --}}
                     </div>
                 @endauth
                 <x-shop::partials.checkout.address :countries="$countries" :regions="$regions" :addresses="$addresses"

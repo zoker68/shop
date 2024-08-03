@@ -53,7 +53,6 @@
                             <p class="font-medium">{{ __('shop::cart.side.subtotal') }}</p>
                             <p class="font-medium">@money($cart->total_products)</p>
                         </div>
-                        {{-- TODO: add delivery and taxes --}}
                         @if($cart->shipping_method_id > 0)
                         <div class="flex justify-between">
                             <p class="font-medium">{{ __('shop::cart.side.shipping_price') }}</p>
