@@ -77,7 +77,7 @@ class User extends Authenticatable implements FilamentUser
     {
         return URL::temporarySignedRoute(
             'reset-password',
-            now()->addMinutes(config('auth.reset_password.expire')),
+            now()->addMinutes(config('shop.reset_password_expire')),
             ['email' => $this->email]
         );
     }

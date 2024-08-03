@@ -69,7 +69,7 @@ class ProductResource extends Resource
                     ->image()
                     ->directory('products')
                     ->imageEditor()
-                    ->imageEditorAspectRatios(config('product.cover.ratio')),
+                    ->imageEditorAspectRatios(config('shop.product.cover.ratio')),
 
                 TextInput::make('stock')
                     ->label(__('shop::product.admin.form.stock'))

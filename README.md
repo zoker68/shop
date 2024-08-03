@@ -97,7 +97,11 @@ MONEY_DEFAULTS_CURRENCY=RUB
 SCOUT_DRIVER=meilisearch
 MEILISEARCH_HOST=http://meilisearch:7700
 MEILISEARCH_KEY=
+
+MAIL_TO=zoker@localshop.com
 ```
+
+- Unnecessary ENV:
 
 - Edit \App\Models\User model:
 ```php

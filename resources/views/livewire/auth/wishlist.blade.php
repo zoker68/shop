@@ -21,7 +21,7 @@
                 <div class="group">
                     <button
                         class="flex gap-2 items-center border border-primary bg-primary text-white text-sm uppercase px-4 py-2 rounded hover:bg-white hover:text-primary transition duration-300
-                                @if(!$item->product->stock > 0 && !config('product.allow_overstock')) disable disabled @endif"
+                                @if(!$item->product->stock > 0 && !config('shop.product.allow_overstock')) disable disabled @endif"
                         wire:click="addToCart('{{ $item->product->hash }}')">
                             <span class="text-white group-hover:text-primary transition">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256">

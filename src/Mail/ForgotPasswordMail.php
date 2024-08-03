@@ -44,7 +44,7 @@ class ForgotPasswordMail extends Mailable implements ShouldQueue
             with: [
                 'link' => $this->link,
                 'user' => $this->user,
-                'expire' => config('auth.reset_password.expire'),
+                'expire' => config('shop.reset_password_expire'),
             ],
         );
     }

@@ -34,7 +34,7 @@ class ResetPassword extends Component
     {
         $this->user = User::where('email', $this->email)->firstOrFail();
         $expires = $request->get('expires');
-        $dateStart = Carbon::createFromTimestamp($expires)->subMinutes(config('auth.reset_password.expire'));
+        $dateStart = Carbon::createFromTimestamp($expires)->subMinutes(config('shop.reset_password_expire'));
 
         if ($this->user->updated_at && $this->user->updated_at->gte($dateStart)) {
             abort(401);

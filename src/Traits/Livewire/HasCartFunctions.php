@@ -37,7 +37,7 @@ trait HasCartFunctions
                 throw new AddToCartException(__('shop::cart.exceptions.published'), 'danger');
             }
 
-            if ($product->stock < $quantity + ($item->quantity ?? 0) && ! config('product.allow_overstock')) {
+            if ($product->stock < $quantity + ($item->quantity ?? 0) && ! config('shop.product.allow_overstock')) {
                 throw new AddToCartException(__('shop::cart.exceptions.stock'), 'danger');
             }
 
@@ -127,7 +127,7 @@ trait HasCartFunctions
                 throw new AddToCartException(__('shop::cart.exceptions.published'), 'danger');
             }
 
-            if ($product->stock < $quantity && ! config('product.allow_overstock')) {
+            if ($product->stock < $quantity && ! config('shop.product.allow_overstock')) {
                 throw new AddToCartException(__('shop::cart.exceptions.stock'), 'danger');
             }
 

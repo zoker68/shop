@@ -91,7 +91,7 @@ class Product extends Component
 
         $this->question = '';
 
-        Mail::to(config('mail.admin_email'))->queue(new QuestionAdded($this->product, $question));
+        Mail::to(config('shop.mail_recipients.reviews'))->queue(new QuestionAdded($this->product, $question));
     }
 
     public function newReview(): void
@@ -118,7 +118,7 @@ class Product extends Component
         $this->review = '';
 
         if ($review->review) {
-            Mail::to(config('mail.admin_email'))->queue(new ReviewAdded($this->product, $review));
+            Mail::to(config('shop.mail_recipients.reviews'))->queue(new ReviewAdded($this->product, $review));
         }
     }
 }

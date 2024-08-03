@@ -33,7 +33,7 @@ class CartProduct extends Model
 
     public function hasStock(): bool
     {
-        return $this->quantity <= $this->product->stock || config('product.allow_overstock');
+        return $this->quantity <= $this->product->stock || config('shop.product.allow_overstock');
     }
 
     public function sell(int $orderId): void
