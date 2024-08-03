@@ -4,7 +4,9 @@
     "type": "library",
     "autoload": {
         "psr-4": {
-            "Zoker68\\Shop\\": "src/"
+            "Zoker68\\Shop\\": "src/",
+            "Database\\Seeders\\": "database/seeders/",
+            "Database\\Factories\\": "database/factories/"
         }
     },
     "authors": [
