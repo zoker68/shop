@@ -221,7 +221,8 @@ class OrderResource extends Resource
                     ->formatStateUsing(fn ($state, Model $record): string => $record->generalStatus->name)
                     ->badge()
                     ->color(fn ($state, Model $record): string => $record->generalStatus->color)
-                    ->action(\Filament\Tables\Actions\Action::make(__('shop::order.admin.actions.general_status.title'))
+                    ->action(\Filament\Tables\Actions\Action::make('actions.general_status')
+                        ->label(__('shop::order.admin.actions.general_status.title'))
                         ->action(function (Order $record, array $data): void {
                             $record->general_order_status_id = $data['general_order_status_id'];
                             $record->save();
@@ -238,7 +239,8 @@ class OrderResource extends Resource
                     ->formatStateUsing(fn ($state, Model $record): string => $record->paymentStatus->name)
                     ->badge()
                     ->color(fn ($state, Model $record): string => $record->paymentStatus->color)
-                    ->action(\Filament\Tables\Actions\Action::make(__('shop::order.admin.actions.payment_status.title'))
+                    ->action(\Filament\Tables\Actions\Action::make('actions.payment_status')
+                        ->label(__('shop::order.admin.actions.payment_status.title'))
                         ->action(function (Order $record, array $data): void {
                             $record->payment_order_status_id = $data['payment_order_status_id'];
                             $record->save();
@@ -255,7 +257,8 @@ class OrderResource extends Resource
                     ->formatStateUsing(fn ($state, Model $record): string => $record->shippingStatus->name)
                     ->badge()
                     ->color(fn ($state, Model $record): string => $record->shippingStatus->color)
-                    ->action(\Filament\Tables\Actions\Action::make(__('shop::order.admin.actions.shipping_status.title'))
+                    ->action(\Filament\Tables\Actions\Action::make('actions.shipping_status')
+                        ->label(__('shop::order.admin.actions.shipping_status.title'))
                         ->action(function (Order $record, array $data): void {
                             $record->shipping_order_status_id = $data['shipping_order_status_id'];
                             $record->save();

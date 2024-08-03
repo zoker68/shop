@@ -12,7 +12,7 @@ class OrderController extends Controller
     {
         $orders = auth()->user()->orders()->with(['products', 'products.product'])->get();
 
-        return view('pages.auth.orders.index', compact('orders'));
+        return view('shop::pages.auth.orders.index', compact('orders'));
     }
 
     public function show($orderHash): View
@@ -22,6 +22,6 @@ class OrderController extends Controller
 
         abort_if($order->user_id !== auth()->id(), 403);
 
-        return view('pages.auth.orders.show', compact('order'));
+        return view('shop::pages.auth.orders.show', compact('order'));
     }
 }

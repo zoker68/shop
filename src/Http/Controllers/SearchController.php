@@ -13,6 +13,6 @@ class SearchController extends Controller
         $sortOptions = ProductsSorting::getOptions();
         $viewType = ViewType::getType()->value;
 
-        return view('pages.search', compact('sortOptions', 'viewType'));
+        return view('shop::pages.search', compact('sortOptions', 'viewType'));
     }
 }

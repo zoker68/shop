@@ -10,14 +10,14 @@ class AddressController extends Controller
 {
     public function index(): View
     {
-        return view('pages.auth.account.address.index', ['addresses' => Address::getUserAddressOptions()]);
+        return view('shop::pages.auth.account.address.index', ['addresses' => Address::getUserAddressOptions()]);
     }
 
     public function edit(Address $address): View
     {
         abort_if($address->user_id !== auth()->id(), 403);
 
-        return view('pages.auth.account.address.edit', [
+        return view('shop::pages.auth.account.address.edit', [
             'address' => $address,
         ]);
     }

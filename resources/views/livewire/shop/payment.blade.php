@@ -45,8 +45,8 @@
                                         class="font-semibold">{{ $paymentMethod->fee_percent }}%</span>
                                 </p>
                             @endif
-                            <x-form.button class="mt-4"
-                                           wire:click="setPaymentMethod('{{ $paymentMethod->id }}')">{{ __('shop::checkout.payment.submit') }}</x-form.button>
+                            <x-shop::form.button class="mt-4"
+                                           wire:click="setPaymentMethod('{{ $paymentMethod->id }}')">{{ __('shop::checkout.payment.submit') }}</x-shop::form.button>
                         </div>
                     </div>
                 </div>

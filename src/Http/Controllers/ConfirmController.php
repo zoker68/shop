@@ -12,6 +12,6 @@ class ConfirmController extends Controller
             ['title' => __('shop::checkout.confirm.breadcrumbs'), 'url' => route('checkout.confirm')],
         ];
 
-        return view('pages.confirm', compact('breadcrumbs'));
+        return view('shop::pages.confirm', compact('breadcrumbs'));
     }
 }

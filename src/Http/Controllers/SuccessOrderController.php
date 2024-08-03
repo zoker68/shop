@@ -12,6 +12,6 @@ class SuccessOrderController extends Controller
             ['title' => __('shop::checkout.success.breadcrumbs'), 'url' => route('checkout.success')],
         ];
 
-        return view('pages.success-order', compact('breadcrumbs'));
+        return view('shop::pages.success-order', compact('breadcrumbs'));
     }
 }

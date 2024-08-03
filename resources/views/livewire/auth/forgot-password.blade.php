@@ -8,12 +8,12 @@
     <p class="text_md mb-4">{{ __('shop::auth.forgot_password.text') }}</p>
     <form wire:submit="forgotPasswordSubmit">
         <div class="mt-6">
-            <x-form.label :required="true">{{ __('shop::auth.forgot_password.form.email') }}</x-form.label>
-            <x-form.input :required="true" type="email" wire:model="email" placeholder="mail@example.com"/>
-            <x-form.error name="email"/>
+            <x-shop::form.label :required="true">{{ __('shop::auth.forgot_password.form.email') }}</x-shop::form.label>
+            <x-shop::form.input :required="true" type="email" wire:model="email" placeholder="mail@example.com"/>
+            <x-shop::form.error name="email"/>
         </div>
         <div class="mt-6">
-            <x-form.button>{{ __('shop::auth.forgot_password.form.submit') }}</x-form.button>
+            <x-shop::form.button>{{ __('shop::auth.forgot_password.form.submit') }}</x-shop::form.button>
         </div>
     </form>
 </div>

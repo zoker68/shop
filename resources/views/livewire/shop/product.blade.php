@@ -53,7 +53,7 @@
                             </div>
                             <!-- add to cart & wishlist -->
                             <div class="flex gap-5 mt-6 border-b pb-5">
-                                <x-form.button class="flex gap-2 items-center sm:text-base px-2 sm:px-8 group">
+                                <x-shop::form.button class="flex gap-2 items-center sm:text-base px-2 sm:px-8 group">
                                     <span class="text-white group-hover:text-primary">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                              viewBox="0 0 24 24">
@@ -62,7 +62,7 @@
                                         </svg>
                                     </span>
                                     {{ __('shop::product.add_to_cart') }}
-                                </x-form.button>
+                                </x-shop::form.button>
                                 <button wire:click.prevent="toggleWishlist('{{ $product->hash }}')"
                                    class="flex gap-2 items-center border border-primary hover:bg-primary text-primary hover:text-white transition duration-300 px-2 sm:px-8 py-2 rounded uppercase group w-60">
                                     <span class="text-primary group-hover:text-white">
@@ -213,8 +213,8 @@
                                 @guest() disabled @endguest
                                 required
                             ></textarea>
-                            <x-form.error name="question"/>
-                            <x-form.button class="mt-6">{{ __('shop::product.questions.new.submit') }}</x-form.button>
+                            <x-shop::form.error name="question"/>
+                            <x-shop::form.button class="mt-6">{{ __('shop::product.questions.new.submit') }}</x-shop::form.button>
                         </form>
                     </div>
                 </div>
@@ -282,7 +282,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <x-form.error name="rating"/>
+                            <x-shop::form.error name="rating"/>
                             <div class="pt-3">
                                 <textarea
                                     @guest()placeholder="{{ __('shop::product.reviews.new.placeholder_guest') }}" @endguest
@@ -291,9 +291,9 @@
                                     class="w-full p-5 border focus:border-primary focus:ring-0 rounded"
                                     @guest() disabled @endguest
                                 ></textarea>
-                                <x-form.error name="review"/>
+                                <x-shop::form.error name="review"/>
                             </div>
-                            <x-form.button class="mt-6">{{ __('shop::product.reviews.new.submit') }}</x-form.button>
+                            <x-shop::form.button class="mt-6">{{ __('shop::product.reviews.new.submit') }}</x-shop::form.button>
                         </form>
                     </div>
                 </div>

@@ -13,6 +13,6 @@ class ProductController extends Controller
 
         $product->load('categories');
 
-        return view('pages.product', compact('product'));
+        return view('shop::pages.product', compact('product'));
     }
 }

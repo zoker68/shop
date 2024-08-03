@@ -12,6 +12,6 @@ class ShippingController extends Controller
             ['title' => __('shop::checkout.shipping.breadcrumbs'), 'url' => route('checkout.shipping')],
         ];
 
-        return view('pages.shipping', compact('breadcrumbs'));
+        return view('shop::pages.shipping', compact('breadcrumbs'));
     }
 }

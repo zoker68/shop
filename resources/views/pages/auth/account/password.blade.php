@@ -7,10 +7,10 @@
                 @method('PATCH')
                 <div class="max-w-[402px]">
                     <div>
-                        <x-form.label for="password"
-                                      required="true">{{ __('shop::auth.password.password.label') }}</x-form.label>
+                        <x-shop::form.label for="password"
+                                      required="true">{{ __('shop::auth.password.password.label') }}</x-shop::form.label>
                         <div class="relative">
-                            <x-form.input id="password" name="password" type="password" required="true"
+                            <x-shop::form.input id="password" name="password" type="password" required="true"
                                           placeholder="{{ __('shop::auth.password.password.placeholder') }}"/>
                             {{--<span class="absolute top-5 right-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17"
@@ -36,25 +36,25 @@
                                 </svg>
                             </span>--}}
                         </div>
-                        <x-form.error name="password"/>
+                        <x-shop::form.error name="password"/>
                     </div>
                     <div class="mt-4">
-                        <x-form.label name="new_password" class="block font-medium"
-                                      required="true">{{ __('shop::auth.password.new_password.label') }}</x-form.label>
+                        <x-shop::form.label name="new_password" class="block font-medium"
+                                      required="true">{{ __('shop::auth.password.new_password.label') }}</x-shop::form.label>
                         <div class="relative">
-                            <x-form.input name="new_password" type="password" required="true"
+                            <x-shop::form.input name="new_password" type="password" required="true"
                                           placeholder="{{ __('shop::auth.password.new_password.placeholder') }}"/>
                         </div>
-                        <x-form.error name="new_password"/>
+                        <x-shop::form.error name="new_password"/>
                     </div>
                     <div class="mt-4">
-                        <x-form.label name="new_password_confirmation"
-                                      required="true">{{ __('shop::auth.password.password_confirmation.label') }}</x-form.label>
+                        <x-shop::form.label name="new_password_confirmation"
+                                      required="true">{{ __('shop::auth.password.password_confirmation.label') }}</x-shop::form.label>
                         <div class="relative">
-                            <x-form.input name="new_password_confirmation" type="password" required="true"
+                            <x-shop::form.input name="new_password_confirmation" type="password" required="true"
                                           placeholder="{{ __('shop::auth.password.password_confirmation.placeholder') }}"/>
                         </div>
-                        <x-form.error name="new_password_confirmation"/>
+                        <x-shop::form.error name="new_password_confirmation"/>
                     </div>
                     <div class="mt-8">
                         <button type="submit" class="default_btn">{{ __('shop::auth.password.submit') }}</button>

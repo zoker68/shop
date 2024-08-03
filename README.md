@@ -99,6 +99,13 @@ MEILISEARCH_HOST=http://meilisearch:7700
 MEILISEARCH_KEY=
 ```
 
+- Edit \App\Models\User model:
+```php
+<?php
+namespace App\Models;
+class User extends \Zoker\Shop\Models\User {}
+```
+
 # Seeder
 ```text
 php artisan migrate:fresh --seed

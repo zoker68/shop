@@ -8,6 +8,6 @@ class CartController extends Controller
 {
     public function __invoke(): View
     {
-        return view('pages.cart');
+        return view('shop::pages.cart');
     }
 }

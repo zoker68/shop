@@ -43,16 +43,16 @@
             <div class="col-span-12 md:col-span-6 lg:col-span-4">
                 <x-shop::partials.checkout.side-cart :cart="$cart"/>
                 <div class="gap-3 items-center mt-4">
-                    <x-form.checkbox id="agreeToTerms" wire:model="agreeToTerms"/>
+                    <x-shop::form.checkbox id="agreeToTerms" wire:model="agreeToTerms"/>
                     {{-- TODO: Add link to terms and conditions --}}
-                    <x-form.label for="agreeToTerms" class="text-sm cursor-pointer inline-flex items-center">
+                    <x-shop::form.label for="agreeToTerms" class="text-sm cursor-pointer inline-flex items-center">
                         {{ __('shop::checkout.agree_with') }} <a href="terms-condition.html"
                                                            class="text-primary">{{ __('shop::checkout.agree_with_link') }}</a>
-                    </x-form.label>
-                    <x-form.error name="agreeToTerms"/>
+                    </x-shop::form.label>
+                    <x-shop::form.error name="agreeToTerms"/>
                 </div>
                 <div class="mt-4">
-                    <x-form.button class="w-full">{{ __('shop::checkout.submit') }}</x-form.button>
+                    <x-shop::form.button class="w-full">{{ __('shop::checkout.submit') }}</x-shop::form.button>
                 </div>
             </div>
         </div>

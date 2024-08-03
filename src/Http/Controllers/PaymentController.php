@@ -12,6 +12,6 @@ class PaymentController extends Controller
             ['title' => __('shop::checkout.payment.breadcrumbs'), 'url' => route('checkout.payment')],
         ];
 
-        return view('pages.payment', compact('breadcrumbs'));
+        return view('shop::pages.payment', compact('breadcrumbs'));
     }
 }

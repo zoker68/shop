@@ -4,16 +4,16 @@
     <form wire:submit="login">
         <div>
             <div>
-                <x-form.label :required="true">{{ __('shop::auth.login.form.email') }}</x-form.label>
-                <x-form.input :required="true" type="email" wire:model.blur="email" name="email"
+                <x-shop::form.label :required="true">{{ __('shop::auth.login.form.email') }}</x-shop::form.label>
+                <x-shop::form.input :required="true" type="email" wire:model.blur="email" name="email"
                               placeholder="mail@example.com"/>
-                <x-form.error name="email"/>
+                <x-shop::form.error name="email"/>
             </div>
 
             <div class="mt-4">
-                <x-form.label :reqired="true">{{ __('shop::auth.login.form.password') }}</x-form.label>
-                <x-form.input :reqired="true" type="password" wire:model="password" placeholder="********"/>
-                <x-form.error name="password"/>
+                <x-shop::form.label :reqired="true">{{ __('shop::auth.login.form.password') }}</x-shop::form.label>
+                <x-shop::form.input :reqired="true" type="password" wire:model="password" placeholder="********"/>
+                <x-shop::form.error name="password"/>
             </div>
 
             <div class="flex justify-between items-center mt-6">
@@ -28,7 +28,7 @@
 
         </div>
         <div class="mt-4">
-            <x-form.button>{{ __('shop::auth.login.form.submit') }}</x-form.button>
+            <x-shop::form.button>{{ __('shop::auth.login.form.submit') }}</x-shop::form.button>
         </div>
     </form>
 </div>

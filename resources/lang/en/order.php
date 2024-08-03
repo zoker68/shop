@@ -24,7 +24,7 @@ return [
         'actions' => [
             'general_status' => [
                 'title' => 'Change Status',
-                'new_status' => 'New Status',
+                'new_status' => 'New General Status',
             ],
             'payment_status' => [
                 'title' => 'Change Status',

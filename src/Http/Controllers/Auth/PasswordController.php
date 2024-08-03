@@ -10,7 +10,7 @@ class PasswordController extends Controller
 {
     public function edit(): View
     {
-        return view('pages.auth.account.password');
+        return view('shop::pages.auth.account.password');
     }
 
     public function update(PasswordUpdateRequest $request)

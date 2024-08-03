@@ -12,6 +12,6 @@ class ResetPasswordController extends Controller
             abort(401);
         }
 
-        return view('pages.auth.reset-password', ['email' => $email]);
+        return view('shop::pages.auth.reset-password', ['email' => $email]);
     }
 }

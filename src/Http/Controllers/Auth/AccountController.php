@@ -10,6 +10,6 @@ class AccountController extends Controller
     {
         $orders = auth()->user()->orders()->with(['products', 'products.product'])->latest()->take(3)->get();
 
-        return view('pages.auth.account.index', compact('orders'));
+        return view('shop::pages.auth.account.index', compact('orders'));
     }
 }

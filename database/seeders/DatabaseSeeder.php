@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         User::insert([
             'name' => 'zoker',
             'surname' => 'zokerov',
-            'email' => 'zoker@ya.ru',
+            'email' => 'zoker68@ya.ru',
             'password' => '$2y$12$XsiXQx.5y55ymlG2hhUXMORiSg8SDhiKZHyPaPhCEeynqUZUfkZL6',
             'phone' => '89888888888',
             'company' => 'zoker sp',

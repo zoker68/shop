@@ -8,6 +8,6 @@ class WishlistController extends Controller
 {
     public function __invoke()
     {
-        return view('pages.auth.account.wishlist');
+        return view('shop::pages.auth.account.wishlist');
     }
 }

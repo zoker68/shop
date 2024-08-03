@@ -11,7 +11,7 @@ class ProfileController extends Controller
 {
     public function index(): View
     {
-        return view('pages.auth.account.profile.index');
+        return view('shop::pages.auth.account.profile.index');
     }
 
     public function update(ProfileRequest $request)

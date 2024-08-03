@@ -11,6 +11,6 @@ class CheckoutController extends Controller
             ['title' => __('shop::checkout.breadcrumbs'), 'url' => route('checkout')],
         ];
 
-        return view('pages.checkout', compact('breadcrumbs'));
+        return view('shop::pages.checkout', compact('breadcrumbs'));
     }
 }

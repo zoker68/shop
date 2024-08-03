@@ -39,7 +39,7 @@
                             <p class="pt-5">{{ __('shop::checkout.shipping.days') }} <span
                                     class="font-semibold">{{ $shippingMethod->days }}</span></p>
                             <p>{{ __('shop::checkout.shipping.price') }} <span class="font-semibold">@money($shippingMethod->price)</span></p>
-                            <x-form.button class="mt-4" wire:click="setShippingMethod({{ $shippingMethod->id }})">{{ __('shop::checkout.shipping.submit') }}</x-form.button>
+                            <x-shop::form.button class="mt-4" wire:click="setShippingMethod({{ $shippingMethod->id }})">{{ __('shop::checkout.shipping.submit') }}</x-shop::form.button>
                         </div>
                     </div>
                 </div>
