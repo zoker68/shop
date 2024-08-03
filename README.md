@@ -65,6 +65,12 @@ content: [
 npm install
 ```
 
+- Add filament css:
+
+```text
+php artisan filament:install --scaffold
+```
+
 # Seeder
 ```text
 php artisan migrate:fresh --seed
