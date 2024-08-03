@@ -1,4 +1,4 @@
-<x-zoker.shop::layouts.app>
+<x-shop::layouts.app>
     <!-- hero area -->
     <div class="w-full">
         <div class="w-full flex items-center">
@@ -3599,4 +3599,4 @@
         </div>
     </div>
     <!-- best selling end-->
-</x-zoker.shop::layouts.app>
+</x-shop::layouts.app>

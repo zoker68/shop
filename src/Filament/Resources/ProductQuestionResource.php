@@ -37,26 +37,26 @@ class ProductQuestionResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('product.name')
-                    ->label(__('zoker.shop::product.questions.admin.list.product'))
+                    ->label(__('shop::product.questions.admin.list.product'))
                     ->searchable()
                     ->sortable()
                     ->verticalAlignment(VerticalAlignment::Start),
 
                 TextColumn::make('user.name')
-                    ->label(__('zoker.shop::product.questions.admin.list.user'))
+                    ->label(__('shop::product.questions.admin.list.user'))
                     ->searchable()
                     ->sortable()
                     ->verticalAlignment(VerticalAlignment::Start),
 
                 TextColumn::make('question')
-                    ->label(__('zoker.shop::product.questions.admin.list.question'))
+                    ->label(__('shop::product.questions.admin.list.question'))
                     ->limit()
                     ->wrap()
                     ->words(15)
                     ->verticalAlignment(VerticalAlignment::Start),
 
                 TextColumn::make('answer')
-                    ->label(__('zoker.shop::product.questions.admin.list.answer'))
+                    ->label(__('shop::product.questions.admin.list.answer'))
                     ->limit()
                     ->wrap()
                     ->html()

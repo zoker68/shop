@@ -9,7 +9,7 @@ class TextareaPropertyType extends BasePropertyType
 {
     public function label(): string
     {
-        return __('zoker.shop::product-filter.admin.textarea.label');
+        return __('shop::product-filter.admin.textarea.label');
     }
 
     protected function getFilters(): array
@@ -30,7 +30,7 @@ class TextareaPropertyType extends BasePropertyType
     {
         return [
             Textarea::make('value')
-                ->label(__('zoker.shop::product-filter.admin.textarea.value'))
+                ->label(__('shop::product-filter.admin.textarea.value'))
                 ->required(),
         ];
     }

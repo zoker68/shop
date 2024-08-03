@@ -9,7 +9,7 @@ class CheckboxPropertyFilter extends BasePropertyFilter
 {
     public function label(): string
     {
-        return __('zoker.shop::product-filter.admin.checkbox');
+        return __('shop::product-filter.admin.checkbox');
     }
 
     public function hasOptions(): bool

@@ -27,7 +27,7 @@ class ReviewAdded extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: __('zoker.shop::product.reviews.new.mail.subject'),
+            subject: __('shop::product.reviews.new.mail.subject'),
         );
     }
 

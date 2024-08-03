@@ -39,21 +39,21 @@ class Category extends Model
     {
         return [
             TextInput::make('name')
-                ->label(__('zoker.shop::category.admin.form.name'))
+                ->label(__('shop::category.admin.form.name'))
                 ->required()
                 ->maxLength(255),
             TextInput::make('slug')
-                ->label(__('zoker.shop::category.admin.form.slug'))
+                ->label(__('shop::category.admin.form.slug'))
                 ->maxLength(255)
                 ->required()
                 ->unique(ignoreRecord: true),
             Select::make('parent_id')
-                ->label(__('zoker.shop::category.admin.form.parent'))
+                ->label(__('shop::category.admin.form.parent'))
                 ->options(fn ($record) => Category::getCategoryOptions($record))
                 ->searchable()
                 ->columnSpanFull(),
             Toggle::make('published')
-                ->label(__('zoker.shop::category.admin.form.published'))
+                ->label(__('shop::category.admin.form.published'))
                 ->required(),
         ];
     }

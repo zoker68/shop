@@ -15,13 +15,13 @@ class VerifyEmailController extends Controller
     public function __invoke(EmailVerificationRequest $request): JsonResponse
     {
         if ($request->user()->hasVerifiedEmail()) {
-            return $this->error(__('zoker.shop::registration.verify_email.has_verified'));
+            return $this->error(__('shop::registration.verify_email.has_verified'));
         }
 
         if ($request->user()->markEmailAsVerified()) {
             event(new Verified($request->user()));
         }
 
-        return $this->success(__('zoker.shop::registration.verify_email.success'));
+        return $this->success(__('shop::registration.verify_email.success'));
     }
 }

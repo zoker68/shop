@@ -20,6 +20,6 @@ class PasswordController extends Controller
         auth()->user()->password = $data['new_password'];
         auth()->user()->save();
 
-        return redirect(route('account.profile.dashboard'))->with('success', __('zoker.shop::auth.password.success'));
+        return redirect(route('account.profile.dashboard'))->with('success', __('shop::auth.password.success'));
     }
 }

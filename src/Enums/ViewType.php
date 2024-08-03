@@ -51,8 +51,8 @@ enum ViewType: string
     public function getTemplate(): string
     {
         return match ($this) {
-            self::List => 'livewire.shop.products.list',
-            self::Grid => 'livewire.shop.products.grid',
+            self::List => 'shop::livewire.shop.products.list',
+            self::Grid => 'shop::livewire.shop.products.grid',
         };
     }
 }

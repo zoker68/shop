@@ -9,7 +9,7 @@ class RangePropertyFilter extends BasePropertyFilter
 {
     public function label(): string
     {
-        return __('zoker.shop::product-filter.admin.range');
+        return __('shop::product-filter.admin.range');
     }
 
     public function hasOptions(): bool

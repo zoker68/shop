@@ -43,7 +43,7 @@ class ProductsFilter extends Component
 
         $brands = Brand::getByCategory($this->category);
 
-        return view('zoker.shop::livewire.shop.products.filter', with([
+        return view('shop::livewire.shop.products.filter', with([
             'brands' => $brands,
             'properties' => $properties,
         ]));
@@ -96,8 +96,8 @@ class ProductsFilter extends Component
             ->join('products', 'product_property.product_id', '=', 'products.id')
             ->join('category_product', 'products.id', '=', 'category_product.product_id')
             ->when(! $this->category->isRoot(), fn (Builder $query) => $query
-                ->when(config('category.includeChildren'), fn ($q) => $q->whereIn('category_id', $this->category->getAllChildrenAndSelf()->pluck('id')))
-                ->when(! config('category.includeChildren'), fn ($q) => $q->where('category_id', $this->category->id))
+                ->when(config('shop.category.includeChildren'), fn ($q) => $q->whereIn('category_id', $this->category->getAllChildrenAndSelf()->pluck('id')))
+                ->when(! config('shop.category.includeChildren'), fn ($q) => $q->where('category_id', $this->category->id))
             )
             ->where('products.published', true)
             ->where('products.status', ProductStatus::APPROVED)

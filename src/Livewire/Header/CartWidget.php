@@ -31,7 +31,7 @@ class CartWidget extends Component
 
         $this->cartCountProducts = $this->cart->products->count();
 
-        return view('zoker.shop::livewire.header.cart-widget');
+        return view('shop::livewire.header.cart-widget');
     }
 
     #[On('cartUpdated')]

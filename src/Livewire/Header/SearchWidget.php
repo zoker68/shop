@@ -31,7 +31,7 @@ class SearchWidget extends Component
     {
         $result = $this->search();
 
-        return view('zoker.shop::livewire.header.search-widget', compact('result'));
+        return view('shop::livewire.header.search-widget', compact('result'));
     }
 
     public function selectCategory($categoryId): void

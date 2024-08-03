@@ -35,7 +35,7 @@
             <span class="text-primary text-xl font-semibold leading-[22px]">@money($product->price)</span>
         </div>
         <div class="flex items-center justify-start gap-[9px]">
-            <x-partials.rating :rating="$product->reviews_avg_rating" class="items-center"/>
+            <x-shop::partials.rating :rating="$product->reviews_avg_rating" class="items-center"/>
             <p class="text-[15px] text-[#464545]">({{ $product->reviews_count }})</p>
         </div>
     </div>
@@ -52,7 +52,7 @@
                           d="M28 7H5.82L5 2.8A1 1 0 0 0 4 2H0v2h3.18L7 23.2a1 1 0 0 0 1 .8h18v-2H8.82L8 18h18a1 1 0 0 0 1-.78l2-9A1 1 0 0 0 28 7Zm-2.8 9H7.62l-1.4-7h20.53Z"/>
                 </svg>
             </span>
-            {{ __('zoker.shop::products.add_to_cart') }}
+            {{ __('shop::products.add_to_cart') }}
         </button>
     </div>
 </div>

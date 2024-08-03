@@ -53,7 +53,7 @@
         {{ $slot }}
     </div>
     <div class="footer">
-        <p>{{ __('zoker.shop::mail.footer', ['config' => config('app.name')]) }}</p>
+        <p>{{ __('shop::mail.footer', ['config' => config('app.name')]) }}</p>
     </div>
 </div>
 </body>

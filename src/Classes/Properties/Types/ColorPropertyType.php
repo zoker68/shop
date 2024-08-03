@@ -9,7 +9,7 @@ class ColorPropertyType extends BasePropertyType
 {
     public function label(): string
     {
-        return __('zoker.shop::product-filter.admin.color.label');
+        return __('shop::product-filter.admin.color.label');
     }
 
     protected function getFilters(): array
@@ -26,7 +26,7 @@ class ColorPropertyType extends BasePropertyType
     {
         return [
             ColorPicker::make('value')
-                ->label(__('zoker.shop::product-filter.admin.color.value'))
+                ->label(__('shop::product-filter.admin.color.value'))
                 ->required(),
         ];
     }

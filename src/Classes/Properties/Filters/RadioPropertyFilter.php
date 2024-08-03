@@ -10,7 +10,7 @@ class RadioPropertyFilter extends BasePropertyFilter
 {
     public function label(): string
     {
-        return __('zoker.shop::product-filter.admin.radio');
+        return __('shop::product-filter.admin.radio');
     }
 
     public function hasOptions(): bool

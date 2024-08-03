@@ -41,27 +41,27 @@ class ProductReview extends Model
     {
         return [
             Placeholder::make('created_at')
-                ->label(__('zoker.shop::product.reviews.admin.form.created_at'))
+                ->label(__('shop::product.reviews.admin.form.created_at'))
                 ->content(fn (?ProductReview $record): string => $record?->created_at?->diffForHumans() ?? '-'),
 
             Placeholder::make('updated_at')
-                ->label(__('zoker.shop::product.reviews.admin.form.updated_at'))
+                ->label(__('shop::product.reviews.admin.form.updated_at'))
                 ->content(fn (?ProductReview $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
 
             Select::make('product_id')
                 ->columnStart(1)
-                ->label(__('zoker.shop::product.reviews.admin.form.product'))
+                ->label(__('shop::product.reviews.admin.form.product'))
                 ->relationship('product', 'name')
                 ->searchable()
                 ->required(),
 
             Select::make('user_id')
-                ->label(__('zoker.shop::product.reviews.admin.form.user'))
+                ->label(__('shop::product.reviews.admin.form.user'))
                 ->relationship('user', 'name')
                 ->searchable(),
 
             TextInput::make('rating')
-                ->label(__('zoker.shop::product.reviews.admin.form.rating'))
+                ->label(__('shop::product.reviews.admin.form.rating'))
                 ->required()
                 ->integer()
                 ->minValue(1)
@@ -69,11 +69,11 @@ class ProductReview extends Model
 
             Textarea::make('review')
                 ->columnSpanFull()
-                ->label(__('zoker.shop::product.reviews.admin.form.review'))
+                ->label(__('shop::product.reviews.admin.form.review'))
                 ->rows(10),
 
             Toggle::make('published')
-                ->label(__('zoker.shop::product.reviews.admin.form.published')),
+                ->label(__('shop::product.reviews.admin.form.published')),
         ];
     }
 }

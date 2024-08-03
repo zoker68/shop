@@ -14,9 +14,9 @@ enum OrderStatusType: string
     public function getLabel(): string
     {
         return match ($this) {
-            self::GENERAL => __('zoker.shop::order.status_type.general'),
-            self::PAYMENT => __('zoker.shop::order.status_type.payment'),
-            self::SHIPPING => __('zoker.shop::order.status_type.shipping'),
+            self::GENERAL => __('shop::order.status_type.general'),
+            self::PAYMENT => __('shop::order.status_type.payment'),
+            self::SHIPPING => __('shop::order.status_type.shipping'),
         };
     }
 

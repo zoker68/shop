@@ -30,13 +30,13 @@ enum ProductsSorting: string
     public function getLabel(): string
     {
         return match ($this) {
-            self::NAME_ASC => __('zoker.shop::products.sorting.name_asc'),
-            self::NAME_DESC => __('zoker.shop::products.sorting.name_desc'),
-            self::CREATED_ASC => __('zoker.shop::products.sorting.created_asc'),
-            self::CREATED_DESC => __('zoker.shop::products.sorting.created_desc'),
-            self::PRICE_ASC => __('zoker.shop::products.sorting.price_asc'),
-            self::PRICE_DESC => __('zoker.shop::products.sorting.price_desc'),
-            self::BESTSELLERS => __('zoker.shop::products.sorting.bestsellers'),
+            self::NAME_ASC => __('shop::products.sorting.name_asc'),
+            self::NAME_DESC => __('shop::products.sorting.name_desc'),
+            self::CREATED_ASC => __('shop::products.sorting.created_asc'),
+            self::CREATED_DESC => __('shop::products.sorting.created_desc'),
+            self::PRICE_ASC => __('shop::products.sorting.price_asc'),
+            self::PRICE_DESC => __('shop::products.sorting.price_desc'),
+            self::BESTSELLERS => __('shop::products.sorting.bestsellers'),
         };
     }
 
@@ -85,7 +85,7 @@ enum ProductsSorting: string
     {
         return self::isValidOption($filter)
             ? self::getByValue($filter)
-            : config('category.defaultSort');
+            : config('shop.category.defaultSort');
     }
 
     public static function isValidOption(?string $option): bool

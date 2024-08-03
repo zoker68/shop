@@ -10,7 +10,7 @@ class SelectPropertyFilter extends BasePropertyFilter
 {
     public function label(): string
     {
-        return __('zoker.shop::product-filter.admin.select');
+        return __('shop::product-filter.admin.select');
     }
 
     public function hasOptions(): bool

@@ -52,7 +52,7 @@ class Products extends Component
             ->applySorting(ProductsSorting::getSortingOption($this->filters['sort'] ?? null))
             ->withAvg('reviews', 'rating')
             ->withCount('reviews')
-            ->paginate(config('category.perPage'));
+            ->paginate(config('shop.category.perPage'));
     }
 
     #[On('updateFilters')]

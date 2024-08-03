@@ -10,6 +10,6 @@ class Navbar extends Component
 {
     public function render(): View
     {
-        return view('zoker.shop::components.partials.navbar', ['categories' => Category::getAllNested()]);
+        return view('shop::components.partials.navbar', ['categories' => Category::getAllNested()]);
     }
 }

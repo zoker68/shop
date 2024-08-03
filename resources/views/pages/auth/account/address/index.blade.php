@@ -3,10 +3,10 @@
         <div class="acprof_info_wrap shadow_sm">
 
             @if(session('success'))
-                <x-partials.flash-alert type="success">{{ session('success') }}</x-partials.flash-alert>
+                <x-shop::partials.flash-alert type="success">{{ session('success') }}</x-shop::partials.flash-alert>
             @endif
 
-            <h4 class="text-lg mb-3">{{ __('zoker.shop::auth.address.title') }}</h4>
+            <h4 class="text-lg mb-3">{{ __('shop::auth.address.title') }}</h4>
 
             @forelse($addresses as $id => $address)
                 <div class="md:flex justify-between items-center border rounded p-2 mb-2 ">
@@ -24,7 +24,7 @@
                     </div>
                 </div>
             @empty
-                <x-partials.flash-alert type="info">{{ __('zoker.shop::auth.address.error.no_addresses') }}</x-partials.flash-alert>
+                <x-shop::partials.flash-alert type="info">{{ __('shop::auth.address.error.no_addresses') }}</x-shop::partials.flash-alert>
             @endforelse
         </div>
     </div>

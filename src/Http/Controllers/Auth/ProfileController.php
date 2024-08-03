@@ -29,9 +29,9 @@ class ProfileController extends Controller
         if ($data['email'] !== $oldEmail and auth()->user() instanceof MustVerifyEmail) {
             auth()->user()->sendEmailVerificationNotification();
 
-            return redirect(route('account.profile.index'))->with('info', __('zoker.shop::auth.profile.verification'));
+            return redirect(route('account.profile.index'))->with('info', __('shop::auth.profile.verification'));
         }
 
-        return redirect(route('account.profile.index'))->with('success', __('zoker.shop::auth.profile.success'));
+        return redirect(route('account.profile.index'))->with('success', __('shop::auth.profile.success'));
     }
 }

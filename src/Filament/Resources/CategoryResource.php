@@ -28,22 +28,22 @@ class CategoryResource extends Resource
             ->reorderable('order')
             ->defaultSort('order')
             ->columns([
-                TextColumn::make('name')->label(__('zoker.shop::category.admin.list.name'))->sortable()->searchable(),
-                TextColumn::make('parent.full_name')->label(__('zoker.shop::category.admin.list.parent'))->sortable(),
+                TextColumn::make('name')->label(__('shop::category.admin.list.name'))->sortable()->searchable(),
+                TextColumn::make('parent.full_name')->label(__('shop::category.admin.list.parent'))->sortable(),
                 TextColumn::make('order')->hidden()->sortable(),
                 Tables\Columns\ToggleColumn::make('published')
-                    ->label(__('zoker.shop::category.admin.list.published'))
+                    ->label(__('shop::category.admin.list.published'))
                     ->toggleable(),
                 TextColumn::make('deleted_at')
-                    ->label(__('zoker.shop::category.admin.list.deleted_at'))
+                    ->label(__('shop::category.admin.list.deleted_at'))
                     ->dateTime()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('created_at')
-                    ->label(__('zoker.shop::category.admin.list.created_at'))
+                    ->label(__('shop::category.admin.list.created_at'))
                     ->dateTime()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
-                    ->label(__('zoker.shop::category.admin.list.updated_at'))
+                    ->label(__('shop::category.admin.list.updated_at'))
                     ->dateTime()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])

@@ -46,7 +46,7 @@ class PropertiesRelationManager extends RelationManager
             ])
             ->headerActions([
                 Tables\Actions\AttachAction::make()
-                    ->label(__('zoker.shop::properties.admin.add_property'))
+                    ->label(__('shop::properties.admin.add_property'))
                     ->recordTitle(fn ($record) => $record->name)
                     ->mutateFormDataUsing(function (array $data): array {
                         $data['index_value'] = Str::slug($data['value']);
@@ -55,7 +55,7 @@ class PropertiesRelationManager extends RelationManager
                     })
                     ->form(fn (Tables\Actions\AttachAction $action): array => [
                         Select::make('recordId')
-                            ->label(__('zoker.shop::properties.admin.property'))
+                            ->label(__('shop::properties.admin.property'))
                             ->required()
                             ->options(fn () => Property::listNonDuplicatedForProductId(Relation::noConstraints(fn () => $action->getTable()->getRelationship())->getParent()->getKey())->pluck('name', 'id'))
                             ->preload()

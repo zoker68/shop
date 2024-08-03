@@ -33,7 +33,7 @@ trait HasWishlistFunctions
 
             $this->wishlistUpdated();
         } else {
-            $this->throwAlert('info', __('zoker.shop::wishlist.must_be_logged_in'));
+            $this->throwAlert('info', __('shop::wishlist.must_be_logged_in'));
         }
     }
 

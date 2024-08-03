@@ -24,9 +24,9 @@ class ResetPassword extends Component
     protected function getMessages(): array
     {
         return [
-            'password.required' => __('zoker.shop::auth.reset_password.error.password.required'),
-            'password.confirmed' => __('zoker.shop::auth.reset_password.error.password.confirmed'),
-            'password.min' => __('zoker.shop::auth.reset_password.error.password.min'),
+            'password.required' => __('shop::auth.reset_password.error.password.required'),
+            'password.confirmed' => __('shop::auth.reset_password.error.password.confirmed'),
+            'password.min' => __('shop::auth.reset_password.error.password.min'),
         ];
     }
 
@@ -43,7 +43,7 @@ class ResetPassword extends Component
 
     public function render(): View
     {
-        return view('zoker.shop::livewire.auth.reset-password');
+        return view('shop::livewire.auth.reset-password');
     }
 
     public function resetPasswordSubmit()

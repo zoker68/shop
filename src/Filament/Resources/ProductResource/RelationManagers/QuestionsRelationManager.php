@@ -24,7 +24,7 @@ class QuestionsRelationManager extends RelationManager
             ->recordTitleAttribute('question')
             ->columns([
                 Tables\Columns\TextColumn::make('question')
-                    ->label(__('zoker.shop::admin.product.question.list.product'))
+                    ->label(__('shop::admin.product.question.list.product'))
                     ->wrap()
                     ->limit(300)
                     ->words(40),

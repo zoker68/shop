@@ -1,5 +1,5 @@
-<x-zoker.shop::layouts.app>
-    <x-zoker.shop::partials.breadcrumbs :data="$category->getBreadcrumbs()"/>
+<x-shop::layouts.app>
+    <x-shop::partials.breadcrumbs :data="$category->getBreadcrumbs()"/>
 
     <div class="pb-14 relative">
         <div class="container">
@@ -13,12 +13,12 @@
                         <div class="lg:hidden block pr-4">
                             <button @click="isOpen=true"
                                     class="pt-2 pb-[9px] border border-primary px-2.5 min-w-[150px] primary-btn"
-                                    id="mobile_filter_btn">{{ __('zoker.shop::products.filter.mobile_link') }}</button>
+                                    id="mobile_filter_btn">{{ __('shop::products.filter.mobile_link') }}</button>
                         </div>
 
                         <div class="cursor-pointer hidden sm:block">
                             <select class="nice-select z-1 w-48 products_sortings" x-on:change="$dispatch('changeSort', { sort: $event.target.value })">
-                                <option value="" disabled selected>{{ __('zoker.shop::products.sort_by') }}</option>
+                                <option value="" disabled selected>{{ __('shop::products.sort_by') }}</option>
                                 @foreach($sortOptions as $key => $option)
                                     <option value="{{ $key }}">{{ $option }}</option>
                                 @endforeach
@@ -58,11 +58,11 @@
                         </div>
                     </div>
 
-                    <livewire:products :category="$category" />
+                    <livewire:shop.products :category="$category"/>
 
                 </div>
             </div>
         </div>
     </div>
 
-</x-zoker.shop::layouts.app>
+</x-shop::layouts.app>

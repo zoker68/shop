@@ -21,7 +21,7 @@ class CategoryController extends Controller
 
         $sortOptions = ProductsSorting::getOptions();
 
-        return view('zoker.shop::pages.category', compact('category', 'viewType', 'sortOptions'));
+        return view('shop::pages.category', compact('category', 'viewType', 'sortOptions'));
     }
 
     public function getViewType(): string

@@ -40,8 +40,8 @@ class Brand extends Model
 
                 $query->whereHas('pivotCategories', function ($query) use ($category) {
                     $query
-                        ->when(config('category.includeChildren'), fn ($q) => $q->whereIn('category_id', $category->getAllChildrenAndSelf()->pluck('id')))
-                        ->when(! config('category.includeChildren'), fn ($q) => $q->where('category_id', $category->id));
+                        ->when(config('shop.category.includeChildren'), fn ($q) => $q->whereIn('category_id', $category->getAllChildrenAndSelf()->pluck('id')))
+                        ->when(! config('shop.category.includeChildren'), fn ($q) => $q->where('category_id', $category->id));
                 });
             })->get();
     }

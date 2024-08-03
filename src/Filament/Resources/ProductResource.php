@@ -51,34 +51,34 @@ class ProductResource extends Resource
             ->columns(3)
             ->schema([
                 TextInput::make('name')
-                    ->label(__('zoker.shop::product.admin.form.name'))
+                    ->label(__('shop::product.admin.form.name'))
                     ->required()
                     ->columnSpan(2),
 
                 TextInput::make('slug')
-                    ->label(__('zoker.shop::product.admin.form.slug'))
+                    ->label(__('shop::product.admin.form.slug'))
                     ->maxLength(255)
                     ->unique(ignoreRecord: true),
 
                 RichEditor::make('description')
-                    ->label(__('zoker.shop::product.admin.form.description'))
+                    ->label(__('shop::product.admin.form.description'))
                     ->columnSpan(2),
 
                 FileUpload::make('image')
-                    ->label(__('zoker.shop::product.admin.form.image'))
+                    ->label(__('shop::product.admin.form.image'))
                     ->image()
                     ->directory('products')
                     ->imageEditor()
                     ->imageEditorAspectRatios(config('product.cover.ratio')),
 
                 TextInput::make('stock')
-                    ->label(__('zoker.shop::product.admin.form.stock'))
+                    ->label(__('shop::product.admin.form.stock'))
                     ->required()
                     ->integer()
                     ->minValue(0),
 
                 TextInput::make('price')
-                    ->label(__('zoker.shop::product.admin.form.price'))
+                    ->label(__('shop::product.admin.form.price'))
                     ->required()
                     ->numeric()
                     ->prefix(currency()->getPrefix())
@@ -91,17 +91,17 @@ class ProductResource extends Resource
                     ->required(),
 
                 Select::make('brand_id')
-                    ->label(__('zoker.shop::product.admin.form.brand'))
+                    ->label(__('shop::product.admin.form.brand'))
                     ->relationship('brand', 'name')
                     ->searchable(),
 
                 Select::make('status')
                     ->selectablePlaceholder(false)
-                    ->label(__('zoker.shop::product.admin.form.status'))
+                    ->label(__('shop::product.admin.form.status'))
                     ->options(ProductStatus::getLabels())
                     ->required(),
                 Toggle::make('published')
-                    ->label(__('zoker.shop::product.admin.form.published')),
+                    ->label(__('shop::product.admin.form.published')),
             ]);
     }
 
@@ -110,25 +110,25 @@ class ProductResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label(__('zoker.shop::product.admin.list.name'))
+                    ->label(__('shop::product.admin.list.name'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('categories.name')
-                    ->label(__('zoker.shop::product.admin.list.categories'))
+                    ->label(__('shop::product.admin.list.categories'))
                     ->sortable()
                     ->state(fn (Product $record) => $record->categories->pluck('full_name'))
                     ->listWithLineBreaks(),
 
                 TextColumn::make('stock')
-                    ->label(__('zoker.shop::product.admin.list.stock')),
+                    ->label(__('shop::product.admin.list.stock')),
 
                 TextColumn::make('price')
                     ->money(currency()->getCurrency(), currency()->getSubunit())
-                    ->label(__('zoker.shop::product.admin.list.price')),
+                    ->label(__('shop::product.admin.list.price')),
 
                 TextColumn::make('status')
-                    ->label(__('zoker.shop::product.admin.list.status'))
+                    ->label(__('shop::product.admin.list.status'))
                     ->getStateUsing(fn ($record) => $record->status->getLabel())
                     ->badge()
                     ->color(fn ($record) => $record->status->getColor()),
@@ -140,7 +140,7 @@ class ProductResource extends Resource
             ->actions([
                 ActionGroup::make([
                     Action::make(ProductStatus::APPROVED->value)
-                        ->label(__('zoker.shop::product.admin.action.approve'))
+                        ->label(__('shop::product.admin.action.approve'))
                         ->color('success')
                         ->icon('heroicon-o-check')
                         ->visible(fn ($record) => $record->status === ProductStatus::MODERATION || $record->status === ProductStatus::REJECTED)
@@ -148,10 +148,10 @@ class ProductResource extends Resource
                             $record->approve();
                         })
                         ->after(function () {
-                            Notification::make()->success()->title(__('zoker.shop::product.admin.action.success.approve'))->send();
+                            Notification::make()->success()->title(__('shop::product.admin.action.success.approve'))->send();
                         }),
                     Action::make(ProductStatus::REJECTED->value)
-                        ->label(__('zoker.shop::product.admin.action.reject'))
+                        ->label(__('shop::product.admin.action.reject'))
                         ->color('danger')
                         ->icon('heroicon-o-no-symbol')
                         ->visible(fn ($record) => $record->status === ProductStatus::MODERATION || $record->status === ProductStatus::APPROVED)
@@ -159,7 +159,7 @@ class ProductResource extends Resource
                             $record->reject();
                         })
                         ->after(function () {
-                            Notification::make()->success()->title(__('zoker.shop::product.admin.action.success.reject'))->send();
+                            Notification::make()->success()->title(__('shop::product.admin.action.success.reject'))->send();
                         }),
 
                     EditAction::make(),
@@ -172,7 +172,7 @@ class ProductResource extends Resource
             ->bulkActions([
                 BulkActionGroup::make([
                     BulkAction::make(ProductStatus::APPROVED->value)
-                        ->label(__('zoker.shop::product.admin.bulk_action.approve'))
+                        ->label(__('shop::product.admin.bulk_action.approve'))
                         ->color('success')
                         ->icon('heroicon-o-check')
                         ->action(function (Collection $records) {
@@ -180,7 +180,7 @@ class ProductResource extends Resource
                         }),
 
                     BulkAction::make(ProductStatus::REJECTED->value)
-                        ->label(__('zoker.shop::product.admin.bulk_action.reject'))
+                        ->label(__('shop::product.admin.bulk_action.reject'))
                         ->color('danger')
                         ->icon('heroicon-o-no-symbol')
                         ->action(function (Collection $records) {

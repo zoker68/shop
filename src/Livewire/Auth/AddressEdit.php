@@ -41,15 +41,15 @@ class AddressEdit extends Component
     protected function getMessages(): array
     {
         return [
-            'addressData.country_id.required' => __('zoker.shop::auth.address.error.country.required'),
-            'addressData.country_id.exists' => __('zoker.shop::auth.address.error.country.exists'),
-            'addressData.region_id.exists' => __('zoker.shop::auth.address.error.region.exists'),
-            'addressData.city.required' => __('zoker.shop::auth.address.error.city.required'),
-            'addressData.city.between' => __('zoker.shop::auth.address.error.city.between'),
-            'addressData.zip.required' => __('zoker.shop::auth.address.error.zip.required'),
-            'addressData.zip.between' => __('zoker.shop::auth.address.error.zip.between'),
-            'addressData.address.required' => __('zoker.shop::auth.address.error.address.required'),
-            'addressData.address.between' => __('zoker.shop::auth.address.error.address.between'),
+            'addressData.country_id.required' => __('shop::auth.address.error.country.required'),
+            'addressData.country_id.exists' => __('shop::auth.address.error.country.exists'),
+            'addressData.region_id.exists' => __('shop::auth.address.error.region.exists'),
+            'addressData.city.required' => __('shop::auth.address.error.city.required'),
+            'addressData.city.between' => __('shop::auth.address.error.city.between'),
+            'addressData.zip.required' => __('shop::auth.address.error.zip.required'),
+            'addressData.zip.between' => __('shop::auth.address.error.zip.between'),
+            'addressData.address.required' => __('shop::auth.address.error.address.required'),
+            'addressData.address.between' => __('shop::auth.address.error.address.between'),
         ];
     }
 
@@ -63,7 +63,7 @@ class AddressEdit extends Component
     {
         $this->setRegionOptions();
 
-        return view('zoker.shop::livewire.auth.address-edit');
+        return view('shop::livewire.auth.address-edit');
     }
 
     private function setRegionOptions(): void
@@ -77,6 +77,6 @@ class AddressEdit extends Component
 
         $this->address->fill($this->addressData)->save();
 
-        return redirect()->route('account.profile.address.index')->with('success', __('zoker.shop::auth.address.success'));
+        return redirect()->route('account.profile.address.index')->with('success', __('shop::auth.address.success'));
     }
 }

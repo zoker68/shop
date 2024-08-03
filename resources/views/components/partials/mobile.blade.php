@@ -1,9 +1,9 @@
-<x-partials.mobile.bottom-navbar />
+<x-shop::partials.mobile.bottom-navbar />
 
-<x-partials.mobile.menu />
+<x-shop::partials.mobile.menu />
 
-<x-partials.mobile.category />
+<x-shop::partials.mobile.category />
 
-<x-partials.mobile.search />
+<x-shop::partials.mobile.search />
 
-<x-partials.mobile.cart />
+<x-shop::partials.mobile.cart />

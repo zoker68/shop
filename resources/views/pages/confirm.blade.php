@@ -1,5 +1,5 @@
-<x-zoker.shop::layouts.app>
-    <x-zoker.shop::partials.breadcrumbs :data="$breadcrumbs"/>
+<x-shop::layouts.app>
+    <x-shop::partials.breadcrumbs :data="$breadcrumbs"/>
 
     <livewire:confirm/>
-</x-zoker.shop::layouts.app>
+</x-shop::layouts.app>

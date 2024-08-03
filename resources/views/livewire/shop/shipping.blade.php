@@ -1,6 +1,6 @@
 <div class="container grid grid-cols-12 gap-6 pb-14">
     <div class="col-span-12 lg:col-span-8">
-        <h4 class="bg-secondary text-white px-3 py-2">{{ __('zoker.shop::checkout.shipping.title') }}</h4>
+        <h4 class="bg-secondary text-white px-3 py-2">{{ __('shop::checkout.shipping.title') }}</h4>
 
         <div x-data="{activeTab: 'shipping_method_{{ $cart->shipping_method_id ?? $shippingMethods->first()->id }}'}">
             <div class="flex gap-2 sm:gap-5 mt-10">
@@ -36,10 +36,10 @@
                             @if($shippingMethod->description)
                                 <p>{{ $shippingMethod->description }}</p>
                             @endif
-                            <p class="pt-5">{{ __('zoker.shop::checkout.shipping.days') }} <span
+                            <p class="pt-5">{{ __('shop::checkout.shipping.days') }} <span
                                     class="font-semibold">{{ $shippingMethod->days }}</span></p>
-                            <p>{{ __('zoker.shop::checkout.shipping.price') }} <span class="font-semibold">@money($shippingMethod->price)</span></p>
-                            <x-form.button class="mt-4" wire:click="setShippingMethod({{ $shippingMethod->id }})">{{ __('zoker.shop::checkout.shipping.submit') }}</x-form.button>
+                            <p>{{ __('shop::checkout.shipping.price') }} <span class="font-semibold">@money($shippingMethod->price)</span></p>
+                            <x-form.button class="mt-4" wire:click="setShippingMethod({{ $shippingMethod->id }})">{{ __('shop::checkout.shipping.submit') }}</x-form.button>
                         </div>
                     </div>
                 </div>
@@ -47,6 +47,6 @@
         </div>
     </div>
     <div class="col-span-12 lg:col-span-4">
-        <x-partials.checkout.side-cart :cart="$cart" />
+        <x-shop::partials.checkout.side-cart :cart="$cart" />
     </div>
 </div>

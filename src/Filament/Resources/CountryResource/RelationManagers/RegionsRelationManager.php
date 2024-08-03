@@ -24,9 +24,9 @@ class RegionsRelationManager extends RelationManager
             ->recordTitleAttribute('name')
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__('zoker.shop::region.admin.list.name')),
+                    ->label(__('shop::region.admin.list.name')),
                 Tables\Columns\ToggleColumn::make('published')
-                    ->label(__('zoker.shop::region.admin.list.published')),
+                    ->label(__('shop::region.admin.list.published')),
             ])
             ->filters([
                 //

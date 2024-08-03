@@ -1,9 +1,9 @@
 <x-layouts.account>
     <div class="col-span-12 lg:col-span-9">
         @forelse($orders as $order)
-            <x-partials.account.order-card :order="$order"/>
+            <x-shop::partials.account.order-card :order="$order"/>
         @empty
-            <x-partials.flash-alert type="info">{{ __('zoker.shop::auth.orders.no_orders') }}</x-partials.flash-alert>
+            <x-shop::partials.flash-alert type="info">{{ __('shop::auth.orders.no_orders') }}</x-shop::partials.flash-alert>
         @endforelse
     </div>
 </x-layouts.account>

@@ -24,14 +24,14 @@
 
         <form wire:change.debounce.600ms="filter()">
             <div class="mt-6 sm:mt-2">
-                <x-product-filter.subcategories :category="$category"/>
+                <x-shop::product-filter.subcategories :category="$category"/>
 
-                <x-product-filter.brands :brands="$brands"/>
+                <x-shop::product-filter.brands :brands="$brands"/>
 
-                <x-product-filter.price :priceRange="$priceRange" :priceStart="$priceStart"/>
+                <x-shop::product-filter.price :priceRange="$priceRange" :priceStart="$priceStart"/>
 
                 @foreach($properties as $property)
-                    <x-product-filter.property :property="$property" :filters="$filters"/>
+                    <x-shop::product-filter.property :property="$property" :filters="$filters"/>
                 @endforeach
 
             </div>

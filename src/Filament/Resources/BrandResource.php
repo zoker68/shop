@@ -41,36 +41,36 @@ class BrandResource extends Resource
         return $form
             ->schema([
                 Placeholder::make('created_at')
-                    ->label(__('zoker.shop::brand.admin.form.created_at'))
+                    ->label(__('shop::brand.admin.form.created_at'))
                     ->content(fn (?Brand $record): string => $record?->created_at?->diffForHumans() ?? '-'),
 
                 Placeholder::make('updated_at')
-                    ->label(__('zoker.shop::brand.admin.form.updated_at'))
+                    ->label(__('shop::brand.admin.form.updated_at'))
                     ->content(fn (?Brand $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
 
                 TextInput::make('name')
-                    ->label(__('zoker.shop::brand.admin.form.name'))
+                    ->label(__('shop::brand.admin.form.name'))
                     ->required(),
 
                 TextInput::make('slug')
-                    ->label(__('zoker.shop::brand.admin.form.slug'))
+                    ->label(__('shop::brand.admin.form.slug'))
                     ->maxLength(255)
                     ->rules([
                         fn (Get $get): Closure => function (string $attribute, $value, Closure $fail) use ($get) {
                             if (Brand::where('slug', $value)->where('id', '!=', $get('id'))->exists()) {
-                                $fail(__('zoker.shop::brand.admin.error.slug.exist'));
+                                $fail(__('shop::brand.admin.error.slug.exist'));
                             }
                         },
                     ]),
 
                 FileUpload::make('logo')
-                    ->label(__('zoker.shop::brand.admin.form.logo'))
+                    ->label(__('shop::brand.admin.form.logo'))
                     ->image()
                     ->imageEditor()
                     ->directory('brands'),
 
                 Toggle::make('published')
-                    ->label(__('zoker.shop::brand.admin.form.published')),
+                    ->label(__('shop::brand.admin.form.published')),
             ]);
     }
 
@@ -79,14 +79,14 @@ class BrandResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label(__('zoker.shop::brand.admin.list.name'))
+                    ->label(__('shop::brand.admin.list.name'))
                     ->searchable()
                     ->sortable(),
 
                 ImageColumn::make('logo')
-                    ->label(__('zoker.shop::brand.admin.list.logo')),
+                    ->label(__('shop::brand.admin.list.logo')),
                 ToggleColumn::make('published')
-                    ->label(__('zoker.shop::brand.admin.form.published')),
+                    ->label(__('shop::brand.admin.form.published')),
             ])
             ->filters([
                 TrashedFilter::make(),

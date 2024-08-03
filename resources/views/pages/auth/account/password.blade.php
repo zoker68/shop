@@ -1,17 +1,17 @@
 <x-layouts.account>
     <div class="col-span-12 lg:col-span-9 box_shadow px-6 py-8">
         <div class="acprof_info_wrap shadow_sm">
-            <h4 class="text-lg mb-3">{{ __('zoker.shop::auth.password.title') }}</h4>
+            <h4 class="text-lg mb-3">{{ __('shop::auth.password.title') }}</h4>
             <form action="{{ route('account.profile.password.update')  }} " method="POST">
                 @csrf
                 @method('PATCH')
                 <div class="max-w-[402px]">
                     <div>
                         <x-form.label for="password"
-                                      required="true">{{ __('zoker.shop::auth.password.password.label') }}</x-form.label>
+                                      required="true">{{ __('shop::auth.password.password.label') }}</x-form.label>
                         <div class="relative">
                             <x-form.input id="password" name="password" type="password" required="true"
-                                          placeholder="{{ __('zoker.shop::auth.password.password.placeholder') }}"/>
+                                          placeholder="{{ __('shop::auth.password.password.placeholder') }}"/>
                             {{--<span class="absolute top-5 right-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17"
                                      viewBox="0 0 512 512">
@@ -40,24 +40,24 @@
                     </div>
                     <div class="mt-4">
                         <x-form.label name="new_password" class="block font-medium"
-                                      required="true">{{ __('zoker.shop::auth.password.new_password.label') }}</x-form.label>
+                                      required="true">{{ __('shop::auth.password.new_password.label') }}</x-form.label>
                         <div class="relative">
                             <x-form.input name="new_password" type="password" required="true"
-                                          placeholder="{{ __('zoker.shop::auth.password.new_password.placeholder') }}"/>
+                                          placeholder="{{ __('shop::auth.password.new_password.placeholder') }}"/>
                         </div>
                         <x-form.error name="new_password"/>
                     </div>
                     <div class="mt-4">
                         <x-form.label name="new_password_confirmation"
-                                      required="true">{{ __('zoker.shop::auth.password.password_confirmation.label') }}</x-form.label>
+                                      required="true">{{ __('shop::auth.password.password_confirmation.label') }}</x-form.label>
                         <div class="relative">
                             <x-form.input name="new_password_confirmation" type="password" required="true"
-                                          placeholder="{{ __('zoker.shop::auth.password.password_confirmation.placeholder') }}"/>
+                                          placeholder="{{ __('shop::auth.password.password_confirmation.placeholder') }}"/>
                         </div>
                         <x-form.error name="new_password_confirmation"/>
                     </div>
                     <div class="mt-8">
-                        <button type="submit" class="default_btn">{{ __('zoker.shop::auth.password.submit') }}</button>
+                        <button type="submit" class="default_btn">{{ __('shop::auth.password.submit') }}</button>
                     </div>
                 </div>
             </form>

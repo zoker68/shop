@@ -16,12 +16,12 @@ class ListProducts extends ListRecords
     public function getTabs(): array
     {
         return [
-            'all' => Tab::make(__('zoker.shop::product.admin.list.tab.all')),
-            ProductStatus::APPROVED->value => Tab::make(__('zoker.shop::product.admin.list.tab.approved'))
+            'all' => Tab::make(__('shop::product.admin.list.tab.all')),
+            ProductStatus::APPROVED->value => Tab::make(__('shop::product.admin.list.tab.approved'))
                 ->modifyQueryUsing(fn ($query) => $query->where('status', ProductStatus::APPROVED)),
-            ProductStatus::REJECTED->value => Tab::make(__('zoker.shop::product.admin.list.tab.rejected'))
+            ProductStatus::REJECTED->value => Tab::make(__('shop::product.admin.list.tab.rejected'))
                 ->modifyQueryUsing(fn ($query) => $query->where('status', ProductStatus::REJECTED)),
-            ProductStatus::MODERATION->value => Tab::make(__('zoker.shop::product.admin.list.tab.moderation'))
+            ProductStatus::MODERATION->value => Tab::make(__('shop::product.admin.list.tab.moderation'))
                 ->modifyQueryUsing(fn ($query) => $query->where('status', ProductStatus::MODERATION))
                 ->badge(Product::where('status', ProductStatus::MODERATION)->count()),
         ];

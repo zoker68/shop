@@ -40,161 +40,161 @@ class OrderResource extends Resource
     {
         return $infolist
             ->schema([
-                Section::make(__('zoker.shop::order.admin.view.general.title'))
+                Section::make(__('shop::order.admin.view.general.title'))
                     ->columns(5)
                     ->schema([
                         TextEntry::make('general_order_status_id')
-                            ->label(__('zoker.shop::order.admin.view.general.general_status_id'))
+                            ->label(__('shop::order.admin.view.general.general_status_id'))
                             ->formatStateUsing(fn ($state, Model $record): string => $record->generalStatus->name)
                             ->badge()
                             ->color(fn ($state, Model $record): string => $record->generalStatus->color)
-                            ->action(Action::make(__('zoker.shop::order.admin.actions.general_status.title'))
+                            ->action(Action::make(__('shop::order.admin.actions.general_status.title'))
                                 ->action(function (Order $record, array $data): void {
                                     $record->general_order_status_id = $data['general_order_status_id'];
                                     $record->save();
                                 })
                                 ->form([
                                     Select::make('general_order_status_id')
-                                        ->label(__('zoker.shop::order.admin.actions.general_status.new_status'))
+                                        ->label(__('shop::order.admin.actions.general_status.new_status'))
                                         ->options(OrderStatusType::GENERAL->getStatuses()->pluck('name', 'id'))
                                         ->required(),
                                 ])),
 
                         TextEntry::make('payment_order_status_id')
-                            ->label(__('zoker.shop::order.admin.view.general.payment_status_id'))
+                            ->label(__('shop::order.admin.view.general.payment_status_id'))
                             ->formatStateUsing(fn ($state, Model $record): string => $record->paymentStatus->name)
                             ->badge()
                             ->color(fn ($state, Model $record): string => $record->paymentStatus->color)
-                            ->action(Action::make(__('zoker.shop::order.admin.actions.payment_status.title'))
+                            ->action(Action::make(__('shop::order.admin.actions.payment_status.title'))
                                 ->action(function (Order $record, array $data): void {
                                     $record->payment_order_status_id = $data['payment_order_status_id'];
                                     $record->save();
                                 })
                                 ->form([
                                     Select::make('payment_order_status_id')
-                                        ->label(__('zoker.shop::order.admin.actions.payment_status.new_status'))
+                                        ->label(__('shop::order.admin.actions.payment_status.new_status'))
                                         ->options(OrderStatusType::PAYMENT->getStatuses()->pluck('name', 'id'))
                                         ->required(),
                                 ])),
 
                         TextEntry::make('shipping_order_status_id')
-                            ->label(__('zoker.shop::order.admin.view.general.shipping_status_id'))
+                            ->label(__('shop::order.admin.view.general.shipping_status_id'))
                             ->formatStateUsing(fn ($state, Model $record): string => $record->shippingStatus->name)
                             ->badge()
                             ->color(fn ($state, Model $record): string => $record->shippingStatus->color)
-                            ->action(Action::make(__('zoker.shop::order.admin.actions.shipping_status.title'))
+                            ->action(Action::make(__('shop::order.admin.actions.shipping_status.title'))
                                 ->action(function (Order $record, array $data): void {
                                     $record->shipping_order_status_id = $data['shipping_order_status_id'];
                                     $record->save();
                                 })
                                 ->form([
                                     Select::make('shipping_order_status_id')
-                                        ->label(__('zoker.shop::order.admin.actions.shipping_status.new_status'))
+                                        ->label(__('shop::order.admin.actions.shipping_status.new_status'))
                                         ->options(OrderStatusType::SHIPPING->getStatuses()->pluck('name', 'id'))
                                         ->required(),
                                 ])),
 
                         TextEntry::make('ip_address')
                             ->columnStart(1)
-                            ->label(__('zoker.shop::order.admin.view.general.ip')),
+                            ->label(__('shop::order.admin.view.general.ip')),
                         TextEntry::make('created_at')
-                            ->label(__('zoker.shop::order.admin.view.general.created_at')),
+                            ->label(__('shop::order.admin.view.general.created_at')),
                         TextEntry::make('updated_at')
-                            ->label(__('zoker.shop::order.admin.view.general.updated_at')),
+                            ->label(__('shop::order.admin.view.general.updated_at')),
                         TextEntry::make('shipped_at')
-                            ->label(__('zoker.shop::order.admin.view.general.shipped_at'))
+                            ->label(__('shop::order.admin.view.general.shipped_at'))
                             ->formatStateUsing(fn ($state, Model $record): string => $record->shipped_at->format('d.m.Y'))
                             ->hintAction(Action::make('shipped_at_action')
                                 ->icon('heroicon-o-calendar-days')
-                                ->label(__('zoker.shop::order.admin.view.general.shipped_at_action.title'))
+                                ->label(__('shop::order.admin.view.general.shipped_at_action.title'))
                                 ->action(function (Order $record, array $data): void {
                                     $record->shipped_at = $data['shipped_at'];
                                     $record->save();
                                 })
                                 ->form([
                                     DatePicker::make('shipped_at')
-                                        ->label(__('zoker.shop::order.admin.view.general.shipped_at_action.new_date')),
+                                        ->label(__('shop::order.admin.view.general.shipped_at_action.new_date')),
                                 ])),
                         TextEntry::make('paid_at')
-                            ->label(__('zoker.shop::order.admin.view.general.paid_at'))
+                            ->label(__('shop::order.admin.view.general.paid_at'))
                             ->formatStateUsing(fn ($state, Model $record): string => $record->paid_at->format('d.m.Y'))
                             ->hintAction(Action::make('paid_at.action')
                                 ->icon('heroicon-o-calendar-days')
-                                ->label(__('zoker.shop::order.admin.view.general.paid_at_action.title'))
+                                ->label(__('shop::order.admin.view.general.paid_at_action.title'))
                                 ->action(function (Order $record, array $data): void {
                                     $record->paid_at = $data['paid_at'];
                                     $record->save();
                                 })
                                 ->form([
                                     DatePicker::make('paid_at')
-                                        ->label(__('zoker.shop::order.admin.view.general.paid_at_action.new_date')),
+                                        ->label(__('shop::order.admin.view.general.paid_at_action.new_date')),
                                 ])),
 
                         TextEntry::make('payment_method_data.name')
-                            ->label(__('zoker.shop::order.admin.view.general.payment_method'))
+                            ->label(__('shop::order.admin.view.general.payment_method'))
                             ->badge()
                             ->color(OrderStatusType::PAYMENT->getColor()),
 
                         TextEntry::make('shipping_method_data.name')
-                            ->label(__('zoker.shop::order.admin.view.general.shipping_method'))
+                            ->label(__('shop::order.admin.view.general.shipping_method'))
                             ->badge()
                             ->color(OrderStatusType::SHIPPING->getColor()),
                     ]),
 
-                Section::make(__('zoker.shop::order.admin.view.user.title'))
+                Section::make(__('shop::order.admin.view.user.title'))
                     ->columns(3)
                     ->schema([
                         TextEntry::make('user')
-                            ->label(__('zoker.shop::order.admin.view.user.user'))
-                            ->placeholder(__('zoker.shop::order.admin.view.user.guest'))
+                            ->label(__('shop::order.admin.view.user.user'))
+                            ->placeholder(__('shop::order.admin.view.user.guest'))
                             ->columnSpanFull()
                             ->formatStateUsing(fn ($state, Model $record): string => $record->user->name . ' ' . $record->user->surname . ' (' . $record->user->email . ')')
                             ->url(fn ($record): string => ($record->user) ? UserResource::getUrl('edit', ['record' => $record->user]) : false),
 
                         TextEntry::make('user_data.name')
-                            ->label(__('zoker.shop::order.admin.view.user.user_data.name_surname'))
+                            ->label(__('shop::order.admin.view.user.user_data.name_surname'))
                             ->formatStateUsing(fn ($state, Model $record): string => $record->user_data['name'] . ' ' . $record->user_data['surname']),
                         TextEntry::make('user_data.email')
-                            ->label(__('zoker.shop::order.admin.view.user.user_data.email')),
+                            ->label(__('shop::order.admin.view.user.user_data.email')),
                         TextEntry::make('user_data.phone')
-                            ->label(__('zoker.shop::order.admin.view.user.user_data.phone')),
+                            ->label(__('shop::order.admin.view.user.user_data.phone')),
                         TextEntry::make('user_data.birthday')
-                            ->label(__('zoker.shop::order.admin.view.user.user_data.birthday')),
+                            ->label(__('shop::order.admin.view.user.user_data.birthday')),
                         TextEntry::make('user_data.company')
-                            ->label(__('zoker.shop::order.admin.view.user.user_data.company')),
+                            ->label(__('shop::order.admin.view.user.user_data.company')),
                         TextEntry::make('user_data.vat')
-                            ->label(__('zoker.shop::order.admin.view.user.user_data.vat')),
+                            ->label(__('shop::order.admin.view.user.user_data.vat')),
                     ]),
 
-                Section::make(__('zoker.shop::order.admin.view.shipping_address'))
+                Section::make(__('shop::order.admin.view.shipping_address'))
                     ->columns(3)
                     ->schema([
                         TextEntry::make('shipping_address_data.country.name')
-                            ->label(__('zoker.shop::order.admin.view.shipping_address.country')),
+                            ->label(__('shop::order.admin.view.shipping_address.country')),
                         TextEntry::make('shipping_address_data.region.name')
-                            ->label(__('zoker.shop::order.admin.view.shipping_address.region')),
+                            ->label(__('shop::order.admin.view.shipping_address.region')),
                         TextEntry::make('shipping_address_data.city')
-                            ->label(__('zoker.shop::order.admin.view.shipping_address.city')),
+                            ->label(__('shop::order.admin.view.shipping_address.city')),
                         TextEntry::make('shipping_address_data.zip')
-                            ->label(__('zoker.shop::order.admin.view.shipping_address.zip')),
+                            ->label(__('shop::order.admin.view.shipping_address.zip')),
                         TextEntry::make('shipping_address_data.address')
                             ->label('Address')
                             ->columnSpan(2),
                     ]),
 
-                Section::make(__('zoker.shop::order.admin.view.billing_address.title'))
+                Section::make(__('shop::order.admin.view.billing_address.title'))
                     ->columns(3)
                     ->schema([
                         TextEntry::make('shipping_address_data.country.name')
-                            ->label(__('zoker.shop::order.admin.view.billing_address.country')),
+                            ->label(__('shop::order.admin.view.billing_address.country')),
                         TextEntry::make('shipping_address_data.region.name')
-                            ->label(__('zoker.shop::order.admin.view.billing_address.region')),
+                            ->label(__('shop::order.admin.view.billing_address.region')),
                         TextEntry::make('shipping_address_data.city')
-                            ->label(__('zoker.shop::order.admin.view.billing_address.city')),
+                            ->label(__('shop::order.admin.view.billing_address.city')),
                         TextEntry::make('shipping_address_data.zip')
-                            ->label(__('zoker.shop::order.admin.view.billing_address.zip')),
+                            ->label(__('shop::order.admin.view.billing_address.zip')),
                         TextEntry::make('shipping_address_data.address')
-                            ->label(__('zoker.shop::order.admin.view.billing_address.address'))
+                            ->label(__('shop::order.admin.view.billing_address.address'))
                             ->columnSpan(2),
                     ]),
             ]);
@@ -207,80 +207,80 @@ class OrderResource extends Resource
             ->modifyQueryUsing(fn ($query) => $query->with(['generalStatus', 'paymentStatus', 'shippingStatus']))
             ->columns([
                 TextColumn::make('user.name')
-                    ->label(__('zoker.shop::order.admin.list.user'))
+                    ->label(__('shop::order.admin.list.user'))
                     ->searchable()
                     ->sortable()
-                    ->placeholder(__('zoker.shop::order.admin.list.user_guest')),
+                    ->placeholder(__('shop::order.admin.list.user_guest')),
                 TextColumn::make('user_data.email')
-                    ->label(__('zoker.shop::order.admin.list.email'))
+                    ->label(__('shop::order.admin.list.email'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('generalStatus')
-                    ->label(__('zoker.shop::order.admin.list.general_status'))
+                    ->label(__('shop::order.admin.list.general_status'))
                     ->formatStateUsing(fn ($state, Model $record): string => $record->generalStatus->name)
                     ->badge()
                     ->color(fn ($state, Model $record): string => $record->generalStatus->color)
-                    ->action(\Filament\Tables\Actions\Action::make(__('zoker.shop::order.admin.actions.general_status.title'))
+                    ->action(\Filament\Tables\Actions\Action::make(__('shop::order.admin.actions.general_status.title'))
                         ->action(function (Order $record, array $data): void {
                             $record->general_order_status_id = $data['general_order_status_id'];
                             $record->save();
                         })
                         ->form([
                             Select::make('general_order_status_id')
-                                ->label(__('zoker.shop::order.admin.actions.general_status.new_status'))
+                                ->label(__('shop::order.admin.actions.general_status.new_status'))
                                 ->options(OrderStatusType::GENERAL->getStatuses()->pluck('name', 'id'))
                                 ->required(),
                         ])),
 
                 TextColumn::make('payment_order_status_id')
-                    ->label(__('zoker.shop::order.admin.list.payment_status'))
+                    ->label(__('shop::order.admin.list.payment_status'))
                     ->formatStateUsing(fn ($state, Model $record): string => $record->paymentStatus->name)
                     ->badge()
                     ->color(fn ($state, Model $record): string => $record->paymentStatus->color)
-                    ->action(\Filament\Tables\Actions\Action::make(__('zoker.shop::order.admin.actions.payment_status.title'))
+                    ->action(\Filament\Tables\Actions\Action::make(__('shop::order.admin.actions.payment_status.title'))
                         ->action(function (Order $record, array $data): void {
                             $record->payment_order_status_id = $data['payment_order_status_id'];
                             $record->save();
                         })
                         ->form([
                             Select::make('payment_order_status_id')
-                                ->label(__('zoker.shop::order.admin.actions.payment_status.new_status'))
+                                ->label(__('shop::order.admin.actions.payment_status.new_status'))
                                 ->options(OrderStatusType::PAYMENT->getStatuses()->pluck('name', 'id'))
                                 ->required(),
                         ])),
 
                 TextColumn::make('shipping_order_status_id')
-                    ->label(__('zoker.shop::order.admin.list.shipping_status'))
+                    ->label(__('shop::order.admin.list.shipping_status'))
                     ->formatStateUsing(fn ($state, Model $record): string => $record->shippingStatus->name)
                     ->badge()
                     ->color(fn ($state, Model $record): string => $record->shippingStatus->color)
-                    ->action(\Filament\Tables\Actions\Action::make(__('zoker.shop::order.admin.actions.shipping_status.title'))
+                    ->action(\Filament\Tables\Actions\Action::make(__('shop::order.admin.actions.shipping_status.title'))
                         ->action(function (Order $record, array $data): void {
                             $record->shipping_order_status_id = $data['shipping_order_status_id'];
                             $record->save();
                         })
                         ->form([
                             Select::make('shipping_order_status_id')
-                                ->label(__('zoker.shop::order.admin.actions.shipping_status.new_status'))
+                                ->label(__('shop::order.admin.actions.shipping_status.new_status'))
                                 ->options(OrderStatusType::SHIPPING->getStatuses()->pluck('name', 'id'))
                                 ->required(),
                         ])),
 
                 TextColumn::make('total_pre_payment')
-                    ->label(__('zoker.shop::order.admin.list.total'))
+                    ->label(__('shop::order.admin.list.total'))
                     ->money(currency()->getCurrency(), currency()->getSubunit()),
             ])
             ->filters([
                 TrashedFilter::make(),
                 SelectFilter::make('generalStatus')
-                    ->label(__('zoker.shop::order.admin.list.filter.general_status'))
+                    ->label(__('shop::order.admin.list.filter.general_status'))
                     ->options(OrderStatusType::GENERAL->getStatuses()->pluck('name', 'id')),
                 SelectFilter::make('paymentStatus')
-                    ->label(__('zoker.shop::order.admin.list.filter.payment_status'))
+                    ->label(__('shop::order.admin.list.filter.payment_status'))
                     ->options(OrderStatusType::PAYMENT->getStatuses()->pluck('name', 'id')),
                 SelectFilter::make('shippingStatus')
-                    ->label(__('zoker.shop::order.admin.list.filter.shipping_status'))
+                    ->label(__('shop::order.admin.list.filter.shipping_status'))
                     ->options(OrderStatusType::SHIPPING->getStatuses()->pluck('name', 'id')),
             ])
             ->actions([

@@ -1,5 +1,5 @@
-x-zoker.shop::layouts.app
-    <x-zoker.shop::partials.breadcrumbs :data="[['title' => 'Search Results', 'url' => route('search')]]"/>
+x-shop::layouts.app
+    <x-shop::partials.breadcrumbs :data="[['title' => 'Search Results', 'url' => route('search')]]"/>
 
     <div class="pb-14 relative">
         <div class="container">
@@ -10,7 +10,7 @@ x-zoker.shop::layouts.app
                     <div class="flex items-center">
                         <div class="cursor-pointer hidden sm:block">
                             <select class="nice-select z-1 w-48 products_sortings" x-on:change="$dispatch('changeSort', { sort: $event.target.value })">
-                                <option value="" disabled selected>{{ __('zoker.shop::products.sort_by') }}</option>
+                                <option value="" disabled selected>{{ __('shop::products.sort_by') }}</option>
                                 @foreach($sortOptions as $key => $option)
                                     <option value="{{ $key }}">{{ $option }}</option>
                                 @endforeach
@@ -56,4 +56,4 @@ x-zoker.shop::layouts.app
             </div>
         </div>
     </div>
-</x-zoker.shop::layouts.app>
+</x-shop::layouts.app>

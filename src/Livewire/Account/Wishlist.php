@@ -17,6 +17,6 @@ class Wishlist extends Component
     {
         $userWishlist = auth()->user()->wishlist()->with('product')->whereHas('product', fn ($query) => $query->published())->paginate();
 
-        return view('zoker.shop::livewire.auth.wishlist', compact('userWishlist'));
+        return view('shop::livewire.auth.wishlist', compact('userWishlist'));
     }
 }

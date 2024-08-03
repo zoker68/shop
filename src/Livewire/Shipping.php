@@ -39,13 +39,13 @@ class Shipping extends Component
     {
         $shippingMethods = ShippingMethod::getAvailableMethods($this->cart);
 
-        return view('zoker.shop::livewire.shop.shipping', compact('shippingMethods'));
+        return view('shop::livewire.shop.shipping', compact('shippingMethods'));
     }
 
     public function setShippingMethod(int $shippingMethodId): void
     {
         if (! ShippingMethod::isMethodAvailable($this->cart, $shippingMethodId)) {
-            $this->throwAlert('danger', __('zoker.shop::checkout.shipping.error.method_not_available'));
+            $this->throwAlert('danger', __('shop::checkout.shipping.error.method_not_available'));
         }
 
         $this->cart->shipping_method_id = $shippingMethodId;

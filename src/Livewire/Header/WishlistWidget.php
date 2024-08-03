@@ -20,7 +20,7 @@ class WishlistWidget extends Component
 
         $this->wishlistCount = count($this->wishlist);
 
-        return view('zoker.shop::livewire.header.wishlist-widget');
+        return view('shop::livewire.header.wishlist-widget');
     }
 
     #[On('updateWishlist')]

@@ -27,7 +27,7 @@ class QuestionAdded extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: __('zoker.shop::product.questions.new.mail.subject'),
+            subject: __('shop::product.questions.new.mail.subject'),
         );
     }
 

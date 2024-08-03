@@ -35,20 +35,20 @@ class RegionResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('country.name')
-                    ->label(__('zoker.shop::region.admin.list.country'))
+                    ->label(__('shop::region.admin.list.country'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('name')
-                    ->label(__('zoker.shop::region.admin.list.name'))
+                    ->label(__('shop::region.admin.list.name'))
                     ->sortable()
                     ->searchable(),
 
                 TextColumn::make('code')
-                    ->label(__('zoker.shop::region.admin.list.code')),
+                    ->label(__('shop::region.admin.list.code')),
 
                 ToggleColumn::make('published')
-                    ->label(__('zoker.shop::region.admin.list.published')),
+                    ->label(__('shop::region.admin.list.published')),
             ])
             ->filters([
                 //

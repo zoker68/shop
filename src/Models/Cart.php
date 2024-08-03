@@ -154,16 +154,16 @@ class Cart extends Model
     public function checkAllItems(): void
     {
         if ($this->products->isEmpty()) {
-            throw new ProductInCartException(__('zoker.shop::cart.error.empty'));
+            throw new ProductInCartException(__('shop::cart.error.empty'));
         }
 
         foreach ($this->products as $item) {
             if (! $item->hasStock()) {
-                throw new ProductInCartException(__('zoker.shop::cart.error.outOfStock'));
+                throw new ProductInCartException(__('shop::cart.error.outOfStock'));
             }
 
             if (! $item->product->isAvailable()) {
-                throw new ProductInCartException(__('zoker.shop::cart.error.notAvailable'));
+                throw new ProductInCartException(__('shop::cart.error.notAvailable'));
             }
         }
     }

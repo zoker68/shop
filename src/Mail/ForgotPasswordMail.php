@@ -30,7 +30,7 @@ class ForgotPasswordMail extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: __('zoker.shop::auth.forgot_password.mail.subject'),
+            subject: __('shop::auth.forgot_password.mail.subject'),
         );
     }
 

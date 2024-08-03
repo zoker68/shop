@@ -35,7 +35,7 @@ trait Sluggable
 
         if ($this->isDirty('slug')) {
             if ($this->slugExists($this->slug)) {
-                throw ValidationException::withMessages(['slug' => __('zoker.shop::trait.model.sluggable.error.slug')]);
+                throw ValidationException::withMessages(['slug' => __('shop::trait.model.sluggable.error.slug')]);
             }
         }
     }

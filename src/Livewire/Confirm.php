@@ -23,8 +23,8 @@ class Confirm extends Component
     protected function getMessages(): array
     {
         return [
-            'agreeToTerms.required' => __('zoker.shop::checkout.confirm.error.agreeToTerms'),
-            'agreeToTerms.accepted' => __('zoker.shop::checkout.confirm.error.agreeToTerms'),
+            'agreeToTerms.required' => __('shop::checkout.confirm.error.agreeToTerms'),
+            'agreeToTerms.accepted' => __('shop::checkout.confirm.error.agreeToTerms'),
         ];
     }
 
@@ -57,7 +57,7 @@ class Confirm extends Component
     {
         $userData = auth()->check() ? auth()->user()->only(['email', 'name', 'surname', 'phone', 'company', 'vat']) : $this->cart->data;
 
-        return view('zoker.shop::livewire.shop.confirm', compact('userData'));
+        return view('shop::livewire.shop.confirm', compact('userData'));
     }
 
     public function onConfirm(): void

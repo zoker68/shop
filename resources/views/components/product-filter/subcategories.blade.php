@@ -5,7 +5,7 @@
 @if($category->hasChildren())
     <div class="pb-4 border-b border-[#E9E4E4] mb-4">
         <div class="flex justify-between items-start">
-            <h4 class="text-xl text-left font-medium mb-3 text-secondary uppercase">{{ __('zoker.shop::product-filter.sub_categories') }}</h4>
+            <h4 class="text-xl text-left font-medium mb-3 text-secondary uppercase">{{ __('shop::product-filter.sub_categories') }}</h4>
             <!-- close filter -->
             <button @click="isOpen=false"
                     class="text-primary hidden sm:block lg:hidden closefilter">
@@ -18,7 +18,7 @@
         </div>
         <div class="space-y-2">
             @foreach($category->getChildren() as $child)
-                <x-product-filter.category :child="$child"/>
+                <x-shop::product-filter.category :child="$child"/>
             @endforeach
         </div>
     </div>

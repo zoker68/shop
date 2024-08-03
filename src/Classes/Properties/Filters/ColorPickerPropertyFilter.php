@@ -12,7 +12,7 @@ class ColorPickerPropertyFilter extends BasePropertyFilter
 {
     public function label(): string
     {
-        return __('zoker.shop::product-filter.admin.color_picker');
+        return __('shop::product-filter.admin.color_picker');
     }
 
     public function hasOptions(): bool

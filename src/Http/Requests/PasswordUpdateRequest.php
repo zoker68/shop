@@ -18,10 +18,10 @@ class PasswordUpdateRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'password.required' => __('zoker.shop::auth.password.error.password.required'),
-            'new_password.required' => __('zoker.shop::auth.password.error.new_password.required'),
-            'new_password.min' => __('zoker.shop::auth.password.error.new_password.min'),
-            'new_password.confirmed' => __('zoker.shop::auth.password.error.new_password.confirmed'),
+            'password.required' => __('shop::auth.password.error.password.required'),
+            'new_password.required' => __('shop::auth.password.error.new_password.required'),
+            'new_password.min' => __('shop::auth.password.error.new_password.min'),
+            'new_password.confirmed' => __('shop::auth.password.error.new_password.confirmed'),
         ];
     }
 

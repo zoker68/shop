@@ -10,7 +10,7 @@
                     <h5>{{ $item->product->name }}</h5>
                 </a>
                 <p class="instock mb-0">Availability:
-                    <x-partials.availability :product="$item->product"/>
+                    <x-shop::partials.availability :product="$item->product"/>
                 </p>
             </div>
 
@@ -43,5 +43,5 @@
         </div>
     @endforeach
 
-        {{ $userWishlist->links('components.partials.pagination') }}
+        {{ $userWishlist->links('shop::components.partials.pagination') }}
 </div>

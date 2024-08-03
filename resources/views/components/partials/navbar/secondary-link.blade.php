@@ -7,7 +7,7 @@
     @if($category->children->count())
     <div class="">
     @foreach($category->children as $child)
-        <x-zoker.shop::partials.navbar.third-link :category="$child"/>
+        <x-shop::partials.navbar.third-link :category="$child"/>
    @endforeach
     </div>
     @endif

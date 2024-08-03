@@ -16,7 +16,7 @@ class MatchOldPassword implements ValidationRule
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         if (! Hash::check($value, auth()->user()->password)) {
-            $fail(__('zoker.shop::auth.password.error.password.not_correct'));
+            $fail(__('shop::auth.password.error.password.not_correct'));
         }
     }
 }

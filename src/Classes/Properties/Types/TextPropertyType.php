@@ -9,7 +9,7 @@ class TextPropertyType extends BasePropertyType
 {
     public function label(): string
     {
-        return __('zoker.shop::product-filter.admin.text.label');
+        return __('shop::product-filter.admin.text.label');
     }
 
     protected function getFilters(): array
@@ -26,7 +26,7 @@ class TextPropertyType extends BasePropertyType
     {
         return [
             TextInput::make('value')
-                ->label(__('zoker.shop::product-filter.admin.text.value'))
+                ->label(__('shop::product-filter.admin.text.value'))
                 ->required(),
         ];
     }

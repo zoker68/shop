@@ -44,26 +44,26 @@ class ProductReviewResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('product.name')
-                    ->label(__('zoker.shop::product.reviews.admin.list.product'))
+                    ->label(__('shop::product.reviews.admin.list.product'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('user.name')
-                    ->label(__('zoker.shop::product.reviews.admin.list.user'))
+                    ->label(__('shop::product.reviews.admin.list.user'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('rating')
-                    ->label(__('zoker.shop::product.reviews.admin.list.rating')),
+                    ->label(__('shop::product.reviews.admin.list.rating')),
 
                 TextColumn::make('review')
-                    ->label(__('zoker.shop::product.reviews.admin.list.review'))
+                    ->label(__('shop::product.reviews.admin.list.review'))
                     ->wrap()
                     ->limit()
                     ->words(30),
 
                 ToggleColumn::make('published')
-                    ->label(__('zoker.shop::product.reviews.admin.list.published')),
+                    ->label(__('shop::product.reviews.admin.list.published')),
             ])
             ->filters([
                 TrashedFilter::make(),

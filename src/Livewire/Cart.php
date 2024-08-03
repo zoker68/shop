@@ -23,7 +23,7 @@ class Cart extends Component
 
     public function render(): View
     {
-        return view('zoker.shop::livewire.shop.cart');
+        return view('shop::livewire.shop.cart');
     }
 
     public function onCheckout(): void

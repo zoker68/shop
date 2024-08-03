@@ -38,18 +38,18 @@ class PropertyResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')
-                    ->label(__('zoker.shop::properties.admin.form.name'))
+                    ->label(__('shop::properties.admin.form.name'))
                     ->required(),
 
                 Select::make('type')
-                    ->label(__('zoker.shop::properties.admin.form.type'))
+                    ->label(__('shop::properties.admin.form.type'))
                     ->columnStart(1)
                     ->live()
                     ->options(PropertyType::getOptions())
                     ->required(),
 
                 Select::make('filter')
-                    ->label(__('zoker.shop::properties.admin.form.filter'))
+                    ->label(__('shop::properties.admin.form.filter'))
                     ->live()
                     ->options(function (Get $get) {
                         if (! $get('type')) {
@@ -62,7 +62,7 @@ class PropertyResource extends Resource
                     ->required(),
 
                 Repeater::make('options')
-                    ->label(__('zoker.shop::properties.admin.form.options'))
+                    ->label(__('shop::properties.admin.form.options'))
                     ->live()
                     ->hidden(fn (Get $get) => ! self::shouldShowOptions($get))
                     ->schema(function (Get $get) {
@@ -84,15 +84,15 @@ class PropertyResource extends Resource
             ->reorderable('sort')
             ->columns([
                 TextColumn::make('name')
-                    ->label(__('zoker.shop::properties.admin.list.name'))
+                    ->label(__('shop::properties.admin.list.name'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('type')
-                    ->label(__('zoker.shop::properties.admin.list.type')),
+                    ->label(__('shop::properties.admin.list.type')),
 
                 TextColumn::make('filter')
-                    ->label(__('zoker.shop::properties.admin.list.filter')),
+                    ->label(__('shop::properties.admin.list.filter')),
             ])
             ->filters([
 

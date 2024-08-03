@@ -22,10 +22,10 @@ class ListProductQuestion extends ListRecords
     public function getTabs(): array
     {
         return [
-            'all' => Tab::make(__('zoker.shop::product.questions.admin.list.tab.all')),
-            'published' => Tab::make(__('zoker.shop::product.questions.admin.list.tab.published'))
+            'all' => Tab::make(__('shop::product.questions.admin.list.tab.all')),
+            'published' => Tab::make(__('shop::product.questions.admin.list.tab.published'))
                 ->modifyQueryUsing(fn ($query) => $query->published()),
-            'moderation' => Tab::make(__('zoker.shop::product.questions.admin.list.tab.moderation'))
+            'moderation' => Tab::make(__('shop::product.questions.admin.list.tab.moderation'))
                 ->modifyQueryUsing(fn ($query) => $query->unpublished())
                 ->badge(ProductQuestion::unpublished()->count()),
         ];

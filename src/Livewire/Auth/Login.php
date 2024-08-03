@@ -18,15 +18,15 @@ class Login extends Component
     protected function getMessages()
     {
         return [
-            'email.required' => __('zoker.shop::auth.login.error.email.required'),
-            'email.email' => __('zoker.shop::auth.login.error.email.email'),
-            'password.required' => __('zoker.shop::auth.login.error.password.required'),
+            'email.required' => __('shop::auth.login.error.email.required'),
+            'email.email' => __('shop::auth.login.error.email.email'),
+            'password.required' => __('shop::auth.login.error.password.required'),
         ];
     }
 
     public function render()
     {
-        return view('zoker.shop::livewire.auth.login');
+        return view('shop::livewire.auth.login');
     }
 
     public function login(): void
@@ -41,7 +41,7 @@ class Login extends Component
 
             $this->redirectIntended(route('index'));
         } else {
-            $this->addError('password', __('zoker.shop::auth.login.error.password.incorrect'));
+            $this->addError('password', __('shop::auth.login.error.password.incorrect'));
         }
     }
 }

@@ -23,7 +23,7 @@ class ForgotPassword extends Component implements HasActions, HasForms
 
     public function render(Request $request)
     {
-        return view('zoker.shop::livewire.auth.forgot-password');
+        return view('shop::livewire.auth.forgot-password');
     }
 
     public function forgotPasswordSubmit(): void
@@ -33,7 +33,7 @@ class ForgotPassword extends Component implements HasActions, HasForms
         $user = User::firstWhere('email', $data['email']);
 
         if (! $user) {
-            $this->addError('email', __('zoker.shop::auth.forgot_password.error.user_not_found'));
+            $this->addError('email', __('shop::auth.forgot_password.error.user_not_found'));
 
             return;
         }

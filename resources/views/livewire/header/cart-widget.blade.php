@@ -5,7 +5,7 @@
                                       d="M94 216a14 14 0 1 1-14-14a14 14 0 0 1 14 14Zm90-14a14 14 0 1 0 14 14a14 14 0 0 0-14-14Zm43.5-128.4L201.1 166a22.2 22.2 0 0 1-21.2 16H84.1a22.2 22.2 0 0 1-21.2-16L36.5 73.8v-.3l-9.8-34a1.9 1.9 0 0 0-1.9-1.5H8a6 6 0 0 1 0-12h16.8a14.1 14.1 0 0 1 13.5 10.2L46.8 66h174.9a6 6 0 0 1 4.8 2.4a6 6 0 0 1 1 5.2ZM213.8 78H50.2l24.3 84.7a10 10 0 0 0 9.6 7.3h95.8a10 10 0 0 0 9.6-7.3Z"/>
                             </svg>
                         </span>
-        <span class="text-white text-[11px] leading-[10px]">{{ __('zoker.shop::layout.header.cart.title') }}</span>
+        <span class="text-white text-[11px] leading-[10px]">{{ __('shop::layout.header.cart.title') }}</span>
         <span
             class="absolute bg-secondary -top-1 -right-2 text-white text-[11px] w-[18px] h-[18px] leading-[18px] text-center rounded-full overflow-hidden">
             {{ $cartCountProducts }}
@@ -46,16 +46,16 @@
 
         @if($cartCountProducts)
             <div class="mt-4 pt-4 border-t border-[#d8d8d8] flex justify-between">
-                <h4 class="text-base text-secondary uppercase">{{ __('zoker.shop::layout.header.cart.sub_total') }}:</h4>
+                <h4 class="text-base text-secondary uppercase">{{ __('shop::layout.header.cart.sub_total') }}:</h4>
                 <h4 class="text-base ml-2">@money($cart->total_products)</h4>
             </div>
             <div class="flex mt-4 gap-4">
                 <a href="{{ route('cart') }}"
                    class="w-1/2 rounded-[3px] py-2 px-2.5 border border-primary bg-primary text-white inline-block text-center text-sm hover:bg-transparent hover:text-primary transition duration-300 uppercase"
-                >{{ __('zoker.shop::layout.header.cart.to_cart') }}</a>
+                >{{ __('shop::layout.header.cart.to_cart') }}</a>
                 <a href="{{ route('checkout') }}"
                    class="w-1/2 rounded-[3px] py-2 px-2.5 border border-primary hover:bg-primary bg-white hover:text-white inline-block text-center text-sm text-primary transition duration-300 uppercase">
-                    {{ __('zoker.shop::layout.header.cart.checkout') }}
+                    {{ __('shop::layout.header.cart.checkout') }}
                 </a>
             </div>
         @endif

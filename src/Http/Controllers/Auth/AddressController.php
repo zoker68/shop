@@ -28,6 +28,6 @@ class AddressController extends Controller
 
         $address->delete();
 
-        return redirect()->route('account.profile.address.index')->with('success', __('zoker.shop::auth.address.success_delete'));
+        return redirect()->route('account.profile.address.index')->with('success', __('shop::auth.address.success_delete'));
     }
 }

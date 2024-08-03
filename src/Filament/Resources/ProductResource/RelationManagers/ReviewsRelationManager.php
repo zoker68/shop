@@ -25,15 +25,15 @@ class ReviewsRelationManager extends RelationManager
             ->recordTitleAttribute('created_at')
             ->columns([
                 TextColumn::make('rating')
-                    ->label(__('zoker.shop::product.reviews.admin.list.rating')),
+                    ->label(__('shop::product.reviews.admin.list.rating')),
 
                 TextColumn::make('review')
-                    ->label(__('zoker.shop::product.reviews.admin.list.review'))
+                    ->label(__('shop::product.reviews.admin.list.review'))
                     ->wrap()
                     ->limit(200)
                     ->words(30),
                 TextColumn::make('created_at')
-                    ->label(__('zoker.shop::product.reviews.admin.list.created_at')),
+                    ->label(__('shop::product.reviews.admin.list.created_at')),
             ])
             ->filters([
                 //

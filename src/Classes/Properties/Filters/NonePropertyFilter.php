@@ -10,7 +10,7 @@ class NonePropertyFilter extends BasePropertyFilter
 {
     public function label(): string
     {
-        return __('zoker.shop::product-filter.admin.non_filter');
+        return __('shop::product-filter.admin.non_filter');
     }
 
     public function hasOptions(): bool

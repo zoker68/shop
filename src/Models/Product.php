@@ -139,8 +139,8 @@ class Product extends Model
         }
 
         return $query->whereHas('categories', function ($query) use ($category) {
-            $query->when(config('category.includeChildren'), fn ($q) => $q->whereIn('category_id', $category->getAllChildrenAndSelf()->pluck('id')))
-                ->when(! config('category.includeChildren'), fn ($q) => $q->where('category_id', $category->id));
+            $query->when(config('shop.category.includeChildren'), fn ($q) => $q->whereIn('category_id', $category->getAllChildrenAndSelf()->pluck('id')))
+                ->when(! config('shop.category.includeChildren'), fn ($q) => $q->where('category_id', $category->id));
         });
     }
 
