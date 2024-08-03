@@ -5,8 +5,8 @@
     "autoload": {
         "psr-4": {
             "Zoker68\\Shop\\": "src/",
-            "Database\\Seeders\\": "database/seeders/",
-            "Database\\Factories\\": "database/factories/"
+            "Zoker68\\Shop\\Database\\Seeders\\": "database/seeders/",
+            "Zoker68\\Shop\\Database\\Factories\\": "database/factories/"
         }
     },
     "authors": [
