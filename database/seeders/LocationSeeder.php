@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Country;
 use Illuminate\Database\Seeder;
+use Zoker68\Shop\Models\Country;
 
 class LocationSeeder extends Seeder
 {
