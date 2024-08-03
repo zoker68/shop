@@ -1,3 +1,3 @@
-<x-layouts.account>
-    <livewire:account.wishlist/>
-</x-layouts.account>
+<x-shop::layouts.account>
+    <livewire:shop.account.wishlist/>
+</x-shop::layouts.account>

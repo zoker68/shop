@@ -12,6 +12,10 @@ class ScoutIndexUpdateCommand extends Command
 
     public function handle(): void
     {
+        $this->info('Syncing Scout index settings...');
+
+        $this->call('scout:sync-index-settings');
+
         $this->info('Flush Scout index...');
 
         $this->call('scout:flush', ['model' => 'Zoker\Shop\Models\Product']);

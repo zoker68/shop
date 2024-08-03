@@ -1,4 +1,4 @@
-<x-layouts.account>
+<x-shop::layouts.account>
     <div class="col-span-12 lg:col-span-9 box_shadow px-6 py-8">
         <div class="acprof_info_wrap shadow_sm">
             <h4 class="text-lg mb-3">{{ __('shop::auth.profile.title') }}</h4>
@@ -84,4 +84,4 @@
             </form>
         </div>
     </div>
-</x-layouts.account>
+</x-shop::layouts.account>

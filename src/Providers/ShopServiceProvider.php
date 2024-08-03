@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
+use Zoker\Shop\Livewire\Account\Wishlist;
+use Zoker\Shop\Livewire\Auth\AddressEdit;
 use Zoker\Shop\Livewire\Cart;
 use Zoker\Shop\Livewire\Checkout;
 use Zoker\Shop\Livewire\Confirm;
@@ -14,14 +16,23 @@ use Zoker\Shop\Livewire\Header\CartWidget;
 use Zoker\Shop\Livewire\Header\SearchWidget;
 use Zoker\Shop\Livewire\Header\WishlistWidget;
 use Zoker\Shop\Livewire\Payment;
+use Zoker\Shop\Livewire\Products;
 use Zoker\Shop\Livewire\ProductsFilter;
+use Zoker\Shop\Livewire\SearchResults;
 use Zoker\Shop\Livewire\Shipping;
 use Zoker\Shop\View\Components\Partials\Breadcrumbs;
 use Zoker\Shop\View\Components\Partials\Navbar;
 
 class ShopServiceProvider extends ServiceProvider
 {
-    public function register() {}
+    public function register()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                \Zoker\Shop\Console\Commands\ScoutIndexUpdateCommand::class,
+            ]);
+        }
+    }
 
     public function boot(): void
     {
@@ -64,8 +75,9 @@ class ShopServiceProvider extends ServiceProvider
 
     private function registerLivewireComponents(): void
     {
-        Livewire::component('shop.products', \Zoker\Shop\Livewire\Products::class);
+        Livewire::component('shop.products', Products::class);
         Livewire::component('shop.product-filter', ProductsFilter::class);
+        Livewire::component('shop.search-results', SearchResults::class);
 
         Livewire::component('shop.cart', Cart::class);
         Livewire::component('shop.checkout', Checkout::class);
@@ -77,6 +89,9 @@ class ShopServiceProvider extends ServiceProvider
         Livewire::component('shop.widget.wishlist', WishlistWidget::class);
         Livewire::component('shop.widget.search', SearchWidget::class);
 
+        Livewire::component('shop.auth.address-edit', AddressEdit::class);
+
+        Livewire::component('shop.account.wishlist', Wishlist::class);
     }
 
     private function loadAllData(): void

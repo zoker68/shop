@@ -1,3 +1,3 @@
-<x-layouts.account>
-    <livewire:auth.address-edit :address="$address"/>
-</x-layouts.account>
+<x-shop::layouts.account>
+    <livewire:shop.auth.address-edit :address="$address"/>
+</x-shop::layouts.account>

@@ -1,4 +1,4 @@
-<x-layouts.account>
+<x-shop::layouts.account>
     <div class="col-span-12 lg:col-span-9">
         <div class="box_shadow px-6 py-8">
             <h4 class="text-lg">Order Details</h4>
@@ -117,4 +117,4 @@
             </div>
         </div>
     </div>
-</x-layouts.account>
+</x-shop::layouts.account>

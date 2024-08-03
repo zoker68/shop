@@ -1,4 +1,4 @@
-<x-layouts.account>
+<x-shop::layouts.account>
     <div class="col-span-12 lg:col-span-9 box_shadow px-6 py-8">
         <div class="acprof_info_wrap shadow_sm">
 
@@ -28,4 +28,4 @@
             @endforelse
         </div>
     </div>
-</x-layouts.account>
+</x-shop::layouts.account>

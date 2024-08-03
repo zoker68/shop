@@ -1,4 +1,4 @@
-<x-layouts.account>
+<x-shop::layouts.account>
     <div class="col-span-12 lg:col-span-9">
         <div class="account_cont_wrap">
             @if(session('success'))
@@ -52,5 +52,5 @@
             </div>
         </div>
     </div>
-</x-layouts.account>
+</x-shop::layouts.account>
 

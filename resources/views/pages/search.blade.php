@@ -1,4 +1,4 @@
-x-shop::layouts.app
+<x-shop::layouts.app>
     <x-shop::partials.breadcrumbs :data="[['title' => 'Search Results', 'url' => route('search')]]"/>
 
     <div class="pb-14 relative">
@@ -50,7 +50,7 @@ x-shop::layouts.app
                         </div>
                     </div>
 
-                    <livewire:search-results />
+                    <livewire:shop.search-results />
 
                 </div>
             </div>
