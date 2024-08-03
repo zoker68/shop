@@ -1,14 +1,14 @@
 <?php
 
-namespace Zoker68\Shop\Models;
+namespace Zoker\Shop\Models;
 
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Zoker68\Shop\Enums\OrderStatusType;
-use Zoker68\Shop\Observers\OrderStatusObserver;
+use Zoker\Shop\Enums\OrderStatusType;
+use Zoker\Shop\Observers\OrderStatusObserver;
 
 #[ObservedBy(OrderStatusObserver::class)]
 class OrderStatus extends Model

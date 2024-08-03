@@ -1,8 +1,8 @@
 <?php
 
-namespace Zoker68\Shop\Traits\Livewire;
+namespace Zoker\Shop\Traits\Livewire;
 
-use Zoker68\Shop\Models\Product;
+use Zoker\Shop\Models\Product;
 
 trait HasWishlistFunctions
 {
@@ -33,7 +33,7 @@ trait HasWishlistFunctions
 
             $this->wishlistUpdated();
         } else {
-            $this->throwAlert('info', __('zoker68.shop::wishlist.must_be_logged_in'));
+            $this->throwAlert('info', __('zoker.shop::wishlist.must_be_logged_in'));
         }
     }
 

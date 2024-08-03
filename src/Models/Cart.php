@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Models;
+namespace Zoker\Shop\Models;
 
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Builder;
@@ -10,10 +10,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
-use Zoker68\Shop\Enums\CartStatus;
-use Zoker68\Shop\Enums\OrderStatusType;
-use Zoker68\Shop\Exceptions\ProductInCartException;
-use Zoker68\Shop\Observers\CartObserver;
+use Zoker\Shop\Enums\CartStatus;
+use Zoker\Shop\Enums\OrderStatusType;
+use Zoker\Shop\Exceptions\ProductInCartException;
+use Zoker\Shop\Observers\CartObserver;
 
 #[ObservedBy(CartObserver::class)]
 class Cart extends Model
@@ -154,16 +154,16 @@ class Cart extends Model
     public function checkAllItems(): void
     {
         if ($this->products->isEmpty()) {
-            throw new ProductInCartException(__('zoker68.shop::cart.error.empty'));
+            throw new ProductInCartException(__('zoker.shop::cart.error.empty'));
         }
 
         foreach ($this->products as $item) {
             if (! $item->hasStock()) {
-                throw new ProductInCartException(__('zoker68.shop::cart.error.outOfStock'));
+                throw new ProductInCartException(__('zoker.shop::cart.error.outOfStock'));
             }
 
             if (! $item->product->isAvailable()) {
-                throw new ProductInCartException(__('zoker68.shop::cart.error.notAvailable'));
+                throw new ProductInCartException(__('zoker.shop::cart.error.notAvailable'));
             }
         }
     }

@@ -1,9 +1,9 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\PropertyResource\Pages;
+namespace Zoker\Shop\Filament\Resources\PropertyResource\Pages;
 
 use Filament\Resources\Pages\CreateRecord;
-use Zoker68\Shop\Filament\Resources\PropertyResource;
+use Zoker\Shop\Filament\Resources\PropertyResource;
 
 class CreateProperty extends CreateRecord
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Mail;
+namespace Zoker\Shop\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use Zoker68\Shop\Models\User;
+use Zoker\Shop\Models\User;
 
 class ForgotPasswordMail extends Mailable implements ShouldQueue
 {
@@ -30,7 +30,7 @@ class ForgotPasswordMail extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: __('zoker68.shop::auth.forgot_password.mail.subject'),
+            subject: __('zoker.shop::auth.forgot_password.mail.subject'),
         );
     }
 

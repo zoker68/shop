@@ -1,12 +1,12 @@
 <?php
 
-namespace Zoker68\Shop\Database\Factories;
+namespace Zoker\Shop\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Zoker68\Shop\Models\Category;
+use Zoker\Shop\Models\Category;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Zoker68\Shop\Models\Category>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Zoker\Shop\Models\Category>
  */
 class CategoryFactory extends Factory
 {

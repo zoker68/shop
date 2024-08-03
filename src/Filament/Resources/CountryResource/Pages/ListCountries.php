@@ -1,10 +1,10 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\CountryResource\Pages;
+namespace Zoker\Shop\Filament\Resources\CountryResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Zoker68\Shop\Filament\Resources\CountryResource;
+use Zoker\Shop\Filament\Resources\CountryResource;
 
 class ListCountries extends ListRecords
 {

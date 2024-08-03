@@ -1,9 +1,9 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\CountryResource\Pages;
+namespace Zoker\Shop\Filament\Resources\CountryResource\Pages;
 
 use Filament\Resources\Pages\CreateRecord;
-use Zoker68\Shop\Filament\Resources\CountryResource;
+use Zoker\Shop\Filament\Resources\CountryResource;
 
 class CreateCountry extends CreateRecord
 {

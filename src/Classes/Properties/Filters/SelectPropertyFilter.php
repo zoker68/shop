@@ -1,16 +1,16 @@
 <?php
 
-namespace Zoker68\Shop\Classes\Properties\Filters;
+namespace Zoker\Shop\Classes\Properties\Filters;
 
 use Filament\Forms\Components\Select;
-use Zoker68\Shop\Enums\PropertyType;
-use Zoker68\Shop\Models\Property;
+use Zoker\Shop\Enums\PropertyType;
+use Zoker\Shop\Models\Property;
 
 class SelectPropertyFilter extends BasePropertyFilter
 {
     public function label(): string
     {
-        return __('zoker68.shop::product-filter.admin.select');
+        return __('zoker.shop::product-filter.admin.select');
     }
 
     public function hasOptions(): bool

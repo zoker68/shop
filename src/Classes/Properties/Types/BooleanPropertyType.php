@@ -1,24 +1,24 @@
 <?php
 
-namespace Zoker68\Shop\Classes\Properties\Types;
+namespace Zoker\Shop\Classes\Properties\Types;
 
 use Filament\Forms\Components\Radio;
-use Zoker68\Shop\Enums\PropertyFilter;
-use Zoker68\Shop\Models\Property;
+use Zoker\Shop\Enums\PropertyFilter;
+use Zoker\Shop\Models\Property;
 
 class BooleanPropertyType extends BasePropertyType
 {
     public function getOptions(): array
     {
         return [
-            0 => __('zoker68.shop::product-filter.admin.boolean.0'),
-            1 => __('zoker68.shop::product-filter.admin.boolean.1'),
+            0 => __('zoker.shop::product-filter.admin.boolean.0'),
+            1 => __('zoker.shop::product-filter.admin.boolean.1'),
         ];
     }
 
     public function label(): string
     {
-        return __('zoker68.shop::product-filter.admin.boolean.label');
+        return __('zoker.shop::product-filter.admin.boolean.label');
     }
 
     protected function getFilters(): array
@@ -45,7 +45,7 @@ class BooleanPropertyType extends BasePropertyType
     {
         return [
             Radio::make('value')
-                ->label(__('zoker68.shop::product-filter.admin.boolean.value'))
+                ->label(__('zoker.shop::product-filter.admin.boolean.value'))
                 ->options($this->getOptions()),
         ];
     }
@@ -54,7 +54,7 @@ class BooleanPropertyType extends BasePropertyType
     {
         $options = $this->getOptions();
         if ($filter == PropertyFilter::Radio) {
-            $options['any'] = __('zoker68.shop::product-filter.admin.boolean.any');
+            $options['any'] = __('zoker.shop::product-filter.admin.boolean.any');
         }
 
         return $options;

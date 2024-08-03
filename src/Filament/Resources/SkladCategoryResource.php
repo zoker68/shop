@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources;
+namespace Zoker\Shop\Filament\Resources;
 
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -14,9 +14,9 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Database\Query\Builder;
-use Zoker68\Shop\Filament\Resources\SkladCategoryResource\Pages;
-use Zoker68\Shop\Models\Category;
-use Zoker68\Shop\Models\SkladCategory;
+use Zoker\Shop\Filament\Resources\SkladCategoryResource\Pages;
+use Zoker\Shop\Models\Category;
+use Zoker\Shop\Models\SkladCategory;
 
 class SkladCategoryResource extends Resource
 {

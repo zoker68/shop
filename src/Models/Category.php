@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Models;
+namespace Zoker\Shop\Models;
 
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -12,9 +12,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
-use Zoker68\Shop\Observers\CategoryObserver;
-use Zoker68\Shop\Traits\Models\Sluggable;
-use Zoker68\Shop\Traits\Models\TreeTrait;
+use Zoker\Shop\Observers\CategoryObserver;
+use Zoker\Shop\Traits\Models\Sluggable;
+use Zoker\Shop\Traits\Models\TreeTrait;
 
 #[ObservedBy(CategoryObserver::class)]
 class Category extends Model
@@ -39,21 +39,21 @@ class Category extends Model
     {
         return [
             TextInput::make('name')
-                ->label(__('zoker68.shop::category.admin.form.name'))
+                ->label(__('zoker.shop::category.admin.form.name'))
                 ->required()
                 ->maxLength(255),
             TextInput::make('slug')
-                ->label(__('zoker68.shop::category.admin.form.slug'))
+                ->label(__('zoker.shop::category.admin.form.slug'))
                 ->maxLength(255)
                 ->required()
                 ->unique(ignoreRecord: true),
             Select::make('parent_id')
-                ->label(__('zoker68.shop::category.admin.form.parent'))
+                ->label(__('zoker.shop::category.admin.form.parent'))
                 ->options(fn ($record) => Category::getCategoryOptions($record))
                 ->searchable()
                 ->columnSpanFull(),
             Toggle::make('published')
-                ->label(__('zoker68.shop::category.admin.form.published'))
+                ->label(__('zoker.shop::category.admin.form.published'))
                 ->required(),
         ];
     }

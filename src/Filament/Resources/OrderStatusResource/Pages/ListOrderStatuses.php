@@ -1,10 +1,10 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\OrderStatusResource\Pages;
+namespace Zoker\Shop\Filament\Resources\OrderStatusResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Zoker68\Shop\Filament\Resources\OrderStatusResource;
+use Zoker\Shop\Filament\Resources\OrderStatusResource;
 
 class ListOrderStatuses extends ListRecords
 {

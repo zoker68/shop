@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Livewire\Auth;
+namespace Zoker\Shop\Livewire\Auth;
 
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
@@ -10,8 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
-use Zoker68\Shop\Mail\ForgotPasswordMail;
-use Zoker68\Shop\Models\User;
+use Zoker\Shop\Mail\ForgotPasswordMail;
+use Zoker\Shop\Models\User;
 
 class ForgotPassword extends Component implements HasActions, HasForms
 {
@@ -23,7 +23,7 @@ class ForgotPassword extends Component implements HasActions, HasForms
 
     public function render(Request $request)
     {
-        return view('zoker68.shop::livewire.auth.forgot-password');
+        return view('zoker.shop::livewire.auth.forgot-password');
     }
 
     public function forgotPasswordSubmit(): void
@@ -33,7 +33,7 @@ class ForgotPassword extends Component implements HasActions, HasForms
         $user = User::firstWhere('email', $data['email']);
 
         if (! $user) {
-            $this->addError('email', __('zoker68.shop::auth.forgot_password.error.user_not_found'));
+            $this->addError('email', __('zoker.shop::auth.forgot_password.error.user_not_found'));
 
             return;
         }

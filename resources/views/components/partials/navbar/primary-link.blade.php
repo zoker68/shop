@@ -26,7 +26,7 @@
             class="opacity-0 invisible group-hover:opacity-100 group-hover:visible flex absolute top-0 left-[200px] bg-white border border-[#E9E4E4] rounded-md h-full p-5 ml-2.5 group-hover:ml-0 transition-all duration-300 responsive">
             <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1">
                 @foreach($category->children as $child)
-                    <x-zoker68.shop::partials.navbar.secondary-link :category="$child"/>
+                    <x-zoker.shop::partials.navbar.secondary-link :category="$child"/>
                 @endforeach
             </div>
         </div>

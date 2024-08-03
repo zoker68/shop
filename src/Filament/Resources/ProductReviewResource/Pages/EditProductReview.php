@@ -1,12 +1,12 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\ProductReviewResource\Pages;
+namespace Zoker\Shop\Filament\Resources\ProductReviewResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ForceDeleteAction;
 use Filament\Actions\RestoreAction;
 use Filament\Resources\Pages\EditRecord;
-use Zoker68\Shop\Filament\Resources\ProductReviewResource;
+use Zoker\Shop\Filament\Resources\ProductReviewResource;
 
 class EditProductReview extends EditRecord
 {

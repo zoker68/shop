@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Models;
+namespace Zoker\Shop\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Filament\Models\Contracts\FilamentUser;
@@ -11,7 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
-use Zoker68\Shop\Enums\ViewType;
+use Zoker\Shop\Enums\ViewType;
 
 class User extends Authenticatable implements FilamentUser
 {
@@ -111,6 +111,6 @@ class User extends Authenticatable implements FilamentUser
     public function canAccessPanel(Panel $panel): bool
     {
         // TODO: Add logic for permissions
-        return $this->email === 'zoker68@ya.ru';
+        return $this->email === 'zoker@ya.ru';
     }
 }

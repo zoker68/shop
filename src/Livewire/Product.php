@@ -1,20 +1,20 @@
 <?php
 
-namespace Zoker68\Shop\Livewire;
+namespace Zoker\Shop\Livewire;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
-use Zoker68\Shop\Mail\QuestionAdded;
-use Zoker68\Shop\Mail\ReviewAdded;
-use Zoker68\Shop\Models\Product as ProductModel;
-use Zoker68\Shop\Models\ProductQuestion;
-use Zoker68\Shop\Models\ProductReview;
-use Zoker68\Shop\Traits\Livewire\Alertable;
-use Zoker68\Shop\Traits\Livewire\HasCartFunctions;
-use Zoker68\Shop\Traits\Livewire\HasWishlistFunctions;
+use Zoker\Shop\Mail\QuestionAdded;
+use Zoker\Shop\Mail\ReviewAdded;
+use Zoker\Shop\Models\Product as ProductModel;
+use Zoker\Shop\Models\ProductQuestion;
+use Zoker\Shop\Models\ProductReview;
+use Zoker\Shop\Traits\Livewire\Alertable;
+use Zoker\Shop\Traits\Livewire\HasCartFunctions;
+use Zoker\Shop\Traits\Livewire\HasWishlistFunctions;
 
 class Product extends Component
 {
@@ -46,15 +46,15 @@ class Product extends Component
     protected function getMessages(): array
     {
         return [
-            'question.required' => __('zoker68.shop::product.questions.errors.required'),
-            'question.min' => __('zoker68.shop::product.questions.errors.min'),
-            'question.max' => __('zoker68.shop::product.questions.errors.max'),
+            'question.required' => __('zoker.shop::product.questions.errors.required'),
+            'question.min' => __('zoker.shop::product.questions.errors.min'),
+            'question.max' => __('zoker.shop::product.questions.errors.max'),
 
-            'rating.required' => __('zoker68.shop::product.reviews.errors.rating.required'),
-            'rating.between' => __('zoker68.shop::product.reviews.errors.rating.between'),
+            'rating.required' => __('zoker.shop::product.reviews.errors.rating.required'),
+            'rating.between' => __('zoker.shop::product.reviews.errors.rating.between'),
 
-            'review.min' => __('zoker68.shop::product.reviews.errors.review.min'),
-            'review.max' => __('zoker68.shop::product.reviews.errors.review.max'),
+            'review.min' => __('zoker.shop::product.reviews.errors.review.min'),
+            'review.max' => __('zoker.shop::product.reviews.errors.review.max'),
         ];
     }
 
@@ -71,13 +71,13 @@ class Product extends Component
         $this->ratings = $this->product->reviews()->with('user')->published()->latest()->get();
         $this->reviews = $this->ratings->whereNotNull('review');
 
-        return view('zoker68.shop::livewire.shop.product');
+        return view('zoker.shop::livewire.shop.product');
     }
 
     public function newQuestion(): void
     {
         if (! auth()->check()) {
-            $this->throwAlert('warning', __('zoker68.shop::product.questions.errors.must_login'), 5);
+            $this->throwAlert('warning', __('zoker.shop::product.questions.errors.must_login'), 5);
 
             return;
         }
@@ -87,7 +87,7 @@ class Product extends Component
 
         $question = $this->product->questions()->create($data);
 
-        $this->throwAlert('success', __('zoker68.shop::product.questions.new.success'), 5);
+        $this->throwAlert('success', __('zoker.shop::product.questions.new.success'), 5);
 
         $this->question = '';
 
@@ -97,7 +97,7 @@ class Product extends Component
     public function newReview(): void
     {
         if (! auth()->check()) {
-            $this->throwAlert('warning', __('zoker68.shop::product.reviews.errors.must_login'), 5);
+            $this->throwAlert('warning', __('zoker.shop::product.reviews.errors.must_login'), 5);
 
             return;
         }
@@ -113,7 +113,7 @@ class Product extends Component
 
         $review = $this->product->reviews()->updateOrCreate(['user_id' => auth()->id()], $update);
 
-        $this->throwAlert('success', __('zoker68.shop::product.reviews.new.success'), 5);
+        $this->throwAlert('success', __('zoker.shop::product.reviews.new.success'), 5);
 
         $this->review = '';
 

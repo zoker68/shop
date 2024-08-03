@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources;
+namespace Zoker\Shop\Filament\Resources;
 
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
@@ -20,10 +20,10 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Zoker68\Shop\Enums\PropertyFilter;
-use Zoker68\Shop\Enums\PropertyType;
-use Zoker68\Shop\Filament\Resources\PropertyResource\Pages;
-use Zoker68\Shop\Models\Property;
+use Zoker\Shop\Enums\PropertyFilter;
+use Zoker\Shop\Enums\PropertyType;
+use Zoker\Shop\Filament\Resources\PropertyResource\Pages;
+use Zoker\Shop\Models\Property;
 
 class PropertyResource extends Resource
 {
@@ -38,18 +38,18 @@ class PropertyResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')
-                    ->label(__('zoker68.shop::properties.admin.form.name'))
+                    ->label(__('zoker.shop::properties.admin.form.name'))
                     ->required(),
 
                 Select::make('type')
-                    ->label(__('zoker68.shop::properties.admin.form.type'))
+                    ->label(__('zoker.shop::properties.admin.form.type'))
                     ->columnStart(1)
                     ->live()
                     ->options(PropertyType::getOptions())
                     ->required(),
 
                 Select::make('filter')
-                    ->label(__('zoker68.shop::properties.admin.form.filter'))
+                    ->label(__('zoker.shop::properties.admin.form.filter'))
                     ->live()
                     ->options(function (Get $get) {
                         if (! $get('type')) {
@@ -62,7 +62,7 @@ class PropertyResource extends Resource
                     ->required(),
 
                 Repeater::make('options')
-                    ->label(__('zoker68.shop::properties.admin.form.options'))
+                    ->label(__('zoker.shop::properties.admin.form.options'))
                     ->live()
                     ->hidden(fn (Get $get) => ! self::shouldShowOptions($get))
                     ->schema(function (Get $get) {
@@ -84,15 +84,15 @@ class PropertyResource extends Resource
             ->reorderable('sort')
             ->columns([
                 TextColumn::make('name')
-                    ->label(__('zoker68.shop::properties.admin.list.name'))
+                    ->label(__('zoker.shop::properties.admin.list.name'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('type')
-                    ->label(__('zoker68.shop::properties.admin.list.type')),
+                    ->label(__('zoker.shop::properties.admin.list.type')),
 
                 TextColumn::make('filter')
-                    ->label(__('zoker68.shop::properties.admin.list.filter')),
+                    ->label(__('zoker.shop::properties.admin.list.filter')),
             ])
             ->filters([
 

@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('foreign_id');
-            $table->foreignIdFor(\Zoker68\Shop\Models\Brand::class)->nullable()->constrained()->nullOnDelete();
+            $table->foreignIdFor(\Zoker\Shop\Models\Brand::class)->nullable()->constrained()->nullOnDelete();
             $table->string('slug')->unique();
             $table->string('name');
             $table->longText('description')->nullable();

@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Traits\Livewire;
+namespace Zoker\Shop\Traits\Livewire;
 
 trait Alertable
 {

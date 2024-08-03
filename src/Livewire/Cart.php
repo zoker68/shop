@@ -1,13 +1,13 @@
 <?php
 
-namespace Zoker68\Shop\Livewire;
+namespace Zoker\Shop\Livewire;
 
 use Illuminate\View\View;
 use Livewire\Component;
-use Zoker68\Shop\Exceptions\ProductInCartException;
-use Zoker68\Shop\Models\Cart as CartModel;
-use Zoker68\Shop\Traits\Livewire\Alertable;
-use Zoker68\Shop\Traits\Livewire\HasCartFunctions;
+use Zoker\Shop\Exceptions\ProductInCartException;
+use Zoker\Shop\Models\Cart as CartModel;
+use Zoker\Shop\Traits\Livewire\Alertable;
+use Zoker\Shop\Traits\Livewire\HasCartFunctions;
 
 class Cart extends Component
 {
@@ -23,7 +23,7 @@ class Cart extends Component
 
     public function render(): View
     {
-        return view('zoker68.shop::livewire.shop.cart');
+        return view('zoker.shop::livewire.shop.cart');
     }
 
     public function onCheckout(): void

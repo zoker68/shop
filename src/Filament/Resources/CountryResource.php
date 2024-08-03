@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources;
+namespace Zoker\Shop\Filament\Resources;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -15,9 +15,9 @@ use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Zoker68\Shop\Filament\Resources\CountryResource\Pages;
-use Zoker68\Shop\Filament\Resources\CountryResource\RelationManagers\RegionsRelationManager;
-use Zoker68\Shop\Models\Country;
+use Zoker\Shop\Filament\Resources\CountryResource\Pages;
+use Zoker\Shop\Filament\Resources\CountryResource\RelationManagers\RegionsRelationManager;
+use Zoker\Shop\Models\Country;
 
 class CountryResource extends Resource
 {
@@ -34,23 +34,23 @@ class CountryResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')
-                    ->label(__('zoker68.shop::country.admin.form.name'))
+                    ->label(__('zoker.shop::country.admin.form.name'))
                     ->required(),
 
                 TextInput::make('code')
                     ->columnStart(1)
-                    ->label(__('zoker68.shop::country.admin.form.code'))
+                    ->label(__('zoker.shop::country.admin.form.code'))
                     ->required(),
 
                 TextInput::make('phone_code')
-                    ->label(__('zoker68.shop::country.admin.form.phone'))
+                    ->label(__('zoker.shop::country.admin.form.phone'))
                     ->required(),
 
                 Toggle::make('published')
-                    ->label(__('zoker68.shop::country.admin.form.published')),
+                    ->label(__('zoker.shop::country.admin.form.published')),
 
                 Toggle::make('pined')
-                    ->label(__('zoker68.shop::country.admin.form.pined')),
+                    ->label(__('zoker.shop::country.admin.form.pined')),
             ]);
     }
 
@@ -61,22 +61,22 @@ class CountryResource extends Resource
             ->columns([
                 TextColumn::make('name')
                     ->sortable()
-                    ->label(__('zoker68.shop::country.admin.list.name')),
+                    ->label(__('zoker.shop::country.admin.list.name')),
 
                 TextColumn::make('code')
                     ->sortable()
-                    ->label(__('zoker68.shop::country.admin.list.code')),
+                    ->label(__('zoker.shop::country.admin.list.code')),
 
                 TextColumn::make('phone_code')
-                    ->label(__('zoker68.shop::country.admin.list.phone')),
+                    ->label(__('zoker.shop::country.admin.list.phone')),
 
                 ToggleColumn::make('published')
                     ->sortable()
-                    ->label(__('zoker68.shop::country.admin.list.published')),
+                    ->label(__('zoker.shop::country.admin.list.published')),
 
                 ToggleColumn::make('pined')
                     ->sortable()
-                    ->label(__('zoker68.shop::country.admin.list.pined')),
+                    ->label(__('zoker.shop::country.admin.list.pined')),
             ])
             ->filters([
             ])

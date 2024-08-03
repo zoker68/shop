@@ -1,8 +1,8 @@
 <?php
 
-namespace Zoker68\Shop\Observers;
+namespace Zoker\Shop\Observers;
 
-use Zoker68\Shop\Models\Product;
+use Zoker\Shop\Models\Product;
 
 class ProductObserver
 {

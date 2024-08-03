@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\View\Components\Partials;
+namespace Zoker\Shop\View\Components\Partials;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -16,7 +16,7 @@ class Breadcrumbs extends Component
         }
 
         $this->breadcrumbs[] = [
-            'title' => __('zoker68.shop::layout.breadcrumbs.index'),
+            'title' => __('zoker.shop::layout.breadcrumbs.index'),
             'url' => route('index'),
         ];
 
@@ -33,7 +33,7 @@ class Breadcrumbs extends Component
             return null;
         }
 
-        return view('components.partials.breadcrumbs', ['breadcrumbs' => $this->getBreadcrumbs()]);
+        return view('zoker.shop::components.partials.breadcrumbs', ['breadcrumbs' => $this->getBreadcrumbs()]);
     }
 
     public function getBreadcrumbs(): array

@@ -1,10 +1,10 @@
 <?php
 
-namespace Zoker68\Shop\Http\Controllers\Auth;
+namespace Zoker\Shop\Http\Controllers\Auth;
 
 use Illuminate\View\View;
-use Zoker68\Shop\Http\Controllers\Controller;
-use Zoker68\Shop\Http\Requests\PasswordUpdateRequest;
+use Zoker\Shop\Http\Controllers\Controller;
+use Zoker\Shop\Http\Requests\PasswordUpdateRequest;
 
 class PasswordController extends Controller
 {
@@ -20,6 +20,6 @@ class PasswordController extends Controller
         auth()->user()->password = $data['new_password'];
         auth()->user()->save();
 
-        return redirect(route('account.profile.dashboard'))->with('success', __('zoker68.shop::auth.password.success'));
+        return redirect(route('account.profile.dashboard'))->with('success', __('zoker.shop::auth.password.success'));
     }
 }

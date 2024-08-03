@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Models;
+namespace Zoker\Shop\Models;
 
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Builder;
@@ -18,10 +18,10 @@ use Illuminate\Support\Str;
 use Laravel\Scout\Builder as ScoutBuiler;
 use Laravel\Scout\Searchable;
 use Veelasky\LaravelHashId\Eloquent\HashableId;
-use Zoker68\Shop\Enums\ProductsSorting;
-use Zoker68\Shop\Enums\ProductStatus;
-use Zoker68\Shop\Observers\ProductObserver;
-use Zoker68\Shop\Traits\Models\Sluggable;
+use Zoker\Shop\Enums\ProductsSorting;
+use Zoker\Shop\Enums\ProductStatus;
+use Zoker\Shop\Observers\ProductObserver;
+use Zoker\Shop\Traits\Models\Sluggable;
 
 #[ObservedBy(ProductObserver::class)]
 class Product extends Model

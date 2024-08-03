@@ -1,10 +1,10 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\UserResource\Pages;
+namespace Zoker\Shop\Filament\Resources\UserResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Zoker68\Shop\Filament\Resources\UserResource;
+use Zoker\Shop\Filament\Resources\UserResource;
 
 class ListUsers extends ListRecords
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Zoker68\Shop\Http\Controllers;
+namespace Zoker\Shop\Http\Controllers;
 
-use Zoker68\Shop\Enums\ProductsSorting;
-use Zoker68\Shop\Enums\ViewType;
-use Zoker68\Shop\Http\Requests\SearchRequest;
+use Zoker\Shop\Enums\ProductsSorting;
+use Zoker\Shop\Enums\ViewType;
+use Zoker\Shop\Http\Requests\SearchRequest;
 
 class SearchController extends Controller
 {

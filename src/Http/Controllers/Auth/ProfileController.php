@@ -1,11 +1,11 @@
 <?php
 
-namespace Zoker68\Shop\Http\Controllers\Auth;
+namespace Zoker\Shop\Http\Controllers\Auth;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\View\View;
-use Zoker68\Shop\Http\Controllers\Controller;
-use Zoker68\Shop\Http\Requests\ProfileRequest;
+use Zoker\Shop\Http\Controllers\Controller;
+use Zoker\Shop\Http\Requests\ProfileRequest;
 
 class ProfileController extends Controller
 {
@@ -29,9 +29,9 @@ class ProfileController extends Controller
         if ($data['email'] !== $oldEmail and auth()->user() instanceof MustVerifyEmail) {
             auth()->user()->sendEmailVerificationNotification();
 
-            return redirect(route('account.profile.index'))->with('info', __('zoker68.shop::auth.profile.verification'));
+            return redirect(route('account.profile.index'))->with('info', __('zoker.shop::auth.profile.verification'));
         }
 
-        return redirect(route('account.profile.index'))->with('success', __('zoker68.shop::auth.profile.success'));
+        return redirect(route('account.profile.index'))->with('success', __('zoker.shop::auth.profile.success'));
     }
 }

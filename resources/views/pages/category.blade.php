@@ -1,23 +1,24 @@
-<x-layouts.app>
-    <x-partials.breadcrumbs :data="$category->getBreadcrumbs()"/>
+<x-zoker.shop::layouts.app>
+    <x-zoker.shop::partials.breadcrumbs :data="$category->getBreadcrumbs()"/>
 
     <div class="pb-14 relative">
         <div class="container">
             <div x-data="{isOpen:false}" class="grid grid-cols-4 relative gap-6">
 
-                <livewire:products-filter :category="$category"/>
+                @livewire(\Zoker\Shop\Livewire\ProductsFilter::class, ['category' => $category], key($category->id))
+
 
                 <div x-data class="col-span-4 lg:col-span-3">
                     <div class="flex items-center">
                         <div class="lg:hidden block pr-4">
                             <button @click="isOpen=true"
                                     class="pt-2 pb-[9px] border border-primary px-2.5 min-w-[150px] primary-btn"
-                                    id="mobile_filter_btn">{{ __('zoker68.shop::products.filter.mobile_link') }}</button>
+                                    id="mobile_filter_btn">{{ __('zoker.shop::products.filter.mobile_link') }}</button>
                         </div>
 
                         <div class="cursor-pointer hidden sm:block">
                             <select class="nice-select z-1 w-48 products_sortings" x-on:change="$dispatch('changeSort', { sort: $event.target.value })">
-                                <option value="" disabled selected>{{ __('zoker68.shop::products.sort_by') }}</option>
+                                <option value="" disabled selected>{{ __('zoker.shop::products.sort_by') }}</option>
                                 @foreach($sortOptions as $key => $option)
                                     <option value="{{ $key }}">{{ $option }}</option>
                                 @endforeach
@@ -64,4 +65,4 @@
         </div>
     </div>
 
-</x-layouts.app>
+</x-zoker.shop::layouts.app>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources;
+namespace Zoker\Shop\Filament\Resources;
 
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Select;
@@ -22,9 +22,9 @@ use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Zoker68\Shop\Enums\OrderStatusType;
-use Zoker68\Shop\Filament\Resources\OrderStatusResource\Pages;
-use Zoker68\Shop\Models\OrderStatus;
+use Zoker\Shop\Enums\OrderStatusType;
+use Zoker\Shop\Filament\Resources\OrderStatusResource\Pages;
+use Zoker\Shop\Models\OrderStatus;
 
 class OrderStatusResource extends Resource
 {
@@ -39,16 +39,16 @@ class OrderStatusResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')
-                    ->label(__('zoker68.shop::order.status_type.admin.form.name'))
+                    ->label(__('zoker.shop::order.status_type.admin.form.name'))
                     ->required(),
 
                 Select::make('type')
-                    ->label(__('zoker68.shop::order.status_type.admin.form.type'))
+                    ->label(__('zoker.shop::order.status_type.admin.form.type'))
                     ->options(OrderStatusType::getAllOptions())
                     ->required(),
 
                 Select::make('color')
-                    ->label(__('zoker68.shop::order.status_type.admin.form.color'))
+                    ->label(__('zoker.shop::order.status_type.admin.form.color'))
                     ->options([
                         'primary' => 'Primary',
                         'success' => 'Success',
@@ -59,10 +59,10 @@ class OrderStatusResource extends Resource
                     ]),
 
                 ColorPicker::make('hex_color')
-                    ->label(__('zoker68.shop::order.status_type.admin.form.hex_color')),
+                    ->label(__('zoker.shop::order.status_type.admin.form.hex_color')),
 
                 Toggle::make('is_default')
-                    ->label(__('zoker68.shop::order.status_type.admin.form.is_default'))
+                    ->label(__('zoker.shop::order.status_type.admin.form.is_default'))
                     ->onColor('success')
                     ->offColor('gray'),
             ]);
@@ -75,18 +75,18 @@ class OrderStatusResource extends Resource
             ->reorderable('order')
             ->columns([
                 TextColumn::make('name')
-                    ->label(__('zoker68.shop::order.status_type.admin.list.name'))
+                    ->label(__('zoker.shop::order.status_type.admin.list.name'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('type')
-                    ->label(__('zoker68.shop::order.status_type.admin.list.type'))
+                    ->label(__('zoker.shop::order.status_type.admin.list.type'))
                     ->getStateUsing(fn ($record) => $record->type->getLabel())
                     ->badge()
                     ->color(fn ($record) => $record->type->getColor()),
 
                 ToggleColumn::make('is_default')
-                    ->label(__('zoker68.shop::order.status_type.admin.list.is_default'))
+                    ->label(__('zoker.shop::order.status_type.admin.list.is_default'))
                     ->onColor('success')
                     ->offColor('gray'),
             ])

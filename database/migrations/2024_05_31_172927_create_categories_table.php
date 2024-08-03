@@ -22,7 +22,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        \Zoker68\Shop\Models\Category::create([
+        \Zoker\Shop\Models\Category::create([
             'name' => 'Root',
             'slug' => '',
             'parent_id' => 0,

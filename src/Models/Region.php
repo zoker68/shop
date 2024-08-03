@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Models;
+namespace Zoker\Shop\Models;
 
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -30,21 +30,21 @@ class Region extends Model
     {
         return [
             Select::make('country_id')
-                ->label(__('zoker68.shop::region.admin.form.country'))
+                ->label(__('zoker.shop::region.admin.form.country'))
                 ->relationship('country', 'name')
                 ->searchable()
                 ->required(),
 
             TextInput::make('name')
-                ->label(__('zoker68.shop::region.admin.form.name'))
+                ->label(__('zoker.shop::region.admin.form.name'))
                 ->required(),
 
             TextInput::make('code')
-                ->label(__('zoker68.shop::region.admin.form.code'))
+                ->label(__('zoker.shop::region.admin.form.code'))
                 ->required(),
 
             Toggle::make('published')
-                ->label(__('zoker68.shop::region.admin.form.published')),
+                ->label(__('zoker.shop::region.admin.form.published')),
         ];
     }
 }

@@ -1,11 +1,11 @@
 <?php
 
-namespace Zoker68\Shop\Classes\Properties\Types;
+namespace Zoker\Shop\Classes\Properties\Types;
 
-use Zoker68\Shop\Classes\Properties\Filters\SelectPropertyFilter;
-use Zoker68\Shop\Contracts\PropertyTypeInterface;
-use Zoker68\Shop\Enums\PropertyType;
-use Zoker68\Shop\Models\Property;
+use Zoker\Shop\Classes\Properties\Filters\SelectPropertyFilter;
+use Zoker\Shop\Contracts\PropertyTypeInterface;
+use Zoker\Shop\Enums\PropertyType;
+use Zoker\Shop\Models\Property;
 
 abstract class BasePropertyType implements PropertyTypeInterface
 {

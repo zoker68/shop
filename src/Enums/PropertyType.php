@@ -1,13 +1,13 @@
 <?php
 
-namespace Zoker68\Shop\Enums;
+namespace Zoker\Shop\Enums;
 
-use Zoker68\Shop\Classes\Properties\Types\BooleanPropertyType;
-use Zoker68\Shop\Classes\Properties\Types\ColorPropertyType;
-use Zoker68\Shop\Classes\Properties\Types\NumberPropertyType;
-use Zoker68\Shop\Classes\Properties\Types\TextareaPropertyType;
-use Zoker68\Shop\Classes\Properties\Types\TextPropertyType;
-use Zoker68\Shop\Contracts\PropertyTypeInterface;
+use Zoker\Shop\Classes\Properties\Types\BooleanPropertyType;
+use Zoker\Shop\Classes\Properties\Types\ColorPropertyType;
+use Zoker\Shop\Classes\Properties\Types\NumberPropertyType;
+use Zoker\Shop\Classes\Properties\Types\TextareaPropertyType;
+use Zoker\Shop\Classes\Properties\Types\TextPropertyType;
+use Zoker\Shop\Contracts\PropertyTypeInterface;
 
 enum PropertyType: string
 {

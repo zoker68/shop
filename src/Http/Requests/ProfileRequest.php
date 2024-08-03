@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Http\Requests;
+namespace Zoker\Shop\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -23,20 +23,20 @@ class ProfileRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'mainData.email.required' => __('zoker68.shop::auth.profile.error.email.required'),
-            'mainData.email.email' => __('zoker68.shop::auth.profile.error.email.email'),
-            'mainData.email.unique' => __('zoker68.shop::auth.profile.error.email.unique'),
-            'mainData.name.required' => __('zoker68.shop::auth.profile.error.name.required'),
-            'mainData.name.between' => __('zoker68.shop::auth.profile.error.name.between'),
-            'mainData.surname.required' => __('zoker68.shop::auth.profile.error.surname.required'),
-            'mainData.surname.between' => __('zoker68.shop::auth.profile.error.surname.between'),
-            'mainData.phone.required' => __('zoker68.shop::auth.profile.error.phone.required'),
-            'mainData.phone.between' => __('zoker68.shop::auth.profile.error.phone.between'),
-            'mainData.birthday.required' => __('zoker68.shop::auth.profile.error.birthday.required'),
-            'mainData.birthday.before' => __('zoker68.shop::auth.profile.error.birthday.before'),
-            'mainData.birthday.after' => __('zoker68.shop::auth.profile.error.birthday.after'),
-            'mainData.company.between' => __('zoker68.shop::auth.profile.error.company.between'),
-            'mainData.vat.between' => __('zoker68.shop::auth.profile.error.vat.between'),
+            'mainData.email.required' => __('zoker.shop::auth.profile.error.email.required'),
+            'mainData.email.email' => __('zoker.shop::auth.profile.error.email.email'),
+            'mainData.email.unique' => __('zoker.shop::auth.profile.error.email.unique'),
+            'mainData.name.required' => __('zoker.shop::auth.profile.error.name.required'),
+            'mainData.name.between' => __('zoker.shop::auth.profile.error.name.between'),
+            'mainData.surname.required' => __('zoker.shop::auth.profile.error.surname.required'),
+            'mainData.surname.between' => __('zoker.shop::auth.profile.error.surname.between'),
+            'mainData.phone.required' => __('zoker.shop::auth.profile.error.phone.required'),
+            'mainData.phone.between' => __('zoker.shop::auth.profile.error.phone.between'),
+            'mainData.birthday.required' => __('zoker.shop::auth.profile.error.birthday.required'),
+            'mainData.birthday.before' => __('zoker.shop::auth.profile.error.birthday.before'),
+            'mainData.birthday.after' => __('zoker.shop::auth.profile.error.birthday.after'),
+            'mainData.company.between' => __('zoker.shop::auth.profile.error.company.between'),
+            'mainData.vat.between' => __('zoker.shop::auth.profile.error.vat.between'),
         ];
     }
 

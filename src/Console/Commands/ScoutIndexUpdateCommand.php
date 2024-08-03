@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Console\Commands;
+namespace Zoker\Shop\Console\Commands;
 
 use Illuminate\Console\Command;
 
@@ -14,11 +14,11 @@ class ScoutIndexUpdateCommand extends Command
     {
         $this->info('Flush Scout index...');
 
-        $this->call('scout:flush', ['model' => 'Zoker68\Shop\Models\Product']);
+        $this->call('scout:flush', ['model' => 'Zoker\Shop\Models\Product']);
 
         $this->info('Reindexing...');
 
-        $this->call('scout:import', ['model' => 'Zoker68\Shop\Models\Product']);
+        $this->call('scout:import', ['model' => 'Zoker\Shop\Models\Product']);
 
         $this->info('Done');
     }

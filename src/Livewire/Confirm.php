@@ -1,15 +1,15 @@
 <?php
 
-namespace Zoker68\Shop\Livewire;
+namespace Zoker\Shop\Livewire;
 
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
-use Zoker68\Shop\Exceptions\ProductInCartException;
-use Zoker68\Shop\Models\Cart;
-use Zoker68\Shop\Traits\Livewire\Alertable;
+use Zoker\Shop\Exceptions\ProductInCartException;
+use Zoker\Shop\Models\Cart;
+use Zoker\Shop\Traits\Livewire\Alertable;
 
 class Confirm extends Component
 {
@@ -23,8 +23,8 @@ class Confirm extends Component
     protected function getMessages(): array
     {
         return [
-            'agreeToTerms.required' => __('zoker68.shop::checkout.confirm.error.agreeToTerms'),
-            'agreeToTerms.accepted' => __('zoker68.shop::checkout.confirm.error.agreeToTerms'),
+            'agreeToTerms.required' => __('zoker.shop::checkout.confirm.error.agreeToTerms'),
+            'agreeToTerms.accepted' => __('zoker.shop::checkout.confirm.error.agreeToTerms'),
         ];
     }
 
@@ -57,7 +57,7 @@ class Confirm extends Component
     {
         $userData = auth()->check() ? auth()->user()->only(['email', 'name', 'surname', 'phone', 'company', 'vat']) : $this->cart->data;
 
-        return view('zoker68.shop::livewire.shop.confirm', compact('userData'));
+        return view('zoker.shop::livewire.shop.confirm', compact('userData'));
     }
 
     public function onConfirm(): void

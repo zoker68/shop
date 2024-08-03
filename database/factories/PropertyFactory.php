@@ -1,11 +1,11 @@
 <?php
 
-namespace Zoker68\Shop\Database\Factories;
+namespace Zoker\Shop\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Zoker68\Shop\Enums\PropertyFilter;
-use Zoker68\Shop\Enums\PropertyType;
-use Zoker68\Shop\Models\Property;
+use Zoker\Shop\Enums\PropertyFilter;
+use Zoker\Shop\Enums\PropertyType;
+use Zoker\Shop\Models\Property;
 
 class PropertyFactory extends Factory
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Zoker68\Shop\Classes\Properties\Filters;
+namespace Zoker\Shop\Classes\Properties\Filters;
 
-use Zoker68\Shop\Contracts\PropertyFilterInterface;
+use Zoker\Shop\Contracts\PropertyFilterInterface;
 
 abstract class BasePropertyFilter implements PropertyFilterInterface
 {

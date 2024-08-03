@@ -1,11 +1,11 @@
 <?php
 
-namespace Zoker68\Shop\Http\Controllers;
+namespace Zoker\Shop\Http\Controllers;
 
 use Illuminate\View\View;
-use Zoker68\Shop\Enums\ProductsSorting;
-use Zoker68\Shop\Enums\ViewType;
-use Zoker68\Shop\Models\Category;
+use Zoker\Shop\Enums\ProductsSorting;
+use Zoker\Shop\Enums\ViewType;
+use Zoker\Shop\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -21,7 +21,7 @@ class CategoryController extends Controller
 
         $sortOptions = ProductsSorting::getOptions();
 
-        return view('pages.category', compact('category', 'viewType', 'sortOptions'));
+        return view('zoker.shop::pages.category', compact('category', 'viewType', 'sortOptions'));
     }
 
     public function getViewType(): string

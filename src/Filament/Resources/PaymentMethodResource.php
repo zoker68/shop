@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources;
+namespace Zoker\Shop\Filament\Resources;
 
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
@@ -22,8 +22,8 @@ use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Zoker68\Shop\Filament\Resources\PaymentMethodResource\Pages;
-use Zoker68\Shop\Models\PaymentMethod;
+use Zoker\Shop\Filament\Resources\PaymentMethodResource\Pages;
+use Zoker\Shop\Models\PaymentMethod;
 
 class PaymentMethodResource extends Resource
 {
@@ -40,31 +40,31 @@ class PaymentMethodResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')
-                    ->label(__('zoker68.shop::checkout.payment.admin.form.name'))
+                    ->label(__('zoker.shop::checkout.payment.admin.form.name'))
                     ->required(),
 
                 TextInput::make('code')
-                    ->label(__('zoker68.shop::checkout.payment.admin.form.code'))
+                    ->label(__('zoker.shop::checkout.payment.admin.form.code'))
                     ->unique(ignoreRecord: true)
                     ->required(),
 
                 FileUpload::make('image')
-                    ->label(__('zoker68.shop::product.admin.form.image'))
+                    ->label(__('zoker.shop::product.admin.form.image'))
                     ->image()
                     ->directory('shipping-methods')
                     ->imageEditor()
                     ->imageEditorAspectRatios(['1:1', '4:3', '16:9', '3:1', '4:1']),
 
                 Textarea::make('description')
-                    ->label(__('zoker68.shop::checkout.payment.admin.form.description')),
+                    ->label(__('zoker.shop::checkout.payment.admin.form.description')),
 
                 TextInput::make('sort')
-                    ->label(__('zoker68.shop::checkout.payment.admin.form.sort'))
+                    ->label(__('zoker.shop::checkout.payment.admin.form.sort'))
                     ->default(fn () => count(PaymentMethod::all()) + 1)
                     ->required(),
 
                 TextInput::make('fee')
-                    ->label(__('zoker68.shop::checkout.payment.admin.form.fee'))
+                    ->label(__('zoker.shop::checkout.payment.admin.form.fee'))
                     ->required()
                     ->default(0)
                     ->numeric()
@@ -74,7 +74,7 @@ class PaymentMethodResource extends Resource
                     ->afterStateHydrated(fn ($state, $set) => $set('fee', $state / (currency()->getSubunit()))),
 
                 TextInput::make('fee_percent')
-                    ->label(__('zoker68.shop::checkout.payment.admin.form.fee_percent'))
+                    ->label(__('zoker.shop::checkout.payment.admin.form.fee_percent'))
                     ->required()
                     ->default(0)
                     ->numeric()
@@ -82,7 +82,7 @@ class PaymentMethodResource extends Resource
                     ->postfix('%'),
 
                 Toggle::make('published')
-                    ->label(__('zoker68.shop::checkout.payment.admin.form.published')),
+                    ->label(__('zoker.shop::checkout.payment.admin.form.published')),
             ]);
     }
 
@@ -93,17 +93,17 @@ class PaymentMethodResource extends Resource
             ->reorderable('sort')
             ->columns([
                 TextColumn::make('name')
-                    ->label(__('zoker68.shop::checkout.payment.admin.list.name'))
+                    ->label(__('zoker.shop::checkout.payment.admin.list.name'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('code')
-                    ->label(__('zoker68.shop::checkout.payment.admin.list.code'))
+                    ->label(__('zoker.shop::checkout.payment.admin.list.code'))
                     ->searchable()
                     ->sortable(),
 
                 ToggleColumn::make('published')
-                    ->label(__('zoker68.shop::checkout.payment.admin.list.published')),
+                    ->label(__('zoker.shop::checkout.payment.admin.list.published')),
             ])
             ->filters([
                 TrashedFilter::make(),

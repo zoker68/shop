@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Providers;
+namespace Zoker\Shop\Providers;
 
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -30,12 +30,12 @@ class FilamentPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Yellow,
             ])
-            ->discoverResources(in: __DIR__ . '/../../src/Filament/Resources', for: 'Zoker68\\Shop\\Filament\\Resources')
-            ->discoverPages(in: __DIR__ . '/../../src/Filament/Pages', for: 'Zoker68\\Shop\\Filament\\Pages')
+            ->discoverResources(in: __DIR__ . '/../../src/Filament/Resources', for: 'Zoker\\Shop\\Filament\\Resources')
+            ->discoverPages(in: __DIR__ . '/../../src/Filament/Pages', for: 'Zoker\\Shop\\Filament\\Pages')
             ->pages([
                 Pages\Dashboard::class,
             ])
-            ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'Zoker68\\Shop\\Filament\\Widgets')
+            ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'Zoker\\Shop\\Filament\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,

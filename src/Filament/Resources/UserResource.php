@@ -2,7 +2,7 @@
 
 // TODO: edit resource!
 
-namespace Zoker68\Shop\Filament\Resources;
+namespace Zoker\Shop\Filament\Resources;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Placeholder;
@@ -15,9 +15,9 @@ use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Zoker68\Shop\Filament\Resources\UserResource\Pages;
-use Zoker68\Shop\Filament\Resources\UserResource\RelationManagers\AddressesRelationManager;
-use Zoker68\Shop\Models\User;
+use Zoker\Shop\Filament\Resources\UserResource\Pages;
+use Zoker\Shop\Filament\Resources\UserResource\RelationManagers\AddressesRelationManager;
+use Zoker\Shop\Models\User;
 
 class UserResource extends Resource
 {
@@ -33,50 +33,50 @@ class UserResource extends Resource
             ->columns(3)
             ->schema([
                 TextInput::make('email')
-                    ->label(__('zoker68.shop::auth.admin.form.email'))
+                    ->label(__('zoker.shop::auth.admin.form.email'))
                     ->email()
                     ->required(),
 
                 TextInput::make('password')
-                    ->label(__('zoker68.shop::auth.admin.form.password'))
+                    ->label(__('zoker.shop::auth.admin.form.password'))
                     ->password()
                     ->rules(['min:8'])
                     ->confirmed(),
 
                 TextInput::make('password_confirmation')
-                    ->label(__('zoker68.shop::auth.admin.form.password_confirmation'))
+                    ->label(__('zoker.shop::auth.admin.form.password_confirmation'))
                     ->password(),
 
                 TextInput::make('name')
-                    ->label(__('zoker68.shop::auth.admin.form.name'))
+                    ->label(__('zoker.shop::auth.admin.form.name'))
                     ->required(),
 
                 TextInput::make('surname')
-                    ->label(__('zoker68.shop::auth.admin.form.surname')),
+                    ->label(__('zoker.shop::auth.admin.form.surname')),
 
                 TextInput::make('phone')
-                    ->label(__('zoker68.shop::auth.admin.form.phone')),
+                    ->label(__('zoker.shop::auth.admin.form.phone')),
 
                 DatePicker::make('birthday')
-                    ->label(__('zoker68.shop::auth.admin.form.birthday')),
+                    ->label(__('zoker.shop::auth.admin.form.birthday')),
 
                 TextInput::make('company')
-                    ->label(__('zoker68.shop::auth.admin.form.company')),
+                    ->label(__('zoker.shop::auth.admin.form.company')),
 
                 TextInput::make('vat')
-                    ->label(__('zoker68.shop::auth.admin.form.vat')),
+                    ->label(__('zoker.shop::auth.admin.form.vat')),
 
                 Placeholder::make('created_at')
                     ->columnStart(1)
-                    ->label(__('zoker68.shop::auth.admin.form.created_at'))
+                    ->label(__('zoker.shop::auth.admin.form.created_at'))
                     ->content(fn (?User $record): string => $record?->created_at?->diffForHumans() ?? '-'),
 
                 Placeholder::make('updated_at')
-                    ->label(__('zoker68.shop::auth.admin.form.updated_at'))
+                    ->label(__('zoker.shop::auth.admin.form.updated_at'))
                     ->content(fn (?User $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
 
                 Placeholder::make('email_verified_at')
-                    ->label(__('zoker68.shop::auth.admin.form.email_verified_at'))
+                    ->label(__('zoker.shop::auth.admin.form.email_verified_at'))
                     ->content(fn (?User $record): string => $record?->email_verified_at?->format('Y-m-d H:i:s') ?? '-'),
             ]);
     }
@@ -86,17 +86,17 @@ class UserResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('email')
-                    ->label(__('zoker68.shop::auth.admin.list.email'))
+                    ->label(__('zoker.shop::auth.admin.list.email'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('name')
-                    ->label(__('zoker68.shop::auth.admin.list.name'))
+                    ->label(__('zoker.shop::auth.admin.list.name'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('surname')
-                    ->label(__('zoker68.shop::auth.admin.list.surname'))
+                    ->label(__('zoker.shop::auth.admin.list.surname'))
                     ->searchable()
                     ->sortable(),
             ])

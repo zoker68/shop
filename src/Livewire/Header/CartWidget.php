@@ -1,12 +1,12 @@
 <?php
 
-namespace Zoker68\Shop\Livewire\Header;
+namespace Zoker\Shop\Livewire\Header;
 
 use Illuminate\View\View;
 use Livewire\Attributes\On;
 use Livewire\Component;
-use Zoker68\Shop\Models\Cart;
-use Zoker68\Shop\Traits\Livewire\HasCartFunctions;
+use Zoker\Shop\Models\Cart;
+use Zoker\Shop\Traits\Livewire\HasCartFunctions;
 
 class CartWidget extends Component
 {
@@ -31,7 +31,7 @@ class CartWidget extends Component
 
         $this->cartCountProducts = $this->cart->products->count();
 
-        return view('zoker68.shop::livewire.header.cart-widget');
+        return view('zoker.shop::livewire.header.cart-widget');
     }
 
     #[On('cartUpdated')]

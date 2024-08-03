@@ -1,11 +1,11 @@
 <?php
 
-namespace Zoker68\Shop\Database\Factories;
+namespace Zoker\Shop\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Zoker68\Shop\Models\Product;
-use Zoker68\Shop\Models\User;
-use Zoker68\Shop\Models\Wishlist;
+use Zoker\Shop\Models\Product;
+use Zoker\Shop\Models\User;
+use Zoker\Shop\Models\Wishlist;
 
 class WishlistFactory extends Factory
 {

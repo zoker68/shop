@@ -6,16 +6,16 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Zoker68\Shop\Models\Address;
-use Zoker68\Shop\Models\Brand;
-use Zoker68\Shop\Models\Category;
-use Zoker68\Shop\Models\Country;
-use Zoker68\Shop\Models\PaymentMethod;
+use Zoker\Shop\Models\Address;
+use Zoker\Shop\Models\Brand;
+use Zoker\Shop\Models\Category;
+use Zoker\Shop\Models\Country;
+use Zoker\Shop\Models\PaymentMethod;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Zoker68\Shop\Models\Product;
-use Zoker68\Shop\Models\ShippingMethod;
-use Zoker68\Shop\Models\User;
-use Zoker68\Shop\Models\Wishlist;
+use Zoker\Shop\Models\Product;
+use Zoker\Shop\Models\ShippingMethod;
+use Zoker\Shop\Models\User;
+use Zoker\Shop\Models\Wishlist;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         User::insert([
             'name' => 'zoker',
             'surname' => 'zokerov',
-            'email' => 'zoker68@ya.ru',
+            'email' => 'zoker@ya.ru',
             'password' => '$2y$12$XsiXQx.5y55ymlG2hhUXMORiSg8SDhiKZHyPaPhCEeynqUZUfkZL6',
             'phone' => '89888888888',
             'company' => 'zoker sp',
@@ -80,8 +80,8 @@ class DatabaseSeeder extends Seeder
         $countries = Country::all();
         Address::factory()->recycle($countries)->recycle(User::find(1))->count(3)->create();
 
-        Artisan::call('scout:flush', ['model' => 'Zoker68\Shop\Models\Product']);
-        Artisan::call('scout:import', ['model' => 'Zoker68\Shop\Models\Product']);
+        Artisan::call('scout:flush', ['model' => 'Zoker\Shop\Models\Product']);
+        Artisan::call('scout:import', ['model' => 'Zoker\Shop\Models\Product']);
     }
 
     public function properties()

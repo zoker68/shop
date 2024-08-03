@@ -1,10 +1,10 @@
 <?php
 
-namespace Zoker68\Shop\Http\Controllers\Auth;
+namespace Zoker\Shop\Http\Controllers\Auth;
 
 use Illuminate\View\View;
-use Zoker68\Shop\Http\Controllers\Controller;
-use Zoker68\Shop\Models\Order;
+use Zoker\Shop\Http\Controllers\Controller;
+use Zoker\Shop\Models\Order;
 
 class OrderController extends Controller
 {

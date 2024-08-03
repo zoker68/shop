@@ -1,12 +1,12 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\SkladCategoryResource\Pages;
+namespace Zoker\Shop\Filament\Resources\SkladCategoryResource\Pages;
 
 use Filament\Actions;
 use Filament\Resources\Components\Tab;
 use Filament\Resources\Pages\ListRecords;
-use Zoker68\Shop\Filament\Resources\SkladCategoryResource;
-use Zoker68\Shop\Models\SkladCategory;
+use Zoker\Shop\Filament\Resources\SkladCategoryResource;
+use Zoker\Shop\Models\SkladCategory;
 
 class ListSkladCategories extends ListRecords
 {

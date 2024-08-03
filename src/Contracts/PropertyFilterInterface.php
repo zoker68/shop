@@ -1,9 +1,9 @@
 <?php
 
-namespace Zoker68\Shop\Contracts;
+namespace Zoker\Shop\Contracts;
 
-use Zoker68\Shop\Enums\PropertyType;
-use Zoker68\Shop\Models\Property;
+use Zoker\Shop\Enums\PropertyType;
+use Zoker\Shop\Models\Property;
 
 interface PropertyFilterInterface
 {

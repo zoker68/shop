@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Livewire\Auth;
+namespace Zoker\Shop\Livewire\Auth;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
-use Zoker68\Shop\Models\User;
+use Zoker\Shop\Models\User;
 
 class ResetPassword extends Component
 {
@@ -24,9 +24,9 @@ class ResetPassword extends Component
     protected function getMessages(): array
     {
         return [
-            'password.required' => __('zoker68.shop::auth.reset_password.error.password.required'),
-            'password.confirmed' => __('zoker68.shop::auth.reset_password.error.password.confirmed'),
-            'password.min' => __('zoker68.shop::auth.reset_password.error.password.min'),
+            'password.required' => __('zoker.shop::auth.reset_password.error.password.required'),
+            'password.confirmed' => __('zoker.shop::auth.reset_password.error.password.confirmed'),
+            'password.min' => __('zoker.shop::auth.reset_password.error.password.min'),
         ];
     }
 
@@ -43,7 +43,7 @@ class ResetPassword extends Component
 
     public function render(): View
     {
-        return view('zoker68.shop::livewire.auth.reset-password');
+        return view('zoker.shop::livewire.auth.reset-password');
     }
 
     public function resetPasswordSubmit()

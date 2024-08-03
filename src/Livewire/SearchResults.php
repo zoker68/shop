@@ -1,17 +1,17 @@
 <?php
 
-namespace Zoker68\Shop\Livewire;
+namespace Zoker\Shop\Livewire;
 
 use Illuminate\View\View;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Zoker68\Shop\Enums\ViewType;
-use Zoker68\Shop\Exceptions\SetViewTypeException;
-use Zoker68\Shop\Models\Category;
-use Zoker68\Shop\Models\Product;
-use Zoker68\Shop\Traits\Livewire\HasCartFunctions;
-use Zoker68\Shop\Traits\Livewire\HasWishlistFunctions;
+use Zoker\Shop\Enums\ViewType;
+use Zoker\Shop\Exceptions\SetViewTypeException;
+use Zoker\Shop\Models\Category;
+use Zoker\Shop\Models\Product;
+use Zoker\Shop\Traits\Livewire\HasCartFunctions;
+use Zoker\Shop\Traits\Livewire\HasWishlistFunctions;
 
 class SearchResults extends Component
 {

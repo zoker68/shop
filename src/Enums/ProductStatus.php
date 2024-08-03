@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Enums;
+namespace Zoker\Shop\Enums;
 
 enum ProductStatus: string
 {
@@ -11,9 +11,9 @@ enum ProductStatus: string
     public function getLabel(): string
     {
         return match ($this) {
-            self::MODERATION => __('zoker68.shop::product.status.admin.moderation'),
-            self::REJECTED => __('zoker68.shop::product.status.admin.rejected'),
-            self::APPROVED => __('zoker68.shop::product.status.admin.approved'),
+            self::MODERATION => __('zoker.shop::product.status.admin.moderation'),
+            self::REJECTED => __('zoker.shop::product.status.admin.rejected'),
+            self::APPROVED => __('zoker.shop::product.status.admin.approved'),
         };
     }
 

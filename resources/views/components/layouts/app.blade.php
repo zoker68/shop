@@ -7,7 +7,7 @@
     <title>{{ config('app.name', 'ZoKeR Shop') }}</title>
 
 
-    <x-zoker68.shop::partials.favicon/>
+    <x-zoker.shop::partials.favicon/>
 
     <!-- Styles -->
     @stack('styles')
@@ -18,21 +18,21 @@
 <body>
 <div class="notification-container" id="notificationContainer"></div>
 
-{{--<x-zoker68.shop::partials.preloader />--}}
+{{--<x-zoker.shop::partials.preloader />--}}
 
-<x-zoker68.shop::partials.header />
+<x-zoker.shop::partials.header />
 
-<x-zoker68.shop::partials.navbar/>
+<x-zoker.shop::partials.navbar/>
 
-{{--<x-zoker68.shop::partials.mobile />--}}
+{{--<x-zoker.shop::partials.mobile />--}}
 
 {{ $slot }}
 
-<x-zoker68.shop::partials.footer/>
+<x-zoker.shop::partials.footer/>
 
-{{--<x-zoker68.shop::partials.popup/>--}}
+{{--<x-zoker.shop::partials.popup/>--}}
 
-{{--<x-zoker68.shop::partials.quick-view/>--}}
+{{--<x-zoker.shop::partials.quick-view/>--}}
 
 <!-- script -->
 <script src="{{ asset('assets/js/main.js') }}"></script>

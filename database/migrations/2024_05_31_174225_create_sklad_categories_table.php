@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('foreign_id')->unique();
             $table->string('name');
             $table->string('parent');
-            $table->foreignIdFor(\Zoker68\Shop\Models\Category::class)->nullable()->constrained()->nullOnDelete();
+            $table->foreignIdFor(\Zoker\Shop\Models\Category::class)->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
     }

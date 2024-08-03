@@ -1,9 +1,9 @@
 <?php
 
-namespace Zoker68\Shop\Observers;
+namespace Zoker\Shop\Observers;
 
 use Illuminate\Support\Facades\Cache;
-use Zoker68\Shop\Models\Category;
+use Zoker\Shop\Models\Category;
 
 class CategoryObserver
 {

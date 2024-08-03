@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources;
+namespace Zoker\Shop\Filament\Resources;
 
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
@@ -22,8 +22,8 @@ use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Zoker68\Shop\Filament\Resources\ShippingMethodResource\Pages;
-use Zoker68\Shop\Models\ShippingMethod;
+use Zoker\Shop\Filament\Resources\ShippingMethodResource\Pages;
+use Zoker\Shop\Models\ShippingMethod;
 
 class ShippingMethodResource extends Resource
 {
@@ -40,27 +40,27 @@ class ShippingMethodResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')
-                    ->label(__('zoker68.shop::checkout.shipping.admin.form.name'))
+                    ->label(__('zoker.shop::checkout.shipping.admin.form.name'))
                     ->required(),
 
                 Textarea::make('description')
-                    ->label(__('zoker68.shop::checkout.shipping.admin.form.description')),
+                    ->label(__('zoker.shop::checkout.shipping.admin.form.description')),
 
                 FileUpload::make('image')
-                    ->label(__('zoker68.shop::product.admin.form.image'))
+                    ->label(__('zoker.shop::product.admin.form.image'))
                     ->image()
                     ->directory('shipping-methods')
                     ->imageEditor()
                     ->imageEditorAspectRatios(['1:1', '4:3', '16:9', '3:1', '4:1']),
 
                 TextInput::make('sort')
-                    ->label(__('zoker68.shop::checkout.shipping.admin.form.sort'))
+                    ->label(__('zoker.shop::checkout.shipping.admin.form.sort'))
                     ->default(fn () => count(ShippingMethod::all()) + 1)
                     ->required()
                     ->integer(),
 
                 TextInput::make('price')
-                    ->label(__('zoker68.shop::checkout.shipping.admin.form.price'))
+                    ->label(__('zoker.shop::checkout.shipping.admin.form.price'))
                     ->default(0)
                     ->required()
                     ->numeric()
@@ -70,14 +70,14 @@ class ShippingMethodResource extends Resource
                     ->afterStateHydrated(fn ($state, $set) => $set('price', $state / (currency()->getSubunit()))),
 
                 TextInput::make('days')
-                    ->label(__('zoker68.shop::checkout.shipping.admin.form.days'))
+                    ->label(__('zoker.shop::checkout.shipping.admin.form.days'))
                     ->default(0)
                     ->required()
                     ->string(),
 
                 TextInput::make('available_from')
-                    ->label(__('zoker68.shop::checkout.shipping.admin.form.available_from.label'))
-                    ->helperText(__('zoker68.shop::checkout.shipping.admin.form.available_from.description'))
+                    ->label(__('zoker.shop::checkout.shipping.admin.form.available_from.label'))
+                    ->helperText(__('zoker.shop::checkout.shipping.admin.form.available_from.description'))
                     ->default(0)
                     ->numeric()
                     ->prefix(currency()->getPrefix())
@@ -86,8 +86,8 @@ class ShippingMethodResource extends Resource
                     ->afterStateHydrated(fn ($state, $set) => $set('available_from', $state / (currency()->getSubunit()))),
 
                 TextInput::make('available_until')
-                    ->label(__('zoker68.shop::checkout.shipping.admin.form.available_until.label'))
-                    ->helperText(__('zoker68.shop::checkout.shipping.admin.form.available_until.description'))
+                    ->label(__('zoker.shop::checkout.shipping.admin.form.available_until.label'))
+                    ->helperText(__('zoker.shop::checkout.shipping.admin.form.available_until.description'))
                     ->default(0)
                     ->numeric()
                     ->prefix(currency()->getPrefix())
@@ -96,7 +96,7 @@ class ShippingMethodResource extends Resource
                     ->afterStateHydrated(fn ($state, $set) => $set('available_until', $state / (currency()->getSubunit()))),
 
                 Toggle::make('published')
-                    ->label(__('zoker68.shop::checkout.shipping.admin.form.published')),
+                    ->label(__('zoker.shop::checkout.shipping.admin.form.published')),
             ]);
     }
 
@@ -107,16 +107,16 @@ class ShippingMethodResource extends Resource
             ->reorderable('sort')
             ->columns([
                 TextColumn::make('name')
-                    ->label(__('zoker68.shop::checkout.shipping.admin.list.name'))
+                    ->label(__('zoker.shop::checkout.shipping.admin.list.name'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('price')
-                    ->label(__('zoker68.shop::checkout.shipping.admin.list.price'))
+                    ->label(__('zoker.shop::checkout.shipping.admin.list.price'))
                     ->money(currency()->getCurrency(), currency()->getSubunit()),
 
                 ToggleColumn::make('published')
-                    ->label(__('zoker68.shop::checkout.shipping.admin.list.published')),
+                    ->label(__('zoker.shop::checkout.shipping.admin.list.published')),
 
             ])
             ->filters([

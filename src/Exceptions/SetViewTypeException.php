@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Exceptions;
+namespace Zoker\Shop\Exceptions;
 
 use Exception;
 

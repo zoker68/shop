@@ -1,9 +1,9 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\ShippingMethodResource\Pages;
+namespace Zoker\Shop\Filament\Resources\ShippingMethodResource\Pages;
 
 use Filament\Resources\Pages\CreateRecord;
-use Zoker68\Shop\Filament\Resources\ShippingMethodResource;
+use Zoker\Shop\Filament\Resources\ShippingMethodResource;
 
 class CreateShippingMethod extends CreateRecord
 {

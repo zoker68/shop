@@ -1,14 +1,14 @@
 <?php
 
-namespace Zoker68\Shop\Database\Factories;
+namespace Zoker\Shop\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use Zoker68\Shop\Models\User;
+use Zoker\Shop\Models\User;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Zoker68\Shop\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Zoker\Shop\Models\User>
  */
 class UserFactory extends Factory
 {

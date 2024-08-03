@@ -1,12 +1,12 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\CountryResource\RelationManagers;
+namespace Zoker\Shop\Filament\Resources\CountryResource\RelationManagers;
 
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Zoker68\Shop\Models\Region;
+use Zoker\Shop\Models\Region;
 
 class RegionsRelationManager extends RelationManager
 {
@@ -24,9 +24,9 @@ class RegionsRelationManager extends RelationManager
             ->recordTitleAttribute('name')
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__('zoker68.shop::region.admin.list.name')),
+                    ->label(__('zoker.shop::region.admin.list.name')),
                 Tables\Columns\ToggleColumn::make('published')
-                    ->label(__('zoker68.shop::region.admin.list.published')),
+                    ->label(__('zoker.shop::region.admin.list.published')),
             ])
             ->filters([
                 //

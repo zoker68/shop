@@ -1,8 +1,8 @@
 <?php
 
-namespace Zoker68\Shop\Enums;
+namespace Zoker\Shop\Enums;
 
-use Zoker68\Shop\Exceptions\SetViewTypeException;
+use Zoker\Shop\Exceptions\SetViewTypeException;
 
 enum ViewType: string
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Zoker68\Shop\Observers;
+namespace Zoker\Shop\Observers;
 
-use Zoker68\Shop\Enums\CartStatus;
-use Zoker68\Shop\Models\Cart;
+use Zoker\Shop\Enums\CartStatus;
+use Zoker\Shop\Models\Cart;
 
 class CartObserver
 {

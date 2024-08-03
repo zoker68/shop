@@ -1,15 +1,15 @@
 <?php
 
-namespace Zoker68\Shop\Classes\Properties\Filters;
+namespace Zoker\Shop\Classes\Properties\Filters;
 
-use Zoker68\Shop\Enums\PropertyType;
-use Zoker68\Shop\Models\Property;
+use Zoker\Shop\Enums\PropertyType;
+use Zoker\Shop\Models\Property;
 
 class CheckboxPropertyFilter extends BasePropertyFilter
 {
     public function label(): string
     {
-        return __('zoker68.shop::product-filter.admin.checkbox');
+        return __('zoker.shop::product-filter.admin.checkbox');
     }
 
     public function hasOptions(): bool

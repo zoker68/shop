@@ -1,12 +1,12 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\ProductResource\RelationManagers;
+namespace Zoker\Shop\Filament\Resources\ProductResource\RelationManagers;
 
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Zoker68\Shop\Models\Category;
+use Zoker\Shop\Models\Category;
 
 class CategoriesRelationManager extends RelationManager
 {

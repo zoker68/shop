@@ -6,7 +6,7 @@
                 <x-partials.flash-alert type="success">{{ session('success') }}</x-partials.flash-alert>
             @endif
 
-            <h4 class="text-lg mb-3">{{ __('zoker68.shop::auth.address.title') }}</h4>
+            <h4 class="text-lg mb-3">{{ __('zoker.shop::auth.address.title') }}</h4>
 
             @forelse($addresses as $id => $address)
                 <div class="md:flex justify-between items-center border rounded p-2 mb-2 ">
@@ -24,7 +24,7 @@
                     </div>
                 </div>
             @empty
-                <x-partials.flash-alert type="info">{{ __('zoker68.shop::auth.address.error.no_addresses') }}</x-partials.flash-alert>
+                <x-partials.flash-alert type="info">{{ __('zoker.shop::auth.address.error.no_addresses') }}</x-partials.flash-alert>
             @endforelse
         </div>
     </div>

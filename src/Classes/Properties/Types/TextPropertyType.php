@@ -1,15 +1,15 @@
 <?php
 
-namespace Zoker68\Shop\Classes\Properties\Types;
+namespace Zoker\Shop\Classes\Properties\Types;
 
 use Filament\Forms\Components\TextInput;
-use Zoker68\Shop\Enums\PropertyFilter;
+use Zoker\Shop\Enums\PropertyFilter;
 
 class TextPropertyType extends BasePropertyType
 {
     public function label(): string
     {
-        return __('zoker68.shop::product-filter.admin.text.label');
+        return __('zoker.shop::product-filter.admin.text.label');
     }
 
     protected function getFilters(): array
@@ -26,7 +26,7 @@ class TextPropertyType extends BasePropertyType
     {
         return [
             TextInput::make('value')
-                ->label(__('zoker68.shop::product-filter.admin.text.value'))
+                ->label(__('zoker.shop::product-filter.admin.text.value'))
                 ->required(),
         ];
     }

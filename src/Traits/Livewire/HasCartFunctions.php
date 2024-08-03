@@ -1,13 +1,13 @@
 <?php
 
-namespace Zoker68\Shop\Traits\Livewire;
+namespace Zoker\Shop\Traits\Livewire;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
-use Zoker68\Shop\Exceptions\AddToCartException;
-use Zoker68\Shop\Models\Cart;
-use Zoker68\Shop\Models\Product;
+use Zoker\Shop\Exceptions\AddToCartException;
+use Zoker\Shop\Models\Cart;
+use Zoker\Shop\Models\Product;
 
 trait HasCartFunctions
 {
@@ -34,11 +34,11 @@ trait HasCartFunctions
 
             $product = Product::published()->find($productId);
             if (! $product) {
-                throw new AddToCartException(__('zoker68.shop::cart.exceptions.published'), 'danger');
+                throw new AddToCartException(__('zoker.shop::cart.exceptions.published'), 'danger');
             }
 
             if ($product->stock < $quantity + ($item->quantity ?? 0) && ! config('product.allow_overstock')) {
-                throw new AddToCartException(__('zoker68.shop::cart.exceptions.stock'), 'danger');
+                throw new AddToCartException(__('zoker.shop::cart.exceptions.stock'), 'danger');
             }
 
             DB::beginTransaction();
@@ -55,7 +55,7 @@ trait HasCartFunctions
 
             $this->dispatch('cartUpdated');
 
-            $this->throwAlert('success', __('zoker68.shop::cart.added'));
+            $this->throwAlert('success', __('zoker.shop::cart.added'));
 
         } catch (AddToCartException $exception) {
             DB::rollBack();
@@ -82,7 +82,7 @@ trait HasCartFunctions
             $this->throwAlert('danger', 'An error has occurred during removal product from cart');
         }
 
-        $this->throwAlert('info', __('zoker68.shop::cart.removed'), 1);
+        $this->throwAlert('info', __('zoker.shop::cart.removed'), 1);
 
         $this->dispatch('cartUpdated');
     }
@@ -93,9 +93,9 @@ trait HasCartFunctions
             ['quantityForCart' => $this->quantityForCart],
             ['quantityForCart' => 'required|integer|min:1'],
             [
-                'required' => __('zoker68.shop::cart.error.required'),
-                'integer' => __('zoker68.shop::cart.error.integer'),
-                'min' => __('zoker68.shop::cart.error.min'),
+                'required' => __('zoker.shop::cart.error.required'),
+                'integer' => __('zoker.shop::cart.error.integer'),
+                'min' => __('zoker.shop::cart.error.min'),
             ]
         )->validate()['quantityForCart'];
     }
@@ -119,16 +119,16 @@ trait HasCartFunctions
 
             $item = $cart->products()->firstWhere('product_id', $productId);
             if (! $item) {
-                throw new AddToCartException(__('zoker68.shop::cart.exceptions.product_not_find_in_cart'), 'danger');
+                throw new AddToCartException(__('zoker.shop::cart.exceptions.product_not_find_in_cart'), 'danger');
             }
 
             $product = Product::published()->find($productId);
             if (! $product) {
-                throw new AddToCartException(__('zoker68.shop::cart.exceptions.published'), 'danger');
+                throw new AddToCartException(__('zoker.shop::cart.exceptions.published'), 'danger');
             }
 
             if ($product->stock < $quantity && ! config('product.allow_overstock')) {
-                throw new AddToCartException(__('zoker68.shop::cart.exceptions.stock'), 'danger');
+                throw new AddToCartException(__('zoker.shop::cart.exceptions.stock'), 'danger');
             }
 
             DB::beginTransaction();

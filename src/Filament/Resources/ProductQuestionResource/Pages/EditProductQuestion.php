@@ -1,10 +1,10 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\ProductQuestionResource\Pages;
+namespace Zoker\Shop\Filament\Resources\ProductQuestionResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
-use Zoker68\Shop\Filament\Resources\ProductQuestionResource;
+use Zoker\Shop\Filament\Resources\ProductQuestionResource;
 
 class EditProductQuestion extends EditRecord
 {

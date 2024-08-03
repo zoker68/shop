@@ -1,12 +1,12 @@
 <?php
 
-namespace Zoker68\Shop\Livewire\Header;
+namespace Zoker\Shop\Livewire\Header;
 
 use Illuminate\View\View;
 use Livewire\Attributes\On;
 use Livewire\Component;
-use Zoker68\Shop\Traits\Livewire\Alertable;
-use Zoker68\Shop\Traits\Livewire\HasWishlistFunctions;
+use Zoker\Shop\Traits\Livewire\Alertable;
+use Zoker\Shop\Traits\Livewire\HasWishlistFunctions;
 
 class WishlistWidget extends Component
 {
@@ -20,7 +20,7 @@ class WishlistWidget extends Component
 
         $this->wishlistCount = count($this->wishlist);
 
-        return view('zoker68.shop::livewire.header.wishlist-widget');
+        return view('zoker.shop::livewire.header.wishlist-widget');
     }
 
     #[On('updateWishlist')]

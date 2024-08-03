@@ -4,9 +4,9 @@
             <div class="col-span-12 lg:col-span-9">
                 <div class="grid grid-cols-6 md:grid-cols-7 w-full">
                     <div class="cart-header">&nbsp;</div>
-                    <div class="cart-header col-span-3 md:col-span-4">{{ __('zoker68.shop::cart.column.product') }}</div>
-                    <div class="cart-header">{{ __('zoker68.shop::cart.column.quantity') }}</div>
-                    <div class="cart-header col-span-2 md:col-span-1">{{ __('zoker68.shop::cart.column.total_price') }}</div>
+                    <div class="cart-header col-span-3 md:col-span-4">{{ __('zoker.shop::cart.column.product') }}</div>
+                    <div class="cart-header">{{ __('zoker.shop::cart.column.quantity') }}</div>
+                    <div class="cart-header col-span-2 md:col-span-1">{{ __('zoker.shop::cart.column.total_price') }}</div>
 
                     @foreach($cart->products as $item)
                         <div class="hidden md:block  border-y my-1 border-secondary border-l">
@@ -20,10 +20,10 @@
                             </a>
                             <p class="text-primary font-medium">@money($item->price)</p>
                             @if(!$item->hasStock())
-                                <p class="text-red-500">{{ __('zoker68.shop::cart.error.stock', ['quantity' => $item->product->stock]) }}</p>
+                                <p class="text-red-500">{{ __('zoker.shop::cart.error.stock', ['quantity' => $item->product->stock]) }}</p>
                             @endif
                             @if(!$item->product->isAvailable())
-                                <p class="text-red-500">{{ __('zoker68.shop::cart.error.available') }}</p>
+                                <p class="text-red-500">{{ __('zoker.shop::cart.error.available') }}</p>
                             @endif
                         </div>
                         <div class="px-2 py-1  border-y my-1 border-secondary">
@@ -47,28 +47,28 @@
             </div>
             <div class="col-span-12 lg:col-span-3 border p-4">
                 <div>
-                    <h4 class="uppercase text-lg">{{ __('zoker68.shop::cart.side.title') }}</h4>
+                    <h4 class="uppercase text-lg">{{ __('zoker.shop::cart.side.title') }}</h4>
                     <div class="space-y-2 border-b pb-3 mt-2">
                         <div class="flex justify-between">
-                            <p class="font-medium">{{ __('zoker68.shop::cart.side.subtotal') }}</p>
+                            <p class="font-medium">{{ __('zoker.shop::cart.side.subtotal') }}</p>
                             <p class="font-medium">@money($cart->total_products)</p>
                         </div>
                         {{-- TODO: add delivery and taxes --}}
                         @if($cart->shipping_method_id > 0)
                         <div class="flex justify-between">
-                            <p class="font-medium">{{ __('zoker68.shop::cart.side.shipping_price') }}</p>
+                            <p class="font-medium">{{ __('zoker.shop::cart.side.shipping_price') }}</p>
                             <p class="font-medium">@money($cart->total_shipping)</p>
                         </div>
                         @endif
                         @if($cart->payment_method_id > 0)
                         <div class="flex justify-between">
-                            <p class="font-medium">{{ __('zoker68.shop::cart.side.payment_fee') }}</p>
+                            <p class="font-medium">{{ __('zoker.shop::cart.side.payment_fee') }}</p>
                             <p class="font-medium">@money($cart->total_payment_fee)</p>
                         </div>
                         @endif
                     </div>
                     <div class="flex justify-between mt-2">
-                        <p class="font-semibold">{{ __('zoker68.shop::cart.side.total') }}</p>
+                        <p class="font-semibold">{{ __('zoker.shop::cart.side.total') }}</p>
                         <p class="font-semibold">@money($cart->total_pre_payment)</p>
                     </div>
                     {{--<div class="flex  w-full lg:max-w-sm rounded-lg overflow-hidden mt-4">
@@ -82,13 +82,13 @@
                     <div class="mt-8">
                         <button wire:click="onCheckout"
                            class="block w-full px-8 lg:px-2 xl:px-8 py-2 text-center bg-primary hover:bg-transparent text-white hover:text-primary hover:border-primary border transition duration-300 rounded-lg uppercase text-sm">
-                            {{ __('zoker68.shop::cart.to_checkout') }}
+                            {{ __('zoker.shop::cart.to_checkout') }}
                         </button>
                     </div>
                 </div>
             </div>
         </div>
     @else
-        <x-partials.flash-alert type="info">{{ __('zoker68.shop::cart.error.empty') }}</x-partials.flash-alert>
+        <x-partials.flash-alert type="info">{{ __('zoker.shop::cart.error.empty') }}</x-partials.flash-alert>
     @endif
 </div>

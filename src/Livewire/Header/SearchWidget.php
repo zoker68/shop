@@ -1,12 +1,12 @@
 <?php
 
-namespace Zoker68\Shop\Livewire\Header;
+namespace Zoker\Shop\Livewire\Header;
 
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Livewire\Component;
-use Zoker68\Shop\Models\Category;
-use Zoker68\Shop\Models\Product;
+use Zoker\Shop\Models\Category;
+use Zoker\Shop\Models\Product;
 
 class SearchWidget extends Component
 {
@@ -31,7 +31,7 @@ class SearchWidget extends Component
     {
         $result = $this->search();
 
-        return view('zoker68.shop::livewire.header.search-widget', compact('result'));
+        return view('zoker.shop::livewire.header.search-widget', compact('result'));
     }
 
     public function selectCategory($categoryId): void

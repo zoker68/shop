@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Http\Controllers;
+namespace Zoker\Shop\Http\Controllers;
 
 use Illuminate\View\View;
 

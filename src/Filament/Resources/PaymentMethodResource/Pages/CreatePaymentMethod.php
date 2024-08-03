@@ -1,9 +1,9 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\PaymentMethodResource\Pages;
+namespace Zoker\Shop\Filament\Resources\PaymentMethodResource\Pages;
 
 use Filament\Resources\Pages\CreateRecord;
-use Zoker68\Shop\Filament\Resources\PaymentMethodResource;
+use Zoker\Shop\Filament\Resources\PaymentMethodResource;
 
 class CreatePaymentMethod extends CreateRecord
 {

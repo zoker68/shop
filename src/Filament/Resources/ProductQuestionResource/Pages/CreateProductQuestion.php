@@ -1,9 +1,9 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\ProductQuestionResource\Pages;
+namespace Zoker\Shop\Filament\Resources\ProductQuestionResource\Pages;
 
 use Filament\Resources\Pages\CreateRecord;
-use Zoker68\Shop\Filament\Resources\ProductQuestionResource;
+use Zoker\Shop\Filament\Resources\ProductQuestionResource;
 
 class CreateProductQuestion extends CreateRecord
 {

@@ -7,7 +7,7 @@
             class="border-r border-secondary w-36 bg-white rounded-l-md h-[43px] flex justify-center items-center"
         wire:ignore>
             <select class="nice-select all-category z-20" wire:change="selectCategory($event.target.value)" name="category">
-                <option @selected(!$category) value="">{{ __('zoker68.shop::layout.header.navbar.search.all_category') }}</option>
+                <option @selected(!$category) value="">{{ __('zoker.shop::layout.header.navbar.search.all_category') }}</option>
                 @foreach($categories as $cat)
                     <option value="{{ $cat->id }}" @selected(isset($category) && $category->id == $cat->id)>{{ $cat->name }}</option>
                 @endforeach
@@ -16,14 +16,14 @@
         </div>
         <!-- search -->
         <div class="max-w-[250px] xl:max-w-[390px] h-auto flex-grow">
-            <input @click="isOpen=true" type="text" placeholder="{{ __('zoker68.shop::layout.header.navbar.search.placeholder') }}"
+            <input @click="isOpen=true" type="text" placeholder="{{ __('zoker.shop::layout.header.navbar.search.placeholder') }}"
                    wire:model.live.debounce.250ms="search" name="search"
                    class="px-5 py-2.5 border-none text-sm w-full focus:ring-0 focus:outline-none leading-relaxed">
         </div>
         <!-- search btn -->
         <div class="w-[142px]">
             <button class="bg-secondary rounded-r-md w-full px-4 py-2.5 text-white text-base font-medium">
-                {{ __('zoker68.shop::layout.header.navbar.search.submit') }}
+                {{ __('zoker.shop::layout.header.navbar.search.submit') }}
             </button>
         </div>
     </div>
@@ -51,7 +51,7 @@
         </div>
         @elseif($search)
         <div class="p-5 text-center text-secondary">
-            <h4>{{ __('zoker68.shop::layout.header.navbar.search.no_result') }}</h4>
+            <h4>{{ __('zoker.shop::layout.header.navbar.search.no_result') }}</h4>
         </div>
         @endif
     </div>

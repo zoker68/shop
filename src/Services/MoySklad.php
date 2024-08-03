@@ -1,12 +1,12 @@
 <?php
 
-namespace Zoker68\Shop\Services;
+namespace Zoker\Shop\Services;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Log;
-use Zoker68\Shop\Enums\EndPoints;
-use Zoker68\Shop\Models\SkladLog;
+use Zoker\Shop\Enums\EndPoints;
+use Zoker\Shop\Models\SkladLog;
 
 class MoySklad
 {

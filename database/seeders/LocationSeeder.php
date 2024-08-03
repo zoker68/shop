@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Zoker68\Shop\Models\Country;
+use Zoker\Shop\Models\Country;
 
 class LocationSeeder extends Seeder
 {

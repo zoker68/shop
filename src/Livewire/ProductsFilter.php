@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Livewire;
+namespace Zoker\Shop\Livewire;
 
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Arr;
@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Livewire\Attributes\Url;
 use Livewire\Component;
-use Zoker68\Shop\Enums\ProductStatus;
-use Zoker68\Shop\Enums\PropertyFilter;
-use Zoker68\Shop\Enums\PropertyType;
-use Zoker68\Shop\Models\Brand;
-use Zoker68\Shop\Models\Category;
-use Zoker68\Shop\Models\Product;
-use Zoker68\Shop\Models\Property;
+use Zoker\Shop\Enums\ProductStatus;
+use Zoker\Shop\Enums\PropertyFilter;
+use Zoker\Shop\Enums\PropertyType;
+use Zoker\Shop\Models\Brand;
+use Zoker\Shop\Models\Category;
+use Zoker\Shop\Models\Product;
+use Zoker\Shop\Models\Property;
 
 class ProductsFilter extends Component
 {
@@ -43,7 +43,7 @@ class ProductsFilter extends Component
 
         $brands = Brand::getByCategory($this->category);
 
-        return view('zoker68.shop::livewire.shop.products.filter', with([
+        return view('zoker.shop::livewire.shop.products.filter', with([
             'brands' => $brands,
             'properties' => $properties,
         ]));

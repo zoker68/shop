@@ -1,13 +1,13 @@
 <?php
 
-namespace Zoker68\Shop\Livewire;
+namespace Zoker\Shop\Livewire;
 
 use Illuminate\View\View;
 use Livewire\Component;
-use Zoker68\Shop\Exceptions\ProductInCartException;
-use Zoker68\Shop\Models\Cart;
-use Zoker68\Shop\Models\PaymentMethod;
-use Zoker68\Shop\Traits\Livewire\Alertable;
+use Zoker\Shop\Exceptions\ProductInCartException;
+use Zoker\Shop\Models\Cart;
+use Zoker\Shop\Models\PaymentMethod;
+use Zoker\Shop\Traits\Livewire\Alertable;
 
 class Payment extends Component
 {
@@ -43,13 +43,13 @@ class Payment extends Component
     {
         $paymentMethods = PaymentMethod::getAvailableMethods();
 
-        return view('zoker68.shop::livewire.shop.payment', compact('paymentMethods'));
+        return view('zoker.shop::livewire.shop.payment', compact('paymentMethods'));
     }
 
     public function setPaymentMethod(int $paymentMethodId): void
     {
         if (! PaymentMethod::isMethodAvailable($this->cart, $paymentMethodId)) {
-            $this->throwAlert('danger', __('zoker68.shop::checkout.payment.error.method_not_available'));
+            $this->throwAlert('danger', __('zoker.shop::checkout.payment.error.method_not_available'));
         }
 
         $this->cart->payment_method_id = $paymentMethodId;

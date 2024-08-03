@@ -1,11 +1,11 @@
 <?php
 
-namespace Zoker68\Shop\Console\Commands;
+namespace Zoker\Shop\Console\Commands;
 
 use Illuminate\Console\Command;
-use Zoker68\Shop\Models\Category;
-use Zoker68\Shop\Models\SkladCategory;
-use Zoker68\Shop\Services\MoySklad;
+use Zoker\Shop\Models\Category;
+use Zoker\Shop\Models\SkladCategory;
+use Zoker\Shop\Services\MoySklad;
 
 class SyncCategories extends Command
 {

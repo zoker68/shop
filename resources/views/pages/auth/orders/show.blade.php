@@ -5,33 +5,33 @@
             <!-- order details -->
             <div class="grid grid-cols-4 gap-5 sm:gap-0 flex-wrap sm:flex-nowrap justify-between items-center mt-6">
                 <div>
-                    <h5>{{ __('zoker68.shop::auth.orders.show.number') }}</h5>
+                    <h5>{{ __('zoker.shop::auth.orders.show.number') }}</h5>
                     <p>{{ $order->hash }}</p>
                 </div>
                 <div>
-                    <h5>{{ __('zoker68.shop::auth.orders.show.general_status') }}</h5>
+                    <h5>{{ __('zoker.shop::auth.orders.show.general_status') }}</h5>
                     <p style="color: {{ $order->generalStatus->hex_color }}">{{ $order->generalStatus->name }}</p>
                 </div>
                 <div>
-                    <h5>{{ __('zoker68.shop::auth.orders.show.payment_status') }}</h5>
+                    <h5>{{ __('zoker.shop::auth.orders.show.payment_status') }}</h5>
                     <p style="color: {{ $order->paymentStatus->hex_color }}">{{ $order->paymentStatus->name }}</p>
                 </div>
                 <div>
-                    <h5>{{ __('zoker68.shop::auth.orders.show.shipping_status') }}</h5>
+                    <h5>{{ __('zoker.shop::auth.orders.show.shipping_status') }}</h5>
                     <p style="color: {{ $order->shippingStatus->hex_color }}">{{ $order->shippingStatus->name }}</p>
                 </div>
             </div>
             <div class="grid grid-cols-4 gap-5 sm:gap-0 flex-wrap sm:flex-nowrap justify-between items-center mt-6">
                 <div>
-                    <h5>{{ __('zoker68.shop::auth.orders.show.purchased') }}</h5>
+                    <h5>{{ __('zoker.shop::auth.orders.show.purchased') }}</h5>
                     <p>{{ $order->created_at->format('d.m.Y') }}</p>
                 </div>
                 <div>
-                    <h5>{{ __('zoker68.shop::auth.orders.show.payed') }}</h5>
+                    <h5>{{ __('zoker.shop::auth.orders.show.payed') }}</h5>
                     <p>{{ $order->paid_at?->format('d.m.Y') ?? '-' }}</p>
                 </div>
                 <div>
-                    <h5>{{ __('zoker68.shop::auth.orders.show.shipped') }}</h5>
+                    <h5>{{ __('zoker.shop::auth.orders.show.shipped') }}</h5>
                     <p>{{ $order->shipped_at?->format('d.m.Y') ?? '-' }}</p>
                 </div>
             </div>
@@ -65,7 +65,7 @@
             <div class="col-span-12 lg:col-span-4 box_shadow px-8 py-6">
                 <div>
                     <div>
-                        <h4 class="text-lg">{{ __('zoker68.shop::auth.orders.show.shipping_address') }}</h4>
+                        <h4 class="text-lg">{{ __('zoker.shop::auth.orders.show.shipping_address') }}</h4>
                     </div>
                     <div class="mt-4">
                         <p>{{ $order->user_data['name'] }} {{ $order->user_data['surname'] }}</p>
@@ -78,7 +78,7 @@
             <div class="col-span-12 lg:col-span-4 box_shadow px-8 py-6">
                 <div>
                     <div>
-                        <h4 class="text-lg">{{ __('zoker68.shop::auth.orders.show.billing_address_data') }}</h4>
+                        <h4 class="text-lg">{{ __('zoker.shop::auth.orders.show.billing_address_data') }}</h4>
                     </div>
                     <div class="mt-4">
                         <p>{{ $order->billing_address_data['address'] }}</p>
@@ -92,24 +92,24 @@
             <div class="col-span-12 lg:col-span-4 box_shadow px-8 py-6">
                 <div>
                     <div>
-                        <h4 class="text-lg">{{ __('zoker68.shop::auth.orders.show.summary') }}</h4>
+                        <h4 class="text-lg">{{ __('zoker.shop::auth.orders.show.summary') }}</h4>
                     </div>
                     <div class="mt-4">
                         <div class="flex justify-between">
-                            <p>{{ __('zoker68.shop::auth.orders.show.total_products') }}</p>
+                            <p>{{ __('zoker.shop::auth.orders.show.total_products') }}</p>
                             <p class="font-medium">@money($order->total_products)</p>
                         </div>
                         <div class="flex justify-between">
-                            <p>{{ __('zoker68.shop::auth.orders.show.total_shipping') }}</p>
+                            <p>{{ __('zoker.shop::auth.orders.show.total_shipping') }}</p>
                             <p class="font-medium">@money($order->total_shipping)</p>
                         </div>
                         <div class="flex justify-between">
-                            <p>{{ __('zoker68.shop::auth.orders.show.total_payment') }}</p>
+                            <p>{{ __('zoker.shop::auth.orders.show.total_payment') }}</p>
                             <p class="font-medium">@money($order->total_payment_fee)</p>
                         </div>
                         <hr class="my-2">
                         <div class="flex justify-between">
-                            <p class="font-medium">{{ __('zoker68.shop::auth.orders.show.total_pre_payment') }}</p>
+                            <p class="font-medium">{{ __('zoker.shop::auth.orders.show.total_pre_payment') }}</p>
                             <p class="font-medium">@money($order->total_pre_payment)</p>
                         </div>
                     </div>

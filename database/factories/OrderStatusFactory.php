@@ -1,10 +1,10 @@
 <?php
 
-namespace Zoker68\Shop\Database\Factories;
+namespace Zoker\Shop\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Zoker68\Shop\Enums\OrderStatusType;
-use Zoker68\Shop\Models\OrderStatus;
+use Zoker\Shop\Enums\OrderStatusType;
+use Zoker\Shop\Models\OrderStatus;
 
 class OrderStatusFactory extends Factory
 {

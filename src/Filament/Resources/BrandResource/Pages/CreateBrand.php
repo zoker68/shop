@@ -1,9 +1,9 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\BrandResource\Pages;
+namespace Zoker\Shop\Filament\Resources\BrandResource\Pages;
 
 use Filament\Resources\Pages\CreateRecord;
-use Zoker68\Shop\Filament\Resources\BrandResource;
+use Zoker\Shop\Filament\Resources\BrandResource;
 
 class CreateBrand extends CreateRecord
 {

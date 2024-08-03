@@ -1,9 +1,9 @@
 <?php
 
-namespace Zoker68\Shop\Http\Controllers;
+namespace Zoker\Shop\Http\Controllers;
 
-use Zoker68\Shop\Enums\ProductStatus;
-use Zoker68\Shop\Models\Product;
+use Zoker\Shop\Enums\ProductStatus;
+use Zoker\Shop\Models\Product;
 
 class ProductController extends Controller
 {

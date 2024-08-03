@@ -1,19 +1,19 @@
 {
-    "name": "zoker68/shop",
+    "name": "zoker/shop",
     "description": "Shop script",
     "type": "library",
     "autoload": {
         "psr-4": {
-            "Zoker68\\Shop\\": "src/",
-            "Zoker68\\Shop\\Database\\Seeders\\": "database/seeders/",
-            "Zoker68\\Shop\\Database\\Factories\\": "database/factories/"
+            "Zoker\\Shop\\": "src/",
+            "Zoker\\Shop\\Database\\Seeders\\": "database/seeders/",
+            "Zoker\\Shop\\Database\\Factories\\": "database/factories/"
         }
     },
     "authors": [
         {
             "name": "Maksim",
             "email": "zokermm@gmail.com",
-            "homepage": "https://github.com/zoker68"
+            "homepage": "https://github.com/zoker"
         }
     ],
     "require": {
@@ -33,8 +33,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Zoker68\\Shop\\Providers\\ShopServiceProvider",
-                "Zoker68\\Shop\\Providers\\FilamentPanelProvider"
+                "Zoker\\Shop\\Providers\\ShopServiceProvider",
+                "Zoker\\Shop\\Providers\\FilamentPanelProvider"
             ],
             "aliases": {
                 "Debugbar": "Barryvdh\\Debugbar\\Facade"

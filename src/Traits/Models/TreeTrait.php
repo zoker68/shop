@@ -1,11 +1,11 @@
 <?php
 
-namespace Zoker68\Shop\Traits\Models;
+namespace Zoker\Shop\Traits\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
-use Zoker68\Shop\Models\Category;
+use Zoker\Shop\Models\Category;
 
 /**
  * IF Model have getAllCached() method, use it for get all categories from cache

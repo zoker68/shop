@@ -1,10 +1,10 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\PaymentMethodResource\Pages;
+namespace Zoker\Shop\Filament\Resources\PaymentMethodResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Zoker68\Shop\Filament\Resources\PaymentMethodResource;
+use Zoker\Shop\Filament\Resources\PaymentMethodResource;
 
 class ListPaymentMethods extends ListRecords
 {

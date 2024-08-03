@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Http\Requests;
+namespace Zoker\Shop\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

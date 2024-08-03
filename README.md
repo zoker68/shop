@@ -16,12 +16,17 @@
 - Require script:
 
 ```text
-composer require zoker68/shop
+composer require zoker/shop
 ```
 - Publish Seeders:
   
 ```text
 php artisan vendor:publish --tag=shop-seeders
+```
+- Publish Config:
+  
+```text
+php artisan vendor:publish --tag=shop-config
 ```
 
 - Publish Views:
@@ -71,7 +76,31 @@ npm install
 php artisan filament:install --scaffold
 ```
 
+- Meilisearch Settings:
+```php
+'meilisearch' => [
+        'host' => env('MEILISEARCH_HOST', 'http://localhost:7700'),
+        'key' => env('MEILISEARCH_KEY'),
+        'index-settings' => [
+            'products' => [
+                'filterableAttributes' => ['categories', 'published', 'status', 'properties'],
+                'sortableAttributes' => ['name', 'description', 'created_at', 'price', 'sell_count'],
+            ],
+        ],
+    ],
+```
+
+- Additional ENV:
+```dotenv
+MONEY_DEFAULTS_CURRENCY=RUB
+
+SCOUT_DRIVER=meilisearch
+MEILISEARCH_HOST=http://meilisearch:7700
+MEILISEARCH_KEY=
+```
+
 # Seeder
 ```text
 php artisan migrate:fresh --seed
 ```
+

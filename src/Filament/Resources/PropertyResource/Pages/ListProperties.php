@@ -1,10 +1,10 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\PropertyResource\Pages;
+namespace Zoker\Shop\Filament\Resources\PropertyResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Zoker68\Shop\Filament\Resources\PropertyResource;
+use Zoker\Shop\Filament\Resources\PropertyResource;
 
 class ListProperties extends ListRecords
 {

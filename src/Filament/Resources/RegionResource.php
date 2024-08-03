@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources;
+namespace Zoker\Shop\Filament\Resources;
 
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -11,8 +11,8 @@ use Filament\Tables\Actions\ForceDeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
-use Zoker68\Shop\Filament\Resources\RegionResource\Pages;
-use Zoker68\Shop\Models\Region;
+use Zoker\Shop\Filament\Resources\RegionResource\Pages;
+use Zoker\Shop\Models\Region;
 
 class RegionResource extends Resource
 {
@@ -35,20 +35,20 @@ class RegionResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('country.name')
-                    ->label(__('zoker68.shop::region.admin.list.country'))
+                    ->label(__('zoker.shop::region.admin.list.country'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('name')
-                    ->label(__('zoker68.shop::region.admin.list.name'))
+                    ->label(__('zoker.shop::region.admin.list.name'))
                     ->sortable()
                     ->searchable(),
 
                 TextColumn::make('code')
-                    ->label(__('zoker68.shop::region.admin.list.code')),
+                    ->label(__('zoker.shop::region.admin.list.code')),
 
                 ToggleColumn::make('published')
-                    ->label(__('zoker68.shop::region.admin.list.published')),
+                    ->label(__('zoker.shop::region.admin.list.published')),
             ])
             ->filters([
                 //

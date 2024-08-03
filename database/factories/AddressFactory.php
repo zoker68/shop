@@ -1,12 +1,12 @@
 <?php
 
-namespace Zoker68\Shop\Database\Factories;
+namespace Zoker\Shop\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
-use Zoker68\Shop\Models\Address;
-use Zoker68\Shop\Models\Country;
-use Zoker68\Shop\Models\User;
+use Zoker\Shop\Models\Address;
+use Zoker\Shop\Models\Country;
+use Zoker\Shop\Models\User;
 
 class AddressFactory extends Factory
 {

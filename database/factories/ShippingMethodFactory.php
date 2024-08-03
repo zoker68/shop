@@ -1,10 +1,10 @@
 <?php
 
-namespace Zoker68\Shop\Database\Factories;
+namespace Zoker\Shop\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
-use Zoker68\Shop\Models\ShippingMethod;
+use Zoker\Shop\Models\ShippingMethod;
 
 class ShippingMethodFactory extends Factory
 {

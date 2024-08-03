@@ -1,13 +1,13 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\OrderResource\Pages;
+namespace Zoker\Shop\Filament\Resources\OrderResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ForceDeleteAction;
 use Filament\Actions\RestoreAction;
 use Filament\Resources\Pages\ViewRecord;
-use Zoker68\Shop\Filament\Resources\OrderResource;
+use Zoker\Shop\Filament\Resources\OrderResource;
 
 class ViewOrder extends ViewRecord
 {

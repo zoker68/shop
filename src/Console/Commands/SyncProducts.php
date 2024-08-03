@@ -1,12 +1,12 @@
 <?php
 
-namespace Zoker68\Shop\Console\Commands;
+namespace Zoker\Shop\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
-use Zoker68\Shop\Models\Product;
-use Zoker68\Shop\Models\SkladCategory;
-use Zoker68\Shop\Services\MoySklad;
+use Zoker\Shop\Models\Product;
+use Zoker\Shop\Models\SkladCategory;
+use Zoker\Shop\Services\MoySklad;
 
 class SyncProducts extends Command
 {

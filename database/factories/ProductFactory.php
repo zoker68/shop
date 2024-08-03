@@ -1,12 +1,12 @@
 <?php
 
-namespace Zoker68\Shop\Database\Factories;
+namespace Zoker\Shop\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
-use Zoker68\Shop\Enums\ProductStatus;
-use Zoker68\Shop\Models\Brand;
-use Zoker68\Shop\Models\Product;
+use Zoker\Shop\Enums\ProductStatus;
+use Zoker\Shop\Models\Brand;
+use Zoker\Shop\Models\Product;
 
 class ProductFactory extends Factory
 {

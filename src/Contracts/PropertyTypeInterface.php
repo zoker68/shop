@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Contracts;
+namespace Zoker\Shop\Contracts;
 
 interface PropertyTypeInterface
 {

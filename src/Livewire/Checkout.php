@@ -1,19 +1,19 @@
 <?php
 
-namespace Zoker68\Shop\Livewire;
+namespace Zoker\Shop\Livewire;
 
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Livewire\Component;
-use Zoker68\Shop\Exceptions\ProductInCartException;
-use Zoker68\Shop\Models\Address;
-use Zoker68\Shop\Models\Cart;
-use Zoker68\Shop\Models\Country;
-use Zoker68\Shop\Models\Region;
-use Zoker68\Shop\Models\User;
-use Zoker68\Shop\Traits\Livewire\Alertable;
+use Zoker\Shop\Exceptions\ProductInCartException;
+use Zoker\Shop\Models\Address;
+use Zoker\Shop\Models\Cart;
+use Zoker\Shop\Models\Country;
+use Zoker\Shop\Models\Region;
+use Zoker\Shop\Models\User;
+use Zoker\Shop\Traits\Livewire\Alertable;
 
 class Checkout extends Component
 {
@@ -75,37 +75,37 @@ class Checkout extends Component
     protected function getMessages(): array
     {
         $messages = [
-            'mainData.email.required' => __('zoker68.shop::checkout.error.mainData.email.required'),
-            'mainData.email.email' => __('zoker68.shop::checkout.error.mainData.email.email'),
-            'mainData.email.unique' => __('zoker68.shop::checkout.error.mainData.email.unique'),
-            'mainData.password.required_if_declined' => __('zoker68.shop::checkout.error.mainData.password.required'),
-            'mainData.password.min' => __('zoker68.shop::checkout.error.mainData.password.min'),
-            'mainData.password.same' => __('zoker68.shop::checkout.error.mainData.password.same'),
-            'mainData.password_confirmation.required_if_declined' => __('zoker68.shop::checkout.error.mainData.password_confirmation.required'),
-            'mainData.name.required' => __('zoker68.shop::checkout.error.mainData.name.required'),
-            'mainData.name.between' => __('zoker68.shop::checkout.error.mainData.name.between'),
-            'mainData.surname.required' => __('zoker68.shop::checkout.error.mainData.surname.required'),
-            'mainData.surname.between' => __('zoker68.shop::checkout.error.mainData.surname.between'),
-            'mainData.phone.required' => __('zoker68.shop::checkout.error.mainData.phone.required'),
-            'mainData.phone.between' => __('zoker68.shop::checkout.error.mainData.phone.between'),
-            'mainData.birthday.required' => __('zoker68.shop::checkout.error.mainData.birthday.required'),
-            'mainData.birthday.before' => __('zoker68.shop::checkout.error.mainData.birthday.before'),
-            'mainData.birthday.after' => __('zoker68.shop::checkout.error.mainData.birthday.after'),
-            'mainData.company.between' => __('zoker68.shop::checkout.error.mainData.company.between'),
-            'mainData.vat.between' => __('zoker68.shop::checkout.error.mainData.vat.between'),
+            'mainData.email.required' => __('zoker.shop::checkout.error.mainData.email.required'),
+            'mainData.email.email' => __('zoker.shop::checkout.error.mainData.email.email'),
+            'mainData.email.unique' => __('zoker.shop::checkout.error.mainData.email.unique'),
+            'mainData.password.required_if_declined' => __('zoker.shop::checkout.error.mainData.password.required'),
+            'mainData.password.min' => __('zoker.shop::checkout.error.mainData.password.min'),
+            'mainData.password.same' => __('zoker.shop::checkout.error.mainData.password.same'),
+            'mainData.password_confirmation.required_if_declined' => __('zoker.shop::checkout.error.mainData.password_confirmation.required'),
+            'mainData.name.required' => __('zoker.shop::checkout.error.mainData.name.required'),
+            'mainData.name.between' => __('zoker.shop::checkout.error.mainData.name.between'),
+            'mainData.surname.required' => __('zoker.shop::checkout.error.mainData.surname.required'),
+            'mainData.surname.between' => __('zoker.shop::checkout.error.mainData.surname.between'),
+            'mainData.phone.required' => __('zoker.shop::checkout.error.mainData.phone.required'),
+            'mainData.phone.between' => __('zoker.shop::checkout.error.mainData.phone.between'),
+            'mainData.birthday.required' => __('zoker.shop::checkout.error.mainData.birthday.required'),
+            'mainData.birthday.before' => __('zoker.shop::checkout.error.mainData.birthday.before'),
+            'mainData.birthday.after' => __('zoker.shop::checkout.error.mainData.birthday.after'),
+            'mainData.company.between' => __('zoker.shop::checkout.error.mainData.company.between'),
+            'mainData.vat.between' => __('zoker.shop::checkout.error.mainData.vat.between'),
         ];
 
         foreach ($this->getAddressTypes() as $addressType) {
             $messages += [
-                'address.' . $addressType . '.country.required' => __('zoker68.shop::checkout.error.address.country.required'),
-                'address.' . $addressType . '.country.exists' => __('zoker68.shop::checkout.error.address.country.exists'),
-                'address.' . $addressType . '.region.exists' => __('zoker68.shop::checkout.error.address.region.exists'),
-                'address.' . $addressType . '.city.required' => __('zoker68.shop::checkout.error.address.city.required'),
-                'address.' . $addressType . '.city.between' => __('zoker68.shop::checkout.error.address.city.between'),
-                'address.' . $addressType . '.zip.required' => __('zoker68.shop::checkout.error.address.zip.required'),
-                'address.' . $addressType . '.zip.between' => __('zoker68.shop::checkout.error.address.zip.between'),
-                'address.' . $addressType . '.address.required' => __('zoker68.shop::checkout.error.address.address.required'),
-                'address.' . $addressType . '.address.between' => __('zoker68.shop::checkout.error.address.address.between'),
+                'address.' . $addressType . '.country.required' => __('zoker.shop::checkout.error.address.country.required'),
+                'address.' . $addressType . '.country.exists' => __('zoker.shop::checkout.error.address.country.exists'),
+                'address.' . $addressType . '.region.exists' => __('zoker.shop::checkout.error.address.region.exists'),
+                'address.' . $addressType . '.city.required' => __('zoker.shop::checkout.error.address.city.required'),
+                'address.' . $addressType . '.city.between' => __('zoker.shop::checkout.error.address.city.between'),
+                'address.' . $addressType . '.zip.required' => __('zoker.shop::checkout.error.address.zip.required'),
+                'address.' . $addressType . '.zip.between' => __('zoker.shop::checkout.error.address.zip.between'),
+                'address.' . $addressType . '.address.required' => __('zoker.shop::checkout.error.address.address.required'),
+                'address.' . $addressType . '.address.between' => __('zoker.shop::checkout.error.address.address.between'),
             ];
         }
 
@@ -154,7 +154,7 @@ class Checkout extends Component
 
         $this->setRegionOptions();
 
-        return view('zoker68.shop::livewire.shop.checkout', compact('addresses'));
+        return view('zoker.shop::livewire.shop.checkout', compact('addresses'));
     }
 
     public function onShipping(): void

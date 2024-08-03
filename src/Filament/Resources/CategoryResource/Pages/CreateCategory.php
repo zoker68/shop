@@ -1,9 +1,9 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\CategoryResource\Pages;
+namespace Zoker\Shop\Filament\Resources\CategoryResource\Pages;
 
 use Filament\Resources\Pages\CreateRecord;
-use Zoker68\Shop\Filament\Resources\CategoryResource;
+use Zoker\Shop\Filament\Resources\CategoryResource;
 
 class CreateCategory extends CreateRecord
 {

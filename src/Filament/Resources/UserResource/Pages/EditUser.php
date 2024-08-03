@@ -1,10 +1,10 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\UserResource\Pages;
+namespace Zoker\Shop\Filament\Resources\UserResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
-use Zoker68\Shop\Filament\Resources\UserResource;
+use Zoker\Shop\Filament\Resources\UserResource;
 
 class EditUser extends EditRecord
 {

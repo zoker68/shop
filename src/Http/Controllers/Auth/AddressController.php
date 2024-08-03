@@ -1,10 +1,10 @@
 <?php
 
-namespace Zoker68\Shop\Http\Controllers\Auth;
+namespace Zoker\Shop\Http\Controllers\Auth;
 
 use Illuminate\View\View;
-use Zoker68\Shop\Http\Controllers\Controller;
-use Zoker68\Shop\Models\Address;
+use Zoker\Shop\Http\Controllers\Controller;
+use Zoker\Shop\Models\Address;
 
 class AddressController extends Controller
 {
@@ -28,6 +28,6 @@ class AddressController extends Controller
 
         $address->delete();
 
-        return redirect()->route('account.profile.address.index')->with('success', __('zoker68.shop::auth.address.success_delete'));
+        return redirect()->route('account.profile.address.index')->with('success', __('zoker.shop::auth.address.success_delete'));
     }
 }

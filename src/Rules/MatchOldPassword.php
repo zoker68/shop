@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Rules;
+namespace Zoker\Shop\Rules;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
@@ -16,7 +16,7 @@ class MatchOldPassword implements ValidationRule
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         if (! Hash::check($value, auth()->user()->password)) {
-            $fail(__('zoker68.shop::auth.password.error.password.not_correct'));
+            $fail(__('zoker.shop::auth.password.error.password.not_correct'));
         }
     }
 }

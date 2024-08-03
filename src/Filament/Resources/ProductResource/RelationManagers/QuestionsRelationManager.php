@@ -1,12 +1,12 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\ProductResource\RelationManagers;
+namespace Zoker\Shop\Filament\Resources\ProductResource\RelationManagers;
 
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Zoker68\Shop\Models\ProductQuestion;
+use Zoker\Shop\Models\ProductQuestion;
 
 class QuestionsRelationManager extends RelationManager
 {
@@ -24,7 +24,7 @@ class QuestionsRelationManager extends RelationManager
             ->recordTitleAttribute('question')
             ->columns([
                 Tables\Columns\TextColumn::make('question')
-                    ->label(__('zoker68.shop::admin.product.question.list.product'))
+                    ->label(__('zoker.shop::admin.product.question.list.product'))
                     ->wrap()
                     ->limit(300)
                     ->words(40),

@@ -1,15 +1,15 @@
 <?php
 
-namespace Zoker68\Shop\Classes\Properties\Types;
+namespace Zoker\Shop\Classes\Properties\Types;
 
 use Filament\Forms\Components\Textarea;
-use Zoker68\Shop\Enums\PropertyFilter;
+use Zoker\Shop\Enums\PropertyFilter;
 
 class TextareaPropertyType extends BasePropertyType
 {
     public function label(): string
     {
-        return __('zoker68.shop::product-filter.admin.textarea.label');
+        return __('zoker.shop::product-filter.admin.textarea.label');
     }
 
     protected function getFilters(): array
@@ -30,7 +30,7 @@ class TextareaPropertyType extends BasePropertyType
     {
         return [
             Textarea::make('value')
-                ->label(__('zoker68.shop::product-filter.admin.textarea.value'))
+                ->label(__('zoker.shop::product-filter.admin.textarea.value'))
                 ->required(),
         ];
     }

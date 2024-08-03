@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Http\Controllers\Auth;
+namespace Zoker\Shop\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

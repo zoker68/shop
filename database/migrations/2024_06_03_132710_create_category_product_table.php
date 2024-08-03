@@ -10,8 +10,8 @@ return new class extends Migration
     {
         Schema::create('category_product', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\Zoker68\Shop\Models\Category::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(\Zoker68\Shop\Models\Product::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(\Zoker\Shop\Models\Category::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(\Zoker\Shop\Models\Product::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

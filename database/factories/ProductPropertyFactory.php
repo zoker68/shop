@@ -1,13 +1,13 @@
 <?php
 
-namespace Zoker68\Shop\Database\Factories;
+namespace Zoker\Shop\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Zoker68\Shop\Models\Product;
-use Zoker68\Shop\Models\ProductProperty;
-use Zoker68\Shop\Models\Property;
+use Zoker\Shop\Models\Product;
+use Zoker\Shop\Models\ProductProperty;
+use Zoker\Shop\Models\Property;
 
 class ProductPropertyFactory extends Factory
 {

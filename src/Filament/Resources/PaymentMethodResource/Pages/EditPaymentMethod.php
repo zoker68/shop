@@ -1,12 +1,12 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\PaymentMethodResource\Pages;
+namespace Zoker\Shop\Filament\Resources\PaymentMethodResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ForceDeleteAction;
 use Filament\Actions\RestoreAction;
 use Filament\Resources\Pages\EditRecord;
-use Zoker68\Shop\Filament\Resources\PaymentMethodResource;
+use Zoker\Shop\Filament\Resources\PaymentMethodResource;
 
 class EditPaymentMethod extends EditRecord
 {

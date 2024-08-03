@@ -1,13 +1,13 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\ProductResource\RelationManagers;
+namespace Zoker\Shop\Filament\Resources\ProductResource\RelationManagers;
 
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Zoker68\Shop\Models\ProductReview;
+use Zoker\Shop\Models\ProductReview;
 
 class ReviewsRelationManager extends RelationManager
 {
@@ -25,15 +25,15 @@ class ReviewsRelationManager extends RelationManager
             ->recordTitleAttribute('created_at')
             ->columns([
                 TextColumn::make('rating')
-                    ->label(__('zoker68.shop::product.reviews.admin.list.rating')),
+                    ->label(__('zoker.shop::product.reviews.admin.list.rating')),
 
                 TextColumn::make('review')
-                    ->label(__('zoker68.shop::product.reviews.admin.list.review'))
+                    ->label(__('zoker.shop::product.reviews.admin.list.review'))
                     ->wrap()
                     ->limit(200)
                     ->words(30),
                 TextColumn::make('created_at')
-                    ->label(__('zoker68.shop::product.reviews.admin.list.created_at')),
+                    ->label(__('zoker.shop::product.reviews.admin.list.created_at')),
             ])
             ->filters([
                 //

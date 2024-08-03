@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Models;
+namespace Zoker\Shop\Models;
 
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Builder;
@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
-use Zoker68\Shop\Observers\BrandObserver;
-use Zoker68\Shop\Traits\Models\Sluggable;
+use Zoker\Shop\Observers\BrandObserver;
+use Zoker\Shop\Traits\Models\Sluggable;
 
 #[ObservedBy(BrandObserver::class)]
 class Brand extends Model

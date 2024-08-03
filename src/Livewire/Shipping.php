@@ -1,13 +1,13 @@
 <?php
 
-namespace Zoker68\Shop\Livewire;
+namespace Zoker\Shop\Livewire;
 
 use Illuminate\View\View;
 use Livewire\Component;
-use Zoker68\Shop\Exceptions\ProductInCartException;
-use Zoker68\Shop\Models\Cart;
-use Zoker68\Shop\Models\ShippingMethod;
-use Zoker68\Shop\Traits\Livewire\Alertable;
+use Zoker\Shop\Exceptions\ProductInCartException;
+use Zoker\Shop\Models\Cart;
+use Zoker\Shop\Models\ShippingMethod;
+use Zoker\Shop\Traits\Livewire\Alertable;
 
 class Shipping extends Component
 {
@@ -39,13 +39,13 @@ class Shipping extends Component
     {
         $shippingMethods = ShippingMethod::getAvailableMethods($this->cart);
 
-        return view('zoker68.shop::livewire.shop.shipping', compact('shippingMethods'));
+        return view('zoker.shop::livewire.shop.shipping', compact('shippingMethods'));
     }
 
     public function setShippingMethod(int $shippingMethodId): void
     {
         if (! ShippingMethod::isMethodAvailable($this->cart, $shippingMethodId)) {
-            $this->throwAlert('danger', __('zoker68.shop::checkout.shipping.error.method_not_available'));
+            $this->throwAlert('danger', __('zoker.shop::checkout.shipping.error.method_not_available'));
         }
 
         $this->cart->shipping_method_id = $shippingMethodId;

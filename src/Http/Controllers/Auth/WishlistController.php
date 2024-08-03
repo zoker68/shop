@@ -1,8 +1,8 @@
 <?php
 
-namespace Zoker68\Shop\Http\Controllers\Auth;
+namespace Zoker\Shop\Http\Controllers\Auth;
 
-use Zoker68\Shop\Http\Controllers\Controller;
+use Zoker\Shop\Http\Controllers\Controller;
 
 class WishlistController extends Controller
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\ProductReviewResource\Pages;
+namespace Zoker\Shop\Filament\Resources\ProductReviewResource\Pages;
 
 use Filament\Resources\Pages\CreateRecord;
-use Zoker68\Shop\Filament\Resources\ProductReviewResource;
+use Zoker\Shop\Filament\Resources\ProductReviewResource;
 
 class CreateProductReview extends CreateRecord
 {

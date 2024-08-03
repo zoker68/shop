@@ -1,14 +1,14 @@
 <?php
 
-namespace Zoker68\Shop\Enums;
+namespace Zoker\Shop\Enums;
 
-use Zoker68\Shop\Classes\Properties\Filters\CheckboxPropertyFilter;
-use Zoker68\Shop\Classes\Properties\Filters\ColorPickerPropertyFilter;
-use Zoker68\Shop\Classes\Properties\Filters\NonePropertyFilter;
-use Zoker68\Shop\Classes\Properties\Filters\RadioPropertyFilter;
-use Zoker68\Shop\Classes\Properties\Filters\RangePropertyFilter;
-use Zoker68\Shop\Classes\Properties\Filters\SelectPropertyFilter;
-use Zoker68\Shop\Contracts\PropertyFilterInterface;
+use Zoker\Shop\Classes\Properties\Filters\CheckboxPropertyFilter;
+use Zoker\Shop\Classes\Properties\Filters\ColorPickerPropertyFilter;
+use Zoker\Shop\Classes\Properties\Filters\NonePropertyFilter;
+use Zoker\Shop\Classes\Properties\Filters\RadioPropertyFilter;
+use Zoker\Shop\Classes\Properties\Filters\RangePropertyFilter;
+use Zoker\Shop\Classes\Properties\Filters\SelectPropertyFilter;
+use Zoker\Shop\Contracts\PropertyFilterInterface;
 
 enum PropertyFilter: string
 {

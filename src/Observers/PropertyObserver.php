@@ -1,9 +1,9 @@
 <?php
 
-namespace Zoker68\Shop\Observers;
+namespace Zoker\Shop\Observers;
 
 use Illuminate\Support\Str;
-use Zoker68\Shop\Models\Property;
+use Zoker\Shop\Models\Property;
 
 class PropertyObserver
 {

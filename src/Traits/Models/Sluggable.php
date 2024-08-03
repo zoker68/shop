@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Traits\Models;
+namespace Zoker\Shop\Traits\Models;
 
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -35,7 +35,7 @@ trait Sluggable
 
         if ($this->isDirty('slug')) {
             if ($this->slugExists($this->slug)) {
-                throw ValidationException::withMessages(['slug' => __('zoker68.shop::trait.model.sluggable.error.slug')]);
+                throw ValidationException::withMessages(['slug' => __('zoker.shop::trait.model.sluggable.error.slug')]);
             }
         }
     }

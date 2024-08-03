@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Mail;
+namespace Zoker\Shop\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -8,9 +8,9 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use Zoker68\Shop\Filament\Resources\ProductReviewResource;
-use Zoker68\Shop\Models\Product;
-use Zoker68\Shop\Models\ProductReview;
+use Zoker\Shop\Filament\Resources\ProductReviewResource;
+use Zoker\Shop\Models\Product;
+use Zoker\Shop\Models\ProductReview;
 
 class ReviewAdded extends Mailable implements ShouldQueue
 {
@@ -27,7 +27,7 @@ class ReviewAdded extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: __('zoker68.shop::product.reviews.new.mail.subject'),
+            subject: __('zoker.shop::product.reviews.new.mail.subject'),
         );
     }
 

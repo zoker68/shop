@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources;
+namespace Zoker\Shop\Filament\Resources;
 
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -19,8 +19,8 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Zoker68\Shop\Filament\Resources\ProductReviewResource\Pages;
-use Zoker68\Shop\Models\ProductReview;
+use Zoker\Shop\Filament\Resources\ProductReviewResource\Pages;
+use Zoker\Shop\Models\ProductReview;
 
 class ProductReviewResource extends Resource
 {
@@ -44,26 +44,26 @@ class ProductReviewResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('product.name')
-                    ->label(__('zoker68.shop::product.reviews.admin.list.product'))
+                    ->label(__('zoker.shop::product.reviews.admin.list.product'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('user.name')
-                    ->label(__('zoker68.shop::product.reviews.admin.list.user'))
+                    ->label(__('zoker.shop::product.reviews.admin.list.user'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('rating')
-                    ->label(__('zoker68.shop::product.reviews.admin.list.rating')),
+                    ->label(__('zoker.shop::product.reviews.admin.list.rating')),
 
                 TextColumn::make('review')
-                    ->label(__('zoker68.shop::product.reviews.admin.list.review'))
+                    ->label(__('zoker.shop::product.reviews.admin.list.review'))
                     ->wrap()
                     ->limit()
                     ->words(30),
 
                 ToggleColumn::make('published')
-                    ->label(__('zoker68.shop::product.reviews.admin.list.published')),
+                    ->label(__('zoker.shop::product.reviews.admin.list.published')),
             ])
             ->filters([
                 TrashedFilter::make(),

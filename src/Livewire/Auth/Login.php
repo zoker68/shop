@@ -1,11 +1,11 @@
 <?php
 
-namespace Zoker68\Shop\Livewire\Auth;
+namespace Zoker\Shop\Livewire\Auth;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
-use Zoker68\Shop\Models\Cart;
+use Zoker\Shop\Models\Cart;
 
 class Login extends Component
 {
@@ -18,15 +18,15 @@ class Login extends Component
     protected function getMessages()
     {
         return [
-            'email.required' => __('zoker68.shop::auth.login.error.email.required'),
-            'email.email' => __('zoker68.shop::auth.login.error.email.email'),
-            'password.required' => __('zoker68.shop::auth.login.error.password.required'),
+            'email.required' => __('zoker.shop::auth.login.error.email.required'),
+            'email.email' => __('zoker.shop::auth.login.error.email.email'),
+            'password.required' => __('zoker.shop::auth.login.error.password.required'),
         ];
     }
 
     public function render()
     {
-        return view('zoker68.shop::livewire.auth.login');
+        return view('zoker.shop::livewire.auth.login');
     }
 
     public function login(): void
@@ -41,7 +41,7 @@ class Login extends Component
 
             $this->redirectIntended(route('index'));
         } else {
-            $this->addError('password', __('zoker68.shop::auth.login.error.password.incorrect'));
+            $this->addError('password', __('zoker.shop::auth.login.error.password.incorrect'));
         }
     }
 }

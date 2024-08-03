@@ -1,13 +1,13 @@
 <?php
 
-namespace Zoker68\Shop\Livewire\Auth;
+namespace Zoker\Shop\Livewire\Auth;
 
 use Illuminate\Support\Collection;
 use Livewire\Component;
-use Zoker68\Shop\Models\Address;
-use Zoker68\Shop\Models\Country;
-use Zoker68\Shop\Models\Region;
-use Zoker68\Shop\Traits\Livewire\Alertable;
+use Zoker\Shop\Models\Address;
+use Zoker\Shop\Models\Country;
+use Zoker\Shop\Models\Region;
+use Zoker\Shop\Traits\Livewire\Alertable;
 
 class AddressEdit extends Component
 {
@@ -41,15 +41,15 @@ class AddressEdit extends Component
     protected function getMessages(): array
     {
         return [
-            'addressData.country_id.required' => __('zoker68.shop::auth.address.error.country.required'),
-            'addressData.country_id.exists' => __('zoker68.shop::auth.address.error.country.exists'),
-            'addressData.region_id.exists' => __('zoker68.shop::auth.address.error.region.exists'),
-            'addressData.city.required' => __('zoker68.shop::auth.address.error.city.required'),
-            'addressData.city.between' => __('zoker68.shop::auth.address.error.city.between'),
-            'addressData.zip.required' => __('zoker68.shop::auth.address.error.zip.required'),
-            'addressData.zip.between' => __('zoker68.shop::auth.address.error.zip.between'),
-            'addressData.address.required' => __('zoker68.shop::auth.address.error.address.required'),
-            'addressData.address.between' => __('zoker68.shop::auth.address.error.address.between'),
+            'addressData.country_id.required' => __('zoker.shop::auth.address.error.country.required'),
+            'addressData.country_id.exists' => __('zoker.shop::auth.address.error.country.exists'),
+            'addressData.region_id.exists' => __('zoker.shop::auth.address.error.region.exists'),
+            'addressData.city.required' => __('zoker.shop::auth.address.error.city.required'),
+            'addressData.city.between' => __('zoker.shop::auth.address.error.city.between'),
+            'addressData.zip.required' => __('zoker.shop::auth.address.error.zip.required'),
+            'addressData.zip.between' => __('zoker.shop::auth.address.error.zip.between'),
+            'addressData.address.required' => __('zoker.shop::auth.address.error.address.required'),
+            'addressData.address.between' => __('zoker.shop::auth.address.error.address.between'),
         ];
     }
 
@@ -63,7 +63,7 @@ class AddressEdit extends Component
     {
         $this->setRegionOptions();
 
-        return view('zoker68.shop::livewire.auth.address-edit');
+        return view('zoker.shop::livewire.auth.address-edit');
     }
 
     private function setRegionOptions(): void
@@ -77,6 +77,6 @@ class AddressEdit extends Component
 
         $this->address->fill($this->addressData)->save();
 
-        return redirect()->route('account.profile.address.index')->with('success', __('zoker68.shop::auth.address.success'));
+        return redirect()->route('account.profile.address.index')->with('success', __('zoker.shop::auth.address.success'));
     }
 }

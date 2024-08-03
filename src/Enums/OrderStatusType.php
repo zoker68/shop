@@ -1,9 +1,9 @@
 <?php
 
-namespace Zoker68\Shop\Enums;
+namespace Zoker\Shop\Enums;
 
 use Illuminate\Support\Collection;
-use Zoker68\Shop\Models\OrderStatus;
+use Zoker\Shop\Models\OrderStatus;
 
 enum OrderStatusType: string
 {
@@ -14,9 +14,9 @@ enum OrderStatusType: string
     public function getLabel(): string
     {
         return match ($this) {
-            self::GENERAL => __('zoker68.shop::order.status_type.general'),
-            self::PAYMENT => __('zoker68.shop::order.status_type.payment'),
-            self::SHIPPING => __('zoker68.shop::order.status_type.shipping'),
+            self::GENERAL => __('zoker.shop::order.status_type.general'),
+            self::PAYMENT => __('zoker.shop::order.status_type.payment'),
+            self::SHIPPING => __('zoker.shop::order.status_type.shipping'),
         };
     }
 

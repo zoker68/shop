@@ -1,10 +1,10 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\RegionResource\Pages;
+namespace Zoker\Shop\Filament\Resources\RegionResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Zoker68\Shop\Filament\Resources\RegionResource;
+use Zoker\Shop\Filament\Resources\RegionResource;
 
 class ListRegions extends ListRecords
 {

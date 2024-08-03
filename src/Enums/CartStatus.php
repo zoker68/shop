@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Enums;
+namespace Zoker\Shop\Enums;
 
 enum CartStatus: string
 {

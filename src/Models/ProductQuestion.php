@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Models;
+namespace Zoker\Shop\Models;
 
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\RichEditor;
@@ -39,33 +39,33 @@ class ProductQuestion extends Model
     {
         return [
             Placeholder::make('created_at')
-                ->label(__('zoker68.shop::product.questions.admin.form.created_at'))
+                ->label(__('zoker.shop::product.questions.admin.form.created_at'))
                 ->content(fn (?ProductQuestion $record): string => $record?->created_at?->diffForHumans() ?? '-'),
 
             Placeholder::make('updated_at')
-                ->label(__('zoker68.shop::product.questions.admin.form.updated_at'))
+                ->label(__('zoker.shop::product.questions.admin.form.updated_at'))
                 ->content(fn (?ProductQuestion $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
 
             Select::make('product_id')
-                ->label(__('zoker68.shop::product.questions.admin.form.product'))
+                ->label(__('zoker.shop::product.questions.admin.form.product'))
                 ->relationship('product', 'name')
                 ->searchable()
                 ->required(),
 
             Select::make('user_id')
-                ->label(__('zoker68.shop::product.questions.admin.form.user'))
+                ->label(__('zoker.shop::product.questions.admin.form.user'))
                 ->relationship('user', 'name')
                 ->searchable()
                 ->required(),
 
             Textarea::make('question')
-                ->label(__('zoker68.shop::product.questions.admin.form.question'))
+                ->label(__('zoker.shop::product.questions.admin.form.question'))
                 ->minLength(5)
                 ->rows(10)
                 ->required(),
 
             RichEditor::make('answer')
-                ->label(__('zoker68.shop::product.questions.admin.form.answer')),
+                ->label(__('zoker.shop::product.questions.admin.form.answer')),
         ];
     }
 }

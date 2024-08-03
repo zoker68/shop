@@ -1,10 +1,10 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\SkladCategoryResource\Pages;
+namespace Zoker\Shop\Filament\Resources\SkladCategoryResource\Pages;
 
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
-use Zoker68\Shop\Filament\Resources\SkladCategoryResource;
+use Zoker\Shop\Filament\Resources\SkladCategoryResource;
 
 class EditSkladCategory extends EditRecord
 {

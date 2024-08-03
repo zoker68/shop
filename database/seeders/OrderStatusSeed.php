@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Zoker68\Shop\Enums\OrderStatusType;
-use Zoker68\Shop\Models\OrderStatus;
+use Zoker\Shop\Enums\OrderStatusType;
+use Zoker\Shop\Models\OrderStatus;
 
 class OrderStatusSeed extends Seeder
 {

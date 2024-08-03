@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Filament\Resources\UserResource\RelationManagers;
+namespace Zoker\Shop\Filament\Resources\UserResource\RelationManagers;
 
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
@@ -22,9 +22,9 @@ use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Zoker68\Shop\Models\Address;
-use Zoker68\Shop\Models\Country;
-use Zoker68\Shop\Models\Region;
+use Zoker\Shop\Models\Address;
+use Zoker\Shop\Models\Country;
+use Zoker\Shop\Models\Region;
 
 class AddressesRelationManager extends RelationManager
 {
@@ -37,14 +37,14 @@ class AddressesRelationManager extends RelationManager
         return $form
             ->schema([
                 Select::make('country_id')
-                    ->label(__('zoker68.shop::auth.address.admin.form.country'))
+                    ->label(__('zoker.shop::auth.address.admin.form.country'))
                     ->relationship('country', 'name')
                     ->options(Country::published()->sorted()->pluck('name', 'id'))
                     ->required()
                     ->live(),
 
                 Select::make('region_id')
-                    ->label(__('zoker68.shop::auth.address.admin.form.region'))
+                    ->label(__('zoker.shop::auth.address.admin.form.region'))
                     ->relationship('region', 'name')
                     ->options(fn (Get $get) => Region::forCountryId($get('country_id'))->pluck('name', 'id'))
                     ->preload()
@@ -52,25 +52,25 @@ class AddressesRelationManager extends RelationManager
                     ->nullable(),
 
                 TextInput::make('zip')
-                    ->label(__('zoker68.shop::auth.address.admin.form.zip'))
+                    ->label(__('zoker.shop::auth.address.admin.form.zip'))
                     ->required(),
 
                 TextInput::make('city')
-                    ->label(__('zoker68.shop::auth.address.admin.form.city'))
+                    ->label(__('zoker.shop::auth.address.admin.form.city'))
                     ->required(),
 
                 TextInput::make('address')
-                    ->label(__('zoker68.shop::auth.address.admin.form.address'))
+                    ->label(__('zoker.shop::auth.address.admin.form.address'))
                     ->columnSpanFull()
                     ->required(),
 
                 Placeholder::make('created_at')
                     ->columnStart(1)
-                    ->label(__('zoker68.shop::auth.address.admin.form.created_at'))
+                    ->label(__('zoker.shop::auth.address.admin.form.created_at'))
                     ->content(fn (?Address $record): string => $record?->created_at?->diffForHumans() ?? '-'),
 
                 Placeholder::make('updated_at')
-                    ->label(__('zoker68.shop::auth.address.admin.form.updated_at'))
+                    ->label(__('zoker.shop::auth.address.admin.form.updated_at'))
                     ->content(fn (?Address $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
             ]);
     }
@@ -81,17 +81,17 @@ class AddressesRelationManager extends RelationManager
             ->modifyQueryUsing(fn (Builder $query) => $query->with('country', 'region'))
             ->columns([
                 TextColumn::make('country.name')
-                    ->label(__('zoker68.shop::auth.address.admin.list.country_region'))
+                    ->label(__('zoker.shop::auth.address.admin.list.country_region'))
                     ->searchable()
                     ->sortable()
                     ->description(fn (Address $record): string => $record->region?->name ?? '-'),
 
                 TextColumn::make('zip')
-                    ->label(__('zoker68.shop::auth.address.admin.list.zip_city'))
+                    ->label(__('zoker.shop::auth.address.admin.list.zip_city'))
                     ->description(fn (Address $record): string => $record->city),
 
                 TextColumn::make('address')
-                    ->label(__('zoker68.shop::auth.address.admin.list.address'))
+                    ->label(__('zoker.shop::auth.address.admin.list.address'))
                     ->verticallyAlignStart(),
             ])
             ->filters([

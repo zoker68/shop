@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker68\Shop\Enums;
+namespace Zoker\Shop\Enums;
 
 use Illuminate\Database\Eloquent\Builder;
 
@@ -30,13 +30,13 @@ enum ProductsSorting: string
     public function getLabel(): string
     {
         return match ($this) {
-            self::NAME_ASC => __('zoker68.shop::products.sorting.name_asc'),
-            self::NAME_DESC => __('zoker68.shop::products.sorting.name_desc'),
-            self::CREATED_ASC => __('zoker68.shop::products.sorting.created_asc'),
-            self::CREATED_DESC => __('zoker68.shop::products.sorting.created_desc'),
-            self::PRICE_ASC => __('zoker68.shop::products.sorting.price_asc'),
-            self::PRICE_DESC => __('zoker68.shop::products.sorting.price_desc'),
-            self::BESTSELLERS => __('zoker68.shop::products.sorting.bestsellers'),
+            self::NAME_ASC => __('zoker.shop::products.sorting.name_asc'),
+            self::NAME_DESC => __('zoker.shop::products.sorting.name_desc'),
+            self::CREATED_ASC => __('zoker.shop::products.sorting.created_asc'),
+            self::CREATED_DESC => __('zoker.shop::products.sorting.created_desc'),
+            self::PRICE_ASC => __('zoker.shop::products.sorting.price_asc'),
+            self::PRICE_DESC => __('zoker.shop::products.sorting.price_desc'),
+            self::BESTSELLERS => __('zoker.shop::products.sorting.bestsellers'),
         };
     }
 
