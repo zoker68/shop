@@ -5,10 +5,10 @@
 - Delete map "database"
 
 - composer require zoker68/shop
-- Publish factories and Seeders:
+- Publish Seeders:
   
 ```text
-php artisan vendor:publish --tag=shop-factories
+php artisan vendor:publish --tag=shop-seeders
 ```
 
 - Publish Views:
@@ -22,8 +22,9 @@ php artisan vendor:publish --tag=shop-views
 php artisan vendor:publish --tag=shop-lang
 ```
 
-- Install Filament:
+- Storage link! ADD SAIL before, if you use sail
 
 ```text
-php artisan filament:install --panels
+php artisan storage:link
 ```
+

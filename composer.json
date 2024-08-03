@@ -30,5 +30,16 @@
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Zoker68\\Shop\\Providers\\ShopServiceProvider",
+                "Zoker68\\Shop\\Providers\\FilamentPanelProvider"
+            ],
+            "aliases": {
+                "Debugbar": "Barryvdh\\Debugbar\\Facade"
+            }
+        }
     }
 }

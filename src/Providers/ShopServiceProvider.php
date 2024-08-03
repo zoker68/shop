@@ -20,6 +20,7 @@ class ShopServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__ . '/../../routes/shop.php');
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'zoker68.shop');
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'zoker68.shop');
+        $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
 
         Factory::guessFactoryNamesUsing(function (string $modelName) {
             return '\\Zoker68\\Shop\\Database\\Factories\\' . class_basename($modelName) . 'Factory';
@@ -30,7 +31,7 @@ class ShopServiceProvider extends ServiceProvider
         $this->publishesMigrations([
             __DIR__ . '/../../database/seeders/' => database_path('seeders'),
             __DIR__ . '/../../database/migrations/' => database_path('migrations'),
-        ], 'shop-factories');
+        ], 'shop-seeders');
 
         $this->publishes([
             __DIR__ . '/../../resources/views' => resource_path('views/vendor/zoker68.shop'),
@@ -39,6 +40,5 @@ class ShopServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../../resources/lang' => $this->app->langPath('vendor/zoker68.shop'),
         ], 'shop-lang');
-
     }
 }
