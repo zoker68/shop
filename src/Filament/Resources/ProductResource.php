@@ -167,8 +167,7 @@ class ProductResource extends Resource
                     RestoreAction::make(),
                     ForceDeleteAction::make(),
                 ]),
-            ]
-            )
+            ])
             ->bulkActions([
                 BulkActionGroup::make([
                     BulkAction::make(ProductStatus::APPROVED->value)

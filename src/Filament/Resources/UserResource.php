@@ -1,7 +1,5 @@
 <?php
 
-// TODO: edit resource!
-
 namespace Zoker\Shop\Filament\Resources;
 
 use Filament\Forms\Components\DatePicker;
