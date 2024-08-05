@@ -1,10 +1,9 @@
 <div class="col-span-1">
     <div :class="isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'"
          class="lg:opacity-100 lg:visible transition-all duration-300 absolute bg-white top-[80px] left-0 lg:static w-[320px] shadow lg:w-full p-4 z-20">
-        {{-- TODO: Sort FOR MOBILE --}}
         <div class="sm:hidden">
             <div class="flex justify-between items-center">
-                <h4 class="text-xl uppercase">Sort by</h4>
+                <h4 class="text-xl uppercase">{{ __('shop::products.sort_by') }}</h4>
                 <button @click="isOpen=false" class="text-primary">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                          stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -13,10 +12,11 @@
                 </button>
             </div>
             <div class="border-b pb-14 rounded mt-5">
-                <select class="nice_select nice-select">
-                    <option selected>Default sorting</option>
-                    <option>Price low-high</option>
-                    <option>Price high-low</option>
+                <select class="nice_select nice-select" x-on:change="$dispatch('changeSort', { sort: $event.target.value })">
+                    <option value="" disabled selected>{{ __('shop::products.sort_by') }}</option>
+                    @foreach($sortOptions as $key => $option)
+                        <option value="{{ $key }}">{{ $option }}</option>
+                    @endforeach
                 </select>
             </div>
         </div>

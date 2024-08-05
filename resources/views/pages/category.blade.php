@@ -7,7 +7,6 @@
 
                 <livewire:shop.product-filter :category="$category"/>
 
-
                 <div x-data class="col-span-4 lg:col-span-3">
                     <div class="flex items-center">
                         <div class="lg:hidden block pr-4">

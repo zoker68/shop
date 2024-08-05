@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Livewire\Attributes\Url;
 use Livewire\Component;
+use Zoker\Shop\Enums\ProductsSorting;
 use Zoker\Shop\Enums\ProductStatus;
 use Zoker\Shop\Enums\PropertyFilter;
 use Zoker\Shop\Enums\PropertyType;
@@ -43,10 +44,9 @@ class ProductsFilter extends Component
 
         $brands = Brand::getByCategory($this->category);
 
-        return view('shop::livewire.shop.products.filter', with([
-            'brands' => $brands,
-            'properties' => $properties,
-        ]));
+        $sortOptions = ProductsSorting::getOptions();
+
+        return view('shop::livewire.shop.products.filter', compact('properties', 'brands', 'sortOptions'));
     }
 
     private function generateQueryVariable(): void
