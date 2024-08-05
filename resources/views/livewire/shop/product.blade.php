@@ -242,16 +242,6 @@
                     </div>
                     <div class="flex gap-8 sm:gap-40 md:justify-between items-center mt-6">
                         <p class="m-0 text-semibold">{{ __('shop::product.reviews.title') }}</p>
-
-                        {{--
-                        TODO: Add filter
-                        <div class="review_filters">
-                            <select class="nice-select">
-                                <option value="">Sort by</option>
-                                <option value="">Price low-high</option>
-                                <option value="">Price high-low</option>
-                            </select>
-                        </div>--}}
                     </div>
                     <div class="mt-6">
                         @foreach($reviews as $review)
