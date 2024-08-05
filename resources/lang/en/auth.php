@@ -237,4 +237,18 @@ return [
             'title' => 'Recent Orders',
         ],
     ],
+    'user_group' => [
+        'admin' => [
+            'list' => [
+                'name' => 'Name',
+                'is_admin' => 'Admin Access',
+            ],
+            'form' => [
+                'name' => 'Name',
+                'is_admin' => 'Access to admin panel',
+                'created_at' => 'Created Date',
+                'updated_at' => 'Last Modified Date',
+            ],
+        ],
+    ],
 ];

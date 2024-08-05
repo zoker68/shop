@@ -15,6 +15,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Zoker\Shop\Filament\Resources\UserResource\Pages;
 use Zoker\Shop\Filament\Resources\UserResource\RelationManagers\AddressesRelationManager;
+use Zoker\Shop\Filament\Resources\UserResource\RelationManagers\GroupsRelationManager;
 use Zoker\Shop\Models\User;
 
 class UserResource extends Resource
@@ -116,6 +117,7 @@ class UserResource extends Resource
     {
         return [
             AddressesRelationManager::class,
+            GroupsRelationManager::class,
         ];
     }
 

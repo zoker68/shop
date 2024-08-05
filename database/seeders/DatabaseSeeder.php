@@ -15,6 +15,7 @@ use Zoker\Shop\Models\PaymentMethod;
 use Zoker\Shop\Models\Product;
 use Zoker\Shop\Models\ShippingMethod;
 use Zoker\Shop\Models\User;
+use Zoker\Shop\Models\UserGroup;
 use Zoker\Shop\Models\Wishlist;
 
 class DatabaseSeeder extends Seeder
@@ -24,7 +25,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::insert([
+        $admin = User::insert([
             'name' => 'zoker',
             'surname' => 'zokerov',
             'email' => 'zoker68@ya.ru',
@@ -36,6 +37,20 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::factory()->count(10)->create();
+
+        $adminGroup = UserGroup::create([
+            'id' => 1,
+            'name' => 'Admin',
+            'is_admin' => true,
+        ]);
+
+        $userGroup = UserGroup::create([
+            'id' => 2,
+            'name' => 'User',
+            'is_admin' => false,
+        ]);
+
+        User::find(1)->groups()->attach($adminGroup);
 
         $this->properties();
 

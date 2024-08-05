@@ -6,6 +6,7 @@ namespace Zoker\Shop\Models;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -51,6 +52,11 @@ class User extends Authenticatable implements FilamentUser
             'view_type' => ViewType::class,
             'birthdate' => 'date',
         ];
+    }
+
+    public function groups(): BelongsToMany
+    {
+        return $this->belongsToMany(UserGroup::class, 'user_group_users', 'user_id', 'user_group_id');
     }
 
     public function carts(): HasMany
@@ -110,7 +116,12 @@ class User extends Authenticatable implements FilamentUser
 
     public function canAccessPanel(Panel $panel): bool
     {
-        // TODO: Add logic for permissions
-        return $this->email === 'zoker68@ya.ru';
+        foreach ($this->groups as $group) {
+            if ($group->canAccessPanel()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
