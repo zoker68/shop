@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
+use Zoker\Shop\Console\Commands\ScoutIndexUpdateCommand;
 use Zoker\Shop\Livewire\Account\Wishlist;
 use Zoker\Shop\Livewire\Auth\AddressEdit;
 use Zoker\Shop\Livewire\Cart;
@@ -23,6 +24,7 @@ use Zoker\Shop\Livewire\SearchResults;
 use Zoker\Shop\Livewire\Shipping;
 use Zoker\Shop\View\Components\Partials\Breadcrumbs;
 use Zoker\Shop\View\Components\Partials\Navbar;
+use Zoker\Shop\View\Components\Widgets\Slider;
 
 class ShopServiceProvider extends ServiceProvider
 {
@@ -30,7 +32,7 @@ class ShopServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                \Zoker\Shop\Console\Commands\ScoutIndexUpdateCommand::class,
+                ScoutIndexUpdateCommand::class,
             ]);
         }
     }
@@ -72,6 +74,8 @@ class ShopServiceProvider extends ServiceProvider
     {
         Blade::component('shop::partials.navbar', Navbar::class);
         Blade::component('shop::partials.breadcrumbs', Breadcrumbs::class);
+
+        Blade::component('shop::widgets.slider', Slider::class);
     }
 
     private function registerLivewireComponents(): void

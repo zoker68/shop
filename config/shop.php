@@ -25,4 +25,12 @@ return [
     ],
 
     'reset_password_expire' => 15, //in minutes
+
+    'widgets' => [
+        'slider' => [
+            'image_ratio' => [
+                null, '4:3', '16:9', '1:1', '2:1', '3:1', '4:1',
+            ],
+        ],
+    ],
 ];
