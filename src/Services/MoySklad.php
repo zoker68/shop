@@ -5,12 +5,12 @@ namespace Zoker\Shop\Services;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Log;
-use Zoker\Shop\Enums\EndPoints;
+use Zoker\Shop\Enums\MoySkladEndPoints;
 use Zoker\Shop\Models\SkladLog;
 
 class MoySklad
 {
-    public static function request($method, EndPoints $endPoint, $params = [], $options = [])
+    public static function request($method, MoySkladEndPoints $endPoint, $params = [], $options = [])
     {
         $client = new Client;
 
@@ -44,7 +44,7 @@ class MoySklad
 
     public static function getCategories()
     {
-        $response = static::request('GET', EndPoints::CATEGORIES);
+        $response = static::request('GET', MoySkladEndPoints::CATEGORIES);
 
         return json_decode((string) $response->getBody());
     }
@@ -56,7 +56,7 @@ class MoySklad
             'filter' => 'stockMode=positiveOnly',
         ];
 
-        $response = static::request('GET', EndPoints::PRODUCTS, $options);
+        $response = static::request('GET', MoySkladEndPoints::PRODUCTS, $options);
 
         return json_decode((string) $response->getBody());
     }
