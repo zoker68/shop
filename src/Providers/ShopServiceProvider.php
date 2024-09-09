@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
-use Zoker\Shop\Console\ScoutIndexUpdateCommand;
+use Zoker\Shop\Console\Commands\ScoutIndexUpdateCommand;
 use Zoker\Shop\Livewire\Account\Wishlist;
 use Zoker\Shop\Livewire\Auth\AddressEdit;
 use Zoker\Shop\Livewire\Cart;

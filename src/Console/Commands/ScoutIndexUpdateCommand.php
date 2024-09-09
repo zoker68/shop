@@ -1,6 +1,6 @@
 <?php
 
-namespace Zoker\Shop\Console;
+namespace Zoker\Shop\Console\Commands;
 
 use Illuminate\Console\Command;
 

@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Log;
 use Zoker\Shop\Enums\MoySkladEndPoints;
-use Zoker\Shop\Models\SkladLog;
+use Zoker\Shop\Models\SyncLog;
 
 class MoySklad
 {
@@ -27,7 +27,8 @@ class MoySklad
         $end = microtime(true);
         try {
 
-            SkladLog::create([
+            SyncLog::create([
+                'service' => 'moysklad',
                 'method' => $method,
                 'uri' => $uri,
                 'response' => $response->getBody(),
