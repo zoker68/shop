@@ -25,9 +25,11 @@
                                         <span class="font-medium pr-3">{{ __('shop::product.stock') }}</span>
                                         <x-shop::partials.availability :product="$product"/>
                                     </p>
-                                    <p><span
-                                            class="font-medium pr-3">{{ __('shop::product.brand') }}</span>{{ $product->brand->name }}
+                                    @if($product->brand)
+                                    <p>
+                                        <span class="font-medium pr-3">{{ __('shop::product.brand') }}</span>{{ $product->brand->name }}
                                     </p>
+                                    @endif
                                 </div>
                                 <div class="mt-3 flex gap-3 items-center overflow-hidden">
                                     {{--<span class="line-through">@money($product->price)</span>--}}
