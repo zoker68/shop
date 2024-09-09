@@ -223,7 +223,9 @@ class Product extends Model
     {
         $searchable = $this->toArray();
 
-        $searchable['brand'] = $this->brand->name;
+        if ($this->brand) {
+            $searchable['brand'] = $this->brand->name;
+        }
         $searchable['status'] = $this->status->value;
         $searchable['categories'] = $this->categories->pluck('id')->toArray();
 
