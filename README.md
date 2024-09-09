@@ -76,6 +76,12 @@ npm install
 php artisan filament:install --scaffold
 ```
 
+- Publish Scout Config:
+
+```text
+php artisan vendor:publish --provider="Laravel\Scout\ScoutServiceProvider"
+```
+
 - Meilisearch Settings:
 ```php
 'meilisearch' => [

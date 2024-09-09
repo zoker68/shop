@@ -31,6 +31,7 @@ class FilamentPanelProvider extends PanelProvider
                 'primary' => Color::Yellow,
             ])
             ->discoverResources(in: __DIR__ . '/../../src/Filament/Resources', for: 'Zoker\\Shop\\Filament\\Resources')
+            ->discoverResources(in: config('shop.filament.path'), for: config('shop.filament.namespace'))
             ->discoverPages(in: __DIR__ . '/../../src/Filament/Pages', for: 'Zoker\\Shop\\Filament\\Pages')
             ->pages([
                 Pages\Dashboard::class,
