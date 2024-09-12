@@ -9,7 +9,7 @@
         <div class="bg-[#fafafa] min-h-[260px] p-3 flex items-center justify-center">
             <div class="lp_img">
                 <a href="{{ route('product', $product) }}">
-                <img src="{{ $product->getCoverImage() }}"
+                <img src="{{ $product->getCoverImage(200, 200) }}"
                      class="w-[200px] h-[200px] object-contain flex-shrink-0" alt="{{ $product->name }}">
                 </a>
             </div>

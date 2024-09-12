@@ -6,7 +6,7 @@
 <div class="col-span-1 overflow-hidden rounded-[3px] shadow-sm group">
     <div class="relative">
         <a href="{{ route('product', $product) }}">
-            <img src="{{ $product->getCoverImage() }}" class="w-full object-cover flex-shrink-0"
+            <img src="{{ $product->getCoverImage(275, 275) }}" class="w-full object-cover flex-shrink-0"
              alt="{{ $product->name }}">
         </a>
         {{--<div

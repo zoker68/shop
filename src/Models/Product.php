@@ -2,6 +2,7 @@
 
 namespace Zoker\Shop\Models;
 
+use Bkwld\Croppa\Facades\Croppa;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -168,14 +169,20 @@ class Product extends Model
         $this->save();
     }
 
-    public function getCoverImage(): string
+    public function getCoverImage(?int $width = null, ?int $height = null, ?array $options = null): string
     {
         $protocols = ['https://', 'http://'];
         if (Str::startsWith($this->image, $protocols)) {
             return $this->image;
         }
 
-        return Storage::url($this->image);
+        $imageUrl = Storage::url($this->image);
+
+        if ($width || $height || $options) {
+            return Croppa::url($imageUrl, $width, $height, $options);
+        }
+
+        return $imageUrl;
     }
 
     public static function getPriceRangeByCategory(Category $category): array

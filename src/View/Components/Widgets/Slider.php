@@ -8,12 +8,20 @@ use Zoker\Shop\Models\WidgetSlide;
 
 class Slider extends Component
 {
-    public function __construct(public string $code) {}
+    public function __construct(public string $code, public string $type = 'slider') {}
 
     public function render(): View
     {
         $slides = WidgetSlide::getSlider($this->code);
 
-        return view('shop::components.widgets.slider', compact('slides'));
+        return view($this->getTemplate(), compact('slides'));
+    }
+
+    public function getTemplate(): string
+    {
+        return match ($this->type) {
+            'block' => 'shop::components.widgets.slider.block',
+            default => 'shop::components.widgets.slider.default',
+        };
     }
 }
