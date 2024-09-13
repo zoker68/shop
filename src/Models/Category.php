@@ -49,6 +49,7 @@ class Category extends Model
             Select::make('parent_id')
                 ->label(__('shop::category.admin.form.parent'))
                 ->options(fn ($record) => Category::getCategoryOptions($record))
+                ->required()
                 ->searchable()
                 ->columnSpanFull(),
             Toggle::make('published')
