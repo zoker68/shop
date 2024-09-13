@@ -10,4 +10,9 @@ class WidgetSlideObserver
     {
         cache()->forget($slide->getCacheKey());
     }
+
+    public function deleted(WidgetSlide $slide): void
+    {
+        cache()->forget($slide->getCacheKey());
+    }
 }
