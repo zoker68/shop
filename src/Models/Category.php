@@ -45,7 +45,6 @@ class Category extends Model
             TextInput::make('slug')
                 ->label(__('shop::category.admin.form.slug'))
                 ->maxLength(255)
-                ->required()
                 ->unique(ignoreRecord: true),
             Select::make('parent_id')
                 ->label(__('shop::category.admin.form.parent'))
