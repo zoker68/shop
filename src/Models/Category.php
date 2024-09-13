@@ -103,6 +103,7 @@ class Category extends Model
     public static function getAllNested(?self $category = null): Collection
     {
         return self::getAllCached()
+            ->where('published', true)
             ->when($category, fn ($query) => $query->where('parent_id', $category->id))
             ->when(! $category, fn ($query) => $query->where('parent_id', 1))
             ->sortBy('order')
