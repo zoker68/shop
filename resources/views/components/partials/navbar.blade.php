@@ -19,7 +19,7 @@
             </div>
 
             <div
-                class="absolute top-full left-0 w-full py-4 bg-white shadow-md z-10 mt-2.5 opacity-0 invisible group-hvr-hover">
+                class="absolute top-full left-0 w-[300px] py-4 bg-white shadow-md z-10 mt-2.5 opacity-0 invisible group-hvr-hover">
                 @foreach($categories as $category)
                     <x-shop::partials.navbar.primary-link :category="$category"/>
                 @endforeach
