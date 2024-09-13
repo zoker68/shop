@@ -18,7 +18,7 @@ class SearchWidget extends Component
 
     public function mount(): void
     {
-        $this->categories = Category::getRootChildren();
+        $this->categories = Category::getRootChildren()->where('published', true);
         if (request()->search) {
             $this->search = request()->search;
         }
