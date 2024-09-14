@@ -1,7 +1,7 @@
 <div {{ $attributes(['class' => 'w-full']) }}>
     <div class="w-full flex items-center">
         <!-- Slider main container -->
-        <div class="swiper banner-swiper">
+        <div class="swiper banner-swiper w-full">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
