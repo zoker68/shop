@@ -19,8 +19,15 @@
                                 @if($slide['text'])
                                 <div class="sm:text-[10px] md:text-[13px] text-[#6B6B6B]">{!! $slide['text'] !!}</div>
                                 @endif
+
+                                @if ($slide['button'])
+                                <div>
+                                    <a href="{{ $slide['link'] }}" target="{{ $slide['target'] }}"  class="primary-btn min-w-[80px] my-3">{{ $slide['button'] }}</a>
+                                </div>
+                                @endif
                             </div>
                         </div>
+
                     </div>
                     @endforeach
                 </div>

@@ -945,43 +945,7 @@
     <!-- download app end -->
 
     <!-- offer deal -->
-    <div class="container pb-14">
-        <div class="sm:flex flex-wrap">
-            <div class="w-full sm:w-1/2 sm:pr-3 mb-8 sm:mb-0">
-                <div
-                    class="flex flex-col-reverse lg:flex-row gap-4 lg:gap-0 lg:items-center justify-between px-8 py-6 bg-[#FBE3E4]">
-                    <div>
-                        <h3 class="text-lg leading-4 mb-2 text-primary">30% offer</h3>
-                        <h4 class="text-[22px] leading-[26px] text-secondary mb-2">Free Shipping</h4>
-                        <p class="text-[15px] leading-4 text-[#464545] mb-5">Attractive Natural Furniture</p>
-                        <a href="#" class="primary-btn min-w-[80px]">Shop Now</a>
-                    </div>
-                    <div class="flex justify-center">
-                        <img src="assets/images/sofa-1.png"
-                             class="w-[200px] h-[150px] lg:h-[180px] object-contain flex-shrink-0 hover:scale-105 transition-all duration-300"
-                             alt="product">
-                    </div>
-                </div>
-            </div>
-
-            <div class="w-full sm:w-1/2 sm:pl-3">
-                <div
-                    class="flex flex-col-reverse lg:flex-row gap-4 lg:gap-0 lg:items-center justify-between px-8 py-6 bg-[#EDECEC]">
-                    <div>
-                        <h3 class="text-lg leading-4 mb-2 text-primary">50% offer</h3>
-                        <h4 class="text-[22px] leading-[26px] text-secondary mb-2">Flash Sale</h4>
-                        <p class="text-[15px] leading-4 text-[#464545] mb-5">Attractive Natural Furniture</p>
-                        <a href="#" class="primary-btn min-w-[80px]">Shop Now</a>
-                    </div>
-                    <div class="flex justify-center">
-                        <img src="assets/images/sofa-2.png"
-                             class="w-[200px] h-[150px] lg:h-[180px] object-contain flex-shrink-0 hover:scale-105 transition-all duration-300"
-                             alt="product">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <x-shop::widgets.slider code="offer" type="cta"/>
     <!-- offer deal end-->
 
     <!-- categories -->

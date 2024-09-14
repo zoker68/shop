@@ -21,6 +21,7 @@ class Slider extends Component
     {
         return match ($this->type) {
             'block' => 'shop::components.widgets.slider.block',
+            'cta' => 'shop::components.widgets.slider.cta',
             default => 'shop::components.widgets.slider.default',
         };
     }
