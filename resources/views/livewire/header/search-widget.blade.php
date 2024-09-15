@@ -6,7 +6,7 @@
         <div
             class="border-r border-secondary w-36 bg-white rounded-l-md h-[43px] flex justify-center items-center"
         wire:ignore>
-            <select class="nice-select all-category z-20" wire:change="selectCategory($event.target.value)" name="category">
+            <select class="nice-select all-category" wire:change="selectCategory($event.target.value)" name="category">
                 <option @selected(!$category) value="">{{ __('shop::layout.header.navbar.search.all_category') }}</option>
                 @foreach($categories as $cat)
                     <option value="{{ $cat->id }}" @selected(isset($category) && $category->id == $cat->id)>{{ $cat->name }}</option>
@@ -15,7 +15,7 @@
 
         </div>
         <!-- search -->
-        <div class="max-w-[250px] xl:max-w-[390px] h-auto flex-grow">
+        <div class="max-w-[250px] xl:max-w-[390px] h-auto flex-grow z-10">
             <input @click="isOpen=true" type="text" placeholder="{{ __('shop::layout.header.navbar.search.placeholder') }}"
                    wire:model.live.debounce.250ms="search" name="search"
                    class="px-5 py-2.5 border-none text-sm w-full focus:ring-0 focus:outline-none leading-relaxed">
