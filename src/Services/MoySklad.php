@@ -50,14 +50,24 @@ class MoySklad
         return json_decode((string) $response->getBody());
     }
 
-    public static function getProducts($offset = 0)
+    public static function getProducts($offset = 0, $params = [])
     {
-        $options = [
+        $options = array_merge([
             'offset' => $offset,
-            'filter' => 'stockMode=positiveOnly',
-        ];
+        ], $params);
 
         $response = static::request('GET', MoySkladEndPoints::PRODUCTS, $options);
+
+        return json_decode((string) $response->getBody());
+    }
+
+    public static function getUsers($offset = 0, $params = [])
+    {
+        $options = array_merge([
+            'offset' => $offset,
+        ], $params);
+
+        $response = static::request('GET', MoySkladEndPoints::USERS, $options);
 
         return json_decode((string) $response->getBody());
     }
