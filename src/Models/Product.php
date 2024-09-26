@@ -261,13 +261,10 @@ class Product extends Model
 
     public static function meiliSearch(string $query, ?Category $category, array $filters = []): ScoutBuiler
     {
-        return self::search($query)
-            ->when()
-            ->when($category, fn ($q) => $q->whereIn('categories', $category->getAllChildrenAndSelf()->pluck('id')->toArray()))
-            ->when(true, function ($query) use ($filters) {
-                $sorting = ProductsSorting::getSortingOption($filters['sort'] ?? null);
+        $sorting = ProductsSorting::getSortingOption($filters['sort'] ?? null);
 
-                return $query->orderBy($sorting->getSortColumn(), $sorting->getSortDirection());
-            });
+        return self::search($query)
+            ->when($category, fn ($q) => $q->whereIn('categories', $category->getAllChildrenAndSelf()->pluck('id')->toArray()))
+            ->orderBy($sorting->getSortColumn(), $sorting->getSortDirection());
     }
 }

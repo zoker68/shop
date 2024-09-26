@@ -25,7 +25,7 @@ use Zoker\Shop\Livewire\Shipping;
 use Zoker\Shop\View\Components\Partials\Breadcrumbs;
 use Zoker\Shop\View\Components\Partials\Navbar;
 use Zoker\Shop\View\Components\Widgets\Slider;
-use Zoker\Shop\View\Components\Widgets\TopRanking;
+use Zoker\Shop\View\Components\Widgets\Tops;
 
 class ShopServiceProvider extends ServiceProvider
 {
@@ -77,7 +77,7 @@ class ShopServiceProvider extends ServiceProvider
         Blade::component('shop::partials.breadcrumbs', Breadcrumbs::class);
 
         Blade::component('shop::widgets.slider', Slider::class);
-        Blade::component('shop::widgets.top-ranking', TopRanking::class);
+        Blade::component('shop::widgets.tops', Tops::class);
     }
 
     private function registerLivewireComponents(): void

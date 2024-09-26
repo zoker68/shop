@@ -13,19 +13,8 @@ enum ProductsSorting: string
     case NAME_DESC = 'name-desc';
     case CREATED_ASC = 'created-asc';
     case CREATED_DESC = 'created-desc';
-
-    public static function getByValue(string $sort): self
-    {
-        return match ($sort) {
-            'name-asc' => self::NAME_ASC,
-            'name-desc' => self::NAME_DESC,
-            'created-asc' => self::CREATED_ASC,
-            'created-desc' => self::CREATED_DESC,
-            'price-asc' => self::PRICE_ASC,
-            'price-desc' => self::PRICE_DESC,
-            'bestsellers' => self::BESTSELLERS,
-        };
-    }
+    case RANKING_DESC = 'ranking-desc';
+    case RANKING_ASC = 'ranking-asc';
 
     public function getLabel(): string
     {
@@ -37,38 +26,36 @@ enum ProductsSorting: string
             self::PRICE_ASC => __('shop::products.sorting.price_asc'),
             self::PRICE_DESC => __('shop::products.sorting.price_desc'),
             self::BESTSELLERS => __('shop::products.sorting.bestsellers'),
+            self::RANKING_DESC => __('shop::products.sorting.ranking_desc'),
+            self::RANKING_ASC => __('shop::products.sorting.ranking_asc'),
         };
     }
 
     public function getSortColumn(): string
     {
         return match ($this) {
-            self::NAME_ASC => 'name',
-            self::NAME_DESC => 'name',
-            self::CREATED_ASC => 'created_at',
-            self::CREATED_DESC => 'created_at',
-            self::PRICE_ASC => 'price',
-            self::PRICE_DESC => 'price',
+            self::NAME_ASC, self::NAME_DESC => 'name',
+            self::CREATED_ASC, self::CREATED_DESC => 'created_at',
+            self::PRICE_ASC, self::PRICE_DESC => 'price',
             self::BESTSELLERS => 'sell_count',
+            self::RANKING_ASC, self::RANKING_DESC => 'reviews_avg_rating',
         };
     }
 
     public function getSortDirection(): string
     {
         return match ($this) {
-            self::NAME_ASC => 'asc',
-            self::NAME_DESC => 'desc',
-            self::CREATED_ASC => 'asc',
-            self::CREATED_DESC => 'desc',
-            self::PRICE_ASC => 'asc',
-            self::PRICE_DESC => 'desc',
-            self::BESTSELLERS => 'desc',
+            self::NAME_ASC, self::CREATED_ASC, self::PRICE_ASC, self::RANKING_ASC => 'asc',
+            self::NAME_DESC, self::CREATED_DESC, self::PRICE_DESC, self::BESTSELLERS, self::RANKING_DESC => 'desc',
         };
     }
 
     public function getSortQuery(Builder $query): Builder
     {
-        return $query->orderBy($this->getSortColumn(), $this->getSortDirection());
+        return $query->orderBy($this->getSortColumn(), $this->getSortDirection())
+            ->when($this === self::RANKING_DESC || $this === self::RANKING_ASC, function ($query) {
+                $query->orderByDesc('reviews_count');
+            });
     }
 
     public static function getOptions(): array
@@ -84,7 +71,7 @@ enum ProductsSorting: string
     public static function getSortingOption(?string $filter): self
     {
         return self::isValidOption($filter)
-            ? self::getByValue($filter)
+            ? self::from($filter)
             : config('shop.category.defaultSort');
     }
 

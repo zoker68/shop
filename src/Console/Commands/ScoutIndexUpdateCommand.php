@@ -25,5 +25,6 @@ class ScoutIndexUpdateCommand extends Command
         $this->call('scout:import', ['model' => 'Zoker\Shop\Models\Product']);
 
         $this->info('Done');
+
     }
 }

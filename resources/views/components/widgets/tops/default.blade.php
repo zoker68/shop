@@ -13,8 +13,10 @@
                             <img loading="lazy" src="{{ $product->getCoverImage(75, 75) }}"
                                  class="w-full h-[75px] object-contain flex-shrink-0" alt="product">
                         </a>
-                        <span
+                        @if(config('shop.widgets.tops.ranking.show_index'))
+                            <span
                                 class="absolute top-0 right-0 w-6 h-[18px] bg-primary text-center leading-5 text-white font-bold text-xs rounded-tr-md rounded-bl-md">{{ $loop->iteration }}</span>
+                         @endif
                     </div>
                     <div class="sm:pl-4 mt-3 sm:mt-0">
                         <a href="{{ route('product', $product) }}">

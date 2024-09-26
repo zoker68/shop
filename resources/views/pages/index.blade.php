@@ -8,7 +8,7 @@
     <!-- feature area end -->
 
     <!-- top ranking -->
-    <x-shop::widgets.top-ranking/>
+    <x-shop::widgets.tops code="ranking"/>
     <!-- top ranking end -->
 
     <!-- new arrive -->
@@ -312,15 +312,9 @@
     <!-- new arrive end -->
 
     <!-- ad banner -->
-    <div class="pb-14">
-        <div class="container">
-            <a href="#">
-                <picture>
-                    <img class="w-full flex-shrink-0" src="assets/images/offer-3.jpg" alt="ad">
-                </picture>
-            </a>
-        </div>
-    </div>
+
+    <x-shop::widgets.slider code="index-banner" type="banner"/>
+
     <!-- ad banner end -->
 
     <!-- recomended -->

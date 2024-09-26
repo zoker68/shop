@@ -32,12 +32,17 @@ return [
                 null, '4:3', '16:9', '1:1', '2:1', '3:1', '4:1',
             ],
         ],
-        'top_ranking' => [
-            'categories' => [
-                2, 3, 4, 5,
+        'tops' => [
+            'ranking' => [
+                'categories' => [
+                    2, 3, 4, 5,
+                ],
+                'show_index' => true,
+                'limit' => 4,
+                'sort' => ProductsSorting::RANKING_DESC,
             ],
-            'limit' => 4,
         ],
+
     ],
 
     'filament' => [

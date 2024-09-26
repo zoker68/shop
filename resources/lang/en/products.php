@@ -12,6 +12,8 @@ return [
         'price_asc' => 'Cheapest First',
         'price_desc' => 'Most Expensive First',
         'bestsellers' => 'Bestsellers',
+        'ranking_asc' => 'Ranking Ascending',
+        'ranking_desc' => 'Ranking Descending',
     ],
     'filter' => [
         'mobile_link' => 'FILTER',
