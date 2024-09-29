@@ -10,6 +10,7 @@ use Livewire\Livewire;
 use Zoker\Shop\Console\Commands\ScoutIndexUpdateCommand;
 use Zoker\Shop\Livewire\Account\Wishlist;
 use Zoker\Shop\Livewire\Auth\AddressEdit;
+use Zoker\Shop\Livewire\Auth\Login;
 use Zoker\Shop\Livewire\Cart;
 use Zoker\Shop\Livewire\Checkout;
 use Zoker\Shop\Livewire\Confirm;
@@ -98,6 +99,7 @@ class ShopServiceProvider extends ServiceProvider
         Livewire::component('shop.widget.search', SearchWidget::class);
 
         Livewire::component('shop.auth.address-edit', AddressEdit::class);
+        Livewire::component('shop.account.login', Login::class);
 
         Livewire::component('shop.account.wishlist', Wishlist::class);
     }
