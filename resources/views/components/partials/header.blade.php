@@ -20,8 +20,10 @@
                 <a href="{{ route('login') }}"
                    class="text-secondary text-sm hover:text-primary font-medium leading-[26px] transition duration-200">{{ __('shop::layout.header.login') }}</a>
                 <span class="text-secondary text-sm">/</span>
-                <a href="register.html"
+                @if(Route::has('register'))
+                <a href="{{ route('register') }}"
                    class="text-secondary text-sm hover:text-primary font-medium leading-[26px] transition duration-200">{{ __('shop::layout.header.registration') }}</a>
+                @endif
             </div>
             @endguest
 

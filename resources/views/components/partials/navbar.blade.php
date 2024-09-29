@@ -54,8 +54,10 @@
                     @guest()
                         <div>
                             <div class="flex justify-between">
-                                <a href="#"
+                                @if(Route::has('register'))
+                                <a href="{{ route('register') }}"
                                    class="min-w-[85px] rounded-[3px] py-1 px-[15px] border border-primary bg-primary text-white inline-block text-center text-sm font-medium hover:bg-transparent hover:text-primary transition duration-300">{{ __('shop::layout.header.navbar.registration') }}</a>
+                                @endif
                                 <a href="{{ route('login') }}"
                                    class="min-w-[85px] rounded-[3px] py-1 px-2.5 border border-primary hover:bg-primary bg-white hover:text-white inline-block text-center text-sm font-medium text-primary transition duration-300">
                                     {{ __('shop::layout.header.navbar.login') }}
