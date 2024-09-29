@@ -50,7 +50,7 @@ class User extends Authenticatable implements FilamentUser
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'view_type' => ViewType::class,
-            'birthdate' => 'date',
+            'birthday' => 'date',
         ];
     }
 
