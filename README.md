@@ -121,3 +121,72 @@ class User extends \Zoker\Shop\Models\User {}
 php artisan migrate:fresh --seed
 ```
 
+# Events
+
+## Extend form
+### Event
+```text
+backend.form.extend
+```
+### Using
+```php
+Event::listen('backend.form.extend', function ($resource) {
+    if (!$resource instanceof SomeResource) {
+        return;
+    }
+    /* Extend form */
+})
+```
+### Methods:
+```php
+$resource->addFormFields(array $fields, string $tab = self::GENERAL_TAB);
+
+$resource->setFormColumns(int $columns, string $tab = self::GENERAL_TAB);
+
+$resource->removeFormField(string $name, string $tab = self::GENERAL_TAB);
+
+$resource->removeFormFields(array $names, string $tab = self::GENERAL_TAB);
+```
+
+## Extend table columns
+
+### Event
+```text
+backend.table.extend
+```
+### Using
+```php
+Event::listen('backend.table.extend', function ($resource) {
+    if (!$resource instanceof SomeResource) {
+        return;
+    }
+        /* Extend table */
+})
+```
+
+### Methods
+```php
+$resource->addTableColumns(array $columns);
+
+$resource->removeTableColumn(string $name);
+
+$resource->removeTableColumns(array $names);
+
+$resorce->addTableFilters(array $filters);
+
+$resorce->removeTableFilter(string $name);
+
+$resorce->removeTableFilters(array $names);
+
+$resorce->addTableActions(array $actions, string $group = self::ACTIONS_NO_IN_GROUP);
+
+$resorce->removeTableAction(string $name, string $group = self::ACTIONS_NO_IN_GROUP);
+
+$resorce->removeTableActions(array $names, string $group = self::ACTIONS_NO_IN_GROUP);
+
+$resorce->addTableBulkActions(array $actions, string $group = self::ACTIONS_NO_IN_GROUP);
+
+$resorce->removeTableBulkAction(string $name, string $group = self::ACTIONS_NO_IN_GROUP);
+
+$resorce->removeTableBulkActions(array $names, string $group = self::ACTIONS_NO_IN_GROUP);
+```

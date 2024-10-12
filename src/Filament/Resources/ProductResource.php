@@ -7,13 +7,7 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
-use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\Action;
-use Filament\Tables\Actions\ActionGroup;
-use Filament\Tables\Actions\BulkAction;
-use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
@@ -23,10 +17,8 @@ use Filament\Tables\Actions\RestoreAction;
 use Filament\Tables\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
-use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Collection;
 use Zoker\Shop\Enums\ProductStatus;
 use Zoker\Shop\Filament\Resources\ProductResource\Pages;
 use Zoker\Shop\Filament\Resources\ProductResource\RelationManagers\CategoriesRelationManager;
@@ -34,9 +26,12 @@ use Zoker\Shop\Filament\Resources\ProductResource\RelationManagers\PropertiesRel
 use Zoker\Shop\Filament\Resources\ProductResource\RelationManagers\QuestionsRelationManager;
 use Zoker\Shop\Filament\Resources\ProductResource\RelationManagers\ReviewsRelationManager;
 use Zoker\Shop\Models\Product;
+use Zoker\Shop\Traits\Resources\ExtendableResource;
 
 class ProductResource extends Resource
 {
+    use ExtendableResource;
+
     protected static ?string $model = Product::class;
 
     protected static ?string $slug = 'products';
@@ -45,152 +40,103 @@ class ProductResource extends Resource
 
     protected static ?string $navigationGroup = 'Products';
 
-    public static function form(Form $form): Form
+    protected function presetFields(): void
     {
-        return $form
-            ->columns(3)
-            ->schema([
-                TextInput::make('name')
-                    ->label(__('shop::product.admin.form.name'))
-                    ->required()
-                    ->columnSpan(2),
+        $this->setFormColumns(3);
 
-                TextInput::make('slug')
-                    ->label(__('shop::product.admin.form.slug'))
-                    ->maxLength(255)
-                    ->unique(ignoreRecord: true),
+        $this->addFormFields([
+            'name' => TextInput::make('name')
+                ->label(__('shop::product.admin.form.name'))
+                ->required()
+                ->columnSpan(2),
 
-                RichEditor::make('description')
-                    ->label(__('shop::product.admin.form.description'))
-                    ->columnSpan(2),
+            'slug' => TextInput::make('slug')
+                ->label(__('shop::product.admin.form.slug'))
+                ->maxLength(255)
+                ->unique(ignoreRecord: true),
 
-                FileUpload::make('image')
-                    ->label(__('shop::product.admin.form.image'))
-                    ->image()
-                    ->directory('products')
-                    ->imageEditor()
-                    ->imageEditorAspectRatios(config('shop.product.cover.ratio')),
+            'description' => RichEditor::make('description')
+                ->label(__('shop::product.admin.form.description'))
+                ->columnSpan(2),
 
-                TextInput::make('stock')
-                    ->label(__('shop::product.admin.form.stock'))
-                    ->required()
-                    ->integer()
-                    ->minValue(0),
+            'image' => FileUpload::make('image')
+                ->label(__('shop::product.admin.form.image'))
+                ->image()
+                ->directory('products')
+                ->imageEditor()
+                ->imageEditorAspectRatios(config('shop.product.cover.ratio')),
 
-                TextInput::make('price')
-                    ->label(__('shop::product.admin.form.price'))
-                    ->required()
-                    ->numeric()
-                    ->prefix(currency()->getPrefix())
-                    ->postfix(currency()->getSuffix())
-                    ->minValue(0)
-                    ->afterStateHydrated(fn ($state, $set) => $set('price', $state / (currency()->getSubunit()))),
+            'stock' => TextInput::make('stock')
+                ->label(__('shop::product.admin.form.stock'))
+                ->required()
+                ->integer()
+                ->minValue(0),
 
-                TextInput::make('foreign_id')
-                    ->label('ID в системе МойСклад')
-                    ->required(),
+            'price' => TextInput::make('price')
+                ->label(__('shop::product.admin.form.price'))
+                ->required()
+                ->numeric()
+                ->prefix(currency()->getPrefix())
+                ->postfix(currency()->getSuffix())
+                ->minValue(0)
+                ->afterStateHydrated(fn ($state, $set) => $set('price', $state / (currency()->getSubunit()))),
 
-                Select::make('brand_id')
-                    ->label(__('shop::product.admin.form.brand'))
-                    ->relationship('brand', 'name')
-                    ->searchable(),
+            'brand_id' => Select::make('brand_id')
+                ->columnStart(1)
+                ->label(__('shop::product.admin.form.brand'))
+                ->relationship('brand', 'name')
+                ->searchable(),
 
-                Select::make('status')
-                    ->selectablePlaceholder(false)
-                    ->label(__('shop::product.admin.form.status'))
-                    ->options(ProductStatus::getLabels())
-                    ->required(),
-                Toggle::make('published')
-                    ->label(__('shop::product.admin.form.published')),
-            ]);
+            'status' => Select::make('status')
+                ->selectablePlaceholder(false)
+                ->label(__('shop::product.admin.form.status'))
+                ->options(ProductStatus::getLabels())
+                ->required(),
+
+            'published' => Toggle::make('published')
+                ->label(__('shop::product.admin.form.published')),
+        ]);
     }
 
-    public static function table(Table $table): Table
+    public function presetTable(): void
     {
-        return $table
-            ->columns([
-                TextColumn::make('name')
-                    ->label(__('shop::product.admin.list.name'))
-                    ->searchable()
-                    ->sortable(),
+        $this->addTableColumns([
+            'name' => TextColumn::make('name')
+                ->label(__('shop::product.admin.list.name'))
+                ->searchable()
+                ->sortable(),
 
-                TextColumn::make('categories.name')
-                    ->label(__('shop::product.admin.list.categories'))
-                    ->sortable()
-                    ->state(fn (Product $record) => $record->categories->pluck('full_name'))
-                    ->listWithLineBreaks(),
+            'categories.name' => TextColumn::make('categories.name')
+                ->label(__('shop::product.admin.list.categories'))
+                ->sortable()
+                ->state(fn (Product $record) => $record->categories->pluck('full_name'))
+                ->listWithLineBreaks(),
 
-                TextColumn::make('stock')
-                    ->label(__('shop::product.admin.list.stock')),
+            'stock' => TextColumn::make('stock')
+                ->label(__('shop::product.admin.list.stock')),
 
-                TextColumn::make('price')
-                    ->money(currency()->getCurrency(), currency()->getSubunit())
-                    ->label(__('shop::product.admin.list.price')),
+            'price' => TextColumn::make('price')
+                ->money(currency()->getCurrency(), currency()->getSubunit())
+                ->label(__('shop::product.admin.list.price')),
 
-                TextColumn::make('status')
-                    ->label(__('shop::product.admin.list.status'))
-                    ->getStateUsing(fn ($record) => $record->status->getLabel())
-                    ->badge()
-                    ->color(fn ($record) => $record->status->getColor()),
+        ]);
 
-            ])
-            ->filters([
-                TrashedFilter::make(),
-            ])
-            ->actions([
-                ActionGroup::make([
-                    Action::make(ProductStatus::APPROVED->value)
-                        ->label(__('shop::product.admin.action.approve'))
-                        ->color('success')
-                        ->icon('heroicon-o-check')
-                        ->visible(fn ($record) => $record->status === ProductStatus::MODERATION || $record->status === ProductStatus::REJECTED)
-                        ->action(function (Product $record) {
-                            $record->approve();
-                        })
-                        ->after(function () {
-                            Notification::make()->success()->title(__('shop::product.admin.action.success.approve'))->send();
-                        }),
-                    Action::make(ProductStatus::REJECTED->value)
-                        ->label(__('shop::product.admin.action.reject'))
-                        ->color('danger')
-                        ->icon('heroicon-o-no-symbol')
-                        ->visible(fn ($record) => $record->status === ProductStatus::MODERATION || $record->status === ProductStatus::APPROVED)
-                        ->action(function (Product $record) {
-                            $record->reject();
-                        })
-                        ->after(function () {
-                            Notification::make()->success()->title(__('shop::product.admin.action.success.reject'))->send();
-                        }),
+        $this->addTableFilters([
+            'trashed' => TrashedFilter::make(),
+        ]);
 
-                    EditAction::make(),
-                    DeleteAction::make(),
-                    RestoreAction::make(),
-                    ForceDeleteAction::make(),
-                ]),
-            ])
-            ->bulkActions([
-                BulkActionGroup::make([
-                    BulkAction::make(ProductStatus::APPROVED->value)
-                        ->label(__('shop::product.admin.bulk_action.approve'))
-                        ->color('success')
-                        ->icon('heroicon-o-check')
-                        ->action(function (Collection $records) {
-                            $records->each->approve();
-                        }),
+        $this->addTableActions([
+            'edit' => EditAction::make(),
+            'delete' => DeleteAction::make(),
+            'restore' => RestoreAction::make(),
+            'forceDelete' => ForceDeleteAction::make(),
+        ], self::ACTION_MAIN_GROUP);
 
-                    BulkAction::make(ProductStatus::REJECTED->value)
-                        ->label(__('shop::product.admin.bulk_action.reject'))
-                        ->color('danger')
-                        ->icon('heroicon-o-no-symbol')
-                        ->action(function (Collection $records) {
-                            $records->each->reject();
-                        }),
-
-                    DeleteBulkAction::make(),
-                    RestoreBulkAction::make(),
-                    ForceDeleteBulkAction::make(),
-                ]),
-            ]);
+        $this->addTableBulkActions([
+            'Delete' => DeleteBulkAction::make(),
+            'Restore' => RestoreBulkAction::make(),
+            'ForceDelete' => ForceDeleteBulkAction::make(),
+        ], self::ACTION_MAIN_GROUP);
     }
 
     public static function getPages(): array
