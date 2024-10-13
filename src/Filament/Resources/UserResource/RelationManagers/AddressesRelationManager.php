@@ -26,6 +26,7 @@ use Zoker\Shop\Models\Address;
 use Zoker\Shop\Models\Country;
 use Zoker\Shop\Models\Region;
 
+//TODO: Extend relation managers
 class AddressesRelationManager extends RelationManager
 {
     protected static string $relationship = 'addresses';

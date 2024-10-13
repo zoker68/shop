@@ -6,9 +6,7 @@ use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
@@ -19,93 +17,102 @@ use Filament\Tables\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\TrashedFilter;
-use Filament\Tables\Table;
+use Filament\Tables\Grouping\Group;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Zoker\Shop\Enums\OrderStatusType;
 use Zoker\Shop\Filament\Resources\OrderStatusResource\Pages;
 use Zoker\Shop\Models\OrderStatus;
+use Zoker\Shop\Traits\Resources\ExtendableResource;
 
 class OrderStatusResource extends Resource
 {
+    use ExtendableResource;
+
     protected static ?string $model = OrderStatus::class;
 
     protected static ?string $slug = 'order-statuses';
 
     protected static ?string $navigationIcon = 'heroicon-o-check-circle';
 
-    public static function form(Form $form): Form
+    public function presetForm(): void
     {
-        return $form
-            ->schema([
-                TextInput::make('name')
-                    ->label(__('shop::order.status_type.admin.form.name'))
-                    ->required(),
+        $this->addFormFields([
+            'name' => TextInput::make('name')
+                ->label(__('shop::order.status_type.admin.form.name'))
+                ->required(),
 
-                Select::make('type')
-                    ->label(__('shop::order.status_type.admin.form.type'))
-                    ->options(OrderStatusType::getAllOptions())
-                    ->required(),
+            'type' => Select::make('type')
+                ->label(__('shop::order.status_type.admin.form.type'))
+                ->options(OrderStatusType::getAllOptions())
+                ->required(),
 
-                Select::make('color')
-                    ->label(__('shop::order.status_type.admin.form.color'))
-                    ->options([
-                        'primary' => 'Primary',
-                        'success' => 'Success',
-                        'warning' => 'Warning',
-                        'danger' => 'Danger',
-                        'info' => 'Info',
-                        'gray' => 'Gray',
-                    ]),
+            'color' => Select::make('color')
+                ->label(__('shop::order.status_type.admin.form.color'))
+                ->options([
+                    'primary' => 'Primary',
+                    'success' => 'Success',
+                    'warning' => 'Warning',
+                    'danger' => 'Danger',
+                    'info' => 'Info',
+                    'gray' => 'Gray',
+                ]),
 
-                ColorPicker::make('hex_color')
-                    ->label(__('shop::order.status_type.admin.form.hex_color')),
+            'hex_color' => ColorPicker::make('hex_color')
+                ->label(__('shop::order.status_type.admin.form.hex_color')),
 
-                Toggle::make('is_default')
-                    ->label(__('shop::order.status_type.admin.form.is_default'))
-                    ->onColor('success')
-                    ->offColor('gray'),
-            ]);
+            'is_default' => Toggle::make('is_default')
+                ->label(__('shop::order.status_type.admin.form.is_default'))
+                ->onColor('success')
+                ->offColor('gray'),
+        ]);
     }
 
-    public static function table(Table $table): Table
+    public function presetTable(): void
     {
-        return $table
-            ->defaultSort('type')
-            ->reorderable('order')
-            ->columns([
-                TextColumn::make('name')
-                    ->label(__('shop::order.status_type.admin.list.name'))
-                    ->searchable()
-                    ->sortable(),
+        $this->setTableDefaultSort('type');
 
-                TextColumn::make('type')
-                    ->label(__('shop::order.status_type.admin.list.type'))
-                    ->getStateUsing(fn ($record) => $record->type->getLabel())
-                    ->badge()
-                    ->color(fn ($record) => $record->type->getColor()),
+        $this->setTableReorderable('order');
 
-                ToggleColumn::make('is_default')
-                    ->label(__('shop::order.status_type.admin.list.is_default'))
-                    ->onColor('success')
-                    ->offColor('gray'),
-            ])
-            ->filters([
-                TrashedFilter::make(),
-            ])
-            ->actions([
-                EditAction::make(),
-                DeleteAction::make(),
-                RestoreAction::make(),
-                ForceDeleteAction::make(),
-            ])
-            ->bulkActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                    RestoreBulkAction::make(),
-                    ForceDeleteBulkAction::make(),
-                ]),
-            ]);
+        $this->addTableColumns([
+            'name' => TextColumn::make('name')
+                ->label(__('shop::order.status_type.admin.list.name'))
+                ->searchable()
+                ->sortable(),
+
+            'type' => TextColumn::make('type')
+                ->label(__('shop::order.status_type.admin.list.type'))
+                ->getStateUsing(fn ($record) => $record->type->getLabel())
+                ->badge()
+                ->color(fn ($record) => $record->type->getColor()),
+
+            'is_default' => ToggleColumn::make('is_default')
+                ->label(__('shop::order.status_type.admin.list.is_default'))
+                ->onColor(fn ($record) => $record->type->getColor())
+                ->offColor('gray'),
+        ]);
+
+        $this->addTableFilters([
+            'trashed' => TrashedFilter::make(),
+        ]);
+
+        $this->addTableActions([
+            'edit' => EditAction::make(),
+            'delete' => DeleteAction::make(),
+            'restore' => RestoreAction::make(),
+            'forceDelete' => ForceDeleteAction::make(),
+        ]);
+
+        $this->addTableBulkActions([
+            'delete' => DeleteBulkAction::make(),
+            'restore' => RestoreBulkAction::make(),
+            'forceDelete' => ForceDeleteBulkAction::make(),
+        ], self::ACTION_MAIN_GROUP);
+
+        $this->setTableDefaultGroup(
+            Group::make('type')
+                ->getTitleFromRecordUsing(fn (OrderStatus $record): string => $record->type->getLabel())
+        );
     }
 
     public static function getPages(): array

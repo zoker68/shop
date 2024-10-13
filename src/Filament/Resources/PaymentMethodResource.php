@@ -6,9 +6,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
@@ -19,14 +17,16 @@ use Filament\Tables\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\TrashedFilter;
-use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Zoker\Shop\Filament\Resources\PaymentMethodResource\Pages;
 use Zoker\Shop\Models\PaymentMethod;
+use Zoker\Shop\Traits\Resources\ExtendableResource;
 
 class PaymentMethodResource extends Resource
 {
+    use ExtendableResource;
+
     protected static ?string $model = PaymentMethod::class;
 
     protected static ?string $slug = 'payment-methods';
@@ -35,92 +35,95 @@ class PaymentMethodResource extends Resource
 
     protected static ?string $navigationGroup = 'Checkout';
 
-    public static function form(Form $form): Form
+    public function presetForm(): void
     {
-        return $form
-            ->schema([
-                TextInput::make('name')
-                    ->label(__('shop::checkout.payment.admin.form.name'))
-                    ->required(),
+        $this->addFormFields([
+            'name' => TextInput::make('name')
+                ->label(__('shop::checkout.payment.admin.form.name'))
+                ->required(),
 
-                TextInput::make('code')
-                    ->label(__('shop::checkout.payment.admin.form.code'))
-                    ->unique(ignoreRecord: true)
-                    ->required(),
+            'code' => TextInput::make('code')
+                ->label(__('shop::checkout.payment.admin.form.code'))
+                ->unique(ignoreRecord: true)
+                ->required(),
 
-                FileUpload::make('image')
-                    ->label(__('shop::product.admin.form.image'))
-                    ->image()
-                    ->directory('shipping-methods')
-                    ->imageEditor()
-                    ->imageEditorAspectRatios(['1:1', '4:3', '16:9', '3:1', '4:1']),
+            'image' => FileUpload::make('image')
+                ->label(__('shop::product.admin.form.image'))
+                ->image()
+                ->directory('shipping-methods')
+                ->imageEditor()
+                ->imageEditorAspectRatios(['1:1', '4:3', '16:9', '3:1', '4:1']),
 
-                Textarea::make('description')
-                    ->label(__('shop::checkout.payment.admin.form.description')),
+            'description' => Textarea::make('description')
+                ->label(__('shop::checkout.payment.admin.form.description')),
 
-                TextInput::make('sort')
-                    ->label(__('shop::checkout.payment.admin.form.sort'))
-                    ->default(fn () => count(PaymentMethod::all()) + 1)
-                    ->required(),
+            'sort' => TextInput::make('sort')
+                ->label(__('shop::checkout.payment.admin.form.sort'))
+                ->default(fn () => PaymentMethod::count() + 1)
+                ->integer()
+                ->minValue(1)
+                ->required(),
 
-                TextInput::make('fee')
-                    ->label(__('shop::checkout.payment.admin.form.fee'))
-                    ->required()
-                    ->default(0)
-                    ->numeric()
-                    ->prefix(currency()->getPrefix())
-                    ->postfix(currency()->getSuffix())
-                    ->minValue(0)
-                    ->afterStateHydrated(fn ($state, $set) => $set('fee', $state / (currency()->getSubunit()))),
+            'fee' => TextInput::make('fee')
+                ->label(__('shop::checkout.payment.admin.form.fee'))
+                ->required()
+                ->default(0)
+                ->numeric()
+                ->prefix(currency()->getPrefix())
+                ->postfix(currency()->getSuffix())
+                ->minValue(0)
+                ->afterStateHydrated(fn ($state, $set) => $set('fee', $state / (currency()->getSubunit()))),
 
-                TextInput::make('fee_percent')
-                    ->label(__('shop::checkout.payment.admin.form.fee_percent'))
-                    ->required()
-                    ->default(0)
-                    ->numeric()
-                    ->minValue(0)
-                    ->postfix('%'),
+            'fee_percent' => TextInput::make('fee_percent')
+                ->label(__('shop::checkout.payment.admin.form.fee_percent'))
+                ->required()
+                ->default(0)
+                ->numeric()
+                ->minValue(0)
+                ->postfix('%'),
 
-                Toggle::make('published')
-                    ->label(__('shop::checkout.payment.admin.form.published')),
-            ]);
+            'published' => Toggle::make('published')
+                ->label(__('shop::checkout.payment.admin.form.published')),
+        ]);
     }
 
-    public static function table(Table $table): Table
+    public function presetTable(): void
     {
-        return $table
-            ->defaultSort('sort')
-            ->reorderable('sort')
-            ->columns([
-                TextColumn::make('name')
-                    ->label(__('shop::checkout.payment.admin.list.name'))
-                    ->searchable()
-                    ->sortable(),
+        $this->setTableDefaultSort('sort');
 
-                TextColumn::make('code')
-                    ->label(__('shop::checkout.payment.admin.list.code'))
-                    ->searchable()
-                    ->sortable(),
+        $this->setTableReorderable('sort');
 
-                ToggleColumn::make('published')
-                    ->label(__('shop::checkout.payment.admin.list.published')),
-            ])
-            ->filters([
-                TrashedFilter::make(),
-            ])
-            ->actions([
-                EditAction::make(),
-                DeleteAction::make(),
-                RestoreAction::make(),
-                ForceDeleteAction::make(),
-            ])
-            ->bulkActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                    RestoreBulkAction::make(),
-                    ForceDeleteBulkAction::make(),
-                ]),
-            ]);
+        $this->addTableColumns([
+            'name' => TextColumn::make('name')
+                ->label(__('shop::checkout.payment.admin.list.name'))
+                ->searchable()
+                ->sortable(),
+
+            'code' => TextColumn::make('code')
+                ->label(__('shop::checkout.payment.admin.list.code'))
+                ->searchable()
+                ->sortable(),
+
+            'published' => ToggleColumn::make('published')
+                ->label(__('shop::checkout.payment.admin.list.published')),
+        ]);
+
+        $this->addTableFilters([
+            'trashed' => TrashedFilter::make(),
+        ]);
+
+        $this->addTableActions([
+            'edit' => EditAction::make(),
+            'delete' => DeleteAction::make(),
+            'restore' => RestoreAction::make(),
+            'forceDelete' => ForceDeleteAction::make(),
+        ]);
+
+        $this->addTableBulkActions([
+            'delete' => DeleteBulkAction::make(),
+            'restore' => RestoreBulkAction::make(),
+            'forceDelete' => ForceDeleteBulkAction::make(),
+        ], self::ACTION_MAIN_GROUP);
     }
 
     public static function getPages(): array

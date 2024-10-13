@@ -40,39 +40,39 @@ class ProductReview extends Model
     public static function getAdminFormSchema(): array
     {
         return [
-            Placeholder::make('created_at')
+            'created_at' => Placeholder::make('created_at')
                 ->label(__('shop::product.reviews.admin.form.created_at'))
                 ->content(fn (?ProductReview $record): string => $record?->created_at?->diffForHumans() ?? '-'),
 
-            Placeholder::make('updated_at')
+            'updated_at' => Placeholder::make('updated_at')
                 ->label(__('shop::product.reviews.admin.form.updated_at'))
                 ->content(fn (?ProductReview $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
 
-            Select::make('product_id')
+            'product_id' => Select::make('product_id')
                 ->columnStart(1)
                 ->label(__('shop::product.reviews.admin.form.product'))
                 ->relationship('product', 'name')
                 ->searchable()
                 ->required(),
 
-            Select::make('user_id')
+            'user_id' => Select::make('user_id')
                 ->label(__('shop::product.reviews.admin.form.user'))
                 ->relationship('user', 'name')
                 ->searchable(),
 
-            TextInput::make('rating')
+            'rating' => TextInput::make('rating')
                 ->label(__('shop::product.reviews.admin.form.rating'))
                 ->required()
                 ->integer()
                 ->minValue(1)
                 ->maxValue(5),
 
-            Textarea::make('review')
+            'review' => Textarea::make('review')
                 ->columnSpanFull()
                 ->label(__('shop::product.reviews.admin.form.review'))
                 ->rows(10),
 
-            Toggle::make('published')
+            'published' => Toggle::make('published')
                 ->label(__('shop::product.reviews.admin.form.published')),
         ];
     }

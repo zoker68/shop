@@ -5,9 +5,7 @@ namespace Zoker\Shop\Filament\Resources;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
@@ -18,70 +16,72 @@ use Filament\Tables\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
-use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Zoker\Shop\Filament\Resources\UserGroupResource\Pages;
 use Zoker\Shop\Models\UserGroup;
+use Zoker\Shop\Traits\Resources\ExtendableResource;
 
 class UserGroupResource extends Resource
 {
+    use ExtendableResource;
+
     protected static ?string $model = UserGroup::class;
 
     protected static ?string $slug = 'user-groups';
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
-    public static function form(Form $form): Form
+    public function presetForm(): void
     {
-        return $form
-            ->schema([
-                Placeholder::make('created_at')
-                    ->label(__('shop::auth.user_group.admin.form.created_at'))
-                    ->content(fn (?UserGroup $record): string => $record?->created_at?->diffForHumans() ?? '-'),
+        $this->addFormFields([
+            'created_at' => Placeholder::make('created_at')
+                ->label(__('shop::auth.user_group.admin.form.created_at'))
+                ->content(fn (?UserGroup $record): string => $record?->created_at?->diffForHumans() ?? '-'),
 
-                Placeholder::make('updated_at')
-                    ->label(__('shop::auth.user_group.admin.form.updated_at'))
-                    ->content(fn (?UserGroup $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
+            'updated_at' => Placeholder::make('updated_at')
+                ->label(__('shop::auth.user_group.admin.form.updated_at'))
+                ->content(fn (?UserGroup $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
 
-                TextInput::make('name')
-                    ->label(__('shop::auth.user_group.admin.form.name'))
-                    ->required(),
+            'name' => TextInput::make('name')
+                ->label(__('shop::auth.user_group.admin.form.name'))
+                ->required(),
 
-                Checkbox::make('is_admin')
-                    ->label(__('shop::auth.user_group.admin.form.is_admin')),
-            ]);
+            'is_admin' => Checkbox::make('is_admin')
+                ->label(__('shop::auth.user_group.admin.form.is_admin')),
+        ]);
     }
 
-    public static function table(Table $table): Table
+    public function presetTable(): void
     {
-        return $table
-            ->columns([
-                TextColumn::make('name')
-                    ->label(__('shop::auth.user_group.admin.list.name'))
-                    ->searchable()
-                    ->sortable(),
 
-                IconColumn::make('is_admin')
-                    ->label(__('shop::auth.user_group.admin.list.is_admin'))
-                    ->boolean(),
-            ])
-            ->filters([
-                TrashedFilter::make(),
-            ])
-            ->actions([
-                EditAction::make(),
-                DeleteAction::make(),
-                RestoreAction::make(),
-                ForceDeleteAction::make(),
-            ])
-            ->bulkActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                    RestoreBulkAction::make(),
-                    ForceDeleteBulkAction::make(),
-                ]),
-            ]);
+        $this->addTableColumns([
+            'name' => TextColumn::make('name')
+                ->label(__('shop::auth.user_group.admin.list.name'))
+                ->searchable()
+                ->sortable(),
+
+            'is_admin' => IconColumn::make('is_admin')
+                ->label(__('shop::auth.user_group.admin.list.is_admin'))
+                ->boolean(),
+        ]);
+
+        $this->addTableFilters([
+            'trashed' => TrashedFilter::make(),
+        ]);
+
+        $this->addTableActions([
+            'edit' => EditAction::make(),
+            'delete' => DeleteAction::make(),
+            'restore' => RestoreAction::make(),
+            'forceDelete' => ForceDeleteAction::make(),
+        ]);
+
+        $this->addTableBulkActions([
+            'delete' => DeleteBulkAction::make(),
+            'restore' => RestoreBulkAction::make(),
+            'forceDelete' => ForceDeleteBulkAction::make(),
+        ]);
     }
 
     public static function getPages(): array

@@ -2,9 +2,7 @@
 
 namespace Zoker\Shop\Filament\Resources;
 
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
@@ -15,15 +13,17 @@ use Filament\Tables\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\TrashedFilter;
-use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Zoker\Shop\Filament\Resources\ProductReviewResource\Pages;
 use Zoker\Shop\Models\ProductReview;
+use Zoker\Shop\Traits\Resources\ExtendableResource;
 
 class ProductReviewResource extends Resource
 {
+    use ExtendableResource;
+
     protected static ?string $model = ProductReview::class;
 
     protected static ?string $slug = 'product-reviews';
@@ -32,55 +32,55 @@ class ProductReviewResource extends Resource
 
     protected static ?string $navigationGroup = 'Products';
 
-    public static function form(Form $form): Form
+    public function presetForm(): void
     {
-        return $form
-            ->columns(3)
-            ->schema(ProductReview::getAdminFormSchema());
+        $this->addFormFields(ProductReview::getAdminFormSchema());
+
+        $this->setFormColumns(3);
     }
 
-    public static function table(Table $table): Table
+    public function presetTable(): void
     {
-        return $table
-            ->columns([
-                TextColumn::make('product.name')
-                    ->label(__('shop::product.reviews.admin.list.product'))
-                    ->searchable()
-                    ->sortable(),
+        $this->addTableColumns([
+            'product.name' => TextColumn::make('product.name')
+                ->label(__('shop::product.reviews.admin.list.product'))
+                ->searchable()
+                ->sortable(),
 
-                TextColumn::make('user.name')
-                    ->label(__('shop::product.reviews.admin.list.user'))
-                    ->searchable()
-                    ->sortable(),
+            'user.name' => TextColumn::make('user.name')
+                ->label(__('shop::product.reviews.admin.list.user'))
+                ->searchable()
+                ->sortable(),
 
-                TextColumn::make('rating')
-                    ->label(__('shop::product.reviews.admin.list.rating')),
+            'rating' => TextColumn::make('rating')
+                ->label(__('shop::product.reviews.admin.list.rating')),
 
-                TextColumn::make('review')
-                    ->label(__('shop::product.reviews.admin.list.review'))
-                    ->wrap()
-                    ->limit()
-                    ->words(30),
+            'review' => TextColumn::make('review')
+                ->label(__('shop::product.reviews.admin.list.review'))
+                ->wrap()
+                ->limit()
+                ->words(30),
 
-                ToggleColumn::make('published')
-                    ->label(__('shop::product.reviews.admin.list.published')),
-            ])
-            ->filters([
-                TrashedFilter::make(),
-            ])
-            ->actions([
-                EditAction::make(),
-                DeleteAction::make(),
-                RestoreAction::make(),
-                ForceDeleteAction::make(),
-            ])
-            ->bulkActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                    RestoreBulkAction::make(),
-                    ForceDeleteBulkAction::make(),
-                ]),
-            ]);
+            'published' => ToggleColumn::make('published')
+                ->label(__('shop::product.reviews.admin.list.published')),
+        ]);
+
+        $this->addTableFilters([
+            'trashed' => TrashedFilter::make(),
+        ]);
+
+        $this->addTableActions([
+            'edit' => EditAction::make(),
+            'delete' => DeleteAction::make(),
+            'restore' => RestoreAction::make(),
+            'forceDelete' => ForceDeleteAction::make(),
+        ], self::ACTION_MAIN_GROUP);
+
+        $this->addTableBulkActions([
+            'delete' => DeleteBulkAction::make(),
+            'restore' => RestoreBulkAction::make(),
+            'forceDelete' => ForceDeleteBulkAction::make(),
+        ], self::ACTION_MAIN_GROUP);
     }
 
     public static function getPages(): array

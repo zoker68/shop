@@ -4,7 +4,7 @@ namespace Zoker\Shop\Traits\Resources;
 
 trait ExtendableResource
 {
-    use FormExtendable, TableExtendable;
+    use FormExtendable, InfolistExtendable, TableExtendable;
 
     private static ?self $instance = null;
 

@@ -38,21 +38,21 @@ class Category extends Model
     public static function getAdminFormSchema(): array
     {
         return [
-            TextInput::make('name')
+            'name' => TextInput::make('name')
                 ->label(__('shop::category.admin.form.name'))
                 ->required()
                 ->maxLength(255),
-            TextInput::make('slug')
+            'slug' => TextInput::make('slug')
                 ->label(__('shop::category.admin.form.slug'))
                 ->maxLength(255)
                 ->unique(ignoreRecord: true),
-            Select::make('parent_id')
+            'parent_id' => Select::make('parent_id')
                 ->label(__('shop::category.admin.form.parent'))
                 ->options(fn ($record) => Category::getCategoryOptions($record))
                 ->required()
                 ->searchable()
                 ->columnSpanFull(),
-            Toggle::make('published')
+            'published' => Toggle::make('published')
                 ->label(__('shop::category.admin.form.published'))
                 ->required(),
         ];

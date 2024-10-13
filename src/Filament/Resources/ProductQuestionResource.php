@@ -2,22 +2,22 @@
 
 namespace Zoker\Shop\Filament\Resources;
 
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Support\Enums\VerticalAlignment;
-use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Zoker\Shop\Filament\Resources\ProductQuestionResource\Pages;
 use Zoker\Shop\Models\ProductQuestion;
+use Zoker\Shop\Traits\Resources\ExtendableResource;
 
 class ProductQuestionResource extends Resource
 {
+    use ExtendableResource;
+
     protected static ?string $model = ProductQuestion::class;
 
     protected static ?string $slug = 'product-question';
@@ -26,56 +26,52 @@ class ProductQuestionResource extends Resource
 
     protected static ?string $navigationGroup = 'Products';
 
-    public static function form(Form $form): Form
+    public function presetForm(): void
     {
-        return $form
-            ->schema(ProductQuestion::getAdminFormSchema());
+        $this->addFormFields(ProductQuestion::getAdminFormSchema());
     }
 
-    public static function table(Table $table): Table
+    public function presetTable(): void
     {
-        return $table
-            ->columns([
-                TextColumn::make('product.name')
-                    ->label(__('shop::product.questions.admin.list.product'))
-                    ->searchable()
-                    ->sortable()
-                    ->verticalAlignment(VerticalAlignment::Start),
+        $this->addTableColumns([
+            'product.name' => TextColumn::make('product.name')
+                ->label(__('shop::product.questions.admin.list.product'))
+                ->searchable()
+                ->sortable()
+                ->verticalAlignment(VerticalAlignment::Start),
 
-                TextColumn::make('user.name')
-                    ->label(__('shop::product.questions.admin.list.user'))
-                    ->searchable()
-                    ->sortable()
-                    ->verticalAlignment(VerticalAlignment::Start),
+            'user.name' => TextColumn::make('user.name')
+                ->label(__('shop::product.questions.admin.list.user'))
+                ->searchable()
+                ->sortable()
+                ->verticalAlignment(VerticalAlignment::Start),
 
-                TextColumn::make('question')
-                    ->label(__('shop::product.questions.admin.list.question'))
-                    ->limit()
-                    ->wrap()
-                    ->words(15)
-                    ->verticalAlignment(VerticalAlignment::Start),
+            'question' => TextColumn::make('question')
+                ->label(__('shop::product.questions.admin.list.question'))
+                ->limit()
+                ->wrap()
+                ->words(15)
+                ->verticalAlignment(VerticalAlignment::Start),
 
-                TextColumn::make('answer')
-                    ->label(__('shop::product.questions.admin.list.answer'))
-                    ->limit()
-                    ->wrap()
-                    ->html()
-                    ->words(15)
-                    ->verticalAlignment(VerticalAlignment::Start),
-            ])
-            ->defaultSort('created_at', 'desc')
-            ->filters([
-                //
-            ])
-            ->actions([
-                EditAction::make(),
-                DeleteAction::make(),
-            ])
-            ->bulkActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
-            ]);
+            'answer' => TextColumn::make('answer')
+                ->label(__('shop::product.questions.admin.list.answer'))
+                ->limit()
+                ->wrap()
+                ->html()
+                ->words(15)
+                ->verticalAlignment(VerticalAlignment::Start),
+        ]);
+
+        $this->setTableDefaultSort('created_at', 'desc');
+
+        $this->addTableActions([
+            'edit' => EditAction::make(),
+            'delete' => DeleteAction::make(),
+        ], self::ACTION_MAIN_GROUP);
+
+        $this->addTableBulkActions([
+            DeleteBulkAction::make(),
+        ]);
     }
 
     public static function getPages(): array

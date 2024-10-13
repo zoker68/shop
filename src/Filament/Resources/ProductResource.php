@@ -40,7 +40,7 @@ class ProductResource extends Resource
 
     protected static ?string $navigationGroup = 'Products';
 
-    protected function presetFields(): void
+    protected function presetForm(): void
     {
         $this->setFormColumns(3);
 
@@ -133,9 +133,9 @@ class ProductResource extends Resource
         ], self::ACTION_MAIN_GROUP);
 
         $this->addTableBulkActions([
-            'Delete' => DeleteBulkAction::make(),
-            'Restore' => RestoreBulkAction::make(),
-            'ForceDelete' => ForceDeleteBulkAction::make(),
+            'delete' => DeleteBulkAction::make(),
+            'restore' => RestoreBulkAction::make(),
+            'forceDelete' => ForceDeleteBulkAction::make(),
         ], self::ACTION_MAIN_GROUP);
     }
 

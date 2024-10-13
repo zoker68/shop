@@ -2,9 +2,12 @@
 
 namespace Zoker\Shop\Traits\Resources;
 
+use Closure;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use Zoker\Shop\Classes\Event;
 
 trait TableExtendable
@@ -20,6 +23,16 @@ trait TableExtendable
     private static array $allTableActions = [];
 
     private static array $allTableBulkActions = [];
+
+    private static ?string $tableReorderable = null;
+
+    private static ?string $tableDefaultSort = null;
+
+    private static ?string $tableDefaultSortDirection = null;
+
+    private static ?Closure $tableModifyQueryUsing = null;
+
+    private static string|Group|null $tableDefaultGroup = null;
 
     public function addTableColumns(array $columns): void
     {
@@ -97,15 +110,42 @@ trait TableExtendable
         }
     }
 
+    public function setTableReorderable(string $column): void
+    {
+        self::$tableReorderable = $column;
+    }
+
+    public function setTableDefaultSort(string $column, string $direction = 'asc'): void
+    {
+        self::$tableDefaultSort = $column;
+        self::$tableDefaultSortDirection = $direction;
+    }
+
+    public function setTableModifyQueryUsing(Closure $callback): void
+    {
+        self::$tableModifyQueryUsing = $callback;
+    }
+
+    public function setTableDefaultGroup(string|Group $group): void
+    {
+        self::$tableDefaultGroup = $group;
+    }
+
     public static function table(Table $table): Table
     {
         /** @var self $instance */
         $instance = self::getInstance();
-        $instance->presetTable();
+        if (method_exists($instance, 'presetTable')) {
+            $instance->presetTable();
+        }
 
         Event::dispatch('backend.table.extend', [$instance]);
 
         return $table
+            ->reorderable(self::$tableReorderable)
+            ->defaultSort(self::$tableDefaultSort, self::$tableDefaultSortDirection)
+            ->defaultGroup(self::$tableDefaultGroup)
+            ->modifyQueryUsing(self::$tableModifyQueryUsing ?? fn (Builder $query) => $query)
             ->columns($instance->generateTableSchema())
             ->filters($instance->generateTableFilters())
             ->actions($instance->generateTableActions())

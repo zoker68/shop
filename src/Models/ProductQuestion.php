@@ -38,33 +38,33 @@ class ProductQuestion extends Model
     public static function getAdminFormSchema(): array
     {
         return [
-            Placeholder::make('created_at')
+            'created_at' => Placeholder::make('created_at')
                 ->label(__('shop::product.questions.admin.form.created_at'))
                 ->content(fn (?ProductQuestion $record): string => $record?->created_at?->diffForHumans() ?? '-'),
 
-            Placeholder::make('updated_at')
+            'updated_at' => Placeholder::make('updated_at')
                 ->label(__('shop::product.questions.admin.form.updated_at'))
                 ->content(fn (?ProductQuestion $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
 
-            Select::make('product_id')
+            'product_id' => Select::make('product_id')
                 ->label(__('shop::product.questions.admin.form.product'))
                 ->relationship('product', 'name')
                 ->searchable()
                 ->required(),
 
-            Select::make('user_id')
+            'user_id' => Select::make('user_id')
                 ->label(__('shop::product.questions.admin.form.user'))
                 ->relationship('user', 'name')
                 ->searchable()
                 ->required(),
 
-            Textarea::make('question')
+            'question' => Textarea::make('question')
                 ->label(__('shop::product.questions.admin.form.question'))
                 ->minLength(5)
                 ->rows(10)
                 ->required(),
 
-            RichEditor::make('answer')
+            'answer' => RichEditor::make('answer')
                 ->label(__('shop::product.questions.admin.form.answer')),
         ];
     }

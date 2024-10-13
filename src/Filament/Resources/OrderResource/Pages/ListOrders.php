@@ -2,7 +2,6 @@
 
 namespace Zoker\Shop\Filament\Resources\OrderResource\Pages;
 
-use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Zoker\Shop\Filament\Resources\OrderResource;
 
@@ -12,8 +11,6 @@ class ListOrders extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        return [
-            CreateAction::make(),
-        ];
+        return [];
     }
 }

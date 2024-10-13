@@ -43,7 +43,9 @@ trait FormExtendable
     public static function form(Form $form): Form
     {
         $instance = self::getInstance();
-        $instance->presetFields();
+        if (method_exists($instance, 'presetForm')) {
+            $instance->presetForm();
+        }
 
         Event::dispatch('backend.form.extend', [$instance]);
 

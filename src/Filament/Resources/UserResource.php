@@ -5,112 +5,108 @@ namespace Zoker\Shop\Filament\Resources;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
 use Zoker\Shop\Filament\Resources\UserResource\Pages;
 use Zoker\Shop\Filament\Resources\UserResource\RelationManagers\AddressesRelationManager;
 use Zoker\Shop\Filament\Resources\UserResource\RelationManagers\GroupsRelationManager;
 use Zoker\Shop\Models\User;
+use Zoker\Shop\Traits\Resources\ExtendableResource;
 
 class UserResource extends Resource
 {
+    use ExtendableResource;
+
     protected static ?string $model = User::class;
 
     protected static ?string $slug = 'users';
 
     protected static ?string $navigationIcon = 'heroicon-o-user';
 
-    public static function form(Form $form): Form
+    public function presetForm(): void
     {
-        return $form
-            ->columns(3)
-            ->schema([
-                TextInput::make('email')
-                    ->label(__('shop::auth.admin.form.email'))
-                    ->email()
-                    ->required(),
+        $this->setFormColumns(3);
 
-                TextInput::make('password')
-                    ->label(__('shop::auth.admin.form.password'))
-                    ->password()
-                    ->rules(['min:8'])
-                    ->confirmed(),
+        $this->addFormFields([
+            'email' => TextInput::make('email')
+                ->label(__('shop::auth.admin.form.email'))
+                ->email()
+                ->required(),
 
-                TextInput::make('password_confirmation')
-                    ->label(__('shop::auth.admin.form.password_confirmation'))
-                    ->password(),
+            'password' => TextInput::make('password')
+                ->label(__('shop::auth.admin.form.password'))
+                ->password()
+                ->rules(['min:8'])
+                ->confirmed(),
 
-                TextInput::make('name')
-                    ->label(__('shop::auth.admin.form.name'))
-                    ->required(),
+            'password_confirmation' => TextInput::make('password_confirmation')
+                ->label(__('shop::auth.admin.form.password_confirmation'))
+                ->password(),
 
-                TextInput::make('surname')
-                    ->label(__('shop::auth.admin.form.surname')),
+            'name' => TextInput::make('name')
+                ->label(__('shop::auth.admin.form.name'))
+                ->required(),
 
-                TextInput::make('phone')
-                    ->label(__('shop::auth.admin.form.phone')),
+            'surname' => TextInput::make('surname')
+                ->label(__('shop::auth.admin.form.surname')),
 
-                DatePicker::make('birthday')
-                    ->label(__('shop::auth.admin.form.birthday')),
+            'phone' => TextInput::make('phone')
+                ->label(__('shop::auth.admin.form.phone')),
 
-                TextInput::make('company')
-                    ->label(__('shop::auth.admin.form.company')),
+            'birthday' => DatePicker::make('birthday')
+                ->label(__('shop::auth.admin.form.birthday')),
 
-                TextInput::make('vat')
-                    ->label(__('shop::auth.admin.form.vat')),
+            'company' => TextInput::make('company')
+                ->label(__('shop::auth.admin.form.company')),
 
-                Placeholder::make('created_at')
-                    ->columnStart(1)
-                    ->label(__('shop::auth.admin.form.created_at'))
-                    ->content(fn (?User $record): string => $record?->created_at?->diffForHumans() ?? '-'),
+            'vat' => TextInput::make('vat')
+                ->label(__('shop::auth.admin.form.vat')),
 
-                Placeholder::make('updated_at')
-                    ->label(__('shop::auth.admin.form.updated_at'))
-                    ->content(fn (?User $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
+            'created_at' => Placeholder::make('created_at')
+                ->columnStart(1)
+                ->label(__('shop::auth.admin.form.created_at'))
+                ->content(fn (?User $record): string => $record?->created_at?->diffForHumans() ?? '-'),
 
-                Placeholder::make('email_verified_at')
-                    ->label(__('shop::auth.admin.form.email_verified_at'))
-                    ->content(fn (?User $record): string => $record?->email_verified_at?->format('Y-m-d H:i:s') ?? '-'),
-            ]);
+            'updated_at' => Placeholder::make('updated_at')
+                ->label(__('shop::auth.admin.form.updated_at'))
+                ->content(fn (?User $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
+
+            'email_verified_at' => Placeholder::make('email_verified_at')
+                ->label(__('shop::auth.admin.form.email_verified_at'))
+                ->content(fn (?User $record): string => $record?->email_verified_at?->format('Y-m-d H:i:s') ?? '-'),
+        ]);
     }
 
-    public static function table(Table $table): Table
+    public function presetTable(): void
     {
-        return $table
-            ->columns([
-                TextColumn::make('email')
-                    ->label(__('shop::auth.admin.list.email'))
-                    ->searchable()
-                    ->sortable(),
+        $this->addTableColumns([
+            'email' => TextColumn::make('email')
+                ->label(__('shop::auth.admin.list.email'))
+                ->searchable()
+                ->sortable(),
 
-                TextColumn::make('name')
-                    ->label(__('shop::auth.admin.list.name'))
-                    ->searchable()
-                    ->sortable(),
+            'name' => TextColumn::make('name')
+                ->label(__('shop::auth.admin.list.name'))
+                ->searchable()
+                ->sortable(),
 
-                TextColumn::make('surname')
-                    ->label(__('shop::auth.admin.list.surname'))
-                    ->searchable()
-                    ->sortable(),
-            ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                EditAction::make(),
-                DeleteAction::make(),
-            ])
-            ->bulkActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
-            ]);
+            'surname' => TextColumn::make('surname')
+                ->label(__('shop::auth.admin.list.surname'))
+                ->searchable()
+                ->sortable(),
+        ]);
+
+        $this->addTableActions([
+            'edit' => EditAction::make(),
+            'delete' => DeleteAction::make(),
+        ]);
+
+        $this->addTableBulkActions([
+            'delete' => DeleteBulkAction::make(),
+        ]);
     }
 
     public static function getRelations(): array

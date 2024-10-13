@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 use Zoker\Shop\Enums\ViewType;
 
+// TODO: Add Soft Delete
 class User extends Authenticatable implements FilamentUser
 {
     use HasFactory, Notifiable;

@@ -6,9 +6,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
@@ -19,14 +17,16 @@ use Filament\Tables\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\TrashedFilter;
-use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Zoker\Shop\Filament\Resources\ShippingMethodResource\Pages;
 use Zoker\Shop\Models\ShippingMethod;
+use Zoker\Shop\Traits\Resources\ExtendableResource;
 
 class ShippingMethodResource extends Resource
 {
+    use ExtendableResource;
+
     protected static ?string $model = ShippingMethod::class;
 
     protected static ?string $slug = 'shipping-methods';
@@ -35,106 +35,106 @@ class ShippingMethodResource extends Resource
 
     protected static ?string $navigationGroup = 'Checkout';
 
-    public static function form(Form $form): Form
+    public function presetForm(): void
     {
-        return $form
-            ->schema([
-                TextInput::make('name')
-                    ->label(__('shop::checkout.shipping.admin.form.name'))
-                    ->required(),
+        $this->addFormFields([
+            'name' => TextInput::make('name')
+                ->label(__('shop::checkout.shipping.admin.form.name'))
+                ->required(),
 
-                Textarea::make('description')
-                    ->label(__('shop::checkout.shipping.admin.form.description')),
+            'description' => Textarea::make('description')
+                ->label(__('shop::checkout.shipping.admin.form.description')),
 
-                FileUpload::make('image')
-                    ->label(__('shop::product.admin.form.image'))
-                    ->image()
-                    ->directory('shipping-methods')
-                    ->imageEditor()
-                    ->imageEditorAspectRatios(['1:1', '4:3', '16:9', '3:1', '4:1']),
+            'image' => FileUpload::make('image')
+                ->label(__('shop::product.admin.form.image'))
+                ->image()
+                ->directory('shipping-methods')
+                ->imageEditor()
+                ->imageEditorAspectRatios(['1:1', '4:3', '16:9', '3:1', '4:1']),
 
-                TextInput::make('sort')
-                    ->label(__('shop::checkout.shipping.admin.form.sort'))
-                    ->default(fn () => count(ShippingMethod::all()) + 1)
-                    ->required()
-                    ->integer(),
+            'sort' => TextInput::make('sort')
+                ->label(__('shop::checkout.shipping.admin.form.sort'))
+                ->default(fn () => ShippingMethod::count() + 1)
+                ->required()
+                ->integer(),
 
-                TextInput::make('price')
-                    ->label(__('shop::checkout.shipping.admin.form.price'))
-                    ->default(0)
-                    ->required()
-                    ->numeric()
-                    ->prefix(currency()->getPrefix())
-                    ->postfix(currency()->getSuffix())
-                    ->minValue(0)
-                    ->afterStateHydrated(fn ($state, $set) => $set('price', $state / (currency()->getSubunit()))),
+            'price' => TextInput::make('price')
+                ->label(__('shop::checkout.shipping.admin.form.price'))
+                ->default(0)
+                ->required()
+                ->numeric()
+                ->prefix(currency()->getPrefix())
+                ->postfix(currency()->getSuffix())
+                ->minValue(0)
+                ->afterStateHydrated(fn ($state, $set) => $set('price', $state / (currency()->getSubunit()))),
 
-                TextInput::make('days')
-                    ->label(__('shop::checkout.shipping.admin.form.days'))
-                    ->default(0)
-                    ->required()
-                    ->string(),
+            'days' => TextInput::make('days')
+                ->label(__('shop::checkout.shipping.admin.form.days'))
+                ->default(0)
+                ->required()
+                ->string(),
 
-                TextInput::make('available_from')
-                    ->label(__('shop::checkout.shipping.admin.form.available_from.label'))
-                    ->helperText(__('shop::checkout.shipping.admin.form.available_from.description'))
-                    ->default(0)
-                    ->numeric()
-                    ->prefix(currency()->getPrefix())
-                    ->postfix(currency()->getSuffix())
-                    ->minValue(0)
-                    ->afterStateHydrated(fn ($state, $set) => $set('available_from', $state / (currency()->getSubunit()))),
+            'available_from' => TextInput::make('available_from')
+                ->label(__('shop::checkout.shipping.admin.form.available_from.label'))
+                ->helperText(__('shop::checkout.shipping.admin.form.available_from.description'))
+                ->default(0)
+                ->numeric()
+                ->prefix(currency()->getPrefix())
+                ->postfix(currency()->getSuffix())
+                ->minValue(0)
+                ->afterStateHydrated(fn ($state, $set) => $set('available_from', $state / (currency()->getSubunit()))),
 
-                TextInput::make('available_until')
-                    ->label(__('shop::checkout.shipping.admin.form.available_until.label'))
-                    ->helperText(__('shop::checkout.shipping.admin.form.available_until.description'))
-                    ->default(0)
-                    ->numeric()
-                    ->prefix(currency()->getPrefix())
-                    ->postfix(currency()->getSuffix())
-                    ->minValue(0)
-                    ->afterStateHydrated(fn ($state, $set) => $set('available_until', $state / (currency()->getSubunit()))),
+            'available_until' => TextInput::make('available_until')
+                ->label(__('shop::checkout.shipping.admin.form.available_until.label'))
+                ->helperText(__('shop::checkout.shipping.admin.form.available_until.description'))
+                ->default(0)
+                ->numeric()
+                ->prefix(currency()->getPrefix())
+                ->postfix(currency()->getSuffix())
+                ->minValue(0)
+                ->afterStateHydrated(fn ($state, $set) => $set('available_until', $state / (currency()->getSubunit()))),
 
-                Toggle::make('published')
-                    ->label(__('shop::checkout.shipping.admin.form.published')),
-            ]);
+            'published' => Toggle::make('published')
+                ->label(__('shop::checkout.shipping.admin.form.published')),
+        ]);
     }
 
-    public static function table(Table $table): Table
+    public function presetTable(): void
     {
-        return $table
-            ->defaultSort('sort')
-            ->reorderable('sort')
-            ->columns([
-                TextColumn::make('name')
-                    ->label(__('shop::checkout.shipping.admin.list.name'))
-                    ->searchable()
-                    ->sortable(),
+        $this->setTableDefaultSort('sort');
 
-                TextColumn::make('price')
-                    ->label(__('shop::checkout.shipping.admin.list.price'))
-                    ->money(currency()->getCurrency(), currency()->getSubunit()),
+        $this->setTableReorderable('sort');
 
-                ToggleColumn::make('published')
-                    ->label(__('shop::checkout.shipping.admin.list.published')),
+        $this->addTableColumns([
+            'name' => TextColumn::make('name')
+                ->label(__('shop::checkout.shipping.admin.list.name'))
+                ->searchable()
+                ->sortable(),
 
-            ])
-            ->filters([
-                TrashedFilter::make(),
-            ])
-            ->actions([
-                EditAction::make(),
-                DeleteAction::make(),
-                RestoreAction::make(),
-                ForceDeleteAction::make(),
-            ])
-            ->bulkActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                    RestoreBulkAction::make(),
-                    ForceDeleteBulkAction::make(),
-                ]),
-            ]);
+            'price' => TextColumn::make('price')
+                ->label(__('shop::checkout.shipping.admin.list.price'))
+                ->money(currency()->getCurrency(), currency()->getSubunit()),
+
+            'published' => ToggleColumn::make('published')
+                ->label(__('shop::checkout.shipping.admin.list.published')),
+        ]);
+
+        $this->addTableFilters([
+            'trashed' => TrashedFilter::make(),
+        ]);
+
+        $this->addTableActions([
+            'edit' => EditAction::make(),
+            'delete' => DeleteAction::make(),
+            'restore' => RestoreAction::make(),
+            'forceDelete' => ForceDeleteAction::make(),
+        ]);
+
+        $this->addTableBulkActions([
+            'delete' => DeleteBulkAction::make(),
+            'restore' => RestoreBulkAction::make(),
+            'forceDelete' => ForceDeleteBulkAction::make(),
+        ]);
     }
 
     public static function getPages(): array

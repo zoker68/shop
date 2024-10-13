@@ -29,21 +29,21 @@ class Region extends Model
     public static function getAdminFormSchema(): array
     {
         return [
-            Select::make('country_id')
+            'country_id' => Select::make('country_id')
                 ->label(__('shop::region.admin.form.country'))
                 ->relationship('country', 'name')
                 ->searchable()
                 ->required(),
 
-            TextInput::make('name')
+            'name' => TextInput::make('name')
                 ->label(__('shop::region.admin.form.name'))
                 ->required(),
 
-            TextInput::make('code')
+            'code' => TextInput::make('code')
                 ->label(__('shop::region.admin.form.code'))
                 ->required(),
 
-            Toggle::make('published')
+            'published' => Toggle::make('published')
                 ->label(__('shop::region.admin.form.published')),
         ];
     }

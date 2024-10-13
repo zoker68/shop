@@ -5,10 +5,8 @@ namespace Zoker\Shop\Filament\Resources;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
@@ -17,99 +15,97 @@ use Filament\Tables\Actions\ForceDeleteBulkAction;
 use Filament\Tables\Actions\RestoreAction;
 use Filament\Tables\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Zoker\Shop\Enums\PropertyFilter;
 use Zoker\Shop\Enums\PropertyType;
 use Zoker\Shop\Filament\Resources\PropertyResource\Pages;
 use Zoker\Shop\Models\Property;
+use Zoker\Shop\Traits\Resources\ExtendableResource;
 
 class PropertyResource extends Resource
 {
+    use ExtendableResource;
+
     protected static ?string $model = Property::class;
 
     protected static ?string $slug = 'properties';
 
     protected static ?string $navigationIcon = 'heroicon-o-adjustments-horizontal';
 
-    public static function form(Form $form): Form
+    public function presetForm(): void
     {
-        return $form
-            ->schema([
-                TextInput::make('name')
-                    ->label(__('shop::properties.admin.form.name'))
-                    ->required(),
+        $this->addFormFields([
+            'name' => TextInput::make('name')
+                ->label(__('shop::properties.admin.form.name'))
+                ->required(),
 
-                Select::make('type')
-                    ->label(__('shop::properties.admin.form.type'))
-                    ->columnStart(1)
-                    ->live()
-                    ->options(PropertyType::getOptions())
-                    ->required(),
+            'type' => Select::make('type')
+                ->label(__('shop::properties.admin.form.type'))
+                ->columnStart(1)
+                ->live()
+                ->options(PropertyType::getOptions())
+                ->required(),
 
-                Select::make('filter')
-                    ->label(__('shop::properties.admin.form.filter'))
-                    ->live()
-                    ->options(function (Get $get) {
-                        if (! $get('type')) {
-                            return [];
-                        }
+            'filter' => Select::make('filter')
+                ->label(__('shop::properties.admin.form.filter'))
+                ->live()
+                ->options(function (Get $get) {
+                    if (! $get('type')) {
+                        return [];
+                    }
 
-                        return PropertyType::from($get('type'))->instance()->getFiltersWithLabel();
-                    })
-                    ->hidden(fn (Get $get) => ! $get('type'))
-                    ->required(),
+                    return PropertyType::from($get('type'))->instance()->getFiltersWithLabel();
+                })
+                ->hidden(fn (Get $get) => ! $get('type'))
+                ->required(),
 
-                Repeater::make('options')
-                    ->label(__('shop::properties.admin.form.options'))
-                    ->live()
-                    ->hidden(fn (Get $get) => ! self::shouldShowOptions($get))
-                    ->schema(function (Get $get) {
-                        if (! $get('type')) {
-                            return [];
-                        }
+            'options' => Repeater::make('options')
+                ->label(__('shop::properties.admin.form.options'))
+                ->live()
+                ->hidden(fn (Get $get) => ! self::shouldShowOptions($get))
+                ->schema(function (Get $get) {
+                    if (! $get('type')) {
+                        return [];
+                    }
 
-                        return PropertyType::from($get('type'))->getOptionsForm();
-                    })
-                    ->defaultItems(0)
-                    ->grid(4)
-                    ->columnSpanFull(),
-            ]);
+                    return PropertyType::from($get('type'))->getOptionsForm();
+                })
+                ->defaultItems(0)
+                ->grid(4)
+                ->columnSpanFull(),
+        ]);
     }
 
-    public static function table(Table $table): Table
+    public function presetTable(): void
     {
-        return $table
-            ->reorderable('sort')
-            ->columns([
-                TextColumn::make('name')
-                    ->label(__('shop::properties.admin.list.name'))
-                    ->searchable()
-                    ->sortable(),
+        $this->setTableReorderable('sort');
 
-                TextColumn::make('type')
-                    ->label(__('shop::properties.admin.list.type')),
+        $this->addTableColumns([
+            'name' => TextColumn::make('name')
+                ->label(__('shop::properties.admin.list.name'))
+                ->searchable()
+                ->sortable(),
 
-                TextColumn::make('filter')
-                    ->label(__('shop::properties.admin.list.filter')),
-            ])
-            ->filters([
+            'type' => TextColumn::make('type')
+                ->label(__('shop::properties.admin.list.type')),
 
-            ])
-            ->actions([
-                EditAction::make(),
-                DeleteAction::make(),
-                RestoreAction::make(),
-                ForceDeleteAction::make(),
-            ])
-            ->bulkActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                    RestoreBulkAction::make(),
-                    ForceDeleteBulkAction::make(),
-                ]),
-            ]);
+            'filter' => TextColumn::make('filter')
+                ->label(__('shop::properties.admin.list.filter')),
+        ]);
+
+        $this->addTableActions([
+            'edit' => EditAction::make(),
+            'delete' => DeleteAction::make(),
+            'restore' => RestoreAction::make(),
+            'forceDelete' => ForceDeleteAction::make(),
+        ]);
+
+        $this->addTableBulkActions([
+            'delete' => DeleteBulkAction::make(),
+            'restore' => RestoreBulkAction::make(),
+            'forceDelete' => ForceDeleteBulkAction::make(),
+        ]);
     }
 
     public static function getPages(): array

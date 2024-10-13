@@ -172,21 +172,29 @@ $resource->removeTableColumn(string $name);
 
 $resource->removeTableColumns(array $names);
 
-$resorce->addTableFilters(array $filters);
+$resource->addTableFilters(array $filters);
 
-$resorce->removeTableFilter(string $name);
+$resource->removeTableFilter(string $name);
 
-$resorce->removeTableFilters(array $names);
+$resource->removeTableFilters(array $names);
 
-$resorce->addTableActions(array $actions, string $group = self::ACTIONS_NO_IN_GROUP);
+$resource->addTableActions(array $actions, string $group = self::ACTIONS_NO_IN_GROUP);
 
-$resorce->removeTableAction(string $name, string $group = self::ACTIONS_NO_IN_GROUP);
+$resource->removeTableAction(string $name, string $group = self::ACTIONS_NO_IN_GROUP);
 
-$resorce->removeTableActions(array $names, string $group = self::ACTIONS_NO_IN_GROUP);
+$resource->removeTableActions(array $names, string $group = self::ACTIONS_NO_IN_GROUP);
 
-$resorce->addTableBulkActions(array $actions, string $group = self::ACTIONS_NO_IN_GROUP);
+$resource->addTableBulkActions(array $actions, string $group = self::ACTIONS_NO_IN_GROUP);
 
-$resorce->removeTableBulkAction(string $name, string $group = self::ACTIONS_NO_IN_GROUP);
+$resource->removeTableBulkAction(string $name, string $group = self::ACTIONS_NO_IN_GROUP);
 
-$resorce->removeTableBulkActions(array $names, string $group = self::ACTIONS_NO_IN_GROUP);
+$resource->removeTableBulkActions(array $names, string $group = self::ACTIONS_NO_IN_GROUP);
+
+$resource->setTableReorderable(string $column);
+
+$resource->setTableDefaultSort(string $column, string $direction = 'asc');
+
+$resource->setTableModifyQueryUsing(Closure $callback);
+
+$resource->setTableDefaultGroup(string|Group $group)
 ```

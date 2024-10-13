@@ -2,20 +2,23 @@
 
 namespace Zoker\Shop\Filament\Resources;
 
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ForceDeleteAction;
 use Filament\Tables\Actions\ForceDeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
-use Filament\Tables\Table;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Grouping\Group;
 use Zoker\Shop\Filament\Resources\RegionResource\Pages;
 use Zoker\Shop\Models\Region;
+use Zoker\Shop\Traits\Resources\ExtendableResource;
 
 class RegionResource extends Resource
 {
+    use ExtendableResource;
+
     protected static ?string $model = Region::class;
 
     protected static ?string $slug = 'regions';
@@ -24,44 +27,52 @@ class RegionResource extends Resource
 
     protected static ?string $navigationGroup = 'Locations';
 
-    public static function form(Form $form): Form
+    public function presetForm(): void
     {
-        return $form
-            ->schema(Region::getAdminFormSchema());
+        $this->addFormFields(Region::getAdminFormSchema());
     }
 
-    public static function table(Table $table): Table
+    public function presetTable(): void
     {
-        return $table
-            ->columns([
-                TextColumn::make('country.name')
-                    ->label(__('shop::region.admin.list.country'))
-                    ->searchable()
-                    ->sortable(),
+        $this->addTableColumns([
+            TextColumn::make('country.name')
+                ->label(__('shop::region.admin.list.country'))
+                ->searchable()
+                ->sortable(),
 
-                TextColumn::make('name')
-                    ->label(__('shop::region.admin.list.name'))
-                    ->sortable()
-                    ->searchable(),
+            TextColumn::make('name')
+                ->label(__('shop::region.admin.list.name'))
+                ->sortable()
+                ->searchable(),
 
-                TextColumn::make('code')
-                    ->label(__('shop::region.admin.list.code')),
+            TextColumn::make('code')
+                ->label(__('shop::region.admin.list.code')),
 
-                ToggleColumn::make('published')
-                    ->label(__('shop::region.admin.list.published')),
-            ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                EditAction::make(),
-                ForceDeleteAction::make(),
-            ])
-            ->bulkActions([
-                BulkActionGroup::make([
-                    ForceDeleteBulkAction::make(),
-                ]),
-            ]);
+            ToggleColumn::make('published')
+                ->label(__('shop::region.admin.list.published')),
+        ]);
+
+        $this->setTableDefaultGroup(Group::make('country.name')
+            ->collapsible()
+        );
+
+        $this->addTableFilters([
+            'country' => SelectFilter::make('country')
+                ->label(__('shop::region.admin.list.country'))
+                ->relationship('country', 'name')
+                ->searchable()
+                ->preload(),
+        ]);
+
+        $this->addTableActions([
+            'edit' => EditAction::make(),
+            'delete' => DeleteAction::make(),
+            'forceDelete' => ForceDeleteAction::make(),
+        ]);
+
+        $this->addTableBulkActions([
+            'forceDelete' => ForceDeleteBulkAction::make(),
+        ]);
     }
 
     public static function getPages(): array
