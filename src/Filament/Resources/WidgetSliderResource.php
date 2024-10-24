@@ -95,11 +95,11 @@ class WidgetSliderResource extends Resource
         ]);
     }
 
-    public function presetTable(): void
+    public function presetList(): void
     {
-        $this->setTableDefaultGroup('code');
+        $this->setListDefaultGroup('code');
 
-        $this->addTableColumns([
+        $this->addListColumns([
             'image' => ImageColumn::make('image')
                 ->label('Background Image')
                 ->square(),
@@ -114,18 +114,18 @@ class WidgetSliderResource extends Resource
                 ->description(fn (?WidgetSlide $record): string => $record?->link ?? '-'),
         ]);
 
-        $this->addTableFilters([
+        $this->addListFilters([
             'trashed' => TrashedFilter::make(),
         ]);
 
-        $this->addTableActions([
+        $this->addListActions([
             'edit' => EditAction::make(),
             'delete' => DeleteAction::make(),
             'restore' => RestoreAction::make(),
             'forceDelete' => ForceDeleteAction::make(),
         ], self::ACTION_MAIN_GROUP);
 
-        $this->addTableBulkActions([
+        $this->addListBulkActions([
             'delete' => DeleteBulkAction::make(),
             'restore' => RestoreBulkAction::make(),
             'forceDelete' => ForceDeleteBulkAction::make(),

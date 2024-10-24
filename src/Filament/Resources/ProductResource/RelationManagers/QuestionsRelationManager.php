@@ -2,47 +2,45 @@
 
 namespace Zoker\Shop\Filament\Resources\ProductResource\RelationManagers;
 
-use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
-use Filament\Tables\Table;
 use Zoker\Shop\Models\ProductQuestion;
+use Zoker\Shop\Traits\Resources\ExtendableRelationManager;
 
 class QuestionsRelationManager extends RelationManager
 {
+    use ExtendableRelationManager;
+
     protected static string $relationship = 'questions';
 
-    public function form(Form $form): Form
+    public function presetForm(): void
     {
-        return $form
-            ->schema(ProductQuestion::getAdminFormSchema());
+        $this->addFormFields(ProductQuestion::getAdminFormSchema());
     }
 
-    public function table(Table $table): Table
+    public function presetList(): void
     {
-        return $table
-            ->recordTitleAttribute('question')
-            ->columns([
-                Tables\Columns\TextColumn::make('question')
-                    ->label(__('shop::admin.product.question.list.product'))
-                    ->wrap()
-                    ->limit(300)
-                    ->words(40),
-            ])
-            ->filters([
-                //
-            ])
-            ->headerActions([
-                Tables\Actions\CreateAction::make(),
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+        $this->setListRecordTitleAttribute('question');
+
+        $this->addListColumns([
+            'question' => Tables\Columns\TextColumn::make('question')
+                ->label(__('shop::admin.product.question.list.question'))
+                ->wrap()
+                ->limit(300)
+                ->words(40),
+        ]);
+
+        $this->addListHeaderActions([
+            'create' => Tables\Actions\CreateAction::make(),
+        ]);
+
+        $this->addListActions([
+            'edit' => Tables\Actions\EditAction::make(),
+            'delete' => Tables\Actions\DeleteAction::make(),
+        ]);
+
+        $this->addListBulkActions([
+            'delete' => Tables\Actions\DeleteBulkAction::make(),
+        ]);
     }
 }

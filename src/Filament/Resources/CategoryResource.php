@@ -22,9 +22,9 @@ class CategoryResource extends Resource
         $this->addFormFields(Category::getAdminFormSchema());
     }
 
-    public function presetTable(): void
+    public function presetList(): void
     {
-        $this->addTableColumns([
+        $this->addListColumns([
             'name' => TextColumn::make('name')
                 ->label(__('shop::category.admin.list.name'))
                 ->sortable()
@@ -58,15 +58,15 @@ class CategoryResource extends Resource
                 ->toggleable(isToggledHiddenByDefault: true),
         ]);
 
-        $this->setTableReorderable('order');
-        $this->setTableDefaultSort('order');
+        $this->setListReorderable('order');
+        $this->setListDefaultSort('order');
 
-        $this->addTableActions([
+        $this->addListActions([
             'edit' => Tables\Actions\EditAction::make(),
             'delete' => Tables\Actions\DeleteAction::make(),
         ], self::ACTION_MAIN_GROUP);
 
-        $this->addTableBulkActions([
+        $this->addListBulkActions([
             'delete' => Tables\Actions\DeleteBulkAction::make(),
         ]);
     }

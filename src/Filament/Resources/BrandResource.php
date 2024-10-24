@@ -73,9 +73,9 @@ class BrandResource extends Resource
         ]);
     }
 
-    public function presetTable(): void
+    public function presetList(): void
     {
-        $this->addTableColumns([
+        $this->addListColumns([
             'name' => TextColumn::make('name')
                 ->label(__('shop::brand.admin.list.name'))
                 ->searchable()
@@ -87,18 +87,18 @@ class BrandResource extends Resource
                 ->label(__('shop::brand.admin.form.published')),
         ]);
 
-        $this->addTableFilters([
+        $this->addListFilters([
             'trashed' => TrashedFilter::make(),
         ]);
 
-        $this->addTableActions([
+        $this->addListActions([
             'edit' => EditAction::make(),
             'delete' => DeleteAction::make(),
             'restore' => RestoreAction::make(),
             'forceDelete' => ForceDeleteAction::make(),
         ]);
 
-        $this->addTableBulkActions([
+        $this->addListBulkActions([
             'delete' => DeleteBulkAction::make(),
             'restore' => RestoreBulkAction::make(),
             'forceDelete' => ForceDeleteBulkAction::make(),

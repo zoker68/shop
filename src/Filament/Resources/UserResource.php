@@ -80,9 +80,9 @@ class UserResource extends Resource
         ]);
     }
 
-    public function presetTable(): void
+    public function presetList(): void
     {
-        $this->addTableColumns([
+        $this->addListColumns([
             'email' => TextColumn::make('email')
                 ->label(__('shop::auth.admin.list.email'))
                 ->searchable()
@@ -99,12 +99,12 @@ class UserResource extends Resource
                 ->sortable(),
         ]);
 
-        $this->addTableActions([
+        $this->addListActions([
             'edit' => EditAction::make(),
             'delete' => DeleteAction::make(),
         ]);
 
-        $this->addTableBulkActions([
+        $this->addListBulkActions([
             'delete' => DeleteBulkAction::make(),
         ]);
     }

@@ -166,35 +166,35 @@ Event::listen('backend.table.extend', function ($resource) {
 
 ### Methods
 ```php
-$resource->addTableColumns(array $columns);
+$resource->addListColumns(array $columns);
 
-$resource->removeTableColumn(string $name);
+$resource->removeListColumn(string $name);
 
-$resource->removeTableColumns(array $names);
+$resource->removeListColumns(array $names);
 
-$resource->addTableFilters(array $filters);
+$resource->addListFilters(array $filters);
 
-$resource->removeTableFilter(string $name);
+$resource->removeListFilter(string $name);
 
-$resource->removeTableFilters(array $names);
+$resource->removeListFilters(array $names);
 
-$resource->addTableActions(array $actions, string $group = self::ACTIONS_NO_IN_GROUP);
+$resource->addListActions(array $actions, string $group = self::ACTIONS_NO_IN_GROUP);
 
-$resource->removeTableAction(string $name, string $group = self::ACTIONS_NO_IN_GROUP);
+$resource->removeListAction(string $name, string $group = self::ACTIONS_NO_IN_GROUP);
 
-$resource->removeTableActions(array $names, string $group = self::ACTIONS_NO_IN_GROUP);
+$resource->removeListActions(array $names, string $group = self::ACTIONS_NO_IN_GROUP);
 
-$resource->addTableBulkActions(array $actions, string $group = self::ACTIONS_NO_IN_GROUP);
+$resource->addListBulkActions(array $actions, string $group = self::ACTIONS_NO_IN_GROUP);
 
-$resource->removeTableBulkAction(string $name, string $group = self::ACTIONS_NO_IN_GROUP);
+$resource->removeListBulkAction(string $name, string $group = self::ACTIONS_NO_IN_GROUP);
 
-$resource->removeTableBulkActions(array $names, string $group = self::ACTIONS_NO_IN_GROUP);
+$resource->removeListBulkActions(array $names, string $group = self::ACTIONS_NO_IN_GROUP);
 
-$resource->setTableReorderable(string $column);
+$resource->setListReorderable(string $column);
 
-$resource->setTableDefaultSort(string $column, string $direction = 'asc');
+$resource->setListDefaultSort(string $column, string $direction = 'asc');
 
-$resource->setTableModifyQueryUsing(Closure $callback);
+$resource->setListModifyQueryUsing(Closure $callback);
 
-$resource->setTableDefaultGroup(string|Group $group)
+$resource->setListDefaultGroup(string|Group $group)
 ```

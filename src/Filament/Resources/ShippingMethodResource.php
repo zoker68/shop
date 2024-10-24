@@ -99,13 +99,13 @@ class ShippingMethodResource extends Resource
         ]);
     }
 
-    public function presetTable(): void
+    public function presetList(): void
     {
-        $this->setTableDefaultSort('sort');
+        $this->setListDefaultSort('sort');
 
-        $this->setTableReorderable('sort');
+        $this->setListReorderable('sort');
 
-        $this->addTableColumns([
+        $this->addListColumns([
             'name' => TextColumn::make('name')
                 ->label(__('shop::checkout.shipping.admin.list.name'))
                 ->searchable()
@@ -119,18 +119,18 @@ class ShippingMethodResource extends Resource
                 ->label(__('shop::checkout.shipping.admin.list.published')),
         ]);
 
-        $this->addTableFilters([
+        $this->addListFilters([
             'trashed' => TrashedFilter::make(),
         ]);
 
-        $this->addTableActions([
+        $this->addListActions([
             'edit' => EditAction::make(),
             'delete' => DeleteAction::make(),
             'restore' => RestoreAction::make(),
             'forceDelete' => ForceDeleteAction::make(),
         ]);
 
-        $this->addTableBulkActions([
+        $this->addListBulkActions([
             'delete' => DeleteBulkAction::make(),
             'restore' => RestoreBulkAction::make(),
             'forceDelete' => ForceDeleteBulkAction::make(),

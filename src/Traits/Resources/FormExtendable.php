@@ -14,6 +14,19 @@ trait FormExtendable
 
     private static array $formColumns = [];
 
+    private function generateForm(Form $form): Form
+    {
+        if (method_exists($this, 'presetForm')) {
+            $this->presetForm();
+        }
+
+        Event::dispatch('backend.form.extend', [$this]);
+
+        return $form
+            ->columns($this->getFormColumns())
+            ->schema($this->generateFormSchema());
+    }
+
     public function addFormFields(array $fields, string $tab = self::GENERAL_TAB): void
     {
         if (! isset(self::$allFormFields[$tab])) {
@@ -38,20 +51,6 @@ trait FormExtendable
         foreach ($names as $name) {
             $this->removeFormField($name, $tab);
         }
-    }
-
-    public static function form(Form $form): Form
-    {
-        $instance = self::getInstance();
-        if (method_exists($instance, 'presetForm')) {
-            $instance->presetForm();
-        }
-
-        Event::dispatch('backend.form.extend', [$instance]);
-
-        return $form
-            ->columns($instance->getFormColumns())
-            ->schema($instance->generateFormSchema());
     }
 
     protected function generateFormSchema(): array

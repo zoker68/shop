@@ -2,53 +2,51 @@
 
 namespace Zoker\Shop\Filament\Resources\ProductResource\RelationManagers;
 
-use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
 use Zoker\Shop\Models\ProductReview;
+use Zoker\Shop\Traits\Resources\ExtendableRelationManager;
 
 class ReviewsRelationManager extends RelationManager
 {
+    use ExtendableRelationManager;
+
     protected static string $relationship = 'reviews';
 
-    public function form(Form $form): Form
+    public function presetForm(): void
     {
-        return $form
-            ->schema(ProductReview::getAdminFormSchema());
+        $this->addFormFields(ProductReview::getAdminFormSchema());
     }
 
-    public function table(Table $table): Table
+    public function presetList(): void
     {
-        return $table
-            ->recordTitleAttribute('created_at')
-            ->columns([
-                TextColumn::make('rating')
-                    ->label(__('shop::product.reviews.admin.list.rating')),
+        $this->setListRecordTitleAttribute('created_at');
 
-                TextColumn::make('review')
-                    ->label(__('shop::product.reviews.admin.list.review'))
-                    ->wrap()
-                    ->limit(200)
-                    ->words(30),
-                TextColumn::make('created_at')
-                    ->label(__('shop::product.reviews.admin.list.created_at')),
-            ])
-            ->filters([
-                //
-            ])
-            ->headerActions([
-                Tables\Actions\CreateAction::make(),
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+        $this->addListColumns([
+            'rating' => Tables\Columns\TextColumn::make('rating')
+                ->label(__('shop::product.reviews.admin.list.rating')),
+
+            'review' => Tables\Columns\TextColumn::make('review')
+                ->label(__('shop::product.reviews.admin.list.review'))
+                ->wrap()
+                ->limit(200)
+                ->words(30),
+
+            'created_at' => Tables\Columns\TextColumn::make('created_at')
+                ->label(__('shop::product.reviews.admin.list.created_at')),
+        ]);
+
+        $this->addListHeaderActions([
+            'create' => Tables\Actions\CreateAction::make(),
+        ]);
+
+        $this->addListActions([
+            'edit' => Tables\Actions\EditAction::make(),
+            'delete' => Tables\Actions\DeleteAction::make(),
+        ]);
+
+        $this->addListBulkActions([
+            'delete' => Tables\Actions\DeleteBulkAction::make(),
+        ]);
     }
 }

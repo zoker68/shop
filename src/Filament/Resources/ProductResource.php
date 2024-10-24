@@ -98,9 +98,9 @@ class ProductResource extends Resource
         ]);
     }
 
-    public function presetTable(): void
+    public function presetList(): void
     {
-        $this->addTableColumns([
+        $this->addListColumns([
             'name' => TextColumn::make('name')
                 ->label(__('shop::product.admin.list.name'))
                 ->searchable()
@@ -121,18 +121,18 @@ class ProductResource extends Resource
 
         ]);
 
-        $this->addTableFilters([
+        $this->addListFilters([
             'trashed' => TrashedFilter::make(),
         ]);
 
-        $this->addTableActions([
+        $this->addListActions([
             'edit' => EditAction::make(),
             'delete' => DeleteAction::make(),
             'restore' => RestoreAction::make(),
             'forceDelete' => ForceDeleteAction::make(),
         ], self::ACTION_MAIN_GROUP);
 
-        $this->addTableBulkActions([
+        $this->addListBulkActions([
             'delete' => DeleteBulkAction::make(),
             'restore' => RestoreBulkAction::make(),
             'forceDelete' => ForceDeleteBulkAction::make(),

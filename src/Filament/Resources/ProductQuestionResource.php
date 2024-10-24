@@ -31,9 +31,9 @@ class ProductQuestionResource extends Resource
         $this->addFormFields(ProductQuestion::getAdminFormSchema());
     }
 
-    public function presetTable(): void
+    public function presetList(): void
     {
-        $this->addTableColumns([
+        $this->addListColumns([
             'product.name' => TextColumn::make('product.name')
                 ->label(__('shop::product.questions.admin.list.product'))
                 ->searchable()
@@ -62,14 +62,14 @@ class ProductQuestionResource extends Resource
                 ->verticalAlignment(VerticalAlignment::Start),
         ]);
 
-        $this->setTableDefaultSort('created_at', 'desc');
+        $this->setListDefaultSort('created_at', 'desc');
 
-        $this->addTableActions([
+        $this->addListActions([
             'edit' => EditAction::make(),
             'delete' => DeleteAction::make(),
         ], self::ACTION_MAIN_GROUP);
 
-        $this->addTableBulkActions([
+        $this->addListBulkActions([
             DeleteBulkAction::make(),
         ]);
     }

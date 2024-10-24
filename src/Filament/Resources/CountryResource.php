@@ -53,11 +53,11 @@ class CountryResource extends Resource
         ]);
     }
 
-    public function presetTable()
+    public function presetList(): void
     {
-        $this->setTableDefaultSort('published', 'desc');
+        $this->setListDefaultSort('published', 'desc');
 
-        $this->addTableColumns([
+        $this->addListColumns([
             'name' => TextColumn::make('name')
                 ->sortable()
                 ->label(__('shop::country.admin.list.name')),
@@ -78,12 +78,12 @@ class CountryResource extends Resource
                 ->label(__('shop::country.admin.list.pined')),
         ]);
 
-        $this->addTableActions([
+        $this->addListActions([
             'edit' => EditAction::make(),
             'delete' => DeleteAction::make(),
         ]);
 
-        $this->addTableBulkActions([
+        $this->addListBulkActions([
             'delete' => DeleteBulkAction::make(),
         ]);
     }

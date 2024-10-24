@@ -39,9 +39,9 @@ class ProductReviewResource extends Resource
         $this->setFormColumns(3);
     }
 
-    public function presetTable(): void
+    public function presetList(): void
     {
-        $this->addTableColumns([
+        $this->addListColumns([
             'product.name' => TextColumn::make('product.name')
                 ->label(__('shop::product.reviews.admin.list.product'))
                 ->searchable()
@@ -65,18 +65,18 @@ class ProductReviewResource extends Resource
                 ->label(__('shop::product.reviews.admin.list.published')),
         ]);
 
-        $this->addTableFilters([
+        $this->addListFilters([
             'trashed' => TrashedFilter::make(),
         ]);
 
-        $this->addTableActions([
+        $this->addListActions([
             'edit' => EditAction::make(),
             'delete' => DeleteAction::make(),
             'restore' => RestoreAction::make(),
             'forceDelete' => ForceDeleteAction::make(),
         ], self::ACTION_MAIN_GROUP);
 
-        $this->addTableBulkActions([
+        $this->addListBulkActions([
             'delete' => DeleteBulkAction::make(),
             'restore' => RestoreBulkAction::make(),
             'forceDelete' => ForceDeleteBulkAction::make(),

@@ -16,7 +16,7 @@ class Region extends Model
         return $this->belongsTo(Country::class);
     }
 
-    public function scopeForCountryId(Builder $query, int $countryId): Builder
+    public function scopeForCountryId(Builder $query, ?int $countryId): Builder
     {
         if (! $countryId > 0) {
             return $query;
@@ -33,6 +33,7 @@ class Region extends Model
                 ->label(__('shop::region.admin.form.country'))
                 ->relationship('country', 'name')
                 ->searchable()
+                ->preload()
                 ->required(),
 
             'name' => TextInput::make('name')

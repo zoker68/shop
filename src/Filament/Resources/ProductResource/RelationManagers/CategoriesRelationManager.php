@@ -2,47 +2,48 @@
 
 namespace Zoker\Shop\Filament\Resources\ProductResource\RelationManagers;
 
-use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
-use Filament\Tables\Table;
 use Zoker\Shop\Models\Category;
+use Zoker\Shop\Traits\Resources\ExtendableRelationManager;
 
 class CategoriesRelationManager extends RelationManager
 {
+    use ExtendableRelationManager;
+
     protected static string $relationship = 'categories';
 
-    public function isReadOnly(): bool
+    public function presetForm(): void
     {
-        return false;
+        $this->addFormFields(Category::getAdminFormSchema());
     }
 
-    public function form(Form $form): Form
+    public function presetList(): void
     {
-        return $form
-            ->schema(Category::getAdminFormSchema());
-    }
+        $this->setListRecordTitleAttribute('name');
 
-    public function table(Table $table): Table
-    {
-        return $table
-            ->recordTitleAttribute('name')
-            ->columns([
-                Tables\Columns\TextColumn::make('full_name'),
-            ])
-            ->headerActions([
-                Tables\Actions\CreateAction::make(),
-                Tables\Actions\AttachAction::make()
-                    ->preloadRecordSelect()
-                    ->multiple()
-                    ->recordTitle(fn ($record) => $record->full_name),
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DetachAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\DetachBulkAction::make(),
-            ]);
+        $this->addListColumns([
+            'name' => Tables\Columns\TextColumn::make('full_name'),
+
+            'published' => Tables\Columns\IconColumn::make('published')
+                ->boolean(),
+        ]);
+
+        $this->addListHeaderActions([
+            'create' => Tables\Actions\CreateAction::make(),
+            'attach' => Tables\Actions\AttachAction::make()
+                ->preloadRecordSelect()
+                ->multiple()
+                ->recordTitle(fn ($record) => $record->full_name),
+        ]);
+
+        $this->addListBulkActions([
+            'detach' => Tables\Actions\DetachBulkAction::make(),
+        ]);
+
+        $this->addListActions([
+            'edit' => Tables\Actions\EditAction::make(),
+            'detach' => Tables\Actions\DetachAction::make(),
+        ]);
     }
 }

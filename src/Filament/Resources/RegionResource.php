@@ -32,9 +32,9 @@ class RegionResource extends Resource
         $this->addFormFields(Region::getAdminFormSchema());
     }
 
-    public function presetTable(): void
+    public function presetList(): void
     {
-        $this->addTableColumns([
+        $this->addListColumns([
             TextColumn::make('country.name')
                 ->label(__('shop::region.admin.list.country'))
                 ->searchable()
@@ -52,11 +52,11 @@ class RegionResource extends Resource
                 ->label(__('shop::region.admin.list.published')),
         ]);
 
-        $this->setTableDefaultGroup(Group::make('country.name')
+        $this->setListDefaultGroup(Group::make('country.name')
             ->collapsible()
         );
 
-        $this->addTableFilters([
+        $this->addListFilters([
             'country' => SelectFilter::make('country')
                 ->label(__('shop::region.admin.list.country'))
                 ->relationship('country', 'name')
@@ -64,13 +64,13 @@ class RegionResource extends Resource
                 ->preload(),
         ]);
 
-        $this->addTableActions([
+        $this->addListActions([
             'edit' => EditAction::make(),
             'delete' => DeleteAction::make(),
             'forceDelete' => ForceDeleteAction::make(),
         ]);
 
-        $this->addTableBulkActions([
+        $this->addListBulkActions([
             'forceDelete' => ForceDeleteBulkAction::make(),
         ]);
     }

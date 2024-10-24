@@ -2,8 +2,8 @@
 
 return [
     'admin' => [
-        'add_property' => 'Добавить свойство',
-        'property' => 'Свойство',
+        'add_property' => 'Add property',
+        'property' => 'Property',
         'form' => [
             'name' => 'Property Name',
             'type' => 'Value Type',

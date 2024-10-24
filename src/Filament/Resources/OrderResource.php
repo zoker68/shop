@@ -199,13 +199,13 @@ class OrderResource extends Resource
         ]);
     }
 
-    public function presetTable(): void
+    public function presetList(): void
     {
-        $this->setTableDefaultSort('created_at', 'desc');
+        $this->setListDefaultSort('created_at', 'desc');
 
-        $this->setTableModifyQueryUsing(fn (Builder $query) => $query->with(['generalStatus', 'paymentStatus', 'shippingStatus']));
+        $this->setListModifyQueryUsing(fn (Builder $query) => $query->with(['generalStatus', 'paymentStatus', 'shippingStatus']));
 
-        $this->addTableColumns([
+        $this->addListColumns([
             'user.name' => TextColumn::make('user.name')
                 ->label(__('shop::order.admin.list.user'))
                 ->searchable()
@@ -275,7 +275,7 @@ class OrderResource extends Resource
                 ->money(currency()->getCurrency(), currency()->getSubunit()),
         ]);
 
-        $this->addTableFilters([
+        $this->addListFilters([
             'trashed' => TrashedFilter::make('trashed'),
             'generalStatus' => SelectFilter::make('generalStatus')
                 ->label(__('shop::order.admin.list.filter.general_status'))
@@ -288,13 +288,13 @@ class OrderResource extends Resource
                 ->options(OrderStatusType::SHIPPING->getStatuses()->pluck('name', 'id')),
         ]);
 
-        $this->addTableActions([
+        $this->addListActions([
             'view' => ViewAction::make(),
             'restore' => RestoreAction::make(),
             'forceDelete' => ForceDeleteAction::make(),
         ]);
 
-        $this->addTableBulkActions([
+        $this->addListBulkActions([
             'delete' => DeleteBulkAction::make(),
             'restore' => RestoreBulkAction::make(),
             'forceDelete' => ForceDeleteBulkAction::make(),

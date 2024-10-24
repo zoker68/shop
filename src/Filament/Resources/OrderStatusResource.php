@@ -68,13 +68,13 @@ class OrderStatusResource extends Resource
         ]);
     }
 
-    public function presetTable(): void
+    public function presetList(): void
     {
-        $this->setTableDefaultSort('type');
+        $this->setListDefaultSort('type');
 
-        $this->setTableReorderable('order');
+        $this->setListReorderable('order');
 
-        $this->addTableColumns([
+        $this->addListColumns([
             'name' => TextColumn::make('name')
                 ->label(__('shop::order.status_type.admin.list.name'))
                 ->searchable()
@@ -92,24 +92,24 @@ class OrderStatusResource extends Resource
                 ->offColor('gray'),
         ]);
 
-        $this->addTableFilters([
+        $this->addListFilters([
             'trashed' => TrashedFilter::make(),
         ]);
 
-        $this->addTableActions([
+        $this->addListActions([
             'edit' => EditAction::make(),
             'delete' => DeleteAction::make(),
             'restore' => RestoreAction::make(),
             'forceDelete' => ForceDeleteAction::make(),
         ]);
 
-        $this->addTableBulkActions([
+        $this->addListBulkActions([
             'delete' => DeleteBulkAction::make(),
             'restore' => RestoreBulkAction::make(),
             'forceDelete' => ForceDeleteBulkAction::make(),
         ], self::ACTION_MAIN_GROUP);
 
-        $this->setTableDefaultGroup(
+        $this->setListDefaultGroup(
             Group::make('type')
                 ->getTitleFromRecordUsing(fn (OrderStatus $record): string => $record->type->getLabel())
         );
