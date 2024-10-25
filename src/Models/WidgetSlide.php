@@ -4,8 +4,8 @@ namespace Zoker\Shop\Models;
 
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Zoker\Shop\Classes\Model;
 use Zoker\Shop\Observers\WidgetSlideObserver;
 
 #[ObservedBy(WidgetSlideObserver::class)]

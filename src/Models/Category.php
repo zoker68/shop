@@ -8,10 +8,10 @@ use Filament\Forms\Components\Toggle;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
+use Zoker\Shop\Classes\Model;
 use Zoker\Shop\Observers\CategoryObserver;
 use Zoker\Shop\Traits\Models\Sluggable;
 use Zoker\Shop\Traits\Models\TreeTrait;
@@ -21,7 +21,7 @@ class Category extends Model
 {
     use HasFactory, Sluggable, TreeTrait;
 
-    protected array $sluggable = ['name'];
+    protected array $slugs = ['slug' => ['name']];
 
     const CACHE_KEY = 'all_categories';
 

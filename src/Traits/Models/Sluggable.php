@@ -2,67 +2,72 @@
 
 namespace Zoker\Shop\Traits\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
-use Illuminate\Validation\ValidationException;
 
 trait Sluggable
 {
-    protected function generateUniqueSlug(): string
+    protected static function bootSluggable(): void
     {
-        $slug = Str::slug($this->generateFirstSlug());
-        $originalSlug = $slug;
+        static::saving(function (self $model) {
+            $model->setSluggableAttributes();
+        });
+    }
+
+    protected function setSluggableAttributes(): void
+    {
+        foreach ($this->slugs as $slugAttribute => $slugSource) {
+            $this->setSlugValue($slugAttribute, $slugSource);
+        }
+    }
+
+    protected function setSlugValue(string $attribute, string|array $source): void
+    {
+        if (! $this->{$attribute}) {
+            $slug = $this->getSlugValue($source);
+
+            $slug = Str::slug($slug, language: app()->getLocale());
+
+            $this->{$attribute} = $this->getUniqueSlug($attribute, $slug);
+        }
+    }
+
+    protected function getUniqueSlug(string $attribute, string $slug): string
+    {
+        $value = $slug;
+
         $counter = 1;
-
-        while ($this->slugExists($slug)) {
-            $slug = $originalSlug . '-' . $counter++;
+        while ($this->newSluggableQuery()->where($attribute, $value)->exists()) {
+            $value = $slug . '-' . ++$counter;
         }
 
-        return $slug;
+        return $value;
     }
 
-    protected function slugExists($slug): bool
+    protected function newSluggableQuery(): Builder
     {
-        return self::where('slug', $slug)
-            ->when($this->id, fn ($query) => $query->where('id', '!=', $this->id))
-            ->exists();
-    }
+        $query = $this->newQuery();
 
-    public function checkSlug(): void
-    {
-        if (! $this->slug) {
-            $this->slug = $this->generateUniqueSlug();
+        if (method_exists($this, 'bootSoftDeletes')) {
+            $query->withTrashed();
         }
 
-        if ($this->isDirty('slug')) {
-            if ($this->slugExists($this->slug)) {
-                throw ValidationException::withMessages(['slug' => __('shop::trait.model.sluggable.error.slug')]);
-            }
-        }
+        $query->where($this->getKeyName(), '!=', $this->getKey());
+
+        return $query;
     }
 
-    public function generateFirstSlug(): string
+    public function getSlugValue(array|string $source): string
     {
-        $slug = [];
-        if (is_string($this->sluggable)) {
-            return $this->{$this->sluggable};
+        if (is_string($source)) {
+            $source = [$source];
         }
 
-        foreach ($this->sluggable as $attribute) {
-            if ($this->{$attribute}) {
-                $slug[] = $this->{$attribute};
-            }
+        $attributes = [];
+        foreach ($source as $attribute) {
+            $attributes[] = $this->getAttribute($attribute);
         }
 
-        return implode('-', $slug);
-    }
-
-    public static function bySlug(string $slug): ?self
-    {
-        return self::where('slug', $slug)->first();
-    }
-
-    public static function bySlugOrFail(string $slug): ?self
-    {
-        return self::where('slug', $slug)->firstOrFail();
+        return implode(' ', $attributes);
     }
 }

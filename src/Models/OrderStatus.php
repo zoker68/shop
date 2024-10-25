@@ -5,8 +5,8 @@ namespace Zoker\Shop\Models;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Zoker\Shop\Classes\Model;
 use Zoker\Shop\Enums\OrderStatusType;
 use Zoker\Shop\Observers\OrderStatusObserver;
 

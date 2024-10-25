@@ -2,6 +2,6 @@
 
 namespace Zoker\Shop\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Zoker\Shop\Classes\Model;
 
 class SyncLog extends Model {}

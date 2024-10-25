@@ -3,11 +3,9 @@
 namespace Zoker\Shop\Models;
 
 use Bkwld\Croppa\Facades\Croppa;
-use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -16,15 +14,14 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Laravel\Scout\Builder as ScoutBuiler;
+use Laravel\Scout\Builder as ScoutBuilder;
 use Laravel\Scout\Searchable;
 use Veelasky\LaravelHashId\Eloquent\HashableId;
+use Zoker\Shop\Classes\Model;
 use Zoker\Shop\Enums\ProductsSorting;
 use Zoker\Shop\Enums\ProductStatus;
-use Zoker\Shop\Observers\ProductObserver;
 use Zoker\Shop\Traits\Models\Sluggable;
 
-#[ObservedBy(ProductObserver::class)]
 class Product extends Model
 {
     use HasFactory, HashableId, Searchable, Sluggable, SoftDeletes;
@@ -33,7 +30,7 @@ class Product extends Model
         'status' => ProductStatus::class,
     ];
 
-    protected $sluggable = 'name';
+    protected array $slugs = ['slug' => 'name'];
 
     /* --------------------- Relations Start --------------------- */
     public function brand(): BelongsTo
@@ -259,7 +256,7 @@ class Product extends Model
         return $this->published && $this->status == ProductStatus::APPROVED;
     }
 
-    public static function meiliSearch(string $query, ?Category $category, array $filters = []): ScoutBuiler
+    public static function meiliSearch(string $query, ?Category $category, array $filters = []): ScoutBuilder
     {
         $sorting = ProductsSorting::getSortingOption($filters['sort'] ?? null);
 
