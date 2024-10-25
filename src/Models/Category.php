@@ -25,6 +25,8 @@ class Category extends Model
 
     const CACHE_KEY = 'all_categories';
 
+    protected static ?Collection $allCategories = null;
+
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class);
@@ -84,9 +86,11 @@ class Category extends Model
 
     public static function getAllCached(): Collection
     {
-        return Cache::rememberForever(self::CACHE_KEY, function () {
-            return Category::orderBy('order')->get();
-        });
+        if (! self::$allCategories) {
+            self::$allCategories = Cache::rememberForever(self::CACHE_KEY, fn () => Category::orderBy('order')->get());
+        }
+
+        return self::$allCategories;
     }
 
     /**
