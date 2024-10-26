@@ -17,6 +17,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Zoker\FilamentStaticPages\StaticPages;
 
 class FilamentPanelProvider extends PanelProvider
 {
@@ -36,6 +37,7 @@ class FilamentPanelProvider extends PanelProvider
             ->pages([
                 Pages\Dashboard::class,
             ])
+            ->plugin(StaticPages::make())
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'Zoker\\Shop\\Filament\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
