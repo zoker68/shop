@@ -48,5 +48,8 @@ return [
     'filament' => [
         'path' => app_path('Filament/Resources'),
         'namespace' => 'App\\Filament\\Resources',
+
+        'plugins' => [
+        ],
     ],
 ];
