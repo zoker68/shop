@@ -2,15 +2,12 @@
 
 namespace Zoker\Shop\Filament\Resources\OrderResource\RelationManagers;
 
-use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables\Columns\Summarizers\Summarizer;
 use Filament\Tables\Columns\TextColumn;
-use Zoker\Shop\Traits\Resources\ExtendableRelationManager;
+use Zoker\Shop\Classes\Bases\BaseRelationManager;
 
-class ProductsRelationManager extends RelationManager
+class ProductsRelationManager extends BaseRelationManager
 {
-    use ExtendableRelationManager;
-
     protected static string $relationship = 'products';
 
     protected static ?string $label = 'Products';

@@ -2,14 +2,11 @@
 
 namespace Zoker\Shop\Filament\Resources\UserResource\RelationManagers;
 
-use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
-use Zoker\Shop\Traits\Resources\ExtendableRelationManager;
+use Zoker\Shop\Classes\Bases\BaseRelationManager;
 
-class GroupsRelationManager extends RelationManager
+class GroupsRelationManager extends BaseRelationManager
 {
-    use ExtendableRelationManager;
-
     protected static string $relationship = 'groups';
 
     public function presetList(): void

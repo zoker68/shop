@@ -2,15 +2,12 @@
 
 namespace Zoker\Shop\Filament\Resources\ProductResource\RelationManagers;
 
-use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
+use Zoker\Shop\Classes\Bases\BaseRelationManager;
 use Zoker\Shop\Models\ProductQuestion;
-use Zoker\Shop\Traits\Resources\ExtendableRelationManager;
 
-class QuestionsRelationManager extends RelationManager
+class QuestionsRelationManager extends BaseRelationManager
 {
-    use ExtendableRelationManager;
-
     protected static string $relationship = 'questions';
 
     public function presetForm(): void

@@ -6,7 +6,6 @@ use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Get;
-use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
@@ -19,15 +18,13 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Zoker\Shop\Classes\Bases\BaseRelationManager;
 use Zoker\Shop\Models\Address;
 use Zoker\Shop\Models\Country;
 use Zoker\Shop\Models\Region;
-use Zoker\Shop\Traits\Resources\ExtendableRelationManager;
 
-class AddressesRelationManager extends RelationManager
+class AddressesRelationManager extends BaseRelationManager
 {
-    use ExtendableRelationManager;
-
     protected static string $relationship = 'addresses';
 
     protected static bool $isLazy = true;

@@ -2,20 +2,17 @@
 
 namespace Zoker\Shop\Filament\Resources\CountryResource\RelationManagers;
 
-use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
+use Zoker\Shop\Classes\Bases\BaseRelationManager;
 use Zoker\Shop\Models\Region;
-use Zoker\Shop\Traits\Resources\ExtendableRelationManager;
 
-class RegionsRelationManager extends RelationManager
+class RegionsRelationManager extends BaseRelationManager
 {
-    use ExtendableRelationManager;
-
     protected static string $relationship = 'regions';
 
     public function presetForm(): void

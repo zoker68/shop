@@ -7,14 +7,14 @@ use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
-use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Str;
+use Zoker\Shop\Classes\Bases\BaseRelationManager;
 use Zoker\Shop\Models\Property;
 
-class PropertiesRelationManager extends RelationManager
+class PropertiesRelationManager extends BaseRelationManager
 {
     protected static string $relationship = 'properties';
 
