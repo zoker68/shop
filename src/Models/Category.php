@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Cache;
 use Zoker\Shop\Classes\Bases\BaseModel;
 use Zoker\Shop\Observers\CategoryObserver;
 use Zoker\Shop\Traits\Models\Sluggable;
@@ -87,7 +86,7 @@ class Category extends BaseModel
     public static function getAllCached(): Collection
     {
         if (! self::$allCategories) {
-            self::$allCategories = Cache::rememberForever(self::CACHE_KEY, fn () => Category::orderBy('order')->get());
+            self::$allCategories = Category::orderBy('order')->get();
         }
 
         return self::$allCategories;
