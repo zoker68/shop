@@ -6,7 +6,6 @@ use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Resources\Resource;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
@@ -20,15 +19,13 @@ use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Grouping\Group;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Zoker\Shop\Classes\Bases\BaseResource;
 use Zoker\Shop\Enums\OrderStatusType;
 use Zoker\Shop\Filament\Resources\OrderStatusResource\Pages;
 use Zoker\Shop\Models\OrderStatus;
-use Zoker\Shop\Traits\Resources\ExtendableResource;
 
-class OrderStatusResource extends Resource
+class OrderStatusResource extends BaseResource
 {
-    use ExtendableResource;
-
     protected static ?string $model = OrderStatus::class;
 
     protected static ?string $slug = 'order-statuses';

@@ -7,7 +7,6 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Resources\Resource;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
@@ -19,6 +18,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Zoker\Shop\Classes\Bases\BaseResource;
 use Zoker\Shop\Enums\ProductStatus;
 use Zoker\Shop\Filament\Resources\ProductResource\Pages;
 use Zoker\Shop\Filament\Resources\ProductResource\RelationManagers\CategoriesRelationManager;
@@ -26,12 +26,9 @@ use Zoker\Shop\Filament\Resources\ProductResource\RelationManagers\PropertiesRel
 use Zoker\Shop\Filament\Resources\ProductResource\RelationManagers\QuestionsRelationManager;
 use Zoker\Shop\Filament\Resources\ProductResource\RelationManagers\ReviewsRelationManager;
 use Zoker\Shop\Models\Product;
-use Zoker\Shop\Traits\Resources\ExtendableResource;
 
-class ProductResource extends Resource
+class ProductResource extends BaseResource
 {
-    use ExtendableResource;
-
     protected static ?string $model = Product::class;
 
     protected static ?string $slug = 'products';

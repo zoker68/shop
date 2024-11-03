@@ -2,6 +2,6 @@
 
 namespace Zoker\Shop\Models;
 
-use Zoker\Shop\Classes\Model;
+use Zoker\Shop\Classes\Bases\BaseModel;
 
-class SyncLog extends Model {}
+class SyncLog extends BaseModel {}

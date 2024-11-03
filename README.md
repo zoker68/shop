@@ -198,3 +198,11 @@ $resource->setListModifyQueryUsing(Closure $callback);
 
 $resource->setListDefaultGroup(string|Group $group)
 ```
+
+# Extend classes (Models, Resources)
+
+```php
+Model::addMethod('methodName', function (Model $model) {
+    /* Do something */
+});
+```

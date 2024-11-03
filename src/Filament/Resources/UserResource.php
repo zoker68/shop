@@ -5,21 +5,18 @@ namespace Zoker\Shop\Filament\Resources;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
-use Filament\Resources\Resource;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
+use Zoker\Shop\Classes\Bases\BaseResource;
 use Zoker\Shop\Filament\Resources\UserResource\Pages;
 use Zoker\Shop\Filament\Resources\UserResource\RelationManagers\AddressesRelationManager;
 use Zoker\Shop\Filament\Resources\UserResource\RelationManagers\GroupsRelationManager;
 use Zoker\Shop\Models\User;
-use Zoker\Shop\Traits\Resources\ExtendableResource;
 
-class UserResource extends Resource
+class UserResource extends BaseResource
 {
-    use ExtendableResource;
-
     protected static ?string $model = User::class;
 
     protected static ?string $slug = 'users';

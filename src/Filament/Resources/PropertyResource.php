@@ -6,7 +6,6 @@ use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Get;
-use Filament\Resources\Resource;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
@@ -17,16 +16,14 @@ use Filament\Tables\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Zoker\Shop\Classes\Bases\BaseResource;
 use Zoker\Shop\Enums\PropertyFilter;
 use Zoker\Shop\Enums\PropertyType;
 use Zoker\Shop\Filament\Resources\PropertyResource\Pages;
 use Zoker\Shop\Models\Property;
-use Zoker\Shop\Traits\Resources\ExtendableResource;
 
-class PropertyResource extends Resource
+class PropertyResource extends BaseResource
 {
-    use ExtendableResource;
-
     protected static ?string $model = Property::class;
 
     protected static ?string $slug = 'properties';

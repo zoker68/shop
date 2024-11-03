@@ -9,14 +9,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
-use Zoker\Shop\Classes\Model;
+use Zoker\Shop\Classes\Bases\BaseModel;
 use Zoker\Shop\Enums\CartStatus;
 use Zoker\Shop\Enums\OrderStatusType;
 use Zoker\Shop\Exceptions\ProductInCartException;
 use Zoker\Shop\Observers\CartObserver;
 
 #[ObservedBy(CartObserver::class)]
-class Cart extends Model
+class Cart extends BaseModel
 {
     use HasFactory, SoftDeletes;
 

@@ -9,9 +9,9 @@ use Filament\Forms\Components\Textarea;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Zoker\Shop\Classes\Model;
+use Zoker\Shop\Classes\Bases\BaseModel;
 
-class ProductQuestion extends Model
+class ProductQuestion extends BaseModel
 {
     use HasFactory;
 

@@ -8,7 +8,6 @@ use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Get;
-use Filament\Resources\Resource;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
@@ -22,14 +21,12 @@ use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Zoker\Shop\Classes\Bases\BaseResource;
 use Zoker\Shop\Filament\Resources\BrandResource\Pages;
 use Zoker\Shop\Models\Brand;
-use Zoker\Shop\Traits\Resources\ExtendableResource;
 
-class BrandResource extends Resource
+class BrandResource extends BaseResource
 {
-    use ExtendableResource;
-
     protected static ?string $model = Brand::class;
 
     protected static ?string $slug = 'brands';

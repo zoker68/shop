@@ -2,7 +2,6 @@
 
 namespace Zoker\Shop\Filament\Resources;
 
-use Filament\Resources\Resource;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ForceDeleteAction;
@@ -11,14 +10,12 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Grouping\Group;
+use Zoker\Shop\Classes\Bases\BaseResource;
 use Zoker\Shop\Filament\Resources\RegionResource\Pages;
 use Zoker\Shop\Models\Region;
-use Zoker\Shop\Traits\Resources\ExtendableResource;
 
-class RegionResource extends Resource
+class RegionResource extends BaseResource
 {
-    use ExtendableResource;
-
     protected static ?string $model = Region::class;
 
     protected static ?string $slug = 'regions';

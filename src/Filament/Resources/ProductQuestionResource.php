@@ -2,7 +2,6 @@
 
 namespace Zoker\Shop\Filament\Resources;
 
-use Filament\Resources\Resource;
 use Filament\Support\Enums\VerticalAlignment;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
@@ -10,14 +9,12 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Zoker\Shop\Classes\Bases\BaseResource;
 use Zoker\Shop\Filament\Resources\ProductQuestionResource\Pages;
 use Zoker\Shop\Models\ProductQuestion;
-use Zoker\Shop\Traits\Resources\ExtendableResource;
 
-class ProductQuestionResource extends Resource
+class ProductQuestionResource extends BaseResource
 {
-    use ExtendableResource;
-
     protected static ?string $model = ProductQuestion::class;
 
     protected static ?string $slug = 'product-question';

@@ -2,17 +2,14 @@
 
 namespace Zoker\Shop\Filament\Resources;
 
-use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Zoker\Shop\Classes\Bases\BaseResource;
 use Zoker\Shop\Filament\Resources\CategoryResource\Pages;
 use Zoker\Shop\Models\Category;
-use Zoker\Shop\Traits\Resources\ExtendableResource;
 
-class CategoryResource extends Resource
+class CategoryResource extends BaseResource
 {
-    use ExtendableResource;
-
     protected static ?string $model = Category::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';

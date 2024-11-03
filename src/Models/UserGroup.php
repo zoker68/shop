@@ -4,9 +4,9 @@ namespace Zoker\Shop\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Zoker\Shop\Classes\Model;
+use Zoker\Shop\Classes\Bases\BaseModel;
 
-class UserGroup extends Model
+class UserGroup extends BaseModel
 {
     use SoftDeletes;
 

@@ -5,9 +5,9 @@ namespace Zoker\Shop\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Zoker\Shop\Classes\Model;
+use Zoker\Shop\Classes\Bases\BaseModel;
 
-class Country extends Model
+class Country extends BaseModel
 {
     use HasFactory;
 

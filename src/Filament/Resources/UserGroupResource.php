@@ -5,7 +5,6 @@ namespace Zoker\Shop\Filament\Resources;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
-use Filament\Resources\Resource;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
@@ -18,14 +17,12 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Zoker\Shop\Classes\Bases\BaseResource;
 use Zoker\Shop\Filament\Resources\UserGroupResource\Pages;
 use Zoker\Shop\Models\UserGroup;
-use Zoker\Shop\Traits\Resources\ExtendableResource;
 
-class UserGroupResource extends Resource
+class UserGroupResource extends BaseResource
 {
-    use ExtendableResource;
-
     protected static ?string $model = UserGroup::class;
 
     protected static ?string $slug = 'user-groups';

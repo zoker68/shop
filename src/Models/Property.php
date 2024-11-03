@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
-use Zoker\Shop\Classes\Model;
+use Zoker\Shop\Classes\Bases\BaseModel;
 use Zoker\Shop\Enums\PropertyFilter;
 use Zoker\Shop\Enums\PropertyType;
 use Zoker\Shop\Observers\PropertyObserver;
 
 #[ObservedBy(PropertyObserver::class)]
-class Property extends Model
+class Property extends BaseModel
 {
     use HasFactory;
 

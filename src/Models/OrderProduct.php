@@ -4,9 +4,9 @@ namespace Zoker\Shop\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Zoker\Shop\Classes\Model;
+use Zoker\Shop\Classes\Bases\BaseModel;
 
-class OrderProduct extends Model
+class OrderProduct extends BaseModel
 {
     use SoftDeletes;
 

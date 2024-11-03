@@ -13,11 +13,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 use Zoker\Shop\Enums\ViewType;
+use Zoker\Shop\Traits\Extendable;
 
 // TODO: Add Soft Delete
 class User extends Authenticatable implements FilamentUser
 {
-    use HasFactory, Notifiable;
+    use Extendable, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.

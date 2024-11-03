@@ -4,7 +4,6 @@ namespace Zoker\Shop\Filament\Resources;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Resources\Resource;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
@@ -12,15 +11,13 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Zoker\Shop\Classes\Bases\BaseResource;
 use Zoker\Shop\Filament\Resources\CountryResource\Pages;
 use Zoker\Shop\Filament\Resources\CountryResource\RelationManagers\RegionsRelationManager;
 use Zoker\Shop\Models\Country;
-use Zoker\Shop\Traits\Resources\ExtendableResource;
 
-class CountryResource extends Resource
+class CountryResource extends BaseResource
 {
-    use ExtendableResource;
-
     protected static ?string $model = Country::class;
 
     protected static ?string $slug = 'countries';

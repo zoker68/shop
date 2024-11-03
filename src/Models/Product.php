@@ -17,12 +17,12 @@ use Illuminate\Support\Str;
 use Laravel\Scout\Builder as ScoutBuilder;
 use Laravel\Scout\Searchable;
 use Veelasky\LaravelHashId\Eloquent\HashableId;
-use Zoker\Shop\Classes\Model;
+use Zoker\Shop\Classes\Bases\BaseModel;
 use Zoker\Shop\Enums\ProductsSorting;
 use Zoker\Shop\Enums\ProductStatus;
 use Zoker\Shop\Traits\Models\Sluggable;
 
-class Product extends Model
+class Product extends BaseModel
 {
     use HasFactory, HashableId, Searchable, Sluggable, SoftDeletes;
 
@@ -132,7 +132,7 @@ class Product extends Model
 
     public function scopeForCategory(Builder $query, Category $category): Builder
     {
-        if ($category->isRoot()) {
+        if ($category->isRoot() && config('shop.category.includeChildren')) {
             return $query;
         }
 

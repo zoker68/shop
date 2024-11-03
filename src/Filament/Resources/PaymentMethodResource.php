@@ -6,7 +6,6 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Resources\Resource;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
@@ -19,14 +18,12 @@ use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Zoker\Shop\Classes\Bases\BaseResource;
 use Zoker\Shop\Filament\Resources\PaymentMethodResource\Pages;
 use Zoker\Shop\Models\PaymentMethod;
-use Zoker\Shop\Traits\Resources\ExtendableResource;
 
-class PaymentMethodResource extends Resource
+class PaymentMethodResource extends BaseResource
 {
-    use ExtendableResource;
-
     protected static ?string $model = PaymentMethod::class;
 
     protected static ?string $slug = 'payment-methods';

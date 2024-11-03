@@ -11,13 +11,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
-use Zoker\Shop\Classes\Model;
+use Zoker\Shop\Classes\Bases\BaseModel;
 use Zoker\Shop\Observers\CategoryObserver;
 use Zoker\Shop\Traits\Models\Sluggable;
 use Zoker\Shop\Traits\Models\TreeTrait;
 
 #[ObservedBy(CategoryObserver::class)]
-class Category extends Model
+class Category extends BaseModel
 {
     use HasFactory, Sluggable, TreeTrait;
 

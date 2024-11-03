@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
-use Zoker\Shop\Classes\Model;
+use Zoker\Shop\Classes\Bases\BaseModel;
 use Zoker\Shop\Traits\Models\Sluggable;
 
-class Brand extends Model
+class Brand extends BaseModel
 {
     use HasFactory, Sluggable, SoftDeletes;
 

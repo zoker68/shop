@@ -5,11 +5,11 @@ namespace Zoker\Shop\Models;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Zoker\Shop\Classes\Model;
+use Zoker\Shop\Classes\Bases\BaseModel;
 use Zoker\Shop\Observers\WidgetSlideObserver;
 
 #[ObservedBy(WidgetSlideObserver::class)]
-class WidgetSlide extends Model
+class WidgetSlide extends BaseModel
 {
     use SoftDeletes;
 

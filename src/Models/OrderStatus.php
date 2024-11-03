@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Zoker\Shop\Classes\Model;
+use Zoker\Shop\Classes\Bases\BaseModel;
 use Zoker\Shop\Enums\OrderStatusType;
 use Zoker\Shop\Observers\OrderStatusObserver;
 
 #[ObservedBy(OrderStatusObserver::class)]
-class OrderStatus extends Model
+class OrderStatus extends BaseModel
 {
     use HasFactory, SoftDeletes;
 

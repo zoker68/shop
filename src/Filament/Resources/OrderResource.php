@@ -7,7 +7,6 @@ use Filament\Forms\Components\Select;
 use Filament\Infolists\Components\Actions\Action;
 use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\TextEntry;
-use Filament\Resources\Resource;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\ForceDeleteAction;
 use Filament\Tables\Actions\ForceDeleteBulkAction;
@@ -20,16 +19,14 @@ use Filament\Tables\Filters\TrashedFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Zoker\Shop\Classes\Bases\BaseResource;
 use Zoker\Shop\Enums\OrderStatusType;
 use Zoker\Shop\Filament\Resources\OrderResource\Pages;
 use Zoker\Shop\Filament\Resources\OrderResource\RelationManagers\ProductsRelationManager;
 use Zoker\Shop\Models\Order;
-use Zoker\Shop\Traits\Resources\ExtendableResource;
 
-class OrderResource extends Resource
+class OrderResource extends BaseResource
 {
-    use ExtendableResource;
-
     protected static ?string $model = Order::class;
 
     protected static ?string $slug = 'orders';
