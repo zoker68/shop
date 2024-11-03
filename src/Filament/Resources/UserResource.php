@@ -8,7 +8,12 @@ use Filament\Forms\Components\TextInput;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ForceDeleteAction;
+use Filament\Tables\Actions\ForceDeleteBulkAction;
+use Filament\Tables\Actions\RestoreAction;
+use Filament\Tables\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\TrashedFilter;
 use Zoker\Shop\Classes\Bases\BaseResource;
 use Zoker\Shop\Filament\Resources\UserResource\Pages;
 use Zoker\Shop\Filament\Resources\UserResource\RelationManagers\AddressesRelationManager;
@@ -99,10 +104,18 @@ class UserResource extends BaseResource
         $this->addListActions([
             'edit' => EditAction::make(),
             'delete' => DeleteAction::make(),
+            'restore' => RestoreAction::make(),
+            'forceDelete' => ForceDeleteAction::make(),
         ]);
 
         $this->addListBulkActions([
             'delete' => DeleteBulkAction::make(),
+            'restore' => RestoreBulkAction::make(),
+            'forceDelete' => ForceDeleteBulkAction::make(),
+        ]);
+
+        $this->addListFilters([
+            'trashed' => TrashedFilter::make(),
         ]);
     }
 
