@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->text('logo')->nullable();
+            $table->string('logo')->nullable();
             $table->boolean('published')->default(true);
             $table->softDeletes();
             $table->timestamps();

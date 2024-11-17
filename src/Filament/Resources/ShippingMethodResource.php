@@ -45,6 +45,7 @@ class ShippingMethodResource extends BaseResource
             'image' => FileUpload::make('image')
                 ->label(__('shop::product.admin.form.image'))
                 ->image()
+                ->disk(config('shop.disk'))
                 ->directory('shipping-methods')
                 ->imageEditor()
                 ->imageEditorAspectRatios(['1:1', '4:3', '16:9', '3:1', '4:1']),

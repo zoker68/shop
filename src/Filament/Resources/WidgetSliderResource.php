@@ -84,10 +84,11 @@ class WidgetSliderResource extends BaseResource
             'image' => FileUpload::make('image')
                 ->label('Background Image')
                 ->image()
+                ->disk(config('shop.disk'))
                 ->directory('widget-sliders')
                 ->maxSize(10 * 1024)
                 ->imageEditor()
-                ->imageEditorAspectRatios(config('shop.widgets.slider.image_ratio')),
+                ->imageEditorAspectRatios([null, '4:3', '16:9', '1:1', '2:1', '3:1', '4:1']),
 
         ]);
     }

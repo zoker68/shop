@@ -105,6 +105,8 @@ MEILISEARCH_HOST=http://meilisearch:7700
 MEILISEARCH_KEY=
 
 MAIL_TO=zoker@localshop.com
+
+SHOP_DISK=public
 ```
 
 - Unnecessary ENV:

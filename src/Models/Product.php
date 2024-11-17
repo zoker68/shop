@@ -168,12 +168,11 @@ class Product extends BaseModel
 
     public function getCoverImage(?int $width = null, ?int $height = null, ?array $options = null): string
     {
-        $protocols = ['https://', 'http://'];
-        if (Str::startsWith($this->image, $protocols)) {
+        if (Str::startsWith($this->image, ['https://', 'http://'])) {
             return $this->image;
         }
 
-        $imageUrl = Storage::url($this->image);
+        $imageUrl = Storage::disk(config('shop.disk'))->url($this->image);
 
         if ($width || $height || $options) {
             return Croppa::url($imageUrl, $width, $height, $options);

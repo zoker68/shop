@@ -63,9 +63,10 @@ class ProductResource extends BaseResource
             'image' => FileUpload::make('image')
                 ->label(__('shop::product.admin.form.image'))
                 ->image()
+                ->disk(config('shop.disk'))
                 ->directory('products')
                 ->imageEditor()
-                ->imageEditorAspectRatios(config('shop.product.cover.ratio')),
+                ->imageEditorAspectRatios([null, '4:3', '16:9', '3:1', '1:1']),
 
             'stock' => TextInput::make('stock')
                 ->label(__('shop::product.admin.form.stock'))

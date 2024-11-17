@@ -62,6 +62,7 @@ class BrandResource extends BaseResource
             'logo' => FileUpload::make('logo')
                 ->label(__('shop::brand.admin.form.logo'))
                 ->image()
+                ->disk(config('shop.disk'))
                 ->imageEditor()
                 ->directory('brands'),
 
