@@ -19,16 +19,11 @@ use Laravel\Scout\Searchable;
 use Veelasky\LaravelHashId\Eloquent\HashableId;
 use Zoker\Shop\Classes\Bases\BaseModel;
 use Zoker\Shop\Enums\ProductsSorting;
-use Zoker\Shop\Enums\ProductStatus;
 use Zoker\Shop\Traits\Models\Sluggable;
 
 class Product extends BaseModel
 {
     use HasFactory, HashableId, Searchable, Sluggable, SoftDeletes;
-
-    protected $casts = [
-        'status' => ProductStatus::class,
-    ];
 
     protected array $slugs = ['slug' => 'name'];
 
@@ -116,8 +111,7 @@ class Product extends BaseModel
     public function scopePublished(Builder $query): Builder
     {
         return $query
-            ->where('published', true)
-            ->where('status', ProductStatus::APPROVED);
+            ->where('published', true);
     }
 
     public function scopeModerated(Builder $query): Builder
@@ -154,18 +148,6 @@ class Product extends BaseModel
     /* --------------------- Scopes End --------------------- */
 
     /* --------------------- Methods Start --------------------- */
-    public function approve(): void
-    {
-        $this->status = ProductStatus::APPROVED;
-        $this->save();
-    }
-
-    public function reject(): void
-    {
-        $this->status = ProductStatus::REJECTED;
-        $this->save();
-    }
-
     public function getCoverImage(?int $width = null, ?int $height = null, ?array $options = null): string
     {
         if (Str::startsWith($this->image, ['https://', 'http://'])) {
@@ -211,7 +193,7 @@ class Product extends BaseModel
 
     public function isAvailable(): bool
     {
-        return $this->published && $this->status == ProductStatus::APPROVED;
+        return $this->published;
     }
 
     public function sell(int $quantity): void
@@ -229,7 +211,6 @@ class Product extends BaseModel
         if ($this->brand) {
             $searchable['brand'] = $this->brand->name;
         }
-        $searchable['status'] = $this->status->value;
         $searchable['categories'] = $this->categories->pluck('id')->toArray();
 
         $searchable['properties'] = null;
@@ -252,7 +233,7 @@ class Product extends BaseModel
 
     public function shouldBeSearchable(): bool
     {
-        return $this->published && $this->status == ProductStatus::APPROVED;
+        return $this->published;
     }
 
     public static function meiliSearch(string $query, ?Category $category, array $filters = []): ScoutBuilder

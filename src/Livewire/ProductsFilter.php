@@ -10,7 +10,6 @@ use Illuminate\View\View;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Zoker\Shop\Enums\ProductsSorting;
-use Zoker\Shop\Enums\ProductStatus;
 use Zoker\Shop\Enums\PropertyFilter;
 use Zoker\Shop\Enums\PropertyType;
 use Zoker\Shop\Models\Brand;
@@ -100,7 +99,6 @@ class ProductsFilter extends Component
                 ->when(! config('shop.category.includeChildren'), fn ($q) => $q->where('category_id', $this->category->id))
             )
             ->where('products.published', true)
-            ->where('products.status', ProductStatus::APPROVED)
             ->whereIn('property_id', $properties->pluck('id'))
             ->get()
             ->groupBy('property_id');

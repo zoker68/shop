@@ -7,9 +7,6 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Notifications\Notification;
-use Filament\Tables\Actions\Action;
-use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
@@ -18,12 +15,11 @@ use Filament\Tables\Actions\ForceDeleteBulkAction;
 use Filament\Tables\Actions\RestoreAction;
 use Filament\Tables\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Collection;
 use Zoker\Shop\Classes\Bases\BaseResource;
-use Zoker\Shop\Enums\ProductStatus;
 use Zoker\Shop\Filament\Resources\ProductResource\Pages;
 use Zoker\Shop\Filament\Resources\ProductResource\RelationManagers\CategoriesRelationManager;
 use Zoker\Shop\Filament\Resources\ProductResource\RelationManagers\PropertiesRelationManager;
@@ -89,12 +85,6 @@ class ProductResource extends BaseResource
                 ->relationship('brand', 'name')
                 ->searchable(),
 
-            'status' => Select::make('status')
-                ->selectablePlaceholder(false)
-                ->label(__('shop::product.admin.form.status'))
-                ->options(ProductStatus::getLabels())
-                ->required(),
-
             'published' => Toggle::make('published')
                 ->label(__('shop::product.admin.form.published')),
         ]);
@@ -121,6 +111,9 @@ class ProductResource extends BaseResource
                 ->money(currency()->getCurrency(), currency()->getSubunit())
                 ->label(__('shop::product.admin.list.price')),
 
+            'published' => ToggleColumn::make('published')
+                ->label(__('shop::product.admin.list.published')),
+
         ]);
 
         $this->addListFilters([
@@ -132,50 +125,12 @@ class ProductResource extends BaseResource
             'delete' => DeleteAction::make(),
             'restore' => RestoreAction::make(),
             'forceDelete' => ForceDeleteAction::make(),
-            'approve' => Action::make(ProductStatus::APPROVED->value)
-                ->label(__('shop::product.admin.action.approve'))
-                ->color('success')
-                ->icon('heroicon-o-check')
-                ->visible(fn ($record) => $record->status === ProductStatus::MODERATION || $record->status === ProductStatus::REJECTED)
-                ->action(function (Product $record) {
-                    $record->approve();
-                })
-                ->after(function () {
-                    Notification::make()->success()->title(__('shop::product.admin.action.success.approve'))->send();
-                }),
-            'reject' => Action::make(ProductStatus::REJECTED->value)
-                ->label(__('shop::product.admin.action.reject'))
-                ->color('danger')
-                ->icon('heroicon-o-no-symbol')
-                ->visible(fn ($record) => $record->status === ProductStatus::MODERATION || $record->status === ProductStatus::APPROVED)
-                ->action(function (Product $record) {
-                    $record->reject();
-                })
-                ->after(function () {
-                    Notification::make()->success()->title(__('shop::product.admin.action.success.reject'))->send();
-                }),
         ], self::ACTION_MAIN_GROUP);
 
         $this->addListBulkActions([
             'delete' => DeleteBulkAction::make(),
             'restore' => RestoreBulkAction::make(),
             'forceDelete' => ForceDeleteBulkAction::make(),
-
-            'approve' => BulkAction::make(ProductStatus::APPROVED->value)
-                ->label(__('shop::product.admin.bulk_action.approve'))
-                ->color('success')
-                ->icon('heroicon-o-check')
-                ->action(function (Collection $records) {
-                    $records->each->approve();
-                }),
-
-            'reject' => BulkAction::make(ProductStatus::REJECTED->value)
-                ->label(__('shop::product.admin.bulk_action.reject'))
-                ->color('danger')
-                ->icon('heroicon-o-no-symbol')
-                ->action(function (Collection $records) {
-                    $records->each->reject();
-                }),
         ], self::ACTION_MAIN_GROUP);
     }
 

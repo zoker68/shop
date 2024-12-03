@@ -118,13 +118,6 @@ return [
             ],
         ],
     ],
-    'status' => [
-        'admin' => [
-            'moderation' => 'Moderation',
-            'rejected' => 'Rejected',
-            'approved' => 'Approved',
-        ],
-    ],
     'admin' => [
         'list' => [
             'tab' => [
@@ -139,8 +132,8 @@ return [
             'image' => 'Cover image',
             'stock' => 'Stock',
             'price' => 'Price',
+            'published' => 'Published',
             'brand' => 'Brand',
-            'status' => 'Status',
             'categories' => 'Categories',
         ],
         'form' => [
@@ -151,20 +144,7 @@ return [
             'stock' => 'Stock',
             'price' => 'Price',
             'brand' => 'Brand',
-            'status' => 'Status',
             'published' => 'Published',
-        ],
-        'action' => [
-            'approve' => 'Approve',
-            'success' => [
-                'approve' => 'Product approved successfully',
-                'reject' => 'Product rejected successfully',
-            ],
-            'reject' => 'Reject',
-        ],
-        'bulk_action' => [
-            'approve' => 'Approve',
-            'reject' => 'Reject',
         ],
     ],
 ];

@@ -4,7 +4,6 @@ namespace Zoker\Shop\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
-use Zoker\Shop\Enums\ProductStatus;
 use Zoker\Shop\Models\Brand;
 use Zoker\Shop\Models\Product;
 
@@ -26,26 +25,7 @@ class ProductFactory extends Factory
             'stock' => $this->faker->numberBetween(0, 100),
             'price' => $this->faker->numberBetween(1, 90000),
             'image' => $this->faker->imageUrl(),
-            'status' => $this->faker->randomElement(ProductStatus::class),
             'published' => true,
         ];
-    }
-
-    public function approved()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'status' => ProductStatus::APPROVED,
-            ];
-        });
-    }
-
-    public function rejected()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'status' => ProductStatus::REJECTED,
-            ];
-        });
     }
 }
