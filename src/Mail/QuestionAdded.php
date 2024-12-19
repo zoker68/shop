@@ -37,7 +37,7 @@ class QuestionAdded extends Mailable implements ShouldQueue
     public function content(): Content
     {
         return new Content(
-            view: 'mail.question-added',
+            view: 'shop::mail.question-added',
             with: [
                 'product' => $this->product,
                 'question' => $this->question,

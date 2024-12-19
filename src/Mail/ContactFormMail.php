@@ -8,21 +8,15 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use Zoker\Shop\Models\User;
 
-class ForgotPasswordMail extends Mailable implements ShouldQueue
+class ContactFormMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
-
-    private string $link;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(private User $user)
-    {
-        $this->link = $this->user->resetPasswordLink();
-    }
+    public function __construct(public array $data) {}
 
     /**
      * Get the message envelope.
@@ -30,7 +24,7 @@ class ForgotPasswordMail extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: __('shop::auth.forgot_password.mail.subject'),
+            subject: 'Contact Form Mail',
         );
     }
 
@@ -39,13 +33,10 @@ class ForgotPasswordMail extends Mailable implements ShouldQueue
      */
     public function content(): Content
     {
+
         return new Content(
-            view: 'shop::mail.auth.forgot-password',
-            with: [
-                'link' => $this->link,
-                'user' => $this->user,
-                'expire' => config('shop.reset_password_expire'),
-            ],
+            view: 'shop::mail.contact-form',
+            with: ['contact' => $this->data]
         );
     }
 
@@ -57,12 +48,5 @@ class ForgotPasswordMail extends Mailable implements ShouldQueue
     public function attachments(): array
     {
         return [];
-    }
-
-    public function getLink()
-    {
-        if (app()->environment('testing')) {
-            return $this->link;
-        }
     }
 }

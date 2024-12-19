@@ -37,7 +37,7 @@ class ReviewAdded extends Mailable implements ShouldQueue
     public function content(): Content
     {
         return new Content(
-            view: 'mail.review-added',
+            view: 'shop::mail.review-added',
             with: [
                 'product' => $this->product,
                 'review' => $this->review,

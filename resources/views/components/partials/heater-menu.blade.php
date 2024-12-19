@@ -128,7 +128,7 @@
         </li>
         <!-- contact -->
         <li>
-            <a href="contact.html" class="text-secondary leading-[26px] flex items-center text-base font-medium px-2.5 pt-[15px] pb-2.5 hover:text-primary transition duration-300">Contact</a>
+            <a href="{{ route('fsp.contact') }}" class="text-secondary leading-[26px] flex items-center text-base font-medium px-2.5 pt-[15px] pb-2.5 hover:text-primary transition duration-300">Contact</a>
         </li>
     </ul>
 </div>
