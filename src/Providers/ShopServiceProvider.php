@@ -7,13 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
+use Zoker\FilamentStaticPages\Classes\ComponentRegistry;
 use Zoker\Shop\Console\Commands\ScoutIndexUpdateCommand;
+use Zoker\Shop\Console\Commands\SyncLogClearCommand;
 use Zoker\Shop\Livewire\Account\Wishlist;
 use Zoker\Shop\Livewire\Auth\AddressEdit;
 use Zoker\Shop\Livewire\Auth\Login;
 use Zoker\Shop\Livewire\Cart;
 use Zoker\Shop\Livewire\Checkout;
 use Zoker\Shop\Livewire\Confirm;
+use Zoker\Shop\Livewire\Contact;
 use Zoker\Shop\Livewire\Header\CartWidget;
 use Zoker\Shop\Livewire\Header\SearchWidget;
 use Zoker\Shop\Livewire\Header\WishlistWidget;
@@ -23,6 +26,7 @@ use Zoker\Shop\Livewire\Products;
 use Zoker\Shop\Livewire\ProductsFilter;
 use Zoker\Shop\Livewire\SearchResults;
 use Zoker\Shop\Livewire\Shipping;
+use Zoker\Shop\View\Components\Blocks\ContactBlock;
 use Zoker\Shop\View\Components\Partials\Breadcrumbs;
 use Zoker\Shop\View\Components\Partials\Navbar;
 use Zoker\Shop\View\Components\Widgets\Slider;
@@ -35,8 +39,11 @@ class ShopServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 ScoutIndexUpdateCommand::class,
+                SyncLogClearCommand::class,
             ]);
         }
+
+        ComponentRegistry::register(ContactBlock::class);
     }
 
     public function boot(): void
@@ -79,6 +86,8 @@ class ShopServiceProvider extends ServiceProvider
 
         Blade::component('shop::widgets.slider', Slider::class);
         Blade::component('shop::widgets.tops', Tops::class);
+
+        Blade::component('contact-block', ContactBlock::class);
     }
 
     private function registerLivewireComponents(): void
@@ -102,6 +111,8 @@ class ShopServiceProvider extends ServiceProvider
         Livewire::component('shop.account.login', Login::class);
 
         Livewire::component('shop.account.wishlist', Wishlist::class);
+
+        Livewire::component('shop.contact', Contact::class);
     }
 
     private function loadAllData(): void
