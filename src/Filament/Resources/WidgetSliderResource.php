@@ -68,6 +68,7 @@ class WidgetSliderResource extends BaseResource
 
             'target' => Select::make('target')
                 ->label('Link Target')
+                ->default('_self')
                 ->selectablePlaceholder(false)
                 ->options([
                     '_self' => '_self',

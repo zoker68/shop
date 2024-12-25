@@ -55,6 +55,6 @@ class ProductsBlock extends Component
 
     private function getCacheKey(): string
     {
-        return 'products1' . md5(serialize($this->data));
+        return 'products' . md5(serialize($this->data));
     }
 }

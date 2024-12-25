@@ -15,6 +15,7 @@ return [
             'slug' => 'URL',
             'parent' => 'Parent category',
             'published' => 'Published',
+            'cover' => 'Cover image',
         ],
         'error' => [
             'slug_exist' => 'This slug is already taken. Please choose another one.',

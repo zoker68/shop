@@ -27,6 +27,7 @@ use Zoker\Shop\Livewire\ProductsBlock as ProductsBlockLivewire;
 use Zoker\Shop\Livewire\ProductsFilter;
 use Zoker\Shop\Livewire\SearchResults;
 use Zoker\Shop\Livewire\Shipping;
+use Zoker\Shop\View\Components\Blocks\CategoriesBlock;
 use Zoker\Shop\View\Components\Blocks\ContactBlock;
 use Zoker\Shop\View\Components\Blocks\ProductsBlock;
 use Zoker\Shop\View\Components\Blocks\TopProductBlock;
@@ -45,6 +46,7 @@ class ShopServiceProvider extends ServiceProvider
         BlocksComponentRegistry::register(ContactBlock::class);
         BlocksComponentRegistry::register(ProductsBlock::class);
         BlocksComponentRegistry::register(TopProductBlock::class);
+        BlocksComponentRegistry::register(CategoriesBlock::class);
     }
 
     public function boot(): void

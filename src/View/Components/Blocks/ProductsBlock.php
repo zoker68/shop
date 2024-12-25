@@ -80,6 +80,7 @@ class ProductsBlock extends BlockComponent
 
                         Select::make('link.target')
                             ->label('Link Target')
+                            ->default('_self')
                             ->selectablePlaceholder(false)
                             ->options([
                                 '_self' => '_self',

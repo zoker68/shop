@@ -2,6 +2,8 @@
 
 namespace Zoker\Shop\Models;
 
+use Bkwld\Croppa\Facades\Croppa;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -10,6 +12,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Storage;
 use Zoker\Shop\Classes\Bases\BaseModel;
 use Zoker\Shop\Observers\CategoryObserver;
 use Zoker\Shop\Traits\Models\Sluggable;
@@ -43,16 +46,27 @@ class Category extends BaseModel
                 ->label(__('shop::category.admin.form.name'))
                 ->required()
                 ->maxLength(255),
+
             'slug' => TextInput::make('slug')
                 ->label(__('shop::category.admin.form.slug'))
                 ->maxLength(255)
                 ->unique(ignoreRecord: true),
+
             'parent_id' => Select::make('parent_id')
                 ->label(__('shop::category.admin.form.parent'))
                 ->options(fn ($record) => Category::getCategoryOptions($record))
                 ->required()
                 ->searchable()
                 ->columnSpanFull(),
+
+            'cover' => FileUpload::make('cover')
+                ->label(__('shop::category.admin.form.cover'))
+                ->image()
+                ->disk(config('shop.disk'))
+                ->directory('products')
+                ->imageEditor()
+                ->imageEditorAspectRatios([null, '4:3', '16:9', '3:1', '1:1']),
+
             'published' => Toggle::make('published')
                 ->label(__('shop::category.admin.form.published'))
                 ->required(),
@@ -125,5 +139,16 @@ class Category extends BaseModel
         } while ($currentCategory = self::getAllCached()->firstWhere('id', $currentCategory->parent_id));
 
         return array_reverse($breadcrumbs);
+    }
+
+    public function getCover(?int $width = null, ?int $height = null, ?array $options = null): string
+    {
+        $imageUrl = Storage::disk(config('shop.disk'))->url($this->cover);
+
+        if ($width || $height || $options) {
+            return Croppa::url($imageUrl, $width, $height, $options);
+        }
+
+        return $imageUrl;
     }
 }
