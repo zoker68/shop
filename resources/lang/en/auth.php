@@ -245,7 +245,7 @@ return [
             ],
             'form' => [
                 'name' => 'Name',
-                'is_admin' => 'Access to admin panel',
+                'permissions' => 'Permissions',
                 'created_at' => 'Created Date',
                 'updated_at' => 'Last Modified Date',
             ],

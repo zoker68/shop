@@ -3,6 +3,9 @@
 use Zoker\Shop\Enums\ProductsSorting;
 
 return [
+
+    'maintenance_mode' => false, // Access to site only for admin users
+
     'category' => [
         'includeChildren' => true, // Turn on the products from subcategories
         'perPage' => 12, // Number of products per page

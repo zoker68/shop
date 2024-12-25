@@ -2,7 +2,7 @@
 
 namespace Zoker\Shop\Filament\Resources;
 
-use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Actions\DeleteAction;
@@ -18,6 +18,7 @@ use Filament\Tables\Filters\TrashedFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Zoker\Shop\Classes\Bases\BaseResource;
+use Zoker\Shop\Enums\Permission;
 use Zoker\Shop\Filament\Resources\UserGroupResource\Pages;
 use Zoker\Shop\Models\UserGroup;
 
@@ -44,8 +45,9 @@ class UserGroupResource extends BaseResource
                 ->label(__('shop::auth.user_group.admin.form.name'))
                 ->required(),
 
-            'is_admin' => Checkbox::make('is_admin')
-                ->label(__('shop::auth.user_group.admin.form.is_admin')),
+            'permissions' => CheckboxList::make('permissions')
+                ->label(__('shop::auth.user_group.admin.form.permissions'))
+                ->options(Permission::getOptions()),
         ]);
     }
 

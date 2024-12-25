@@ -13,6 +13,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
+use Zoker\Shop\Enums\Permission;
 use Zoker\Shop\Enums\ViewType;
 use Zoker\Shop\Traits\Extendable;
 
@@ -118,8 +119,14 @@ class User extends Authenticatable implements FilamentUser
 
     public function canAccessPanel(Panel $panel): bool
     {
+        return $this->hasPermission(Permission::ACCESS_ADMIN_PANEL);
+    }
+
+    public function hasPermission(Permission $permission): bool
+    {
+        /** @var UserGroup $group */
         foreach ($this->groups as $group) {
-            if ($group->canAccessPanel()) {
+            if ($group->hasPermission($permission)) {
                 return true;
             }
         }

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => ['web', \Zoker\Shop\Http\Middleware\MaintenanceModeMiddleware::class]], function () {
     Route::view('/', 'shop::pages.index')->name('index');
 
     Route::middleware('guest')->group(function () {
