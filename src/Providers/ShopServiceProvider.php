@@ -81,13 +81,15 @@ class ShopServiceProvider extends ServiceProvider
 
     private function registerBladeComponents(): void
     {
-        Blade::component('shop::partials.navbar', Navbar::class);
-        Blade::component('shop::partials.breadcrumbs', Breadcrumbs::class);
+        Blade::componentNamespace('Zoker\\Shop\\View\\Components', 'shop');
+        /*Blade::component(Navbar::class, 'partials.navbar', 'shop');
+        Blade::component(Breadcrumbs::class, 'partials.breadcrumbs');
 
-        Blade::component('shop::widgets.slider', Slider::class);
-        Blade::component('shop::widgets.tops', Tops::class);
+        Blade::component(Slider::class, 'widgets.slider');
+        Blade::component(Tops::class, 'widgets.tops');
 
-        Blade::component('contact-block', ContactBlock::class);
+        Blade::component(ContactBlock::class, 'contact-block');
+        Blade::component(Products::class, 'products-block');*/
     }
 
     private function registerLivewireComponents(): void
