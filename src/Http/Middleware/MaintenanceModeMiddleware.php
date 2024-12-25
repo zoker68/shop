@@ -10,7 +10,7 @@ class MaintenanceModeMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        abort_if(config('shop.maintenance_mode') && ! auth()->user()->hasPermission(Permission::ACCESS_ADMIN_PANEL), 503);
+        abort_if(config('shop.maintenance_mode') && (! auth()->check() || ! auth()->user()->hasPermission(Permission::ACCESS_ADMIN_PANEL)), 503);
 
         return $next($request);
     }
