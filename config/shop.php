@@ -24,6 +24,7 @@ return [
 
     'reset_password_expire' => 15, //in minutes
 
+    //TODO: delete
     'widgets' => [
         'tops' => [
             'ranking' => [

@@ -3,7 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['web', \Zoker\Shop\Http\Middleware\MaintenanceModeMiddleware::class]], function () {
-    Route::view('/', 'shop::pages.index')->name('index');
+    //TODO: DELETE
+    Route::view('/old-index', 'shop::pages.index')->name('index');
+
+    Route::get('/', \Zoker\FilamentStaticPages\Http\Controllers\PageController::class)->name('index');
 
     Route::middleware('guest')->group(function () {
 

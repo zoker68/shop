@@ -29,7 +29,8 @@ class ContactBlock extends BlockComponent
                 ->label('Work time')
                 ->addActionLabel('Add day')
                 ->keyLabel('Day')
-                ->valueLabel('Working hours'),
+                ->valueLabel('Working hours')
+                ->columnSpanFull(),
         ];
     }
 }

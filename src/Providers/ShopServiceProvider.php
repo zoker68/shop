@@ -23,11 +23,13 @@ use Zoker\Shop\Livewire\Header\WishlistWidget;
 use Zoker\Shop\Livewire\Payment;
 use Zoker\Shop\Livewire\Product;
 use Zoker\Shop\Livewire\Products;
+use Zoker\Shop\Livewire\ProductsBlock as ProductsBlockLivewire;
 use Zoker\Shop\Livewire\ProductsFilter;
 use Zoker\Shop\Livewire\SearchResults;
 use Zoker\Shop\Livewire\Shipping;
 use Zoker\Shop\View\Components\Blocks\ContactBlock;
 use Zoker\Shop\View\Components\Blocks\ProductsBlock;
+use Zoker\Shop\View\Components\Blocks\TopProductBlock;
 
 class ShopServiceProvider extends ServiceProvider
 {
@@ -42,6 +44,7 @@ class ShopServiceProvider extends ServiceProvider
 
         BlocksComponentRegistry::register(ContactBlock::class);
         BlocksComponentRegistry::register(ProductsBlock::class);
+        BlocksComponentRegistry::register(TopProductBlock::class);
     }
 
     public function boot(): void
@@ -108,6 +111,8 @@ class ShopServiceProvider extends ServiceProvider
         Livewire::component('shop.account.wishlist', Wishlist::class);
 
         Livewire::component('shop.contact', Contact::class);
+
+        Livewire::component('shop.products-block', ProductsBlockLivewire::class);
     }
 
     private function loadAllData(): void

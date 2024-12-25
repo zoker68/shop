@@ -136,6 +136,38 @@ class Product extends BaseModel
         });
     }
 
+    public function scopeForCategories(Builder $query, array $categories): Builder
+    {
+        $allUsingCategories = [];
+
+        // if we get an array of category ids
+        if (is_numeric(array_values($categories)[0])) {
+            if (! config('shop.category.includeChildren')) {
+                $allUsingCategories = $categories;
+            } else {
+                $categories = Category::findMany($categories);
+            }
+        }
+
+        if (empty($allUsingCategories)) {
+            foreach ($categories as $category) {
+                if (config('shop.category.includeChildren')) {
+                    if ($category->isRoot() && config('shop.category.includeChildren')) {
+                        return $query;
+                    }
+
+                    $allUsingCategories = array_merge($allUsingCategories, $category->getAllChildrenAndSelf()->pluck('id')->toArray());
+                } else {
+                    $allUsingCategories[] = $category->id;
+                }
+            }
+        }
+
+        return $query->whereHas('categories', function ($query) use ($allUsingCategories) {
+            $query->whereIn('category_id', $allUsingCategories);
+        });
+    }
+
     public function scopeApplySorting(Builder $query, ProductsSorting $sorting): Builder
     {
         return $sorting->getSortQuery($query);
