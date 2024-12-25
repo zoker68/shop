@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
-use Zoker\FilamentStaticPages\Classes\ComponentRegistry;
+use Zoker\FilamentStaticPages\Classes\BlocksComponentRegistry;
 use Zoker\Shop\Console\Commands\ScoutIndexUpdateCommand;
 use Zoker\Shop\Console\Commands\SyncLogClearCommand;
 use Zoker\Shop\Livewire\Account\Wishlist;
@@ -27,10 +27,7 @@ use Zoker\Shop\Livewire\ProductsFilter;
 use Zoker\Shop\Livewire\SearchResults;
 use Zoker\Shop\Livewire\Shipping;
 use Zoker\Shop\View\Components\Blocks\ContactBlock;
-use Zoker\Shop\View\Components\Partials\Breadcrumbs;
-use Zoker\Shop\View\Components\Partials\Navbar;
-use Zoker\Shop\View\Components\Widgets\Slider;
-use Zoker\Shop\View\Components\Widgets\Tops;
+use Zoker\Shop\View\Components\Blocks\ProductsBlock;
 
 class ShopServiceProvider extends ServiceProvider
 {
@@ -43,7 +40,8 @@ class ShopServiceProvider extends ServiceProvider
             ]);
         }
 
-        ComponentRegistry::register(ContactBlock::class);
+        BlocksComponentRegistry::register(ContactBlock::class);
+        BlocksComponentRegistry::register(ProductsBlock::class);
     }
 
     public function boot(): void
@@ -82,14 +80,9 @@ class ShopServiceProvider extends ServiceProvider
     private function registerBladeComponents(): void
     {
         Blade::componentNamespace('Zoker\\Shop\\View\\Components', 'shop');
-        /*Blade::component(Navbar::class, 'partials.navbar', 'shop');
-        Blade::component(Breadcrumbs::class, 'partials.breadcrumbs');
 
-        Blade::component(Slider::class, 'widgets.slider');
-        Blade::component(Tops::class, 'widgets.tops');
-
-        Blade::component(ContactBlock::class, 'contact-block');
-        Blade::component(Products::class, 'products-block');*/
+        //        Blade::component(ContactBlock::class, 'shop::contact-block');
+        //        Blade::component(Products::class, 'products-block');
     }
 
     private function registerLivewireComponents(): void

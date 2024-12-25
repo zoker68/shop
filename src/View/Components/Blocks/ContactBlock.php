@@ -14,16 +14,18 @@ class ContactBlock extends BlockComponent
 
     public static string $viewNamespace = 'shop';
 
+    public static string $icon = 'heroicon-s-at-symbol';
+
     public static function getSchema(): array
     {
         return [
-            TextInput::make('data.address')
+            TextInput::make('address')
                 ->label('Address'),
-            TextInput::make('data.phone')
+            TextInput::make('phone')
                 ->label('Phone'),
-            TextInput::make('data.email')
+            TextInput::make('email')
                 ->label('Email'),
-            KeyValue::make('data.operation_hours')
+            KeyValue::make('operation_hours')
                 ->label('Work time')
                 ->addActionLabel('Add day')
                 ->keyLabel('Day')

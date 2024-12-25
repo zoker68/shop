@@ -5,54 +5,10 @@
             <a href="{{ route('index') }}"
                class="text-secondary leading-[26px] flex items-center text-base font-medium px-2.5 pt-[15px] pb-2.5 gap-1 hover:text-primary transition duration-300">
                 Home
-                <svg width="14" height="14" viewBox="0 0 32 32">
-                    <path fill="currentColor"
-                          d="M4.219 10.781L2.78 12.22l12.5 12.5l.719.687l.719-.687l12.5-12.5l-1.438-1.438L16 22.562z"/>
-                </svg>
             </a>
 
-            <ul
-                class="absolute top-full left-0 opacity-0 group-hover:opacity-100 invisible group-hover:visible bg-white py-3 shadow-lg min-w-[170px] z-20 mt-4 group-hover:-mt-0 rounded-[3px] transition-all duration-200">
-                <li><a href="index-1.html"
-                       class="block text-[15px] px-4 py-0.5 text-[#2b2d42] hover:text-primary transition duration-200 whitespace-nowrap">Home
-                        page 1</a></li>
-                <li><a href="index-2.html"
-                       class="block text-[15px] px-4 py-0.5 text-[#2b2d42] hover:text-primary transition duration-200 whitespace-nowrap">Home
-                        page 2</a></li>
-                <li><a href="index-3.html"
-                       class="block text-[15px] px-4 py-0.5 text-[#2b2d42] hover:text-primary transition duration-200 whitespace-nowrap">Home
-                        page 3</a></li>
-            </ul>
         </li>
-        <!-- shop -->
-        <li class="relative group">
-            <a href="#"
-               class="text-secondary leading-[26px] flex items-center text-base font-medium px-2.5 pt-[15px] pb-2.5 gap-1 hover:text-primary transition duration-300">Shop
-                <svg width="14" height="14" viewBox="0 0 32 32">
-                    <path fill="currentColor"
-                          d="M4.219 10.781L2.78 12.22l12.5 12.5l.719.687l.719-.687l12.5-12.5l-1.438-1.438L16 22.562z"/>
-                </svg>
-            </a>
 
-            <ul
-                class="absolute top-full left-0 opacity-0 group-hover:opacity-100 invisible group-hover:visible bg-white py-3 shadow-lg min-w-[170px] z-20 mt-4 group-hover:-mt-0 rounded-[3px] transition-all duration-200">
-                <li><a href="list-view.html"
-                       class="block text-[15px] px-4 py-0.5 text-[#2b2d42] hover:text-primary transition duration-200 whitespace-nowrap">List
-                        view</a></li>
-                <li><a href="grid-view.html"
-                       class="block text-[15px] px-4 py-0.5 text-[#2b2d42] hover:text-primary transition duration-200 whitespace-nowrap">Grid
-                        view</a></li>
-                <li><a href="grid-view-2.html"
-                       class="block text-[15px] px-4 py-0.5 text-[#2b2d42] hover:text-primary transition duration-200 whitespace-nowrap">Grid
-                        view 2</a></li>
-                <li><a href="shopping-cart.html"
-                       class="block text-[15px] px-4 py-0.5 text-[#2b2d42] hover:text-primary transition duration-200 whitespace-nowrap">Shopping
-                        cart</a></li>
-                <li><a href="product-view.html"
-                       class="block text-[15px] px-4 py-0.5 text-[#2b2d42] hover:text-primary transition duration-200 whitespace-nowrap">Product
-                        view</a></li>
-            </ul>
-        </li>
         <!-- pages -->
         <li class="relative group">
             <a href="#"
