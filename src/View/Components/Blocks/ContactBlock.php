@@ -10,9 +10,9 @@ class ContactBlock extends BlockComponent
 {
     public static string $label = 'Contact Block';
 
-    public static string $viewTemplate = 'shop::components.blocks.contact';
+    public static string $viewTemplate = 'components.blocks.contact';
 
-    public static string $viewNamespace = '';
+    public static string $viewNamespace = 'shop';
 
     public static function getSchema(): array
     {
