@@ -107,6 +107,7 @@ MEILISEARCH_KEY=
 MAIL_TO=zoker@localshop.com
 
 SHOP_DISK=public
+FSP_DISK=public
 ```
 
 - Unnecessary ENV:
