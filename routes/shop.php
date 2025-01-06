@@ -3,13 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['web', \Zoker\Shop\Http\Middleware\MaintenanceModeMiddleware::class]], function () {
-    //TODO: DELETE
-    Route::view('/old-index', 'shop::pages.index')->name('index');
 
     Route::get('/', \Zoker\FilamentStaticPages\Http\Controllers\PageController::class)->name('index');
 
     Route::middleware('guest')->group(function () {
-
         Route::get('/login', \Zoker\Shop\Livewire\Auth\Login::class)->name('login');
         Route::get('/forgot-password', \Zoker\Shop\Livewire\Auth\ForgotPassword::class)->name('forgot-password');
         Route::get('/reset-password/{email}', \Zoker\Shop\Http\Controllers\Auth\ResetPasswordController::class)->name('reset-password');
@@ -28,7 +25,7 @@ Route::group(['middleware' => ['web', \Zoker\Shop\Http\Middleware\MaintenanceMod
         Route::get('/account/orders/{orderHash:hash}', [\Zoker\Shop\Http\Controllers\Auth\OrderController::class, 'show'])->name('account.orders.show');
     });
 
-    Route::get('/category/{category:slug?}', \Zoker\Shop\Http\Controllers\CategoryController::class)->where('category', '.*')->name('category');
+    Route::get('/category/{category:full_slug?}', \Zoker\Shop\Http\Controllers\CategoryController::class)->where('category', '.*')->name('category');
     Route::get('/search', \Zoker\Shop\Http\Controllers\SearchController::class)->name('search');
     Route::get('/product/{product:slug}', \Zoker\Shop\Http\Controllers\ProductController::class)->name('product');
     Route::get('/cart', \Zoker\Shop\Http\Controllers\CartController::class)->name('cart');

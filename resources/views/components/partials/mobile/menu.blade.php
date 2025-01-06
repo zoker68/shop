@@ -45,3 +45,121 @@
     </div>
 </div>
 <!-- mobile menu end -->
+
+@push('scripts')
+    <script>
+        // mobile menu list
+        const menuModules = {
+            menuList: [{
+                name: 'Home1',
+                isOpen: false,
+                subMenus: [{
+                    name: 'Home 1',
+                    href: 'index-1.html'
+                },
+                    {
+                        name: 'Home 2',
+                        href: 'index-2.html'
+                    },
+                    {
+                        name: 'Home 3',
+                        href: 'index-3.html'
+                    },
+                ]
+            },
+                {
+                    name: 'Shop',
+                    isOpen: false,
+                    subMenus: [{
+                        name: 'List view',
+                        href: 'list-view.html'
+                    },
+                        {
+                            name: 'Grid view',
+                            href: 'grid-view.html'
+                        },
+                        {
+                            name: 'Grid view 2',
+                            href: 'grid-view-2.html'
+                        },
+                        {
+                            name: 'Shopping Cart',
+                            href: 'shopping-cart.html'
+                        },
+                        {
+                            name: 'Product view',
+                            href: 'product-view.html'
+                        },
+                    ]
+                },
+                {
+                    name: 'My Account',
+                    isOpen: false,
+                    subMenus: [{
+                        name: 'My Account',
+                        href: 'my-account.html'
+                    },
+                        {
+                            name: 'Login',
+                            href: 'login.html'
+                        },
+                        {
+                            name: 'Register',
+                            href: 'register.html'
+                        },
+                        {
+                            name: 'Forgot Password',
+                            href: 'forgot-password.html'
+                        },
+                    ]
+                },
+                {
+                    name: 'Other Pages',
+                    isOpen: false,
+                    subMenus: [{
+                        name: 'About Us',
+                        href: 'about.html'
+                    },
+                        {
+                            name: 'Contact Us',
+                            href: 'contact.html'
+                        },
+                        {
+                            name: 'Track Order',
+                            href: 'track-order.html'
+                        },
+                        {
+                            name: 'FAQ',
+                            href: 'faq.html'
+                        },
+                        {
+                            name: '404',
+                            href: '404.html'
+                        },
+                        {
+                            name: 'Checkout',
+                            href: 'checkout.html'
+                        },
+                        {
+                            name: 'Payment',
+                            href: 'payment.html'
+                        },
+                        {
+                            name: 'Order Complete',
+                            href: 'order-complete.html'
+                        },
+                    ]
+                },
+            ],
+            toggleMenu(index) {
+                if (this.menuList[index].isOpen) {
+                    this.menuList[index].isOpen = false
+                } else {
+                    this.menuList.forEach(menu => menu.isOpen = false)
+                    this.menuList[index].isOpen = true
+                }
+            }
+        }
+
+    </script>
+@endpush

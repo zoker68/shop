@@ -4,8 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ config('app.name', 'ZoKeR Shop') }}</title>
-
+    @if(empty(app('view')->yieldPushContent('meta')))
+        <x-shop::partials.meta/>
+    @else
+        @stack('meta')
+    @endif
 
     <x-shop::partials.favicon/>
 
@@ -24,7 +27,7 @@
 
 <x-shop::partials.navbar/>
 
-{{--<x-shop::partials.mobile />--}}
+<x-shop::partials.mobile />
 
 {{ $slot }}
 

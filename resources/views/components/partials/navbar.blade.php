@@ -1,5 +1,4 @@
 <!-- navbar -->
-<!-- navbar -->
 <nav class="bg-secondary lg:block">
     <div class="container flex items-center justify-between">
         <a href="#" class="lg:hidden w-[120px]">
@@ -7,7 +6,7 @@
             <img src="{{ asset('assets/images/logo-white.svg') }}" class="w-full">
         </a>
         <!-- All categories -->
-        <div class="bg-secondary py-1.5 w-[210px] relative lg:block group-hbr mr-8">
+        <div class="bg-secondary py-1.5 w-[210px] relative hidden lg:block group-hbr mr-8">
             <div class="py-2.5 px-4 flex items-center justify-center w-full">
                 <span class="text-white mr-2.5">
                     <svg width="20" height="20" viewBox="0 0 24 24">

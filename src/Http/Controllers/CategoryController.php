@@ -6,12 +6,16 @@ use Illuminate\View\View;
 use Zoker\Shop\Enums\ProductsSorting;
 use Zoker\Shop\Enums\ViewType;
 use Zoker\Shop\Models\Category;
+use Zoker\Shop\View\Components\Partials\Meta;
 
 class CategoryController extends Controller
 {
-    public function __invoke(Category $category): View
+    public function __invoke(string $slug = ''): View
     {
-        if (! $category->id) {
+        $categoryId = array_search($slug, Category::getFullSlugMap());
+        $category = Category::getAllCached()->firstWhere('id', $categoryId);
+
+        if (! $category) {
             $category = Category::getAllCached()->firstWhere('id', 1);
         }
 
@@ -21,13 +25,8 @@ class CategoryController extends Controller
 
         $sortOptions = ProductsSorting::getOptions();
 
-        return view('shop::pages.category', compact('category', 'viewType', 'sortOptions'));
-    }
+        Meta::setModel($category);
 
-    public function getViewType(): string
-    {
-        return cache()->rememberForever('viewType', function () {
-            return 'grid';
-        });
+        return view('shop::pages.category', compact('category', 'viewType', 'sortOptions'));
     }
 }

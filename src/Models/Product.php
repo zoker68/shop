@@ -19,11 +19,12 @@ use Laravel\Scout\Searchable;
 use Veelasky\LaravelHashId\Eloquent\HashableId;
 use Zoker\Shop\Classes\Bases\BaseModel;
 use Zoker\Shop\Enums\ProductsSorting;
+use Zoker\Shop\Traits\Models\HasSeo;
 use Zoker\Shop\Traits\Models\Sluggable;
 
 class Product extends BaseModel
 {
-    use HasFactory, HashableId, Searchable, Sluggable, SoftDeletes;
+    use HasFactory, HashableId, HasSeo, Searchable, Sluggable, SoftDeletes;
 
     protected array $slugs = ['slug' => 'name'];
 

@@ -12,30 +12,36 @@ class CategoryObserver
     public function saved(Category $category): void
     {
         Cache::forget(Category::CACHE_KEY);
+        Cache::forget(Category::CACHE_SLUG_MAP_KEY);
     }
 
     public function created(Category $category): void
     {
         Cache::forget(Category::CACHE_KEY);
+        Cache::forget(Category::CACHE_SLUG_MAP_KEY);
     }
 
     public function updated(Category $category): void
     {
         Cache::forget(Category::CACHE_KEY);
+        Cache::forget(Category::CACHE_SLUG_MAP_KEY);
     }
 
     public function deleted(Category $category): void
     {
         Cache::forget(Category::CACHE_KEY);
+        Cache::forget(Category::CACHE_SLUG_MAP_KEY);
     }
 
     public function restored(Category $category): void
     {
         Cache::forget(Category::CACHE_KEY);
+        Cache::forget(Category::CACHE_SLUG_MAP_KEY);
     }
 
     public function forceDeleted(Category $category): void
     {
         Cache::forget(Category::CACHE_KEY);
+        Cache::forget(Category::CACHE_SLUG_MAP_KEY);
     }
 }

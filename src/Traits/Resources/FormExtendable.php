@@ -20,7 +20,7 @@ trait FormExtendable
             $this->presetForm();
         }
 
-        Event::dispatch('backend.form.extend', [$this]);
+        Event::dispatch('backend.form.extend', [$this, $form]);
 
         return $form
             ->columns($this->getFormColumns())

@@ -133,7 +133,7 @@ backend.form.extend
 ```
 ### Using
 ```php
-Event::listen('backend.form.extend', function ($resource) {
+Event::listen('backend.form.extend', function ($resource, $form) {
     if (!$resource instanceof SomeResource) {
         return;
     }

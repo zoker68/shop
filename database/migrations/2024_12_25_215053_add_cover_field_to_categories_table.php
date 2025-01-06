@@ -10,6 +10,9 @@ return new class extends Migration
     {
         Schema::table('categories', function (Blueprint $table) {
             $table->string('cover')->after('order')->nullable();
+
+            $table->dropUnique(['slug']);
+
         });
     }
 
@@ -17,6 +20,8 @@ return new class extends Migration
     {
         Schema::table('categories', function (Blueprint $table) {
             $table->dropColumn('cover');
+
+            $table->unique('slug');
         });
     }
 };
