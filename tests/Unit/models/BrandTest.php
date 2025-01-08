@@ -10,7 +10,7 @@ use Tests\TestCase;
 
 class BrandTest extends TestCase
 {
-    public function test_getBrandsForCategory_returns_brands_for_category()
+    public function test_get_brands_for_category_returns_brands_for_category()
     {
         // Arrange
         $category = Category::factory()->create();
@@ -43,7 +43,7 @@ class BrandTest extends TestCase
         $this->assertTrue($result->contains($brand3));
     }
 
-    public function test_getBrandsForCategory_returns_brands_for_category_and_its_children()
+    public function test_get_brands_for_category_returns_brands_for_category_and_its_children()
     {
         config()->set('category.includeChildren', true);
         // Arrange
@@ -82,7 +82,7 @@ class BrandTest extends TestCase
         $this->assertTrue($result->contains($brand3));
     }
 
-    public function test_getBrandsForCategory_returns_empty_collection_if_no_brands_found()
+    public function test_get_brands_for_category_returns_empty_collection_if_no_brands_found()
     {
         // Arrange
         $category = Category::factory()->create();
@@ -95,7 +95,7 @@ class BrandTest extends TestCase
         $this->assertCount(0, $result);
     }
 
-    public function test_for_config_includeChildren_false()
+    public function test_for_config_include_children_false()
     {
         config()->set('category.includeChildren', false);
 

@@ -10,7 +10,7 @@ use Tests\TestCase;
 
 class PropertyTest extends TestCase
 {
-    public function testScopeForCategory()
+    public function test_scope_for_category()
     {
         $property = Property::factory()->create();
         $property2 = Property::factory()->create();
@@ -36,7 +36,7 @@ class PropertyTest extends TestCase
         $this->assertFalse($result->contains($property2));
     }
 
-    public function testScopeHasFilter()
+    public function test_scope_has_filter()
     {
         $property = Property::factory(['filter' => PropertyFilter::Checkbox])->create();
         $property2 = Property::factory(['filter' => PropertyFilter::None])->create();
@@ -55,7 +55,7 @@ class PropertyTest extends TestCase
         $this->assertTrue($result->doesntContain($property2));
     }
 
-    public function testScopeHasValue()
+    public function test_scope_has_value()
     {
         $property = Property::factory(['filter' => PropertyFilter::Checkbox])->create();
         $property2 = Property::factory()->create();

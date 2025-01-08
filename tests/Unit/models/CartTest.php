@@ -11,7 +11,7 @@ use Tests\TestCase;
 
 class CartTest extends TestCase
 {
-    public function testGetCartAuthenticatedUser()
+    public function test_get_cart_authenticated_user()
     {
         $user = User::factory()->create();
 
@@ -26,7 +26,7 @@ class CartTest extends TestCase
         $this->assertEquals($cart2->id, $cart->id);
     }
 
-    public function testGetCartUnauthenticatedUser()
+    public function test_get_cart_unauthenticated_user()
     {
         $sessionCart = Cart::getCurrentCart();
 
@@ -36,7 +36,7 @@ class CartTest extends TestCase
         $this->assertEquals($sessionCart->id, $cart->id);
     }
 
-    public function testTransferToNotEmptyCart()
+    public function test_transfer_to_not_empty_cart()
     {
         $products = Product::factory()->approved()->count(2)->create();
         $cart = Cart::factory(['user_id' => null, 'session' => session()->id()])->statusCreated()->hasProducts(1, ['product_id' => $products[0]->id])->create();
@@ -53,7 +53,7 @@ class CartTest extends TestCase
         $this->assertCount(2, $userCart->products);
     }
 
-    public function testTransferToEmptyCart()
+    public function test_transfer_to_empty_cart()
     {
         $product = Product::factory()->approved()->create();
         $cart = Cart::factory(['user_id' => null, 'session' => session()->id()])->statusCreated()->hasProducts(1, ['product_id' => $product->id])->create();
@@ -70,7 +70,7 @@ class CartTest extends TestCase
         $this->assertCount(1, $userCart->products);
     }
 
-    public function testTransferEmptyCart()
+    public function test_transfer_empty_cart()
     {
         $cart = Cart::factory(['user_id' => null, 'session' => session()->id()])->statusCreated()->create();
 

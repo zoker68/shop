@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class ProductTest extends TestCase
 {
-    public function test_scopeInCategory_returns_products_in_category()
+    public function test_scope_in_category_returns_products_in_category()
     {
         $category = Category::factory()->create();
         $category2 = Category::factory()->create();
@@ -24,7 +24,7 @@ class ProductTest extends TestCase
         $this->assertFalse($result->contains($productNotInCategory));
     }
 
-    public function test_scopeInCategory_returns_products_in_category_and_its_children()
+    public function test_scope_in_category_returns_products_in_category_and_its_children()
     {
         config(['category.includeChildren' => true]);
 
@@ -44,7 +44,7 @@ class ProductTest extends TestCase
         $this->assertFalse($result->contains($productNotInCategory));
     }
 
-    public function test_scopeInCategory_returns_products_in_category_only()
+    public function test_scope_in_category_returns_products_in_category_only()
     {
         config(['category.includeChildren' => false]);
 

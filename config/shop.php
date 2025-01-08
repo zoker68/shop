@@ -22,21 +22,7 @@ return [
         'contact' => env('MAIL_FOR_CONTACT', env('MAIL_TO', 'zoker@localshop')),
     ],
 
-    'reset_password_expire' => 15, //in minutes
-
-    //TODO: delete
-    'widgets' => [
-        'tops' => [
-            'ranking' => [
-                'categories' => [
-                    2, 3, 4, 5,
-                ],
-                'show_index' => true,
-                'limit' => 4,
-                'sort' => ProductsSorting::RANKING_DESC,
-            ],
-        ],
-    ],
+    'reset_password_expire' => 15, // in minutes
 
     'filament' => [
         'path' => app_path('Filament/Resources'),

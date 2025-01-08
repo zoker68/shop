@@ -112,7 +112,7 @@ class Category extends BaseModel
             now()->addDay(),
             fn () => static::handleCategoryForMap(self::getRootChildren(), [])
         )
-            + [1 => '']; //For root
+            + [1 => '']; // For root
     }
 
     public static function handleCategoryForMap($categories, $map)

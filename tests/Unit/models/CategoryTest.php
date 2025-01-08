@@ -7,7 +7,7 @@ use Tests\TestCase;
 
 class CategoryTest extends TestCase
 {
-    public function test_getBySlug_returns_category()
+    public function test_get_by_slug_returns_category()
     {
         $category = Category::factory()->create();
         $subCategory = Category::factory()->create(['parent_id' => $category->id]);
