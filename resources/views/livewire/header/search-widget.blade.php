@@ -18,7 +18,7 @@
                 <!-- search -->
                 <div class="max-w-[250px] xl:max-w-[390px] h-auto flex-grow z-10">
                     <input @click="isOpen=true" type="text" placeholder="{{ __('shop::layout.header.navbar.search.placeholder') }}"
-                           wire:model.live.debounce.250ms="search" name="search"
+                           wire:model.live.debounce.250ms="search" name="search" autocomplete="off"
                            class="px-5 py-2.5 border-none text-sm w-full focus:ring-0 focus:outline-none leading-relaxed">
                 </div>
                 <!-- search btn -->

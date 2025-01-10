@@ -49,7 +49,7 @@ class SearchWidget extends Component
 
             $result = Product::search($this->search)
                 ->when($this->category, fn ($q) => $q->whereIn('categories', $this->category->getAllChildrenAndSelf()->pluck('id')->toArray()))
-                ->paginate(8);
+                ->paginate(5);
         } else {
             $result = collect();
         }

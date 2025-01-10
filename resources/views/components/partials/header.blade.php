@@ -6,7 +6,7 @@
         <!-- logo end -->
 
         <!-- nav -->
-        <x-shop::partials.heater-menu/>
+        <x-shop::partials.header-menu/>
         <!-- nav end-->
 
         <!-- right-content -->
