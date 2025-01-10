@@ -38,7 +38,6 @@
 {{--<x-shop::partials.quick-view/>--}}
 
 <!-- script -->
-<script src="{{ asset('assets/js/main.js') }}"></script>
 <script>
     document.addEventListener('alpine:init', () => {
         Alpine.store('productView', {

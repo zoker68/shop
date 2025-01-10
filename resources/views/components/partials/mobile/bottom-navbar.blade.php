@@ -9,7 +9,7 @@
                         <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                               stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
                 </span>
-            <span class="text-[11px] leading-[10px] mt-1 text-secondary">Menu</span>
+            <span class="text-[11px] leading-[10px] mt-1 text-secondary">{{ __('shop::layout.header.navbar.mobile.menu') }}</span>
         </button>
 
         <!-- Categories -->
@@ -21,7 +21,7 @@
                               d="M2048 384v128H512V384h1536zM512 896h1536v128H512V896zm0 512h1536v128H512v-128zM0 256h384v384H0V256zm128 256h128V384H128v128zM0 768h384v384H0V768zm128 256h128V896H128v128zM0 1280h384v384H0v-384zm128 256h128v-128H128v128z" />
                     </svg>
                 </span>
-            <span class="text-[11px] leading-[10px] mt-1 text-secondary">Categories</span>
+            <span class="text-[11px] leading-[10px] mt-1 text-secondary">{{ __('shop::layout.header.navbar.mobile.categories') }}</span>
         </button>
 
         <!-- Search -->
@@ -33,7 +33,7 @@
                               d="M11.5 2.75a8.75 8.75 0 0 1 6.695 14.384l6.835 6.836a.75.75 0 0 1-.976 1.133l-.084-.073l-6.836-6.835A8.75 8.75 0 1 1 11.5 2.75Zm0 1.5a7.25 7.25 0 1 0 0 14.5a7.25 7.25 0 0 0 0-14.5Z" />
                     </svg>
                 </span>
-            <span class="text-[11px] leading-[10px] mt-1 text-secondary">Search</span>
+            <span class="text-[11px] leading-[10px] mt-1 text-secondary">{{ __('shop::layout.header.navbar.mobile.search') }}</span>
         </button>
 
         <!-- Cart -->
@@ -49,7 +49,7 @@
                         </g>
                     </svg>
                 </span>
-            <span class="text-[11px] leading-[10px] mt-1 text-secondary">Cart</span>
+            <span class="text-[11px] leading-[10px] mt-1 text-secondary">{{ __('shop::layout.header.navbar.mobile.cart') }}</span>
             <span
                 class="absolute text-white bg-primary text-[11px] rounded-full w-[18px] h-[18px] leading-[18px] -right-1 -top-[8px]">8</span>
         </button>

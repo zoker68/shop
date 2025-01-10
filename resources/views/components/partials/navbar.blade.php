@@ -122,3 +122,5 @@
     </div>
 </nav>
 <!-- navbar end-->
+
+<x-shop::partials.mobile.category :categories="$categories"/>

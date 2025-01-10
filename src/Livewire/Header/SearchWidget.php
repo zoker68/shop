@@ -2,6 +2,7 @@
 
 namespace Zoker\Shop\Livewire\Header;
 
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Livewire\Component;
@@ -15,6 +16,8 @@ class SearchWidget extends Component
     public Collection $categories;
 
     public ?Category $category = null;
+
+    public int $resultTotal = 0;
 
     public function mount(): void
     {
@@ -39,13 +42,14 @@ class SearchWidget extends Component
         $this->category = $categoryId ? $this->categories->firstWhere('id', $categoryId) : null;
     }
 
-    public function search(): Collection
+    public function search(): Collection|LengthAwarePaginator
     {
+        $this->resultTotal = 0;
         if (! empty($this->search)) {
+
             $result = Product::search($this->search)
                 ->when($this->category, fn ($q) => $q->whereIn('categories', $this->category->getAllChildrenAndSelf()->pluck('id')->toArray()))
-                ->take(5)
-                ->get();
+                ->paginate(8);
         } else {
             $result = collect();
         }

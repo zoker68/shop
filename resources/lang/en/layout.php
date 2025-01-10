@@ -30,6 +30,17 @@ return [
                 'placeholder' => 'Search product...',
                 'submit' => 'Search',
                 'no_result' => 'No result found',
+                'mobile' => [
+                    'title' => 'WHAT YOU ARE LOOKING FOR?',
+                    'placeholder' => 'search products...',
+                ],
+                'show_more' => 'Show :total_count_result results more',
+            ],
+            'mobile' => [
+                'menu' => 'Menu',
+                'categories' => 'Categories',
+                'search' => 'Search',
+                'cart' => 'Cart',
             ],
         ],
     ],
