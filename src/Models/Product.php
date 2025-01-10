@@ -28,6 +28,10 @@ class Product extends BaseModel
 
     protected array $slugs = ['slug' => 'name'];
 
+    protected $casts = [
+        'images' => 'array',
+    ];
+
     /* --------------------- Relations Start --------------------- */
     public function brand(): BelongsTo
     {
@@ -81,6 +85,7 @@ class Product extends BaseModel
     /* --------------------- Mutators and Accessors End  --------------------- */
 
     /* --------------------- Scopes Start --------------------- */
+
     public function scopeApplyFilters(Builder $query, $filters): Builder
     {
         return $query
@@ -178,22 +183,49 @@ class Product extends BaseModel
     {
         return Property::prepareFilterQuery($query, $filters);
     }
-    /* --------------------- Scopes End --------------------- */
 
+    /* --------------------- Scopes End --------------------- */
     /* --------------------- Methods Start --------------------- */
-    public function getCoverImage(?int $width = null, ?int $height = null, ?array $options = null): string
+
+    public function getImageUrl(string $coverImage, ?int $width = null, ?int $height = null, ?array $options = null): string
     {
-        if (Str::startsWith($this->image, ['https://', 'http://'])) {
-            return $this->image;
+        if (Str::startsWith($coverImage, ['https://', 'http://'])) {
+            return $coverImage;
         }
 
-        $imageUrl = Storage::disk(config('shop.disk'))->url($this->image);
+        $imageUrl = Storage::disk(config('shop.disk'))->url($coverImage);
 
         if ($width || $height || $options) {
             return Croppa::url($imageUrl, $width, $height, $options);
         }
 
         return $imageUrl;
+    }
+
+    public function getCoverImage(?int $width = null, ?int $height = null, ?array $options = null): string
+    {
+        if (! is_array($this->images) || ! count($this->images)) {
+            return '';
+        } else {
+            $coverImage = $this->images[array_key_last($this->images)];
+        }
+
+        return $this->getImageUrl($coverImage, $width, $height, $options);
+    }
+
+    public function getImages(?int $width = null, ?int $height = null, ?array $options = null): array
+    {
+        if (! is_array($this->images) || ! count($this->images)) {
+            return [];
+        }
+
+        $images = [];
+
+        foreach ($this->images as $image) {
+            $images[] = $this->getImageUrl($image, $width, $height, $options);
+        }
+
+        return $images;
     }
 
     public static function getPriceRangeByCategory(Category $category): array

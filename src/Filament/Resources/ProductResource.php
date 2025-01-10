@@ -56,9 +56,12 @@ class ProductResource extends BaseResource
                 ->label(__('shop::product.admin.form.description'))
                 ->columnSpan(2),
 
-            'image' => FileUpload::make('image')
+            'images' => FileUpload::make('images')
                 ->label(__('shop::product.admin.form.image'))
                 ->image()
+                ->multiple()
+                ->reorderable()
+                ->panelLayout('grid')
                 ->disk(config('shop.disk'))
                 ->directory('products')
                 ->imageEditor()

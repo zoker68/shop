@@ -6,8 +6,30 @@
                     <div class="col-span-12 lg:col-span-6">
 
                         <div class="flex justify-center items-center">
-                            <img loading="lazy" src="{{ $product->getCoverImage() }}" alt="{{ $product->name }}">
+                            <img loading="lazy" src="{{ $product->getCoverImage(600, 600) }}" alt="{{ $product->name }}" id="product_main_image">
                         </div>
+
+                        <div class="swiper-product-page mt-4 relative group overflow-hidden">
+                            <div class="swiper-wrapper flex">
+                                @foreach($product->images as $image)
+                                    <div class="swiper-slide">
+                                        <div class="w-full h-[90px] flex justify-center items-center select-image cursor-pointer">
+                                            <img loading="lazy" src="{{ $product->getImageUrl($image, 90, 90) }}" data-big-image="{{ $product->getImageUrl($image, 600, 600) }}" alt="{{ $product->name }}"
+                                                 class="w-full h-full object-cover cursor-pointer">
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            <div
+                                class="swiper-button-next box_shadow w-8 h-8 bg-[#eceef0] absolute right-0 top-1/2 opacity-25 group-hover:opacity-100 transition duration-300">
+                            </div>
+                            <div
+                                class="swiper-button-prev box_shadow w-8 h-8 bg-[#eceef0] absolute left-0 top-1/2 opacity-25 group-hover:opacity-100 transition duration-300">
+                            </div>
+
+                        </div>
+
                     </div>
                     <div class="col-span-12 lg:col-span-6">
                         <div class="product_info_wrapper">

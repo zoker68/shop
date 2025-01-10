@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('description_short')->nullable();
             $table->integer('stock')->default(0);
             $table->integer('price')->index();
-            $table->text('image')->nullable();
+            $table->text('images')->nullable();
             $table->string('status')->default('moderation');
             $table->boolean('published')->default(true);
             $table->unsignedInteger('sell_count')->default(0);
