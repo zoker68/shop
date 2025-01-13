@@ -8,7 +8,7 @@
          x-transition:leave-end="-translate-x-full opacity-100" @click.outside="$store.mobileMenu.isOpen=false"
          class="relative w-[320px] h-full overflow-y-auto bg-white">
         <h5 class="text-center bg-primary text-white py-[14px] text-xl relative">
-            Menu
+            {{ __('shop::layout.header.navbar.mobile.menu') }}
             <button @click="$store.mobileMenu.isOpen=false"
                     class="absolute top-[17px] right-[15px] text-white text-center cursor-pointer">
                 <svg width="20" height="20" viewBox="0 0 32 32">
@@ -22,14 +22,19 @@
                 <li>
                     <button @click="toggleMenu(index)"
                             class="py-2.5 pr-[15px] pl-[25px] w-full text-secondary border-b border-dotted border-[#C8C8CE] hover:bg-[#efefef] transition-all duration-300 block text-left relative">
-                        <span x-text="menu.name"></span>
-                        <span :class="menu.isOpen ? 'rotate-180' : ''"
+                        <template x-if="menu.href">
+                            <a :href="menu.href" x-text="menu.name"></a>
+                        </template>
+                        <template x-if="!menu.href">
+                            <span x-text="menu.name"></span>
+                        </template>
+                        <span x-show="menu.subMenus" :class="menu.isOpen ? 'rotate-180' : ''"
                               class="absolute top-2.5 right-[15px] text-center text-secondary transition-all">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                                     stroke="currentColor" stroke-width="">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor" stroke-width="">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </span>
                     </button>
 
                     <div x-show="menu.isOpen" x-transition>
@@ -50,106 +55,24 @@
     <script>
         // mobile menu list
         const menuModules = {
-            menuList: [{
-                name: 'Home1',
-                isOpen: false,
-                subMenus: [{
-                    name: 'Home 1',
-                    href: 'index-1.html'
-                },
-                    {
-                        name: 'Home 2',
-                        href: 'index-2.html'
-                    },
-                    {
-                        name: 'Home 3',
-                        href: 'index-3.html'
-                    },
-                ]
-            },
+            menuList: [
+                @foreach($menu->items as $item)
                 {
-                    name: 'Shop',
+                    name: '{{ $item['label'] }}',
                     isOpen: false,
-                    subMenus: [{
-                        name: 'List view',
-                        href: 'list-view.html'
-                    },
+                    @if ($item)href: '{{ $menu->getUrl($item) }}',@endif
+                    @if($item['hasSubmenu'] && count($item['submenu']))
+                    subMenus: [
+                        @foreach($item['submenu'] as $subitem)
                         {
-                            name: 'Grid view',
-                            href: 'grid-view.html'
+                            name: '{{ $subitem['label'] }}',
+                            href: '{{ $menu->getUrl($subitem) }}'
                         },
-                        {
-                            name: 'Grid view 2',
-                            href: 'grid-view-2.html'
-                        },
-                        {
-                            name: 'Shopping Cart',
-                            href: 'shopping-cart.html'
-                        },
-                        {
-                            name: 'Product view',
-                            href: 'product-view.html'
-                        },
+                        @endforeach
                     ]
+                    @endif
                 },
-                {
-                    name: 'My Account',
-                    isOpen: false,
-                    subMenus: [{
-                        name: 'My Account',
-                        href: 'my-account.html'
-                    },
-                        {
-                            name: 'Login',
-                            href: 'login.html'
-                        },
-                        {
-                            name: 'Register',
-                            href: 'register.html'
-                        },
-                        {
-                            name: 'Forgot Password',
-                            href: 'forgot-password.html'
-                        },
-                    ]
-                },
-                {
-                    name: 'Other Pages',
-                    isOpen: false,
-                    subMenus: [{
-                        name: 'About Us',
-                        href: 'about.html'
-                    },
-                        {
-                            name: 'Contact Us',
-                            href: 'contact.html'
-                        },
-                        {
-                            name: 'Track Order',
-                            href: 'track-order.html'
-                        },
-                        {
-                            name: 'FAQ',
-                            href: 'faq.html'
-                        },
-                        {
-                            name: '404',
-                            href: '404.html'
-                        },
-                        {
-                            name: 'Checkout',
-                            href: 'checkout.html'
-                        },
-                        {
-                            name: 'Payment',
-                            href: 'payment.html'
-                        },
-                        {
-                            name: 'Order Complete',
-                            href: 'order-complete.html'
-                        },
-                    ]
-                },
+                @endforeach
             ],
             toggleMenu(index) {
                 if (this.menuList[index].isOpen) {

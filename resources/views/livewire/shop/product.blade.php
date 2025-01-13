@@ -77,7 +77,7 @@
                             </div>
                             <!-- add to cart & wishlist -->
                             <div class="flex gap-5 mt-6 border-b pb-5">
-                                <x-shop::form.button class="flex gap-2 items-center sm:text-base px-2 sm:px-8 group">
+                                <x-shop::form.button class="flex gap-2 items-center sm:text-base px-2 sm:px-8 group w-1/2 max-w-60">
                                     <span class="text-white group-hover:text-primary">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                              viewBox="0 0 24 24">
@@ -88,7 +88,7 @@
                                     {{ __('shop::product.add_to_cart') }}
                                 </x-shop::form.button>
                                 <button wire:click.prevent="toggleWishlist('{{ $product->hash }}')"
-                                   class="flex gap-2 items-center border border-primary hover:bg-primary text-primary hover:text-white transition duration-300 px-2 sm:px-8 py-2 rounded uppercase group w-60">
+                                   class="flex gap-2 items-center border border-primary hover:bg-primary text-primary hover:text-white transition duration-300 px-2 sm:px-8 py-2 rounded uppercase group group w-1/2 max-w-60">
                                     <span class="text-primary group-hover:text-white">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                              viewBox="0 0 24 24">

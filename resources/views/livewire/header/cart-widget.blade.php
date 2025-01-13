@@ -28,7 +28,7 @@
                 </span>
                 <a href="{{ route('product', $item->product) }}" class="flex items-start pr-5 mb-4 ">
                     <div class="flex-shrink-0">
-                        <img src="{{ $item->product->getCoverImage() }}"
+                        <img src="{{ $item->product->getCoverImage(75, 75) }}"
                              class="w-[75px] h-[60px] object-contain"
                              alt="product">
                     </div>

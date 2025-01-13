@@ -8,7 +8,7 @@ use Livewire\Component;
 use Zoker\Shop\Models\Cart;
 use Zoker\Shop\Traits\Livewire\HasCartFunctions;
 
-class CartWidget extends Component
+class MobileCartWidget extends Component
 {
     use HasCartFunctions;
 
@@ -22,7 +22,7 @@ class CartWidget extends Component
 
         $this->cartCountProducts = $this->cart->products->count();
 
-        return view('shop::livewire.header.cart-widget');
+        return view('shop::livewire.header.cart-widget-mobile');
     }
 
     #[On('cartUpdated')]

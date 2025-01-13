@@ -33,32 +33,15 @@
             <div class="col-span-1">
                 <div class="flex flex-wrap">
                     <div class="w-1/2 lg:px-3">
-                        <div>
+                        <div class="footer-menu">
                             <h4 class="text-lg text-secondary font-medium mb-5 mt-2">MY ACCOUNT</h4>
-                            <a href="order-history.html"
-                               class="text-[15px] leading-6 text-secondary block mb-3">Orders</a>
-                            <a href="wishlist.html"
-                               class="text-[15px] leading-6 text-secondary block mb-3">Wishlist</a>
-                            <a href="track-order.html" class="text-[15px] leading-6 text-secondary block mb-3">Track
-                                Order</a>
-                            <a href="my-account.html" class="text-[15px] leading-6 text-secondary block mb-3">Manage
-                                Account</a>
-                            <a href="return-order.html"
-                               class="text-[15px] leading-6 text-secondary block mb-3">Return Order</a>
+                            <x-fsp::menu code="footer-left"/>
                         </div>
                     </div>
                     <div class="w-1/2 px-3">
-                        <div>
+                        <div class="footer-menu">
                             <h4 class="text-lg text-secondary font-medium mb-5 mt-2">INFORMATION</h4>
-                            <a href="about.html" class="text-[15px] leading-6 text-secondary block mb-3">About
-                                Us</a>
-                            <a href="#" class="text-[15px] leading-6 text-secondary block mb-3">Return Policy</a>
-                            <a href="terms-condition.html"
-                               class="text-[15px] leading-6 text-secondary block mb-3">Terms &amp;
-                                condition</a>
-                            <a href="privacy-policy.html"
-                               class="text-[15px] leading-6 text-secondary block mb-3">Privacy Policy</a>
-                            <a href="faq.html" class="text-[15px] leading-6 text-secondary block mb-3">FAQ</a>
+                            <x-fsp::menu code="footer-right"/>
                         </div>
                     </div>
                 </div>

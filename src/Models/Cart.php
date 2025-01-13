@@ -25,6 +25,8 @@ class Cart extends BaseModel
         'data' => 'array',
     ];
 
+    private static ?self $widgetCart = null;
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -198,5 +200,20 @@ class Cart extends BaseModel
 
         $this->status = CartStatus::ORDERED;
         $this->save();
+    }
+
+    public static function getWidgetCart(): Cart
+    {
+        if (! self::$widgetCart) {
+            self::$widgetCart = Cart::getCurrentCart();
+
+            self::$widgetCart = cache()->remember(
+                'cart_' . self::$widgetCart->id,
+                now()->addMinutes(15),
+                fn () => self::$widgetCart->load('products', 'products.product')
+            );
+        }
+
+        return self::$widgetCart;
     }
 }

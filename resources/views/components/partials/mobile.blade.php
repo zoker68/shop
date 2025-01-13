@@ -3,5 +3,3 @@
 <x-shop::partials.mobile.menu />
 
 <x-shop::partials.mobile.search />
-
-<x-shop::partials.mobile.cart />

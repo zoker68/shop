@@ -18,6 +18,7 @@ use Zoker\Shop\Livewire\Checkout;
 use Zoker\Shop\Livewire\Confirm;
 use Zoker\Shop\Livewire\Contact;
 use Zoker\Shop\Livewire\Header\CartWidget;
+use Zoker\Shop\Livewire\Header\MobileCartWidget;
 use Zoker\Shop\Livewire\Header\SearchWidget;
 use Zoker\Shop\Livewire\Header\WishlistWidget;
 use Zoker\Shop\Livewire\Payment;
@@ -104,6 +105,7 @@ class ShopServiceProvider extends ServiceProvider
         Livewire::component('shop.confirm', Confirm::class);
 
         Livewire::component('shop.widget.cart', CartWidget::class);
+        Livewire::component('shop.widget.cart.mobile', MobileCartWidget::class);
         Livewire::component('shop.widget.wishlist', WishlistWidget::class);
         Livewire::component('shop.widget.search', SearchWidget::class);
 

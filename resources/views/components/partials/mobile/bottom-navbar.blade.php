@@ -36,23 +36,8 @@
             <span class="text-[11px] leading-[10px] mt-1 text-secondary">{{ __('shop::layout.header.navbar.mobile.search') }}</span>
         </button>
 
-        <!-- Cart -->
-        <button @click="$store.cart.isCart=true"
-                class="relative text-secondary flex flex-col justify-center items-center text-center">
-                <span class="relative block text-secondary">
-                    <svg width="22" height="22" viewBox="0 0 32 32">
-                        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                           stroke-width="2">
-                            <path d="M6 6h24l-3 13H9m18 4H10L5 2H2" />
-                            <circle cx="25" cy="27" r="2" />
-                            <circle cx="12" cy="27" r="2" />
-                        </g>
-                    </svg>
-                </span>
-            <span class="text-[11px] leading-[10px] mt-1 text-secondary">{{ __('shop::layout.header.navbar.mobile.cart') }}</span>
-            <span
-                class="absolute text-white bg-primary text-[11px] rounded-full w-[18px] h-[18px] leading-[18px] -right-1 -top-[8px]">8</span>
-        </button>
+        <livewire:shop.widget.cart.mobile />
+
     </div>
 </div>
 <!-- mobile bottom bar -->
