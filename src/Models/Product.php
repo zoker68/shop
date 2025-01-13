@@ -82,6 +82,15 @@ class Product extends BaseModel
         );
     }
 
+    public function getImagesAttribute($value): array
+    {
+        if (! is_array($value)) {
+            return [];
+        }
+
+        return $value;
+    }
+
     /* --------------------- Mutators and Accessors End  --------------------- */
 
     /* --------------------- Scopes Start --------------------- */
