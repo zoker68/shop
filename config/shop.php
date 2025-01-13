@@ -4,7 +4,7 @@ use Zoker\Shop\Enums\ProductsSorting;
 
 return [
 
-    'maintenance_mode' => false, // Access to site only for admin users
+    'maintenance_mode' => env('MAINTENANCE_MODE', false), // Access to site only for admin users
 
     'category' => [
         'includeChildren' => true, // Turn on the products from subcategories
