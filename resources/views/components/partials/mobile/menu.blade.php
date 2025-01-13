@@ -50,7 +50,7 @@
     </div>
 </div>
 <!-- mobile menu end -->
-
+@if (is_array($menu->items) && count($menu->items))
 @push('scripts')
     <script>
         // mobile menu list
@@ -86,3 +86,4 @@
 
     </script>
 @endpush
+@endif
