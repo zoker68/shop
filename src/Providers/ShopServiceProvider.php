@@ -44,12 +44,10 @@ class ShopServiceProvider extends ServiceProvider
             ]);
         }
 
-        if (class_exists(BlocksComponentRegistry::class)) {
-            BlocksComponentRegistry::register(ContactBlock::class);
-            BlocksComponentRegistry::register(ProductsBlock::class);
-            BlocksComponentRegistry::register(TopProductBlock::class);
-            BlocksComponentRegistry::register(CategoriesBlock::class);
-        }
+        BlocksComponentRegistry::register(ContactBlock::class);
+        BlocksComponentRegistry::register(ProductsBlock::class);
+        BlocksComponentRegistry::register(TopProductBlock::class);
+        BlocksComponentRegistry::register(CategoriesBlock::class);
     }
 
     public function boot(): void
