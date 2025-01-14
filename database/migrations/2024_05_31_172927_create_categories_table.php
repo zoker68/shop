@@ -22,13 +22,15 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        \Zoker\Shop\Models\Category::create([
-            'name' => 'Root',
-            'slug' => '',
-            'parent_id' => 0,
-            'order' => 0,
-            'published' => true,
-        ]);
+        \Zoker\Shop\Models\Category::withoutEvents(function () {
+            \Zoker\Shop\Models\Category::create([
+                'name' => 'Root',
+                'slug' => '',
+                'parent_id' => 0,
+                'order' => 0,
+                'published' => true,
+            ]);
+        });
     }
 
     /**
