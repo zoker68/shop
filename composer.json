@@ -17,7 +17,7 @@
         }
     ],
     "require": {
-        "php": "^8.3",
+        "php": "^8.4",
         "laravel/framework": "^11.9",
         "livewire/livewire": "^3.0",
         "filament/filament": "^3.2",
@@ -26,6 +26,7 @@
         "meilisearch/meilisearch-php": "^1.9",
         "veelasky/laravel-hashid": "^3.1",
         "akaunting/laravel-money": "^5.2",
+        "zoker/filament-static-pages": "*",
         "bkwld/croppa": "^7.0"
     },
     "require-dev": {
