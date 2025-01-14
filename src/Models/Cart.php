@@ -23,6 +23,7 @@ class Cart extends BaseModel
     protected $casts = [
         'status' => CartStatus::class,
         'data' => 'array',
+        'total_products' => 'float',
     ];
 
     private static ?self $widgetCart = null;
@@ -78,12 +79,12 @@ class Cart extends BaseModel
 
     public static function getBySession(?string $session = null): self
     {
-        return self::active()->firstOrCreate(['session' => $session ?? self::getCartSession()]);
+        return self::active()->firstOrCreate(['session' => $session ?? self::getCartSession()])->refresh();
     }
 
     public static function getForUser(): self
     {
-        return auth()->user()->carts()->active()->firstOrCreate(['user_id' => auth()->user()->id]);
+        return auth()->user()->carts()->active()->firstOrCreate(['user_id' => auth()->user()->id])->refresh();
     }
 
     public function calculateTotals(): void
