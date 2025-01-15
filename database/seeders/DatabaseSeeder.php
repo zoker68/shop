@@ -36,23 +36,22 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
-        User::factory()->count(10)->create();
+        // User::factory()->count(10)->create();
 
         $adminGroup = UserGroup::create([
             'id' => 1,
             'name' => 'Admin',
-            'is_admin' => true,
+            'permissions' => ['admin_panel'],
         ]);
 
         $userGroup = UserGroup::create([
             'id' => 2,
             'name' => 'User',
-            'is_admin' => false,
         ]);
 
         User::find(1)->groups()->attach($adminGroup);
 
-        $this->properties();
+        /*$this->properties();
 
         $mainCategories = ['Категория 1', 'Категория 2', 'Категория 3', 'Категория 4', 'Категория 5', 'Категория 6', 'Категория 7', 'Категория 8'];
 
@@ -86,14 +85,14 @@ class DatabaseSeeder extends Seeder
         ShippingMethod::factory()->count(3)->create();
 
         PaymentMethod::factory()->count(3)->create();
-
+*/
         $this->call([
             LocationSeeder::class,
             OrderStatusSeed::class,
         ]);
 
         $countries = Country::all();
-        Address::factory()->recycle($countries)->recycle(User::find(1))->count(3)->create();
+        // Address::factory()->recycle($countries)->recycle(User::find(1))->count(3)->create();
 
         Artisan::call('scout:flush', ['model' => 'Zoker\Shop\Models\Product']);
         Artisan::call('scout:import', ['model' => 'Zoker\Shop\Models\Product']);

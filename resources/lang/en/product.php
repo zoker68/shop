@@ -145,6 +145,7 @@ return [
             'price' => 'Price',
             'brand' => 'Brand',
             'published' => 'Published',
+            'foreign_id' => 'Foreign ID',
         ],
     ],
 ];

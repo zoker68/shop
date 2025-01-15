@@ -82,6 +82,10 @@ class ProductResource extends BaseResource
                 ->minValue(0)
                 ->afterStateHydrated(fn ($state, $set) => $set('price', $state / (currency()->getSubunit()))),
 
+            'foreign_id' => TextInput::make('foreign_id')
+                ->label(__('shop::product.admin.form.foreign_id'))
+                ->maxLength(255),
+
             'brand_id' => Select::make('brand_id')
                 ->columnStart(1)
                 ->label(__('shop::product.admin.form.brand'))
