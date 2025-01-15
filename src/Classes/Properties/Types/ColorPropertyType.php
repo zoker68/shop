@@ -38,6 +38,6 @@ class ColorPropertyType extends BasePropertyType
 
     public function getValueBladeComponentName(): string
     {
-        return 'components.partials.properties.values.color';
+        return 'shop::components.partials.properties.values.color';
     }
 }

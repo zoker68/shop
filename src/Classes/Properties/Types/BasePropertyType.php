@@ -39,6 +39,6 @@ abstract class BasePropertyType implements PropertyTypeInterface
 
     public function getValueBladeComponentName(): string
     {
-        return 'components.partials.properties.values.default';
+        return 'shop::components.partials.properties.values.default';
     }
 }
