@@ -142,12 +142,13 @@ class Product extends BaseModel
     public function scopeForCategory(Builder $query, Category $category): Builder
     {
         if ($category->isRoot() && config('shop.category.includeChildren')) {
-            return $query;
+            return $query->whereHas('categories', fn ($query) => $query->published());
         }
 
         return $query->whereHas('categories', function ($query) use ($category) {
             $query->when(config('shop.category.includeChildren'), fn ($q) => $q->whereIn('category_id', $category->getAllChildrenAndSelf()->pluck('id')))
-                ->when(! config('shop.category.includeChildren'), fn ($q) => $q->where('category_id', $category->id));
+                ->when(! config('shop.category.includeChildren'), fn ($q) => $q->where('category_id', $category->id))
+                ->published();
         });
     }
 
@@ -167,8 +168,8 @@ class Product extends BaseModel
         if (empty($allUsingCategories)) {
             foreach ($categories as $category) {
                 if (config('shop.category.includeChildren')) {
-                    if ($category->isRoot() && config('shop.category.includeChildren')) {
-                        return $query;
+                    if ($category->isRoot()) {
+                        return $query->whereHas('categories', fn ($query) => $query->published());
                     }
 
                     $allUsingCategories = array_merge($allUsingCategories, $category->getAllChildrenAndSelf()->pluck('id')->toArray());
@@ -179,7 +180,7 @@ class Product extends BaseModel
         }
 
         return $query->whereHas('categories', function ($query) use ($allUsingCategories) {
-            $query->whereIn('category_id', $allUsingCategories);
+            $query->whereIn('category_id', $allUsingCategories)->published();
         });
     }
 
