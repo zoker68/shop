@@ -26,6 +26,10 @@ trait HasSeo
             ]);
         });
 
+        static::forceDeleted(function (Model $model) {
+            $model->seo()->delete();
+        });
+
         $this->extendFormSchema();
     }
 
