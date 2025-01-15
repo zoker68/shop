@@ -140,6 +140,7 @@ return [
             'name' => 'Name',
             'slug' => 'URL',
             'description' => 'Description',
+            'description_short' => 'Short description',
             'image' => 'Cover image',
             'stock' => 'Stock',
             'price' => 'Price',

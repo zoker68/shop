@@ -47,7 +47,7 @@ class SelectPropertyFilter extends BasePropertyFilter
 
     public function getBladeComponentName(PropertyType $propertyType): string
     {
-        return 'components.partials.properties.filters.select';
+        return 'shop::components.partials.properties.filters.select';
     }
 
     public function getQueryForFilter($propertyId, $value): callable

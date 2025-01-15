@@ -46,10 +46,10 @@ class RadioPropertyFilter extends BasePropertyFilter
     public function getBladeComponentName(PropertyType $propertyType): string
     {
         if ($propertyType === PropertyType::Color) {
-            return 'components.partials.properties.filters.color-radio';
+            return 'shop::components.partials.properties.filters.color-radio';
         }
 
-        return 'components.partials.properties.filters.radio';
+        return 'shop::components.partials.properties.filters.radio';
     }
 
     public function getQueryForFilter($propertyId, $value): callable

@@ -27,7 +27,7 @@ class ColorPickerPropertyFilter extends BasePropertyFilter
 
     public function getBladeComponentName(PropertyType $propertyType): string
     {
-        return 'components.partials.properties.filters.color';
+        return 'shop::components.partials.properties.filters.color';
     }
 
     public function getQueryForFilter($propertyId, $value): callable

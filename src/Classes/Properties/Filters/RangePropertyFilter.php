@@ -24,7 +24,7 @@ class RangePropertyFilter extends BasePropertyFilter
 
     public function getBladeComponentName(PropertyType $propertyType): string
     {
-        return 'components.partials.properties.filters.range';
+        return 'shop::components.partials.properties.filters.range';
     }
 
     public function getQueryForFilter($propertyId, $value): callable
