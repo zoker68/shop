@@ -15,10 +15,16 @@ use Zoker\Shop\Models\Seo;
 
 trait HasSeo
 {
-    public static bool $seoExtendedForm = false;
+    public static bool $isTraitInitialized = false;
 
     public function initializeHasSeo(): void
     {
+        if (static::$isTraitInitialized) {
+            return;
+        }
+
+        static::$isTraitInitialized = true;
+
         static::created(function (Model $model) {
             $model->seo()->create([
                 'title' => $this->getPresetTitleFromModel($model) . ' | ' . config('app.name'),
@@ -26,8 +32,10 @@ trait HasSeo
             ]);
         });
 
-        static::forceDeleted(function (Model $model) {
-            $model->seo()->delete();
+        static::deleting(function (Model $model) {
+            if ($model->forceDeleting) {
+                $model->seo()->delete();
+            }
         });
 
         $this->extendFormSchema();
@@ -40,10 +48,6 @@ trait HasSeo
 
     public function extendFormSchema(): void
     {
-        if (static::$seoExtendedForm) {
-            return;
-        }
-
         Event::listen('backend.form.extend', function (BaseResource $resource) {
             if ($resource->getModel() != self::class) {
                 return;
@@ -91,8 +95,6 @@ trait HasSeo
                     ]),
             ], 'SEO');
         });
-
-        static::$seoExtendedForm = true;
     }
 
     public function getPresetTitleFromModel(Model $model): ?string
