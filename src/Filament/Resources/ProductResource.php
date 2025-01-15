@@ -3,8 +3,10 @@
 namespace Zoker\Shop\Filament\Resources;
 
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Group;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Tables\Actions\DeleteAction;
@@ -52,9 +54,15 @@ class ProductResource extends BaseResource
                 ->maxLength(255)
                 ->unique(ignoreRecord: true),
 
-            'description' => RichEditor::make('description')
-                ->label(__('shop::product.admin.form.description'))
-                ->columnSpan(2),
+            Group::make([
+                'description' => RichEditor::make('description')
+                    ->label(__('shop::product.admin.form.description'))
+                    ->columnSpanFull(),
+
+                'description_short' => Textarea::make('description_short')
+                    ->label(__('shop::product.admin.form.description_short'))
+                    ->columnSpanFull(),
+            ])->columnSpan(2),
 
             'images' => FileUpload::make('images')
                 ->label(__('shop::product.admin.form.image'))
