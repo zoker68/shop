@@ -43,7 +43,7 @@
                         <div class="pl-2">
                             <h4 class="text-lg font-medium text-secondary mb-1.5">{{ $product->name }}</h4>
                             <div class="mb-[5px] font-medium leading-[22px]">
-                                <span class="text-primary mr-[5px]">@money($product->price)</span>
+                                <span class="text-primary mr-[5px] price">@money($product->price)</span>
                             </div>
                         </div>
                     </a>
@@ -106,7 +106,7 @@
                     <div class="pl-2">
                         <h4 class="text-lg font-medium mb-1.5 text-secondary">{{ $product->name }}</h4>
                         <div>
-                            <span class="text-primary mr-[5px] leading-[22px] text-base font-medium">@money($product->price)</span>
+                            <span class="text-primary mr-[5px] leading-[22px] text-base font-medium price">@money($product->price)</span>
                             {{--<span class="text-sm text-[#687188] font-medium leading-[22px]">$55.45</span>--}}
                         </div>
                     </div>

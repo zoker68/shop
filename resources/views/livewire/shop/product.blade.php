@@ -55,7 +55,7 @@
                                 </div>
                                 <div class="mt-3 flex gap-3 items-center overflow-hidden">
                                     {{--<span class="line-through">@money($product->price)</span>--}}
-                                    <span class="text-2xl text-primary font-semibold">@money($product->price)</span>
+                                    <span class="text-2xl text-primary font-semibold price">@money($product->price)</span>
                                     {{--<div
                                         class="ml-3 text-sm bg-primary text-white px-2 py-[2px] relative after:absolute after:w-[14px] after:h-[14px] after:bg-primary after:-left-1 after:top-1 after:rotate-45">
                                         -30%

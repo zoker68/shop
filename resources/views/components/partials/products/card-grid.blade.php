@@ -32,7 +32,7 @@
         </a>
         <p class="text-[15px] text-[#464545] mb-2.5">{{ $product->description_short }}</p>
         <div class="mr-[5px]">
-            <span class="text-primary text-xl font-semibold leading-[22px]">@money($product->price)</span>
+            <span class="text-primary text-xl font-semibold leading-[22px] price">@money($product->price)</span>
         </div>
         <div class="flex items-center justify-start gap-[9px]">
             <x-shop::partials.rating :rating="$product->reviews_avg_rating" class="items-center"/>

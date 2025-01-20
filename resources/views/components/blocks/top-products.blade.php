@@ -23,7 +23,7 @@
                                     <h4 class="text-base font-medium text-secondary mb-1.5">{{ $product->name }}</h4>
                                 </a>
                                 <div class="font-medium">
-                                    <span class="text-primary mr-1">@money($product->price)</span>
+                                    <span class="text-primary mr-1 price">@money($product->price)</span>
                                     {{--<span class="text-[#687188] text-sm font-medium line-through">$300.45</span>--}}
                                 </div>
                                 <div>

@@ -9,7 +9,7 @@
         <div class="bg-[#fafafa] min-h-[260px] p-3 flex items-center justify-center">
             <div class="lp_img">
                 <a href="{{ route('product', $product) }}">
-                <img src="{{ $product->getCoverImage(200, 200) }}"
+                <img src="{{ $product->getCoverImage(300, 300) }}"
                      class="w-[200px] h-[200px] object-contain flex-shrink-0" alt="{{ $product->name }}">
                 </a>
             </div>
@@ -24,7 +24,7 @@
 
             <div>
                 <div class="font-medium mb-1.5">
-                    <span class="text-primary text-lg font-medium leading-[22px] mr-[5px]">@money($product->price)</span>
+                    <span class="text-primary text-lg font-medium leading-[22px] mr-[5px] price">@money($product->price)</span>
                     {{--<span class="text-[#687188] text-base font-medium line-through">$55.45</span>--}}
                 </div>
 
@@ -35,11 +35,7 @@
             </div>
 
             <p class="text-base leading-6 mt-3 mb-4 text-secondary">
-                @if (strlen($product->description) > 200)
-                    {{ substr($product->description, 0, 200) }}...
-                @else
-                    {{ $product->description }}
-                @endif
+                {{ $product->description_short }}
             </p>
             <div class="mt-4 flex gap-4">
                 <button wire:click="addToCart('{{ $product->hash }}')"

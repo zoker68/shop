@@ -42,7 +42,7 @@
             </a>
             <div>
                 <div>
-                    <span class="text-primary mr-[5px] font-medium">@money($product->price)</span>
+                    <span class="text-primary mr-[5px] font-medium price">@money($product->price)</span>
                     {{--<span class="text-sm text-[#687188] line-through font-medium">$55.45</span>--}}
                 </div>
 
