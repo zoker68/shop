@@ -55,7 +55,7 @@
                         </span>
                     </a>
                     <div class="flex-shrink-0">
-                        <img src="{{ $item->product->getCoverImage(75, 75) }}" class="w-[75px] h-[60px] object-contain" alt="product">
+                        <img src="{{ $item->product->getCoverImage(100, 100) }}" class="w-[75px] h-[60px] object-contain" alt="product">
                     </div>
                     <div class="flex-grow pl-4">
                         <h5 class="text-base text-secondary font-medium hover:text-primary transition duration-300">

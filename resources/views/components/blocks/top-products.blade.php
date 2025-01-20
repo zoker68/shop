@@ -10,7 +10,7 @@
                         <div class="sm:flex items-center mt-5">
                             <div class="w-full sm:w-[105px] bg-[#F2F0F0] rounded-md p-2.5 relative">
                                 <a href="{{ route('product', $product) }}">
-                                    <img loading="lazy" src="{{ $product->getCoverImage(75, 75) }}"
+                                    <img loading="lazy" src="{{ $product->getCoverImage(100, 100) }}"
                                          class="w-full h-[75px] object-contain flex-shrink-0" alt="product">
                                 </a>
                                 @if($show_index)

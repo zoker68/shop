@@ -14,7 +14,7 @@
                                 @foreach($product->images as $image)
                                     <div class="swiper-slide">
                                         <div class="w-full h-[90px] flex justify-center items-center select-image cursor-pointer">
-                                            <img loading="lazy" src="{{ $product->getImageUrl($image, 90, 90) }}" data-big-image="{{ $product->getImageUrl($image, 600, 600) }}" alt="{{ $product->name }}"
+                                            <img loading="lazy" src="{{ $product->getImageUrl($image, 100, 100) }}" data-big-image="{{ $product->getImageUrl($image, 600, 600) }}" alt="{{ $product->name }}"
                                                  class="w-full h-full object-cover cursor-pointer">
                                         </div>
                                     </div>

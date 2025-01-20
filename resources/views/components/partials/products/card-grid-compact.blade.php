@@ -6,7 +6,7 @@
 <div class="w-full col-span-1 group">
     <div class="border border-[#DDDDDD] rounded-[5px] overflow-hidden">
         <div class="relative bg-[#f3f3f3] px-[30px] py-[30px] sm:py-5">
-            <img class="w-full h-[130px] object-contain flex-shrink-0" src="{{ $product->getCoverImage(275, 275) }}"
+            <img class="w-full h-[130px] object-contain flex-shrink-0" src="{{ $product->getCoverImage(300, 300) }}"
                  alt="{{ $product->name }}">
             {{--<span
                 class="absolute top-0 left-0 px-2.5 py-2 bg-[#ED0020] rounded-tl-[5px] rounded-br-[5px] text-white text-[15px] font-medium uppercase z-20">hot</span>--}}
