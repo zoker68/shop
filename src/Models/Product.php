@@ -194,13 +194,11 @@ class Product extends BaseModel
             return $coverImage;
         }
 
-        $imageUrl = Storage::disk(config('shop.disk'))->url($coverImage);
-
         if ($width || $height || $options) {
-            return Croppa::url($imageUrl, $width, $height, $options);
+            return Croppa::url($coverImage, $width, $height, $options);
         }
 
-        return $imageUrl;
+        return Storage::disk(config('shop.disk'))->url($coverImage);
     }
 
     public function getCoverImage(?int $width = null, ?int $height = null, ?array $options = null): string
