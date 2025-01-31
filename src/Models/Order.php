@@ -5,12 +5,13 @@ namespace Zoker\Shop\Models;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Cashier\Billable;
 use Veelasky\LaravelHashId\Eloquent\HashableId;
 use Zoker\Shop\Classes\Bases\BaseModel;
 
 class Order extends BaseModel
 {
-    use HashableId, SoftDeletes;
+    use Billable, HashableId, SoftDeletes;
 
     protected function casts(): array
     {

@@ -34,4 +34,6 @@ Route::group(['middleware' => ['web', \Zoker\Shop\Http\Middleware\MaintenanceMod
     Route::get('/checkout/payment', \Zoker\Shop\Http\Controllers\PaymentController::class)->name('checkout.payment');
     Route::get('/checkout/confirm', \Zoker\Shop\Http\Controllers\ConfirmController::class)->name('checkout.confirm');
     Route::get('/checkout/success', \Zoker\Shop\Http\Controllers\SuccessOrderController::class)->name('checkout.success');
+    Route::get('/checkout/fail/{orderHash:hash}', \Zoker\Shop\Http\Controllers\FailedOrderController::class)->name('checkout.failed');
+    Route::get('/checkout/repeatPayment/{orderHash:hash}', \Zoker\Shop\Http\Controllers\RepeatPaymentController::class)->name('checkout.repeatPayment');
 });

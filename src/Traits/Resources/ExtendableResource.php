@@ -37,7 +37,8 @@ trait ExtendableResource
 
     public static function infolist(Infolist $infolist): Infolist
     {
-        return $infolist
-            ->schema(self::$allInfoListEntries);
+        $instance = self::getInstance();
+
+        return $instance->generateInfolist($infolist);
     }
 }

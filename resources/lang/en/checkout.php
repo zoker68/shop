@@ -166,6 +166,7 @@ return [
                 'sort' => 'Sort',
                 'fee' => 'Fixed fee',
                 'fee_percent' => 'Percentage fee',
+                'handler' => 'Handler',
             ],
         ],
         'title' => 'Select payment method',
@@ -175,11 +176,23 @@ return [
         'error' => [
             'method_not_available' => 'The selected payment method is not available for your order.',
         ],
+        'success' => [
+            'mail' => [
+                'subject' => 'Your order is being paid',
+                'header' => 'You order has been paid',
+                'hello' => 'Hello :name :surname',
+                'text' => 'Your order has been successfully paid.',
+            ],
+        ],
     ],
     'confirm' => [
         'breadcrumbs' => 'Confirmation of an order',
         'error' => [
             'agreeToTerms' => 'Please agree to the terms and conditions.',
+        ],
+        'stripe' => [
+            'shipping_fee' => 'Shipping Fee (:shipping_method_name)',
+            'payment_fee' => 'Payment Fee (:payment_method_name)',
         ],
     ],
     'success' => [
@@ -187,5 +200,11 @@ return [
         'title' => 'Your order is completed!',
         'text' => 'Thank you for your order! Your order is being processed and will be completed within 3-6 hours. You will receive an email confirmation when your order is completed.',
         'button' => 'continue shopping',
+    ],
+    'failed' => [
+        'breadcrumbs' => 'Failed of a payment',
+        'title' => 'Your payment is failed!',
+        'text' => 'Your payment is failed. Please try again.',
+        'button' => 'try again',
     ],
 ];

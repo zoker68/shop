@@ -36,7 +36,7 @@ class OrderResource extends BaseResource
     public function presetInfolist(): void
     {
         $this->setInfoListEntries([
-            Section::make(__('shop::order.admin.view.general.title'))
+            'general' => Section::make(__('shop::order.admin.view.general.title'))
                 ->columns(5)
                 ->schema([
                     TextEntry::make('general_order_status_id')
@@ -137,7 +137,7 @@ class OrderResource extends BaseResource
                         ->color(OrderStatusType::SHIPPING->getColor()),
                 ]),
 
-            Section::make(__('shop::order.admin.view.user.title'))
+            'user' => Section::make(__('shop::order.admin.view.user.title'))
                 ->columns(3)
                 ->schema([
                     TextEntry::make('user')
@@ -162,7 +162,7 @@ class OrderResource extends BaseResource
                         ->label(__('shop::order.admin.view.user.user_data.vat')),
                 ]),
 
-            Section::make(__('shop::order.admin.view.shipping_address'))
+            'sipping' => Section::make(__('shop::order.admin.view.shipping_address'))
                 ->columns(3)
                 ->schema([
                     TextEntry::make('shipping_address_data.country.name')
@@ -178,7 +178,7 @@ class OrderResource extends BaseResource
                         ->columnSpan(2),
                 ]),
 
-            Section::make(__('shop::order.admin.view.billing_address.title'))
+            'billing' => Section::make(__('shop::order.admin.view.billing_address.title'))
                 ->columns(3)
                 ->schema([
                     TextEntry::make('shipping_address_data.country.name')

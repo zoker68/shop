@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Zoker\Shop\Classes\Payment\PaymentHandlerInterface;
+use Zoker\Shop\Classes\Payment\PaymentHandlerRegistry;
 use Zoker\Shop\Exceptions\ProductInCartException;
 use Zoker\Shop\Models\Cart;
 use Zoker\Shop\Traits\Livewire\Alertable;
@@ -60,14 +62,14 @@ class Confirm extends Component
         return view('shop::livewire.shop.confirm', compact('userData'));
     }
 
-    public function onConfirm(): void
+    public function onConfirm()
     {
         $this->validate();
 
         try {
             DB::beginTransaction();
 
-            $this->cart->createOrder();
+            $order = $this->cart->createOrder();
 
             DB::commit();
         } catch (Exception $e) {
@@ -80,6 +82,11 @@ class Confirm extends Component
             return;
         }
 
-        $this->redirect(route('checkout.success'));
+        /* @var PaymentHandlerInterface $handler */
+        $handler = PaymentHandlerRegistry::get($this->cart->paymentMethod->handler);
+
+        $paymentHandler = $handler::make()->setOrder($order)->updatePaymentStatusBefore();
+
+        return $paymentHandler->process();
     }
 }

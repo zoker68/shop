@@ -33,4 +33,15 @@ return [
     ],
 
     'disk' => env('SHOP_DISK', 'public'),
+
+    'payment_status_id' => [// null - use default status
+        'new' => null,
+        'success' => 9,
+        'fail' => null,
+    ],
+
+    'stripe' => [
+        'success_route' => 'checkout.success',
+        'cancel_route' => 'checkout.failed',
+    ],
 ];

@@ -5,11 +5,15 @@ namespace Zoker\Shop\Providers;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Cashier\Cashier;
+use Laravel\Cashier\Events\WebhookReceived;
 use Livewire\Livewire;
 use Zoker\FilamentStaticPages\Classes\BlocksComponentRegistry;
 use Zoker\Shop\Console\Commands\ScoutIndexUpdateCommand;
 use Zoker\Shop\Console\Commands\SyncLogClearCommand;
+use Zoker\Shop\Listeners\StripeEventListener;
 use Zoker\Shop\Livewire\Account\Wishlist;
 use Zoker\Shop\Livewire\Auth\AddressEdit;
 use Zoker\Shop\Livewire\Auth\Login;
@@ -28,6 +32,7 @@ use Zoker\Shop\Livewire\ProductsBlock as ProductsBlockLivewire;
 use Zoker\Shop\Livewire\ProductsFilter;
 use Zoker\Shop\Livewire\SearchResults;
 use Zoker\Shop\Livewire\Shipping;
+use Zoker\Shop\Models\Order;
 use Zoker\Shop\View\Components\Blocks\CategoriesBlock;
 use Zoker\Shop\View\Components\Blocks\ContactBlock;
 use Zoker\Shop\View\Components\Blocks\ProductsBlock;
@@ -62,6 +67,11 @@ class ShopServiceProvider extends ServiceProvider
         $this->allPublishes();
 
         $this->registerLivewireComponents();
+
+        Cashier::useCustomerModel(Order::class);
+        Cashier::calculateTaxes();
+
+        Event::listen(WebhookReceived::class, StripeEventListener::class);
     }
 
     private function allPublishes(): void

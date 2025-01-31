@@ -3,6 +3,7 @@
 namespace Zoker\Shop\Filament\Resources;
 
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -19,6 +20,7 @@ use Filament\Tables\Filters\TrashedFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Zoker\Shop\Classes\Bases\BaseResource;
+use Zoker\Shop\Classes\Payment\PaymentHandlerRegistry;
 use Zoker\Shop\Filament\Resources\PaymentMethodResource\Pages;
 use Zoker\Shop\Models\PaymentMethod;
 
@@ -79,6 +81,10 @@ class PaymentMethodResource extends BaseResource
                 ->numeric()
                 ->minValue(0)
                 ->postfix('%'),
+
+            'handler' => Select::make('handler')
+                ->label(__('shop::checkout.payment.admin.form.handler'))
+                ->options(PaymentHandlerRegistry::getOptionsWithLabel()),
 
             'published' => Toggle::make('published')
                 ->label(__('shop::checkout.payment.admin.form.published')),

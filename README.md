@@ -209,3 +209,6 @@ Model::addMethod('methodName', function (Model $model) {
     /* Do something */
 });
 ```
+
+# Stripe
+You must install cashier and in migration "create_customer_columns" change table to ```orders```

@@ -171,7 +171,7 @@ class Cart extends BaseModel
         }
     }
 
-    public function createOrder(): void
+    public function createOrder(): Order
     {
         $this->shippingAddress->load('country', 'region');
         $this->billingAddress->load('country', 'region');
@@ -201,6 +201,8 @@ class Cart extends BaseModel
 
         $this->status = CartStatus::ORDERED;
         $this->save();
+
+        return $order;
     }
 
     public static function getWidgetCart(): Cart
