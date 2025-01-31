@@ -91,7 +91,7 @@ class User extends Authenticatable implements FilamentUser
         );
     }
 
-    public static function register(array $data): void
+    public static function register(array $data): self
     {
         $data['remember_token'] = Str::random(10);
         $user = self::create($data);
@@ -104,6 +104,8 @@ class User extends Authenticatable implements FilamentUser
         $cart->save();
 
         Address::forSession()->update(['user_id' => $user->id, 'session' => '']);
+
+        return $user;
     }
 
     public static function mapData(?array $data): array

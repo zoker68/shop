@@ -1,4 +1,4 @@
-<div class="w-full max-w-[500px] mx-auto box_shadow rounded px-[30px] py-[24px] mb-14">
+<div class="w-full max-w-[500px] mx-auto box_shadow rounded px-[30px] py-[24px] my-14">
     <h4 class="text-[28px] uppercase font-medium">{{ __('shop::auth.login.title') }}</h4>
     <p class="mb-4 text_md">{{ __('shop::auth.login.text') }}</p>
     <form wire:submit="login">

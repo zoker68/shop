@@ -212,3 +212,27 @@ Model::addMethod('methodName', function (Model $model) {
 
 # Stripe
 You must install cashier and in migration "create_customer_columns" change table to ```orders```
+
+## Install Cashier:
+```bash
+composer require laravel/cashier
+```
+
+## Publish migrations:
+```bash
+php artisan vendor:publish --tag="cashier-migrations"
+```
+## Open migrations migration "create_customer_columns" change table to ```orders```
+
+## Migrate
+```bash
+php artisan migrate
+```
+
+## Add stripe keys
+```dotenv
+STRIPE_KEY=
+STRIPE_SECRET=
+STRIPE_WEBHOOK_SECRET=
+CASHIER_CURRENCY=
+```
