@@ -42,7 +42,7 @@
             @foreach($order->products as $product)
                 <div class="grid grid-cols-12 gap-6 items-center">
                     <div class="col-span-2 px-3 py-2">
-                        <img loading="lazy" src="{{ $product->product->getCoverImage() }}" class="h-[50px]"
+                        <img loading="lazy" src="{{ $product->product->getCoverImage(100, 100) }}" class="h-[50px]"
                              alt="{{ $product->product->name }}">
                     </div>
                     <div class="col-span-4">

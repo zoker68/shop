@@ -37,7 +37,7 @@
                     <a href="{{ route('product', $product) }}"
                        class="flex items-center py-2 border-b border-[#ebebeb] hover:bg-[#f2f0f0] transition-all duration-300">
                         <div class="w-[90px] p-2.5">
-                            <img src="{{ $product->getCoverImage() }}" class="w-full h-[50px] object-contain"
+                            <img src="{{ $product->getCoverImage(100, 100) }}" class="w-full h-[50px] object-contain"
                                  alt="product">
                         </div>
                         <div class="pl-2">

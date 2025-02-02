@@ -10,7 +10,7 @@
 
                     @foreach($cart->products as $item)
                         <div class="hidden md:block  border-y my-1 border-secondary border-l">
-                            <img loading="lazy" src="{{ $item->product->getCoverImage() }}"
+                            <img loading="lazy" src="{{ $item->product->getCoverImage(100, 100) }}"
                                  alt="{{ $item->product->name }}" class="w-[120px] px-2 py-1">
                         </div>
                         <div

@@ -2,7 +2,7 @@
     @foreach($userWishlist as $item)
         <div class="md:flex justify-between items-center border rounded p-2 mb-3">
             <div class="w-20 h-20">
-                <img loading="lazy" class="w-full h-full object-cover" src="{{ $item->product->getCoverImage() }}"
+                <img loading="lazy" class="w-full h-full object-cover" src="{{ $item->product->getCoverImage(100, 100) }}"
                      alt="{{ $item->product->name }}">
             </div>
             <div class="mt-6 md:mt-0">

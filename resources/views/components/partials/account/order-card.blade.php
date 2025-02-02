@@ -6,7 +6,7 @@
         <div class="flex gap-3 justify-center">
             @foreach($order->products as $product)
                 @if ($loop->index < 6)
-                    <img class="h-[50px] @if (!$loop->first) hidden sm:block @endif" src="{{ $product->product->getCoverImage() }}" alt="{{ $product->product->name }}">
+                    <img class="h-[50px] @if (!$loop->first) hidden sm:block @endif" src="{{ $product->product->getCoverImage(100, 100) }}" alt="{{ $product->product->name }}">
                 @endif
             @endforeach
         </div>
