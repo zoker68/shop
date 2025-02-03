@@ -147,6 +147,10 @@ class Product extends BaseModel
     {
         $allUsingCategories = [];
 
+        if (empty($categories)) {
+            return $query;
+        }
+
         // if we get an array of category ids
         if (is_numeric(array_values($categories)[0])) {
             if (! config('shop.category.includeChildren')) {

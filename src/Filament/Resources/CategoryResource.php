@@ -28,8 +28,7 @@ class CategoryResource extends BaseResource
                 ->searchable(),
 
             'parent.full_name' => TextColumn::make('parent.full_name')
-                ->label(__('shop::category.admin.list.parent'))
-                ->sortable(),
+                ->label(__('shop::category.admin.list.parent')),
 
             'order' => TextColumn::make('order')
                 ->hidden()
