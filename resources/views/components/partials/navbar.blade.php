@@ -14,7 +14,7 @@
                               stroke-width="1.5" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
                     </svg>
                 </span>
-                <span class="text-white text-base">{{ __('shop::layout.header.navbar.all_categories') }}</span>
+                <span class="text-white text-base"><a href="{{ route('category') }}">{{ __('shop::layout.header.navbar.all_categories') }}</a></span>
             </div>
 
             <div
