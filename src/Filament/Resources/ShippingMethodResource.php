@@ -70,7 +70,8 @@ class ShippingMethodResource extends BaseResource
                 ->label(__('shop::checkout.shipping.admin.form.days'))
                 ->default(0)
                 ->required()
-                ->string(),
+                ->numeric()
+                ->minValue(0),
 
             'available_from' => TextInput::make('available_from')
                 ->label(__('shop::checkout.shipping.admin.form.available_from.label'))
