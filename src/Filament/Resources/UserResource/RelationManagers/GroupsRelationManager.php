@@ -16,8 +16,9 @@ class GroupsRelationManager extends BaseRelationManager
         ]);
 
         $this->addListHeaderActions([
-            'attach' => Tables\Actions\AttachAction::make()
-                ->preloadRecordSelect(),
+            'attach' => Tables\Actions\AttachAction::make('name')
+                ->preloadRecordSelect()
+                ->recordTitle(fn ($record) => $record->name),
         ]);
 
         $this->addListActions([
