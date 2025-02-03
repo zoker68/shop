@@ -2,6 +2,7 @@
 
 return [
     'add_to_cart' => 'ADD TO CART',
+    'out_of_stock' => 'Out of Stock',
     'in_wishlist' => 'In Wishlist',
     'add_to_wishlist' => 'Add To Wishlist',
     'sorting' => [

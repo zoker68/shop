@@ -208,7 +208,7 @@ class Product extends BaseModel
     public function getCoverImage(?int $width = null, ?int $height = null, ?array $options = null): string
     {
         if (! is_array($this->images) || ! count($this->images)) {
-            return config('shop.cover_default_url');
+            return config('shop.cover_default_url') ?? '';
         } else {
             $coverImage = $this->images[array_key_last($this->images)];
         }
