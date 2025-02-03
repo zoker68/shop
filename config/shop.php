@@ -44,4 +44,6 @@ return [
         'success_route' => 'checkout.success',
         'cancel_route' => 'checkout.failed',
     ],
+
+    'cover_default_url' => null,
 ];
