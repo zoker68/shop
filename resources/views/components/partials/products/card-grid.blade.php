@@ -41,8 +41,9 @@
     </div>
     <div class="w-full">
         <button
-            class="primary-btn w-full rounded-t-none text-base leading-[19px] gap-1.5 p-2 rounded-b-[3px] flex items-center justify-center transition-all duration-500"
+            class="primary-btn w-full rounded-t-none text-base leading-[19px] gap-1.5 p-2 rounded-b-[3px] flex items-center justify-center transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed"
             wire:click="addToCart('{{ $product->hash }}')"
+            @if(!$product->stock) disabled @endif
         >
             <span class="text-white btn-icon transition duration-500">
                 <svg width="16" height="16" viewBox="0 0 32 32">
