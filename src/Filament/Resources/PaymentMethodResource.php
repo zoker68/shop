@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Zoker\Shop\Classes\Bases\BaseResource;
 use Zoker\Shop\Classes\Payment\PaymentHandlerRegistry;
 use Zoker\Shop\Filament\Resources\PaymentMethodResource\Pages;
+use Zoker\Shop\Filament\Resources\PaymentMethodResource\RelationManagers\ShippingMethodsRelationManager;
 use Zoker\Shop\Models\PaymentMethod;
 
 class PaymentMethodResource extends BaseResource
@@ -150,5 +151,12 @@ class PaymentMethodResource extends BaseResource
     public static function getGloballySearchableAttributes(): array
     {
         return ['name', 'code'];
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            ShippingMethodsRelationManager::class,
+        ];
     }
 }

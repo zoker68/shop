@@ -5,6 +5,7 @@ namespace Zoker\Shop\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
@@ -13,6 +14,11 @@ use Zoker\Shop\Classes\Bases\BaseModel;
 class ShippingMethod extends BaseModel
 {
     use HasFactory, SoftDeletes;
+
+    public function paymentMethods(): BelongsToMany
+    {
+        return $this->belongsToMany(PaymentMethod::class, 'payment_shipping', 'shipping_method_id', 'payment_method_id');
+    }
 
     public function scopePublished(Builder $query): Builder
     {

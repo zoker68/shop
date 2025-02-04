@@ -41,7 +41,7 @@ class Payment extends Component
 
     public function render(): View
     {
-        $paymentMethods = PaymentMethod::getAvailableMethods();
+        $paymentMethods = PaymentMethod::getAvailableMethods($this->cart->shippingMethod);
 
         return view('shop::livewire.shop.payment', compact('paymentMethods'));
     }
