@@ -7,6 +7,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Str;
 use Zoker\FilamentStaticPages\Classes\BlockComponent;
 use Zoker\Shop\Enums\ProductsSorting;
 use Zoker\Shop\Models\Category;
@@ -96,5 +97,10 @@ class TopProductBlock extends BlockComponent
     private function getCacheKey(): string
     {
         return 'top_products' . md5(serialize($this->data));
+    }
+
+    public static function getBlockHeader(array $state): string
+    {
+        return static::getLabel() . ($state['heading'] ? ' | ' . Str::of($state['heading'])->limit(60) : '');
     }
 }

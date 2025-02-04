@@ -8,6 +8,7 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Str;
 use Zoker\FilamentStaticPages\Classes\BlockComponent;
 use Zoker\Shop\Enums\ProductsSorting;
 use Zoker\Shop\Models\Category;
@@ -114,5 +115,10 @@ class ProductsBlock extends BlockComponent
                 ->columnSpanFull(),
 
         ];
+    }
+
+    public static function getBlockHeader(array $state): string
+    {
+        return static::getLabel() . ($state['heading'] ? ' | ' . Str::of($state['heading'])->limit(60) : '');
     }
 }
