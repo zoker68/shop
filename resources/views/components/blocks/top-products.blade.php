@@ -1,6 +1,6 @@
 <section {{ $attributes->class(['pb-14']) }}>
     <div class="container">
-        <h2 class="text-[22px] sm:text-[32px] font-medium text-secondary">Top Ranking</h2>
+        <h2 class="text-[22px] sm:text-[32px] font-medium text-secondary">{{ $heading }}</h2>
         <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             @foreach($topRanking as $top)
 

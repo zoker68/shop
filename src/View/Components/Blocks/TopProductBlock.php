@@ -55,6 +55,10 @@ class TopProductBlock extends BlockComponent
     public static function getSchema(): array
     {
         return [
+            TextInput::make('heading')
+                ->label('Block heading')
+                ->maxValue(255),
+
             TextInput::make('limit')
                 ->label('Count of products')
                 ->default(5)
