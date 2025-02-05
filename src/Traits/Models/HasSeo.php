@@ -2,13 +2,18 @@
 
 namespace Zoker\Shop\Traits\Models;
 
+use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Zoker\Shop\Classes\AIQuery;
 use Zoker\Shop\Classes\Bases\BaseResource;
 use Zoker\Shop\Classes\Event;
 use Zoker\Shop\Models\Seo;
@@ -58,11 +63,12 @@ trait HasSeo
                     ->relationship('seo')
                     ->schema([
                         Group::make([
+
                             TextInput::make('title')
                                 ->label('Seo title')
                                 ->live()
-                                ->hint(fn ($state) => strlen($state) . ' characters')
-                                ->hintColor(fn ($state) => strlen($state) > 60 ? 'danger' : null)
+                                ->hint(fn ($state) => mb_strlen($state) . ' characters')
+                                ->hintColor(fn ($state) => mb_strlen($state) > 60 ? 'danger' : null)
                                 ->helperText('Recommended maximum length: 60 characters'),
 
                             Select::make('indexing')
@@ -84,14 +90,33 @@ trait HasSeo
                                 ]),
                         ]),
 
-                        Textarea::make('description')
-                            ->label('Description')
-                            ->rows(8)
-                            ->live()
-                            ->hint(fn ($state) => strlen($state) . ' characters')
-                            ->hintColor(fn ($state) => strlen($state) > 160 ? 'danger' : null)
-                            ->helperText('Recommended maximum length: 160 characters'),
+                        Group::make([
 
+                            Textarea::make('description')
+                                ->label('Description')
+                                ->rows(6)
+                                ->live()
+                                ->hint(fn ($state) => mb_strlen($state) . ' characters')
+                                ->hintColor(fn ($state) => mb_strlen($state) > 160 ? 'danger' : null)
+                                ->helperText('Recommended maximum length: 160 characters'),
+
+                            Placeholder::make('generateAI')
+                                ->label('Generate SEO with AI')
+                                ->key('generateAI')
+                                ->hintAction(
+                                    Action::make('generate_ai')
+                                        ->label('Generate SEO')
+                                        ->action(function (Set $set, Get $get) use ($resource) {
+                                            $parentModelArray = $get('../');
+                                            $parentModelArray = $this->handleModelDataForAI($parentModelArray, $resource);
+                                            $result = (array) json_decode(AIQuery::seoTitleDescription($parentModelArray));
+
+                                            $set('title', $result['title']);
+                                            $set('description', $result['description']);
+                                        }),
+                                ),
+
+                        ]),
                     ]),
             ], 'SEO');
         });
@@ -121,5 +146,29 @@ trait HasSeo
         }
 
         return null;
+    }
+
+    public function handleModelDataForAI(mixed $parentModelArray, BaseResource $resource): mixed
+    {
+        unset(
+            $parentModelArray['seo'],
+            $parentModelArray['id'],
+            $parentModelArray['created_at'],
+            $parentModelArray['updated_at'],
+            $parentModelArray['deleted_at'],
+            $parentModelArray['parent_id'],
+            $parentModelArray['published'],
+            $parentModelArray['order'],
+            $parentModelArray['cover'],
+            $parentModelArray['image'],
+            $parentModelArray['images'],
+            $parentModelArray['slug'],
+            $parentModelArray['foreign_id'],
+            $parentModelArray['brand_id'],
+            $parentModelArray['sell_count'],
+        );
+        $parentModelArray['model'] = class_basename($resource->getModel());
+
+        return $parentModelArray;
     }
 }
