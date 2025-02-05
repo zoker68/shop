@@ -111,7 +111,7 @@ trait HasSeo
                                             $parentModelArray = $this->handleModelDataForAI($parentModelArray, $resource);
                                             $result = (array) json_decode(AIQuery::seoTitleDescription($parentModelArray));
 
-                                            $set('title', $result['title']);
+                                            $set('title', $result['title'] . ' | ' . config('app.name'));
                                             $set('description', $result['description']);
                                         }),
                                 ),

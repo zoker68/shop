@@ -20,7 +20,7 @@ class AIQuery
     {
         return [
             'setup' => 'You must be SEO expert. Site name ' . config('app.name') . '. Language for answers ' . config('app.locale') . '. Answer format JSON without wrapping.',
-            'seo' => 'Please provide SEO friendly title and description for the following model. Answer key title, description. Title 60 char, description 160 char',
+            'seo' => 'Please provide SEO friendly title and description for the following model. Answer key title, description. Title 60 char, description 200 char',
         ];
     }
 
