@@ -21,6 +21,7 @@ class AIQuery
         return [
             'setup' => 'You must be SEO expert. Site name ' . config('app.name') . '. Language for answers ' . config('app.locale') . '. Answer format JSON without wrapping.',
             'seo' => 'Please provide SEO friendly title and description for the following model. Answer key title, description. Title 60 char, description 200 char',
+            'seo_page' => 'Please provide SEO friendly title and description for the following page. Answer key title, description. Title 60 char, description 200 char',
         ];
     }
 
@@ -34,6 +35,17 @@ class AIQuery
 
         return (new self)
             ->addPrompt('seo')
+            ->addQuery($model)
+            ->get();
+
+    }
+
+    public static function seoTitleDescriptionForMetaPage(array $model): string
+    {
+        $model = json_encode($model, JSON_UNESCAPED_UNICODE);
+
+        return (new self)
+            ->addPrompt('seo_page')
             ->addQuery($model)
             ->get();
 
