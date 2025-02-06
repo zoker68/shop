@@ -33,7 +33,7 @@ Route::group(['middleware' => ['web', \Zoker\Shop\Http\Middleware\MaintenanceMod
     Route::get('/checkout/shipping', \Zoker\Shop\Http\Controllers\ShippingController::class)->name('checkout.shipping');
     Route::get('/checkout/payment', \Zoker\Shop\Http\Controllers\PaymentController::class)->name('checkout.payment');
     Route::get('/checkout/confirm', \Zoker\Shop\Http\Controllers\ConfirmController::class)->name('checkout.confirm');
-    Route::get('/checkout/success', \Zoker\Shop\Http\Controllers\SuccessOrderController::class)->name('checkout.success');
+    Route::get('/checkout/success/{orderHash:hash}', \Zoker\Shop\Http\Controllers\SuccessOrderController::class)->name('checkout.success');
     Route::get('/checkout/fail/{orderHash:hash}', \Zoker\Shop\Http\Controllers\FailedOrderController::class)->name('checkout.failed');
     Route::get('/checkout/repeatPayment/{orderHash:hash}', \Zoker\Shop\Http\Controllers\RepeatPaymentController::class)->name('checkout.repeatPayment');
 });
