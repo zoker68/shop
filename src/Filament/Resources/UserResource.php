@@ -14,6 +14,7 @@ use Filament\Tables\Actions\RestoreAction;
 use Filament\Tables\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
+use Illuminate\Database\Eloquent\Model;
 use Zoker\Shop\Classes\Bases\BaseResource;
 use Zoker\Shop\Filament\Resources\UserResource\Pages;
 use Zoker\Shop\Filament\Resources\UserResource\RelationManagers\AddressesRelationManager;
@@ -139,5 +140,19 @@ class UserResource extends BaseResource
     public static function getGloballySearchableAttributes(): array
     {
         return ['email', 'name', 'surname'];
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            'Email' => $record->email,
+            'Name' => $record->name,
+            'Surname' => $record->surname,
+        ];
+    }
+
+    public static function getGlobalSearchResultTitle(Model $record): string
+    {
+        return '';
     }
 }

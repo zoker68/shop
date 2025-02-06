@@ -316,12 +316,17 @@ class OrderResource extends BaseResource
 
     public static function getGlobalSearchEloquentQuery(): Builder
     {
-        return parent::getGlobalSearchEloquentQuery()->with(['user']);
+        return parent::getGlobalSearchEloquentQuery()->with(['user', 'generalStatus']);
     }
 
     public static function getGloballySearchableAttributes(): array
     {
-        return ['user.name'];
+        return ['user.name', 'user_data->email'];
+    }
+
+    public static function getGlobalSearchResultTitle(Model $record): string
+    {
+        return '#' . $record->id;
     }
 
     public static function getGlobalSearchResultDetails(Model $record): array
@@ -331,6 +336,16 @@ class OrderResource extends BaseResource
         if ($record->user) {
             $details['User'] = $record->user->name;
         }
+
+        if ($record->user_data) {
+            $details['Email'] = $record->user_data['email'];
+        }
+
+        if ($record->generalStatus) {
+            $details['General Status'] = $record->generalStatus->name;
+        }
+
+        $details['Total'] = money($record->total_pre_payment);
 
         return $details;
     }

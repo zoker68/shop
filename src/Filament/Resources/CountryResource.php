@@ -10,6 +10,7 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Zoker\Shop\Classes\Bases\BaseResource;
 use Zoker\Shop\Filament\Resources\CountryResource\Pages;
@@ -105,6 +106,21 @@ class CountryResource extends BaseResource
     public static function getGloballySearchableAttributes(): array
     {
         return ['name', 'code'];
+    }
+
+    public static function getGlobalSearchResultTitle(Model $record): string
+    {
+        return $record->name;
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        $details = [];
+
+        $details['Code'] = $record->code;
+        $details['Phone'] = $record->phone_code;
+
+        return $details;
     }
 
     public static function getRelations(): array

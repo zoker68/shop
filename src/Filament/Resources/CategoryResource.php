@@ -4,6 +4,8 @@ namespace Zoker\Shop\Filament\Resources;
 
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Database\Eloquent\Model;
 use Zoker\Shop\Classes\Bases\BaseResource;
 use Zoker\Shop\Filament\Resources\CategoryResource\Pages;
 use Zoker\Shop\Models\Category;
@@ -81,5 +83,15 @@ class CategoryResource extends BaseResource
             'create' => Pages\CreateCategory::route('/create'),
             'edit' => Pages\EditCategory::route('/{record}/edit'),
         ];
+    }
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['name'];
+    }
+
+    public static function getGlobalSearchResultTitle(Model $record): string|Htmlable
+    {
+        return $record->name;
     }
 }

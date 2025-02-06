@@ -19,7 +19,9 @@ use Filament\Tables\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\TrashedFilter;
+use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Zoker\Shop\Classes\Bases\BaseResource;
 use Zoker\Shop\Filament\Resources\ProductResource\Pages;
@@ -166,9 +168,30 @@ class ProductResource extends BaseResource
             ]);
     }
 
+    public static function getGlobalSearchEloquentQuery(): Builder
+    {
+        return parent::getGlobalSearchEloquentQuery()->with(['categories']);
+    }
+
     public static function getGloballySearchableAttributes(): array
     {
         return ['name', 'foreign_id', 'slug'];
+    }
+
+    public static function getGlobalSearchResultTitle(Model $record): string|Htmlable
+    {
+        return $record->name;
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        $details = [
+            'Categories' => $record->categories->pluck('name')->implode(', '),
+            'Price' => money($record->price),
+
+        ];
+
+        return $details;
     }
 
     public static function getRelations(): array

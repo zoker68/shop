@@ -10,6 +10,8 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Grouping\Group;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Database\Eloquent\Model;
 use Zoker\Shop\Classes\Bases\BaseResource;
 use Zoker\Shop\Filament\Resources\RegionResource\Pages;
 use Zoker\Shop\Models\Region;
@@ -84,5 +86,10 @@ class RegionResource extends BaseResource
     public static function getGloballySearchableAttributes(): array
     {
         return ['name', 'code'];
+    }
+
+    public static function getGlobalSearchResultTitle(Model $record): string|Htmlable
+    {
+        return $record->name;
     }
 }
