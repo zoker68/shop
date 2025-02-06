@@ -188,7 +188,6 @@ class ProductResource extends BaseResource
         $details = [
             'Categories' => $record->categories->pluck('name')->implode(', '),
             'Price' => money($record->price),
-
         ];
 
         return $details;

@@ -150,6 +150,11 @@ trait HasSeo
 
     public function handleModelDataForAI(mixed $parentModelArray, BaseResource $resource): mixed
     {
+        if (isset($parentModelArray['parent_id']) and $this->isRelation('parent')) {
+            $model = new $this(['parent_id' => $parentModelArray['parent_id']]);
+            $parentModelArray['parent'] = (isset($model->parent->full_name)) ? $model->parent->full_name : $model->parent->toArray();
+        }
+
         unset(
             $parentModelArray['seo'],
             $parentModelArray['id'],
