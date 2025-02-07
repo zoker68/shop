@@ -183,13 +183,9 @@ class Category extends BaseModel
 
     public function getCover(?int $width = null, ?int $height = null, ?array $options = null): string
     {
-        /*$imageUrl = Storage::disk(config('shop.disk'))->url($this->cover);
-
-        if ($width || $height || $options) {
-            return Croppa::url($imageUrl, $width, $height, $options);
+        if (! $this->cover) {
+            return config('shop.cover_default_url') ?? '';
         }
-
-        return $imageUrl;*/
 
         if ($width || $height || $options) {
             return Croppa::url($this->cover, $width, $height, $options);

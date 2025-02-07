@@ -32,7 +32,7 @@ class CategoriesBlock extends BlockComponent
     {
         return cache()->remember(
             $this->getCacheKey(),
-            now()->addDay(),
+            now()->addHour(),
             fn () => $this->getCategories()
         );
     }
