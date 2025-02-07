@@ -17,6 +17,7 @@ use Illuminate\Support\Str;
 use Laravel\Scout\Builder as ScoutBuilder;
 use Laravel\Scout\Searchable;
 use Veelasky\LaravelHashId\Eloquent\HashableId;
+use Zoker\Shop\Classes\AIQuery;
 use Zoker\Shop\Classes\Bases\BaseModel;
 use Zoker\Shop\Enums\ProductsSorting;
 use Zoker\Shop\Traits\Models\HasSeo;
@@ -311,5 +312,27 @@ class Product extends BaseModel
         return self::search($query)
             ->when($category, fn ($q) => $q->whereIn('categories', $category->getAllChildrenAndSelf()->pluck('id')->toArray()))
             ->orderBy($sorting->getSortColumn(), $sorting->getSortDirection());
+    }
+
+    public function generateSeoAI(): void
+    {
+        $this->loadMissing('categories', 'brand', 'properties');
+
+        $productData = $this->only('name', 'description');
+        $productData['categories'] = $this->categories->pluck('full_name')->toArray();
+        $productData['brand'] = $this->brand->name;
+        $productData['properties'] = $this->properties->map(function ($property) {
+            return [
+                'name' => $property->name,
+                'value' => $property->pivot->value,
+            ];
+        })->toArray();
+
+        $result = (array) json_decode(AIQuery::seoTitleDescriptionForProduct($productData));
+
+        $this->seo->update([
+            'title' => $result['title'] . ' | ' . config('app.name'),
+            'description' => $result['description'],
+        ]);
     }
 }

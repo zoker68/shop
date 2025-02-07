@@ -18,8 +18,9 @@ class AIQuery
     {
         return [
             'setup' => 'You must be SEO expert. Site name ' . config('app.name') . '. Language for answers ' . config('app.locale') . '. Answer format JSON without wrapping.',
-            'seo' => 'Please provide SEO friendly title and description for the following model. The title should not include the site name, it will be added after |. Answer key title, description. Title 50 char, description 200 char',
-            'seo_page' => 'Please provide SEO friendly title and description for the following page. The title should not include the site name, it will be added after |. Answer key title, description. Title 50 char, description 200 char',
+            'seo' => 'Please provide SEO friendly title and meta description for the following model. The title should not include the site name, it will be added after |. Answer key title, description. Title 50 char, description 200 char',
+            'seo_page' => 'Please provide SEO friendly title and meta description for the following page. The title should not include the site name, it will be added after |. Answer key title, description. Title 50 char, description 200 char',
+            'seo_product' => 'Please provide SEO friendly title and meta description for the following product. The title should not include the site name, it will be added after |. Answer key title, description. Title 50 char, description 200 char',
         ];
     }
 
@@ -46,7 +47,20 @@ class AIQuery
             ->addPrompt('seo_page')
             ->addQuery($model)
             ->get();
+    }
 
+    public static function seoTitleDescriptionForProduct(Model|array $model): string
+    {
+        if (! is_array($model)) {
+            $model = $model->toArray();
+        }
+
+        $model = json_encode($model, JSON_UNESCAPED_UNICODE);
+
+        return (new self)
+            ->addPrompt('seo_product')
+            ->addQuery($model)
+            ->get();
     }
 
     private function __construct()

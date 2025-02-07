@@ -11,6 +11,7 @@ use Laravel\Cashier\Cashier;
 use Laravel\Cashier\Events\WebhookReceived;
 use Livewire\Livewire;
 use Zoker\FilamentStaticPages\Classes\BlocksComponentRegistry;
+use Zoker\Shop\Console\Commands\AiSeoProductsCommand;
 use Zoker\Shop\Console\Commands\ScoutIndexUpdateCommand;
 use Zoker\Shop\Console\Commands\SyncLogClearCommand;
 use Zoker\Shop\Listeners\StripeEventListener;
@@ -46,6 +47,7 @@ class ShopServiceProvider extends ServiceProvider
             $this->commands([
                 ScoutIndexUpdateCommand::class,
                 SyncLogClearCommand::class,
+                AiSeoProductsCommand::class,
             ]);
         }
 
