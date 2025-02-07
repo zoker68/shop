@@ -12,16 +12,14 @@ class AIQuery
 
     private array $prompts = [];
 
-    private array $messages = [];
-
     private array $query = [];
 
     private function getPrompts(): array
     {
         return [
             'setup' => 'You must be SEO expert. Site name ' . config('app.name') . '. Language for answers ' . config('app.locale') . '. Answer format JSON without wrapping.',
-            'seo' => 'Please provide SEO friendly title and description for the following model. Answer key title, description. Title 60 char, description 200 char',
-            'seo_page' => 'Please provide SEO friendly title and description for the following page. Answer key title, description. Title 60 char, description 200 char',
+            'seo' => 'Please provide SEO friendly title and description for the following model. The title should not include the site name, it will be added after |. Answer key title, description. Title 50 char, description 200 char',
+            'seo_page' => 'Please provide SEO friendly title and description for the following page. The title should not include the site name, it will be added after |. Answer key title, description. Title 50 char, description 200 char',
         ];
     }
 
