@@ -329,16 +329,13 @@ class Product extends BaseModel
         })->toArray();
 
         $result = (array) json_decode(AIQuery::seoTitleDescriptionForProduct($productData));
-        $this->description = $result['description'];
-        $this->description_short = $result['short_description'];
-        $this->save();
 
         $seo = $this->seo;
         if (! $seo) {
             $seo = new Seo;
         }
         $seo->title = $result['title'] . ' | ' . config('app.name');
-        $seo->description = $result['meta_description'];
+        $seo->description = $result['description'];
         $this->seo()->save($seo);
     }
 }
