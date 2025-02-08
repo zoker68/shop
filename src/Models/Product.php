@@ -338,7 +338,7 @@ class Product extends BaseModel
             $seo = new Seo;
         }
         $seo->title = $result['title'] . ' | ' . config('app.name');
-        $seo->description = $result['description'];
+        $seo->description = $result['meta_description'];
         $this->seo()->save($seo);
     }
 }
