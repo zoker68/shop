@@ -7,7 +7,9 @@ use Zoker\Shop\Models\Product;
 
 class AiSeoProductsCommand extends Command
 {
-    protected $signature = 'ai:seo-products {--all : Generate SEO for all products}';
+    protected $signature = 'ai:seo-products
+        {--all : Generate SEO for all products}
+        {--limit=100 : Limit the number of products to process}';
 
     protected $description = 'Generate SEO for products';
 
@@ -17,7 +19,7 @@ class AiSeoProductsCommand extends Command
     {
         if ($this->option('all')) {
             $this->info('Generating SEO for all products...');
-            $products = Product::published()->get();
+            $products = Product::published()->take($this->option('limit'))->get();
         } else {
             $this->info('Generating SEO for products, that does not have SEO...');
             $products = Product::query()
@@ -26,6 +28,7 @@ class AiSeoProductsCommand extends Command
                     $query->where('description', '!=', null)
                         ->where('description', '<>', '');
                 })
+                ->take($this->option('limit'))
                 ->get();
         }
 
