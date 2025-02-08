@@ -185,12 +185,10 @@ class ProductResource extends BaseResource
 
     public static function getGlobalSearchResultDetails(Model $record): array
     {
-        $details = [
+        return [
             'Categories' => $record->categories->pluck('name')->implode(', '),
             'Price' => money($record->price),
         ];
-
-        return $details;
     }
 
     public static function getRelations(): array
