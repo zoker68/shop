@@ -31,10 +31,14 @@ trait HasSeo
         static::$isTraitInitialized = true;
 
         static::created(function (Model $model) {
-            $model->seo()->create([
-                'title' => $this->getPresetTitleFromModel($model) . ' | ' . config('app.name'),
-                'description' => $this->getPresetDescriptionFromModel($model),
-            ]);
+            if (method_exists($model, 'generateSeoAI')) {
+                $model->generateSeoAI();
+            } else {
+                $model->seo()->create([
+                    'title' => $this->getPresetTitleFromModel($model) . ' | ' . config('app.name'),
+                    'description' => $this->getPresetDescriptionFromModel($model),
+                ]);
+            }
         });
 
         static::deleting(function (Model $model) {
