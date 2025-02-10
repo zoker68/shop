@@ -20,7 +20,7 @@
         </div>
         <div class="space-y-2">
             @if ($topCategory->parent)
-            <div class="custom_check flex justify-between items-center font-semibold text-xl hover:text-primary duration-300>
+            <div class="custom_check flex justify-between items-center font-semibold text-xl hover:text-primary duration-300">
                 <a href="{{ route('category', $topCategory->parent) }}">{{ $topCategory->parent->name }}</a>
             </div>
             @endif
