@@ -23,7 +23,7 @@
             <div class="custom_check flex justify-between items-center font-semibold text-xl hover:text-primary duration-300>
                 <a href="{{ route('category', $topCategory->parent) }}">{{ $topCategory->parent->name }}</a>
             </div>
-            @endifa
+            @endif
             <div class="custom_check flex justify-between items-center font-semibold text-xl hover:text-primary duration-300 pl-3 @if($currentCategory->id == $topCategory->id) text-primary @endif">
                 <a href="{{ route('category', $topCategory) }}">{{ $topCategory->name }}</a>
             </div>
