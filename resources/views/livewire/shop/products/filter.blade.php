@@ -24,7 +24,7 @@
 
         <form wire:change.debounce.600ms="filter()">
             <div class="mt-6 sm:mt-2">
-                <x-shop::product-filter.subcategories :category="$category"/>
+                <x-shop::product-filter.subcategories :topCategory="$topCategory" :subCategories="$subCategories" :currentCategory="$category"/>
 
                 <x-shop::product-filter.brands :brands="$brands"/>
 

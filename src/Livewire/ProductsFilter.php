@@ -45,7 +45,15 @@ class ProductsFilter extends Component
 
         $sortOptions = ProductsSorting::getOptions();
 
-        return view('shop::livewire.shop.products.filter', compact('properties', 'brands', 'sortOptions'));
+        if ($this->category->getChildren()->where('published', true)->count()) {
+            $topCategory = $this->category;
+        } else {
+            $topCategory = $this->category->load('parent')->parent;
+        }
+        $topCategory->load('parent');
+        $subCategories = $topCategory->getChildren()->where('published', true);
+
+        return view('shop::livewire.shop.products.filter', compact('properties', 'brands', 'sortOptions', 'subCategories', 'topCategory'));
     }
 
     private function generateQueryVariable(): void
