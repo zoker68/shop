@@ -1,9 +1,10 @@
 @props([
     'property',
-    'filters'
+    'filters',
+    'propertyIndex'
 ])
 
-<div class="pb-4 border-b border-[#E9E4E4] mb-4">
+<div {{ $attributes->class("pb-4 border-b border-[#E9E4E4] mb-4") }} @if(config('shop.category.filters.hideVariantsMoreThan') == 0 || $propertyIndex < config('shop.category.filters.hideVariantsMoreThan')) x-show="true" @else  x-show="openFilters" @endif>
     <div class="justify-between items-start">
         <h4 class="flex text-xl font-medium  text-secondary uppercase mb-4">{{$property->name}}</h4>
 

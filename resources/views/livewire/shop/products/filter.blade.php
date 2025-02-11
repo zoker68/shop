@@ -22,7 +22,7 @@
         </div>
 
 
-        <form wire:change.debounce.600ms="filter()">
+        <form wire:change.debounce.600ms="filter()" x-data="{ openFilters: false }">
             <div class="mt-6 sm:mt-2">
                 <x-shop::product-filter.subcategories :topCategory="$topCategory" :subCategories="$subCategories" :currentCategory="$category"/>
 
@@ -31,9 +31,17 @@
                 <x-shop::product-filter.price :priceRange="$priceRange" :priceStart="$priceStart"/>
 
                 @foreach($properties as $property)
-                    <x-shop::product-filter.property :property="$property" :filters="$filters"/>
+                    <x-shop::product-filter.property :property="$property" :filters="$filters" :property-index="$loop->index" />
                 @endforeach
+                @if(config('shop.category.filters.hideVariantsMoreThan') > 0 && count($properties) > config('shop.category.filters.hideVariantsMoreThan'))
+                    <template x-if="openFilters">
+                        <a href="#" class="text-secondary" x-on:click.prevent="openFilters = ! openFilters">hide</a>
+                    </template>
+                    <template x-if="!openFilters">
+                        <a href="#" class="text-secondary" x-on:click.prevent="openFilters = ! openFilters">show more filters</a>
+                    </template>
 
+                @endif
             </div>
         </form>
     </div>

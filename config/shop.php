@@ -11,7 +11,7 @@ return [
         'perPage' => 12, // Number of products per page
         'defaultSort' => ProductsSorting::BESTSELLERS, // Default sort
         'filters' => [
-            'hideVariantsMoreThan' => 5,
+            'hideVariantsMoreThan' => 1,
         ],
     ],
     'product' => [
