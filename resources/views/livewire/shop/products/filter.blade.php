@@ -35,7 +35,7 @@
                 @endforeach
                 @if(config('shop.category.filters.hideVariantsMoreThan') > 0 && count($properties) > config('shop.category.filters.hideVariantsMoreThan'))
                     <template x-if="openFilters">
-                        <a href="#" class="text-secondary" x-on:click.prevent="openFilters = ! openFilters">hide</a>
+                        <a href="#" class="text-secondary" x-on:click.prevent="openFilters = ! openFilters">hide filters</a>
                     </template>
                     <template x-if="!openFilters">
                         <a href="#" class="text-secondary" x-on:click.prevent="openFilters = ! openFilters">show more filters</a>
