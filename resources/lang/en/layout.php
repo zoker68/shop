@@ -26,7 +26,7 @@ return [
                 'logout' => 'Log out',
             ],
             'search' => [
-                'all_category' => 'All category',
+                'all_category' => 'Category',
                 'placeholder' => 'Search product...',
                 'submit' => 'Search',
                 'no_result' => 'No result found',

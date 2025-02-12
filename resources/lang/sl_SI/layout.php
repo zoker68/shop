@@ -26,7 +26,7 @@ return [
                 'logout' => 'Odjava',
             ],
             'search' => [
-                'all_category' => 'Vse kategorije',
+                'all_category' => 'Kategorija',
                 'placeholder' => 'Išči izdelek...',
                 'submit' => 'Išči',
                 'no_result' => 'Rezultat ni najden',

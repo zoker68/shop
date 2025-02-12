@@ -2,13 +2,13 @@
 
 return [
     'breadcrumbs' => [
-        'title' => 'Kontaktirajte nas',
+        'title' => 'Kontakt',
         'contact_us' => 'kontaktirajte nas',
     ],
     'operation_hours' => 'Delovni čas',
     'form' => [
         'title' => 'Pošljite nam sporočilo',
-        'text' => 'Uporabite spodnji obrazec za stik s prodajno ekipo',
+        'text' => 'Za stik s prodajno ekipo uporabite spodnji obrazec.',
         'name' => 'Ime',
         'email' => 'E-pošta',
         'subject' => 'Zadeva',
@@ -38,4 +38,5 @@ return [
     'mail' => [
         'title' => 'Novo vprašanje iz kontaktnega obrazca',
     ],
+    'our_store' => 'Naša trgovina',
 ];

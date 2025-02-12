@@ -38,4 +38,5 @@ return [
     'mail' => [
         'title' => 'New contact form question',
     ],
+    'our_store' => 'our store',
 ];
