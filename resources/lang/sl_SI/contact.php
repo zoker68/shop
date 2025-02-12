@@ -2,8 +2,8 @@
 
 return [
     'breadcrumbs' => [
-        'title' => 'Kontakt',
-        'contact_us' => 'kontaktirajte nas',
+        'title' => 'kontaktirajte nas',
+        'contact_us' => 'Kontakt',
     ],
     'operation_hours' => 'Delovni čas',
     'form' => [
