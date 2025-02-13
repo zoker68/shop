@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'add_to_cart' => 'DODAJ V KOŠARICO',
+    'add_to_cart' => 'Dodaj v košarico',
     'out_of_stock' => 'Izdelek ni več na voljo',
     'in_wishlist' => 'V seznamu želja',
     'add_to_wishlist' => 'Dodaj v seznam želja',
