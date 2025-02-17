@@ -9,6 +9,7 @@ use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Zoker\Shop\Classes\Payment\PaymentHandlerInterface;
 use Zoker\Shop\Classes\Payment\PaymentHandlerRegistry;
+use Zoker\Shop\Events\OrderCreatedEvent;
 use Zoker\Shop\Exceptions\ProductInCartException;
 use Zoker\Shop\Models\Cart;
 use Zoker\Shop\Traits\Livewire\Alertable;
@@ -81,6 +82,8 @@ class Confirm extends Component
 
             return;
         }
+
+        OrderCreatedEvent::dispatch($order);
 
         /* @var PaymentHandlerInterface $handler */
         $handler = PaymentHandlerRegistry::get($this->cart->paymentMethod->handler);

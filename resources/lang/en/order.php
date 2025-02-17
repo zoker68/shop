@@ -129,4 +129,27 @@ return [
         'total' => 'Total',
         'status' => 'Status',
     ],
+    'confirmation' => [
+        'mail' => [
+            'customer' => [
+                'subject' => 'Order created successfully',
+                'header' => 'Order has been created',
+                'thank_you' => 'Thank you for your order! We are pleased to confirm that your order #:order_hash has been successfully placed.',
+                'details' => 'Order Details:',
+                'will_another_mail' => 'You will receive another email with information about order. If you have any questions, feel free to contact our support team.',
+                'order_status' => 'You can view your order status here:',
+                'order_status_link' => 'View Order',
+                'hello' => 'Hello :name :surname,',
+                'detail_order_hash' => 'Order Number: #:order_hash ',
+                'detail_date' => 'Order Date: :created_at_format',
+                'detail_total' => 'Total Amount: ',
+            ],
+            'admin' => [
+                'subject' => 'You have a new order',
+                'header' => 'Order has been created',
+                'text' => 'You have received a new order. ',
+                'link' => 'View Order',
+            ],
+        ],
+    ],
 ];

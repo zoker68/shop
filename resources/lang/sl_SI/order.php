@@ -127,4 +127,27 @@ return [
         'total' => 'Skupaj',
         'status' => 'Stanje',
     ],
+    'confirmation' => [
+        'mail' => [
+            'customer' => [
+                'subject' => 'Naročilo je bilo uspešno ustvarjeno',
+                'header' => 'Naročilo je bilo ustvarjeno',
+                'thank_you' => 'Hvala za vaše naročilo! Z veseljem potrjujemo, da je bilo vaše naročilo #:order_hash uspešno oddano.',
+                'details' => 'Podrobnosti naročila:',
+                'will_another_mail' => 'Ko bo vaše naročilo pripravljeno, boste prejeli še eno sporočilo. Če imate kakršnakoli vprašanja, se obrnite na našo ekipo za podporo.',
+                'order_status' => 'Status vašega naročila lahko preverite tukaj:',
+                'order_status_link' => 'Poglej naročilo',
+                'hello' => 'Pozdravljeni :name :surname,',
+                'detail_order_hash' => 'Številka naročila: #:order_hash ',
+                'detail_date' => 'Datum naročila: :created_at_format',
+                'detail_total' => 'Skupni znesek: @money($order->total_pre_payment)',
+            ],
+            'admin' => [
+                'subject' => 'Prejeli ste novo naročilo',
+                'header' => 'Naročilo je bilo ustvarjeno',
+                'text' => 'Prejeli ste novo naročilo.',
+                'link' => 'Poglej naročilo',
+            ],
+        ],
+    ],
 ];

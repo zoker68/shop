@@ -20,6 +20,7 @@ return [
     'mail_recipients' => [
         'reviews' => env('MAIL_FOR_REVIEW', env('MAIL_TO', 'zoker@localshop')),
         'contact' => env('MAIL_FOR_CONTACT', env('MAIL_TO', 'zoker@localshop')),
+        'order' => env('MAIL_FOR_ORDER', env('MAIL_TO', 'zoker@localshop')),
     ],
 
     'reset_password_expire' => 15, // in minutes

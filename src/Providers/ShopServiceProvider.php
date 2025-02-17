@@ -14,6 +14,8 @@ use Zoker\FilamentStaticPages\Classes\BlocksComponentRegistry;
 use Zoker\Shop\Console\Commands\AiSeoProductsCommand;
 use Zoker\Shop\Console\Commands\ScoutIndexUpdateCommand;
 use Zoker\Shop\Console\Commands\SyncLogClearCommand;
+use Zoker\Shop\Events\OrderCreatedEvent;
+use Zoker\Shop\Listeners\SendOrderCreatedNotification;
 use Zoker\Shop\Listeners\StripeEventListener;
 use Zoker\Shop\Livewire\Account\Wishlist;
 use Zoker\Shop\Livewire\Auth\AddressEdit;
@@ -74,6 +76,7 @@ class ShopServiceProvider extends ServiceProvider
         Cashier::calculateTaxes();
 
         Event::listen(WebhookReceived::class, StripeEventListener::class);
+        Event::listen(OrderCreatedEvent::class, SendOrderCreatedNotification::class);
     }
 
     private function allPublishes(): void
