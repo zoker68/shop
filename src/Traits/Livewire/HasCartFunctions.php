@@ -53,7 +53,16 @@ trait HasCartFunctions
 
             DB::commit();
 
-            $this->dispatch('cartUpdated', action: 'add', product: $product->only('hash', 'name', 'price'), quantity: $quantity);
+            $this->dispatch(
+                'cartUpdated',
+                action: 'add',
+                product: $product->only('hash', 'name', 'price'),
+                quantity: $quantity,
+                currency: [
+                    'code' => currency()->getCode(),
+                    'subunit' => currency()->getSubunit(),
+                ]
+            );
 
             $this->throwAlert('success', __('shop::cart.added'));
 
@@ -69,10 +78,14 @@ trait HasCartFunctions
 
         $cart = Cart::getCurrentCart();
 
+        $productInCart = $cart->products()->firstWhere('product_id', $productId);
+        $oldQuantity = $productInCart->quantity;
+
         try {
             DB::beginTransaction();
 
-            $cart->products()->where('product_id', $productId)->delete();
+            $productInCart->delete();
+
             $cart->calculateTotals();
 
             DB::commit();
@@ -84,7 +97,18 @@ trait HasCartFunctions
 
         $this->throwAlert('info', __('shop::cart.removed'), 1);
 
-        $this->dispatch('cartUpdated');
+        $product = Product::find($productId);
+
+        $this->dispatch(
+            'cartUpdated',
+            action: 'remove',
+            product: $product->only('hash', 'name', 'price'),
+            quantity: $oldQuantity,
+            currency: [
+                'code' => currency()->getCode(),
+                'subunit' => currency()->getSubunit(),
+            ]
+        );
     }
 
     public function validateQuantity(): mixed
