@@ -15,14 +15,11 @@ class Cart extends Component
 
     public CartModel $cart;
 
-    public function boot()
+    public function render(): View
     {
         $this->cart = CartModel::getCurrentCart();
         $this->cart->load('products', 'products.product');
-    }
 
-    public function render(): View
-    {
         return view('shop::livewire.shop.cart');
     }
 
