@@ -53,16 +53,7 @@ trait HasCartFunctions
 
             DB::commit();
 
-            $this->dispatch(
-                'cartUpdated',
-                action: 'add',
-                product: $product->only('hash', 'name', 'price'),
-                quantity: $quantity,
-                currency: [
-                    'code' => currency()->getCode(),
-                    'subunit' => currency()->getSubunit(),
-                ]
-            );
+            $this->dispatchUpdateCartEvent($product, $quantity);
 
             $this->throwAlert('success', __('shop::cart.added'));
 
@@ -99,16 +90,7 @@ trait HasCartFunctions
 
         $product = Product::find($productId);
 
-        $this->dispatch(
-            'cartUpdated',
-            action: 'remove',
-            product: $product->only('hash', 'name', 'price'),
-            quantity: $oldQuantity,
-            currency: [
-                'code' => currency()->getCode(),
-                'subunit' => currency()->getSubunit(),
-            ]
-        );
+        $this->dispatchUpdateCartEvent('remove', $product, $oldQuantity);
     }
 
     public function validateQuantity(): mixed
@@ -136,19 +118,24 @@ trait HasCartFunctions
             return;
         }
 
+        $cart = Cart::getCurrentCart();
+        $productId = Product::hashToId($productHash);
+
+        $item = $cart->products()->firstWhere('product_id', $productId);
+        $oldQuantity = $item->quantity;
+
         try {
-            $cart = Cart::getCurrentCart();
-
-            $productId = Product::hashToId($productHash);
-
-            $item = $cart->products()->firstWhere('product_id', $productId);
             if (! $item) {
                 throw new AddToCartException(__('shop::cart.exceptions.product_not_find_in_cart'), 'danger');
             }
 
             $product = Product::published()->find($productId);
             if (! $product) {
-                throw new AddToCartException(__('shop::cart.exceptions.published'), 'danger');
+                throw new AddToCartException(__('shop::cart.exceptions.published'), 'info');
+            }
+
+            if ($quantity === $oldQuantity) {
+                throw new AddToCartException(__('shop::cart.exceptions.quantity_not_changed'), 'danger');
             }
 
             if ($product->stock < $quantity && ! config('shop.product.allow_overstock')) {
@@ -163,11 +150,29 @@ trait HasCartFunctions
 
             DB::commit();
 
-            $this->dispatch('cartUpdated');
+            $this->dispatchUpdateCartEvent(
+                ($quantity > $oldQuantity) ? 'add' : 'remove',
+                $product,
+                abs($quantity - $oldQuantity)
+            );
 
         } catch (AddToCartException $exception) {
             DB::rollBack();
             $this->throwAlert($exception->getType(), $exception->getMessage());
         }
+    }
+
+    public function dispatchUpdateCartEvent(string $action, array|Product $product, int $quantity): void
+    {
+        $this->dispatch(
+            'cartUpdated',
+            action: $action,
+            product: $product->only('hash', 'name', 'price'),
+            quantity: $quantity,
+            currency: [
+                'code' => currency()->getCurrency(),
+                'subunit' => currency()->getSubunit(),
+            ]
+        );
     }
 }

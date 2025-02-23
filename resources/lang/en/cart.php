@@ -5,6 +5,7 @@ return [
         'published' => 'Product not found or not published',
         'stock' => 'Requested quantity not available in stock',
         'product_not_find_in_cart' => 'Product not found in cart',
+        'quantity_not_changed' => 'Quantity not changed',
     ],
     'added' => 'Product successfully added to cart',
     'removed' => 'Product successfully removed from cart',

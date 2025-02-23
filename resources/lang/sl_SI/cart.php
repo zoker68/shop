@@ -5,6 +5,7 @@ return [
         'published' => 'Izdelek ni bil najden ali ni objavljen',
         'stock' => 'Zahtevana količina ni na voljo na zalogi',
         'product_not_find_in_cart' => 'Izdelek ni bil najden v košarici',
+        'quantity_not_changed' => 'Količina ni bila spremenjena',
     ],
     'added' => 'Izdelek je bil uspešno dodan v košarico',
     'removed' => 'Izdelek je bil uspešno odstranjen iz košarice',
