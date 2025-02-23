@@ -53,7 +53,7 @@ trait HasCartFunctions
 
             DB::commit();
 
-            $this->dispatch('cartUpdated');
+            $this->dispatch('cartUpdated', action: 'add', product: $product->only('hash', 'name', 'price'), quantity: $quantity);
 
             $this->throwAlert('success', __('shop::cart.added'));
 

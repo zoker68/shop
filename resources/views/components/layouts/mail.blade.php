@@ -1,3 +1,6 @@
+@if (app('view')->exists('components.layouts.mail'))
+    <x-layouts.mail>{{ $slot }}</x-layouts.mail>
+@else
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -58,3 +61,4 @@
 </div>
 </body>
 </html>
+@endif

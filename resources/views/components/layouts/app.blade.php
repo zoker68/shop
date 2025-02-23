@@ -1,3 +1,6 @@
+@if (app('view')->exists('components.layouts.app'))
+    <x-layouts.app>{{ $slot }}</x-layouts.app>
+@else
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -51,3 +54,4 @@
 @vite('resources/js/app.js')
 </body>
 </html>
+@endif

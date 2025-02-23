@@ -1,3 +1,6 @@
+@if (app('view')->exists('components.layouts.account'))
+    <x-layouts.account>{{ $slot }}</x-layouts.account>
+@else
 <x-shop::layouts.app>
     <x-shop::partials.breadcrumbs :data="[['title' => __('shop::layout.account.breadcrumbs.account'), 'url' => route('account.profile.dashboard')]]"/>
     <div class="container grid grid-cols-12 gap-6 pb-14">
@@ -88,3 +91,4 @@
         {{ $slot }}
     </div>
 </x-shop::layouts.app>
+@endif
