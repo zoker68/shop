@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Unique;
+use Spatie\Sitemap\Contracts\Sitemapable;
+use Spatie\Sitemap\Tags\Url;
 use Zoker\Shop\Classes\Bases\BaseModel;
 use Zoker\Shop\Observers\CategoryObserver;
 use Zoker\Shop\Traits\Models\HasSeo;
@@ -22,7 +24,7 @@ use Zoker\Shop\Traits\Models\Sluggable;
 use Zoker\Shop\Traits\Models\TreeTrait;
 
 #[ObservedBy(CategoryObserver::class)]
-class Category extends BaseModel
+class Category extends BaseModel implements Sitemapable
 {
     use HasFactory, HasSeo, Sluggable, TreeTrait;
 
@@ -192,5 +194,11 @@ class Category extends BaseModel
         }
 
         return Storage::disk(config('shop.disk'))->url($this->cover);
+    }
+
+    public function toSitemapTag(): Url|string|array
+    {
+        return Url::create(route('category', $this))
+            ->setLastModificationDate($this->updated_at);
     }
 }

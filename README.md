@@ -236,3 +236,9 @@ STRIPE_SECRET=
 STRIPE_WEBHOOK_SECRET=
 CASHIER_CURRENCY=
 ```
+
+# Sitemap
+Add to schedule
+```php
+$schedule->command('sitemap:generate')->daily();
+```

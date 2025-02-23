@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Laravel\Scout\Builder as ScoutBuilder;
 use Laravel\Scout\Searchable;
+use Spatie\Sitemap\Contracts\Sitemapable;
+use Spatie\Sitemap\Tags\Url;
 use Veelasky\LaravelHashId\Eloquent\HashableId;
 use Zoker\Shop\Classes\AIQuery;
 use Zoker\Shop\Classes\Bases\BaseModel;
@@ -23,7 +25,7 @@ use Zoker\Shop\Enums\ProductsSorting;
 use Zoker\Shop\Traits\Models\HasSeo;
 use Zoker\Shop\Traits\Models\Sluggable;
 
-class Product extends BaseModel
+class Product extends BaseModel implements Sitemapable
 {
     use HasFactory, HashableId, HasSeo, Searchable, Sluggable, SoftDeletes;
 
@@ -337,5 +339,11 @@ class Product extends BaseModel
         $seo->title = $result['title'] . ' | ' . config('app.name');
         $seo->description = $result['description'];
         $this->seo()->save($seo);
+    }
+
+    public function toSitemapTag(): Url|string|array
+    {
+        return Url::create(route('product', $this))
+            ->setLastModificationDate($this->updated_at);
     }
 }

@@ -29,7 +29,8 @@
         "zoker/filament-static-pages": "*",
         "bkwld/croppa": "^7.0",
         "laravel/cashier": "^15.6",
-        "openai-php/laravel": "^0"
+        "openai-php/laravel": "^0",
+        "spatie/laravel-sitemap": "^7"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13"
