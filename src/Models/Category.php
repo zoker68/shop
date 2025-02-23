@@ -198,7 +198,6 @@ class Category extends BaseModel implements Sitemapable
 
     public function toSitemapTag(): Url|string|array
     {
-        return Url::create(route('category', $this))
-            ->setLastModificationDate($this->updated_at);
+        return Url::create(route('category', $this));
     }
 }
