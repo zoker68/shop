@@ -27,7 +27,6 @@ class CategoriesRelationManager extends BaseRelationManager
         ]);
 
         $this->addListHeaderActions([
-            'create' => Tables\Actions\CreateAction::make(),
             'attach' => Tables\Actions\AttachAction::make()
                 ->preloadRecordSelect()
                 ->multiple()
@@ -39,7 +38,6 @@ class CategoriesRelationManager extends BaseRelationManager
         ]);
 
         $this->addListActions([
-            'edit' => Tables\Actions\EditAction::make(),
             'detach' => Tables\Actions\DetachAction::make(),
         ]);
     }
