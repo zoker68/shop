@@ -11,6 +11,7 @@
 
                         <div class="swiper-product-page mt-4 relative group overflow-hidden">
                             <div class="swiper-wrapper flex">
+                                @if(is_array($product->images))
                                 @foreach($product->images as $image)
                                     <div class="swiper-slide">
                                         <div class="w-full h-[90px] flex justify-center items-center select-image cursor-pointer">
@@ -19,6 +20,7 @@
                                         </div>
                                     </div>
                                 @endforeach
+                                @endif
                             </div>
 
                             <div

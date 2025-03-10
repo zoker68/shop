@@ -133,10 +133,6 @@ class Checkout extends Component
 
     public function boot(): void
     {
-        $this->cart = Cart::getCurrentCart();
-
-        $this->cart->load('products', 'products.product');
-
         if ($this->cart->products->isEmpty()) {
             redirect()->route('cart');
         }

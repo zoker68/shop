@@ -2,6 +2,8 @@
 
 namespace Zoker\Shop\Http\Controllers;
 
+use Zoker\Shop\Models\Cart;
+
 class CheckoutController extends Controller
 {
     public function __invoke()
@@ -11,6 +13,10 @@ class CheckoutController extends Controller
             ['title' => __('shop::checkout.breadcrumbs'), 'url' => route('checkout')],
         ];
 
-        return view('shop::pages.checkout', compact('breadcrumbs'));
+        $cart = Cart::getCurrentCart();
+
+        $cart->load('products', 'products.product');
+
+        return view('shop::pages.checkout', compact('breadcrumbs', 'cart'));
     }
 }

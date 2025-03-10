@@ -53,7 +53,7 @@ trait HasCartFunctions
 
             DB::commit();
 
-            $this->dispatchUpdateCartEvent($product, $quantity);
+            $this->dispatchUpdateCartEvent('add', $product, $quantity);
 
             $this->throwAlert('success', __('shop::cart.added'));
 
@@ -162,7 +162,7 @@ trait HasCartFunctions
         }
     }
 
-    public function dispatchUpdateCartEvent(string $action, array|Product $product, int $quantity): void
+    public function dispatchUpdateCartEvent(string $action, Product $product, int $quantity): void
     {
         $this->dispatch(
             'cartUpdated',
