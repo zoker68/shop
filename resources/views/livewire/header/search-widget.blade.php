@@ -2,7 +2,7 @@
     <div x-data="{isOpen:false}" class="relative hidden lg:block">
         <form action="{{ route('search') }}" method="get">
             <div @click.outside="isOpen=false"
-                 class="border border-primary rounded-md w-[535px] xl:w-[675px] flex">
+                 class=" w-[535px] xl:w-[675px] flex">
                 <!-- search categories -->
                 <div
                     class="border-r border-secondary w-36 bg-white rounded-l-md h-[43px] flex justify-center items-center"
@@ -23,7 +23,7 @@
                 </div>
                 <!-- search btn -->
                 <div class="w-[142px]">
-                    <button class="bg-secondary rounded-r-md w-full px-4 py-2.5 text-white text-base font-medium">
+                    <button class="bg-black hover:bg-white hover:text-secondary rounded-r-md w-full px-4 h-full text-white text-base font-medium font-poppins transition-all duration-300">
                         {{ __('shop::layout.header.navbar.search.submit') }}
                     </button>
                 </div>

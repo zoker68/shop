@@ -7,7 +7,7 @@
 @else
 <a href="{{ route('category', $category) }}"
 @endif
-   class="flex items-center pl-6 border-b border-[#C8C8CE] pr-4 py-3 w-full text-secondary transition duration-300 hover:bg-[#EFEFEF] group">
+   class="flex items-center pl-6 border-b first:border-t border-[#E9E4E4] pr-4 py-3 w-full text-secondary transition duration-300 hover:bg-secondary hover:text-white group">
             {{--<span class="w-11 text-[#f4cad0] font-black">
                 <svg width="20" height="20" viewBox="0 0 32 32">
                     <path fill="currentColor"
@@ -17,7 +17,7 @@
     <span class="text-[15px] cursor-pointer text-secondary">
         @if($category->children->count())
             <a href="{{ route('category', $category) }}"
-               class="flex items-center  border-[#C8C8CE] w-full text-secondary transition duration-300 hover:bg-[#EFEFEF] group"
+               class="flex items-center  border-[#E9E4E4] w-full text-secondary transition duration-300 group-hover:text-white "
             >{{ $category->name }}</a>
         @else
             {{ $category->name }}
@@ -31,8 +31,8 @@
             </svg>
         </span>
         <div
-            class="opacity-0 invisible group-hover:opacity-100 group-hover:visible flex absolute top-0 left-[200px] bg-white border border-[#E9E4E4] rounded-md h-full p-5 ml-2.5 group-hover:ml-0 transition-all duration-300 responsive">
-            <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1">
+            class="opacity-0 invisible group-hover:opacity-100 group-hover:visible flex absolute top-0 left-[250px] bg-white border border-[#E9E4E4] rounded-b-r-md h-full p-10 ml-[2.5] group-hover:ml-0 transition-all duration-300 responsive">
+            <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 h-fit">
                 @foreach($category->children as $child)
                     <x-shop::partials.navbar.secondary-link :category="$child"/>
                 @endforeach

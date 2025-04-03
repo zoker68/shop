@@ -11,7 +11,6 @@
 
                         <div class="swiper-product-page mt-4 relative group overflow-hidden">
                             <div class="swiper-wrapper flex">
-                                @if(is_array($product->images))
                                 @foreach($product->images as $image)
                                     <div class="swiper-slide">
                                         <div class="w-full h-[90px] flex justify-center items-center select-image cursor-pointer">
@@ -20,7 +19,6 @@
                                         </div>
                                     </div>
                                 @endforeach
-                                @endif
                             </div>
 
                             <div
@@ -36,7 +34,7 @@
                     <div class="col-span-12 lg:col-span-6">
                         <div class="product_info_wrapper">
                             <div class="product_base_info">
-                                <h1 class="text-2xl sm:text-3xl uppercase">{{ $product->name }}</h1>
+                                <h1 class="text-2xl sm:text-3xl">{{ $product->name }}</h1>
                                 <div class="rating">
                                     <div class="flex gap-3 items-center mt-4">
                                         <x-shop::partials.rating :rating="$ratings->avg('rating')"
@@ -44,7 +42,7 @@
                                         <p class="text-sm">{{ trans_choice('shop::product.ratings.count', count($ratings)) }}</p>
                                     </div>
                                 </div>
-                                <div class="space-y-2 mt-4">
+                                <div class="space-y-1 mt-6">
                                     <p>
                                         <span class="font-medium pr-3">{{ __('shop::product.stock') }}</span>
                                         <x-shop::partials.availability :product="$product"/>
@@ -54,8 +52,11 @@
                                         <span class="font-medium pr-3">{{ __('shop::product.brand') }}</span>{{ $product->brand->name }}
                                     </p>
                                     @endif
+                                    <p>
+                                        <span class="font-medium pr-3">Artikel:</span> {{ $product->foreign_id }}
+                                    </p>
                                 </div>
-                                <div class="mt-3 flex gap-3 items-center overflow-hidden">
+                                <div class="mt-7 flex gap-3 items-center overflow-hidden">
                                     {{--<span class="line-through">@money($product->price)</span>--}}
                                     <span class="text-2xl text-primary font-semibold price">@money($product->price)</span>
                                     {{--<div
@@ -64,51 +65,64 @@
                                     </div>--}}
                                 </div>
                                 <div class="mt-2">
-                                    <p>{{ $product->description }}</p>
+                                    <p class="text-[#666666]">{{ $product->description }}</p>
                                 </div>
 
-                                <!-- quantity -->
-                                <div class="cart_qnty ms-md-auto mt-5">
-                                    <p>{{ __('shop::product.quantity') }}</p>
-                                    <div class="flex items-center  mt-1">
-                                        <input type="number" wire:model="quantityForCart"
-                                               class="w-16 h-8 border flex justify-center items-center"
-                                               value="1" min="1" step="1" required>
+
+                                <div class="addtocart-wrapper flex gap-6 items-center mt-6">
+                                    <!-- quantity -->
+                                    <div class="cart_qnty ms-md-auto flex flex-row gap-0">
+                                        <!-- <p>{{ __('shop::product.quantity') }}</p> -->
+                                        <a href="#" wire:click.prevent="$set('quantityForCart', parseInt(document.getElementById('quantityForCart').value) - 1)" class="rounded-l-md h-14 w-10 flex justify-center items-center bg-[#dddddd] hover:bg-[#333333] text-black hover:text-white text-lg font-semibold transform-all duration-300">
+                                            <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                <path fill="currentColor" d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32"/>
+                                            </svg>
+                                        </a>
+                                        <div class="flex items-center">
+                                            <input type="number" wire:model="quantityForCart"
+                                                   id="quantityForCart"
+                                                class="h-14 w-14 border-t border-b border-[#dddddd] flex justify-center items-center focus:!outline-none"
+                                                value="1" min="1" step="1" required>
+                                        </div>
+                                        <a href="#" wire:click.prevent="$set('quantityForCart', parseInt(document.getElementById('quantityForCart').value) + 1)" class="rounded-r-md h-14 w-10 flex justify-center items-center bg-[#dddddd] hover:bg-[#333333] text-black hover:text-white text-lg font-semibold transform-all duration-300">
+                                            <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                <path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32"/>
+                                            </svg>
+                                        </a>
                                     </div>
+                                    <x-shop::form.addtocart class="flex gap-4 items-center sm:text-base px-2 sm:px-8 group w-full justify-center">
+                                        {{ __('shop::product.add_to_cart') }}
+                                        <span class="text-white ">
+                                            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                <path fill="currentColor" d="M15.543 9.517a.75.75 0 1 0-1.086-1.034l-2.314 2.43l-.6-.63a.75.75 0 1 0-1.086 1.034l1.143 1.2a.75.75 0 0 0 1.086 0z"/>
+                                                <path fill="currentColor" fill-rule="evenodd" d="M1.293 2.751a.75.75 0 0 1 .956-.459l.301.106c.617.217 1.14.401 1.553.603c.44.217.818.483 1.102.899c.282.412.399.865.452 1.362l.011.108H17.12c.819 0 1.653 0 2.34.077c.35.039.697.101 1.003.209c.3.105.631.278.866.584c.382.496.449 1.074.413 1.66c-.035.558-.173 1.252-.338 2.077l-.01.053l-.002.004l-.508 2.47c-.15.726-.276 1.337-.439 1.82c-.172.51-.41.96-.837 1.308c-.427.347-.916.49-1.451.556c-.505.062-1.13.062-1.87.062H10.88c-1.345 0-2.435 0-3.293-.122c-.897-.127-1.65-.4-2.243-1.026c-.547-.576-.839-1.188-.985-2.042c-.137-.8-.15-1.848-.15-3.3V7.038c0-.74-.002-1.235-.043-1.615c-.04-.363-.109-.545-.2-.677c-.087-.129-.22-.25-.524-.398c-.323-.158-.762-.314-1.43-.549l-.26-.091a.75.75 0 0 1-.46-.957M5.708 6.87v2.89c0 1.489.018 2.398.13 3.047c.101.595.274.925.594 1.263c.273.288.65.472 1.365.573c.74.105 1.724.107 3.14.107h5.304c.799 0 1.33-.001 1.734-.05c.382-.047.56-.129.685-.231s.24-.26.364-.625c.13-.385.238-.905.4-1.688l.498-2.42v-.002c.178-.89.295-1.482.322-1.926c.026-.422-.04-.569-.101-.65a.6.6 0 0 0-.177-.087a3.2 3.2 0 0 0-.672-.134c-.595-.066-1.349-.067-2.205-.067zM5.25 19.5a2.25 2.25 0 1 0 4.5 0a2.25 2.25 0 0 0-4.5 0m2.25.75a.75.75 0 1 1 0-1.5a.75.75 0 0 1 0 1.5m6.75-.75a2.25 2.25 0 1 0 4.5 0a2.25 2.25 0 0 0-4.5 0m2.25.75a.75.75 0 1 1 0-1.5a.75.75 0 0 1 0 1.5" clip-rule="evenodd"/>
+                                            </svg>
+                                        </span>
+                                    </x-shop::form.addtocart>
                                 </div>
-                            </div>
-                            <!-- add to cart & wishlist -->
-                            <div class="flex gap-5 mt-6 border-b pb-5">
-                                <x-shop::form.button class="flex gap-2 items-center sm:text-base px-2 sm:px-8 group w-1/2 max-w-60">
-                                    <span class="text-white group-hover:text-primary">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                             viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                  d="M15.55 13c.75 0 1.41-.41 1.75-1.03l3.58-6.49A.996.996 0 0 0 20.01 4H5.21l-.94-2H1v2h2l3.6 7.59l-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45zM6.16 6h12.15l-2.76 5H8.53L6.16 6zM7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2s-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2s2-.9 2-2s-.9-2-2-2z"/>
-                                        </svg>
-                                    </span>
-                                    {{ __('shop::product.add_to_cart') }}
-                                </x-shop::form.button>
-                                <button wire:click.prevent="toggleWishlist('{{ $product->hash }}')"
-                                   class="flex gap-2 items-center border border-primary hover:bg-primary text-primary hover:text-white transition duration-300 px-2 sm:px-8 py-2 rounded uppercase group group w-1/2 max-w-60">
-                                    <span class="text-primary group-hover:text-white">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                             viewBox="0 0 24 24">
-                                            @if(in_array($product->id, $wishlist))
-                                                <path fill="currentColor"
-                                                      d="m12 19.654l-.758-.685q-2.448-2.236-4.05-3.828q-1.601-1.593-2.528-2.81t-1.296-2.2T3 8.15q0-1.908 1.296-3.204T7.5 3.65q1.32 0 2.475.675T12 6.289Q12.87 5 14.025 4.325T16.5 3.65q1.908 0 3.204 1.296T21 8.15q0 .996-.368 1.98q-.369.986-1.296 2.202t-2.519 2.809q-1.592 1.592-4.06 3.828z"/>
-                                            @else
-                                                <path fill="currentColor"
-                                                      d="m12 19.654l-.758-.685q-2.448-2.236-4.05-3.828q-1.601-1.593-2.528-2.81t-1.296-2.2T3 8.15q0-1.908 1.296-3.204T7.5 3.65q1.32 0 2.475.675T12 6.289Q12.87 5 14.025 4.325T16.5 3.65q1.908 0 3.204 1.296T21 8.15q0 .996-.368 1.98q-.369.986-1.296 2.202t-2.519 2.809q-1.592 1.592-4.06 3.828zm0-1.354q2.4-2.17 3.95-3.716t2.45-2.685t1.25-2.015Q20 9.006 20 8.15q0-1.5-1-2.5t-2.5-1q-1.194 0-2.204.682T12.49 7.385h-.978q-.817-1.39-1.817-2.063q-1-.672-2.194-.672q-1.48 0-2.49 1T4 8.15q0 .856.35 1.734t1.25 2.015t2.45 2.675T12 18.3m0-6.825"/>
-                                            @endif
-                                        </svg>
-                                    </span>
-                                    @if(in_array($product->id, $wishlist))
-                                        {{ __('shop::product.wishlist.remove') }}
-                                    @else
-                                        {{ __('shop::product.wishlist.add') }}
-                                    @endif
-                                </button>
+                                <!-- wishlist -->
+                                <div class="flex justify-end mt-4">
+                                    <button wire:click.prevent="toggleWishlist('{{ $product->hash }}')"
+                                    class="flex gap-2 transition duration-300 py-2 rounded group text-[#666666] hover:text-secondary transition duration-300">
+                                        <span class="text-[#666666] group-hover:text-secondary">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24">
+                                                @if(in_array($product->id, $wishlist))
+                                                    <path fill="red"
+                                                        d="m12 19.654l-.758-.685q-2.448-2.236-4.05-3.828q-1.601-1.593-2.528-2.81t-1.296-2.2T3 8.15q0-1.908 1.296-3.204T7.5 3.65q1.32 0 2.475.675T12 6.289Q12.87 5 14.025 4.325T16.5 3.65q1.908 0 3.204 1.296T21 8.15q0 .996-.368 1.98q-.369.986-1.296 2.202t-2.519 2.809q-1.592 1.592-4.06 3.828z"/>
+                                                @else
+                                                    <path fill="currentColor"
+                                                        d="m12 19.654l-.758-.685q-2.448-2.236-4.05-3.828q-1.601-1.593-2.528-2.81t-1.296-2.2T3 8.15q0-1.908 1.296-3.204T7.5 3.65q1.32 0 2.475.675T12 6.289Q12.87 5 14.025 4.325T16.5 3.65q1.908 0 3.204 1.296T21 8.15q0 .996-.368 1.98q-.369.986-1.296 2.202t-2.519 2.809q-1.592 1.592-4.06 3.828zm0-1.354q2.4-2.17 3.95-3.716t2.45-2.685t1.25-2.015Q20 9.006 20 8.15q0-1.5-1-2.5t-2.5-1q-1.194 0-2.204.682T12.49 7.385h-.978q-.817-1.39-1.817-2.063q-1-.672-2.194-.672q-1.48 0-2.49 1T4 8.15q0 .856.35 1.734t1.25 2.015t2.45 2.675T12 18.3m0-6.825"/>
+                                                @endif
+                                            </svg>
+                                        </span>
+                                        @if(in_array($product->id, $wishlist))
+                                            {{ __('shop::product.wishlist.remove') }}
+                                        @else
+                                            {{ __('shop::product.wishlist.add') }}
+                                        @endif
+                                    </button>
+                                </div>
                             </div>
                             {{--
                             TODO: Add social icon
@@ -142,23 +156,25 @@
                 </div>
             </form>
             <div x-data="{activeTab: 'info'}" class="product_view_tabs mt-28">
-                <div class="flex gap-2 border-b mb-4">
-                    <div @click="activeTab='info'" :class="{'!border-primary !text-primary' : activeTab ==='info' }"
-                         class="border px-1 sm:px-4 py-2 rounded text-xs sm:text-base cursor-pointer rounded-b-none border-[#2B2D42] border-b-0">
+                <div class="flex gap-2 mb-4">
+                    <div @click="activeTab='info'"
+                        :class="{'!border-secondary !text-white bg-secondary hover:!bg-secondary' : activeTab ==='info' }"
+                         class="font-semibold px-4 sm:px-4 py-3 rounded-sm text-xs sm:text-base cursor-pointer bg-[#dddddd] hover:bg-[#eeeeee] transition-all duration-300">
                         {{ __('shop::product.tabs.properties') }}
                     </div>
                     <div @click="activeTab='question'"
-                         :class="{'!border-primary !text-primary' : activeTab ==='question' }"
-                         class="border px-1 sm:px-4 py-2 rounded text-xs sm:text-base cursor-pointer rounded-b-none border-[#2B2D42] border-b-0">
+                         :class="{'!border-secondary !text-white bg-secondary hover:!bg-secondary' : activeTab ==='question' }"
+                         class="font-semibold px-4 sm:px-4 py-3 rounded-sm text-xs sm:text-base cursor-pointer bg-[#dddddd] hover:bg-[#eeeeee] transition-all duration-300">
                         {{ __('shop::product.tabs.questions') }}
                     </div>
-                    <div @click="activeTab='review'" :class="{'!border-primary !text-primary' : activeTab ==='review' }"
-                         class="border px-1 sm:px-4 py-2 rounded text-xs sm:text-base cursor-pointer  rounded-b-none border-[#2B2D42] border-b-0">
+                    <div @click="activeTab='review'"
+                        :class="{'!border-secondary !text-white bg-secondary hover:!bg-secondary' : activeTab ==='review' }"
+                         class="font-semibold px-4 sm:px-4 py-3 rounded-sm text-xs sm:text-base cursor-pointer bg-[#dddddd] hover:bg-[#eeeeee] transition-all duration-300">
                         {{ __('shop::product.tabs.reviews', ['count_reviews' => count($reviews)]) }}
                     </div>
                 </div>
                 <!-- product info -->
-                <div x-show="activeTab==='info'" class="max-w-[800px]">
+                <div x-show="activeTab==='info'" class="">
                     {{--<div class="pbt_info_text">
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est nec condimentum lorem

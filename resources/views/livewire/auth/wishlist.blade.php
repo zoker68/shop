@@ -1,12 +1,12 @@
 <div class="col-span-12 lg:col-span-9" id="pagination_top">
     @foreach($userWishlist as $item)
-        <div class="md:flex justify-between items-center border rounded p-2 mb-3">
+        <div class="md:flex justify-between items-center border border-[#E9E4E4] rounded-md p-2 mb-3">
             <div class="w-20 h-20">
                 <img loading="lazy" class="w-full h-full object-cover" src="{{ $item->product->getCoverImage(100, 100) }}"
                      alt="{{ $item->product->name }}">
             </div>
             <div class="mt-6 md:mt-0">
-                <a href="{{ route('product', $item->product) }}" class="hover:text-primary transition durition-300">
+                <a href="{{ route('product', $item->product) }}" class="hover:text-secondary transition durition-300">
                     <h5>{{ $item->product->name }}</h5>
                 </a>
                 <p class="instock mb-0">Availability:
@@ -14,20 +14,20 @@
                 </p>
             </div>
 
-            <div class="text-[18px] text-primary font-semibold mt-2 md:mt-0">
+            <div class="text-[18px] text-secondary font-semibold mt-2 md:mt-0">
                 @money($item->product->price)
             </div>
-            <div class="flex justify-between md:gap-12 items-center mt-4 md:mt-0">
+            <div class="flex justify-between md:gap-6 items-center mt-4 md:mt-0">
                 <div class="group">
                     <button
-                        class="flex gap-2 items-center border border-primary bg-primary text-white text-sm uppercase px-4 py-2 rounded hover:bg-white hover:text-primary transition duration-300
+                        class="flex gap-2 items-center bg-secondary text-white text-sm font-semibold px-6 py-2 rounded hover:bg-black transition duration-300
                                 @if(!$item->product->stock > 0 && !config('shop.product.allow_overstock')) disable disabled @endif"
                         wire:click="addToCart('{{ $item->product->hash }}')">
-                            <span class="text-white group-hover:text-primary transition">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256">
-                                    <path fill="currentColor"
-                                          d="m209.7 131.9l12.2-66.8a6.1 6.1 0 0 0-1.3-4.9A5.8 5.8 0 0 0 216 58H53l-5.2-28.5A13.9 13.9 0 0 0 34.1 18H16a6 6 0 0 0 0 12h18.1a2 2 0 0 1 1.9 1.6l27.7 152.2A26 26 0 1 0 106 204a25.6 25.6 0 0 0-4.1-14h60.2a25.6 25.6 0 0 0-4.1 14a26 26 0 1 0 26-26H74.8l-5.1-28h118.4a22 22 0 0 0 21.6-18.1ZM94 204a14 14 0 1 1-14-14a14 14 0 0 1 14 14Zm104 0a14 14 0 1 1-14-14a14 14 0 0 1 14 14ZM55.2 70h153.6l-10.9 59.8a10 10 0 0 1-9.8 8.2H67.6Z"/>
-                                </svg>
+                            <span class="text-white transition">
+                            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                <path fill="currentColor" d="M15.543 9.517a.75.75 0 1 0-1.086-1.034l-2.314 2.43l-.6-.63a.75.75 0 1 0-1.086 1.034l1.143 1.2a.75.75 0 0 0 1.086 0z"></path>
+                                                <path fill="currentColor" fill-rule="evenodd" d="M1.293 2.751a.75.75 0 0 1 .956-.459l.301.106c.617.217 1.14.401 1.553.603c.44.217.818.483 1.102.899c.282.412.399.865.452 1.362l.011.108H17.12c.819 0 1.653 0 2.34.077c.35.039.697.101 1.003.209c.3.105.631.278.866.584c.382.496.449 1.074.413 1.66c-.035.558-.173 1.252-.338 2.077l-.01.053l-.002.004l-.508 2.47c-.15.726-.276 1.337-.439 1.82c-.172.51-.41.96-.837 1.308c-.427.347-.916.49-1.451.556c-.505.062-1.13.062-1.87.062H10.88c-1.345 0-2.435 0-3.293-.122c-.897-.127-1.65-.4-2.243-1.026c-.547-.576-.839-1.188-.985-2.042c-.137-.8-.15-1.848-.15-3.3V7.038c0-.74-.002-1.235-.043-1.615c-.04-.363-.109-.545-.2-.677c-.087-.129-.22-.25-.524-.398c-.323-.158-.762-.314-1.43-.549l-.26-.091a.75.75 0 0 1-.46-.957M5.708 6.87v2.89c0 1.489.018 2.398.13 3.047c.101.595.274.925.594 1.263c.273.288.65.472 1.365.573c.74.105 1.724.107 3.14.107h5.304c.799 0 1.33-.001 1.734-.05c.382-.047.56-.129.685-.231s.24-.26.364-.625c.13-.385.238-.905.4-1.688l.498-2.42v-.002c.178-.89.295-1.482.322-1.926c.026-.422-.04-.569-.101-.65a.6.6 0 0 0-.177-.087a3.2 3.2 0 0 0-.672-.134c-.595-.066-1.349-.067-2.205-.067zM5.25 19.5a2.25 2.25 0 1 0 4.5 0a2.25 2.25 0 0 0-4.5 0m2.25.75a.75.75 0 1 1 0-1.5a.75.75 0 0 1 0 1.5m6.75-.75a2.25 2.25 0 1 0 4.5 0a2.25 2.25 0 0 0-4.5 0m2.25.75a.75.75 0 1 1 0-1.5a.75.75 0 0 1 0 1.5" clip-rule="evenodd"></path>
+                                            </svg>
                             </span> Add to Cart
                     </button>
                 </div>

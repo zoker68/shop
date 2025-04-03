@@ -2,8 +2,8 @@
     <form wire:submit="onConfirm">
         <div class="container grid grid-cols-12 gap-6 pb-14">
             <div class="col-span-12 md:col-span-6 lg:col-span-8">
-                <h4 class="bg-secondary text-white px-3 py-2">{{ __('shop::checkout.customer.title') }}</h4>
-                <div class="grid grid-cols-3 my-4 border">
+                <h4 class="bg-secondary text-white px-4 py-3 rounded-t-md">{{ __('shop::checkout.customer.title') }}</h4>
+                <div class="grid grid-cols-3 mb-4 border">
                     <div class="px-3 py-2">{{ __('shop::checkout.customer.first_name') }}:</div>
                     <div class="px-3 py-2 col-span-2">{{ $userData['name'] }}</div>
                     <div class="px-3 py-2">{{ __('shop::checkout.customer.last_name') }}:</div>
@@ -22,8 +22,8 @@
                     @endif
                 </div>
                 @foreach(['shipping', 'billing'] as $addressType)
-                    <h4 class="bg-secondary text-white px-3 py-2">{{ __('shop::checkout.' . $addressType . '_address.title') }}</h4>
-                    <div class="grid grid-cols-3 my-4 border">
+                    <h4 class="bg-secondary text-white px-4 py-3 rounded-t-md">{{ __('shop::checkout.' . $addressType . '_address.title') }}</h4>
+                    <div class="grid grid-cols-3 mb-4 border">
                         <div class="px-3 py-2">{{  __('shop::checkout.address.country.label') }} </div>
                         <div class="px-3 py-2 col-span-2">{{ $cart[$addressType . 'Address']->country->name  }}</div>
                         @if($cart[$addressType . 'Address']->region)

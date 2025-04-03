@@ -2,7 +2,7 @@
     'category'
 ])
 
-<div class="col-span-1 overflow-hidden">
+<div class="col-span-1 overflow-hidden rounded-md">
     <a href="{{ route('category', $category) }}"
        class="group h-[150px] sm:h-[250px] flex items-center justify-center relative bg-cover bg-no-repeat bg-center after:absolute after:inset-0 after:bg-[#00000060] after:content-['']"
        style="background-image: url({{ $category->getCover(400, 250) }});">

@@ -6,8 +6,8 @@
     'address'
 ])
 <div class="pt-4">
-    <h4 class="bg-secondary text-white px-3 py-2">{{ $slot }}</h4>
-    <div>
+    <h4 class="bg-secondary text-white px-4 py-3 rounded-t-md">{{ $slot }}</h4>
+    <div class="border border-[#E9E4E4] p-6 rounded-b-md">
         @if (count($addresses) > 0)
             <div class="mt-4">
                 <x-shop::form.label for="{{ $addressType }}_select">{{ __('shop::checkout.address.select.label') }}</x-shop::form.label>
@@ -18,7 +18,7 @@
             </div>
         @endif
         @if (!(isset($address[$addressType]['id']) && $address[$addressType]['id'] > 0))
-            <div class="sm:flex md:block lg:flex gap-6 mt-6">
+            <div class="sm:flex md:block lg:flex gap-6">
                 <div class="w-full @if(count($regions[$addressType]) > 0)sm:w-1/2 md:w-full lg:w-1/2 @endif">
                     <x-shop::form.label for="{{ $addressType }}_country" required="true">{{ __('shop::checkout.address.country.label') }}</x-shop::form.label>
                     <x-shop::form.select :options="$countries" id="{{ $addressType }}_country" required="true"

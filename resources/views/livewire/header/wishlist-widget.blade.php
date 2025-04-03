@@ -6,6 +6,6 @@
                         </svg>
                     </span>
     <span class="text-white text-[11px] leading-[10px]">{{ __('shop::layout.header.navbar.wishlist') }}</span>
-    <span class="absolute bg-secondary -top-1 right-0 text-white text-[11px] w-[18px] h-[18px] leading-[18px] text-center rounded-full overflow-hidden">{{ $wishlistCount }}</span>
+    <span class="absolute bg-white -top-1 right-0 text-secondary text-[11px] w-[18px] h-[18px] leading-[18px] text-center rounded-full overflow-hidden">{{ $wishlistCount }}</span>
 </a>
 </div>

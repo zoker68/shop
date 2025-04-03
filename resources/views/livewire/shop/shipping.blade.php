@@ -1,6 +1,6 @@
 <div class="container grid grid-cols-12 gap-6 pb-14">
     <div class="col-span-12 lg:col-span-8">
-        <h4 class="bg-secondary text-white px-3 py-2">{{ __('shop::checkout.shipping.title') }}</h4>
+        <h4 class="bg-secondary text-white px-4 py-3 rounded-md">{{ __('shop::checkout.shipping.title') }}</h4>
 
         <div x-data="{activeTab: 'shipping_method_{{ $cart->shipping_method_id ?? $shippingMethods->first()->id }}'}">
             <div class="flex gap-2 sm:gap-5 mt-10">
@@ -14,7 +14,7 @@
                                  alt="{{ $shippingMethod->name }}" class="max-w-[100px] max-h-[50px]">
                         </div>
                         @endif
-                        <p class="text-sm mt-3">{{ $shippingMethod->name }}</p>
+                        <p class="text-sm mt-3 text-center font-semibold">{{ $shippingMethod->name }}</p>
                         <span x-show="activeTab==='shipping_method_{{ $shippingMethod->id }}'"
                               class="w-5 h-5 bg-primary text-white rounded-full absolute -right-2 -top-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">

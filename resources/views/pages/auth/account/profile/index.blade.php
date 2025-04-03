@@ -1,5 +1,5 @@
 <x-shop::layouts.account>
-    <div class="col-span-12 lg:col-span-9 box_shadow px-6 py-8">
+    <div class="col-span-12 lg:col-span-9 border border-[#E9E4E4] p-6 rounded-md">
         <div class="acprof_info_wrap shadow_sm">
             <h4 class="text-lg mb-3">{{ __('shop::auth.profile.title') }}</h4>
 
@@ -78,7 +78,7 @@
                         </div>
                     </div>
                     <div class="mt-8">
-                        <button type="submit" class="default_btn rounded small">{{ __('shop::auth.profile.save') }}</button>
+                        <button type="submit" class="bg-secondary font-semibold text-white border-0 px-6 py-2 rounded hover:bg-black">{{ __('shop::auth.profile.save') }}</button>
                     </div>
                 </div>
             </form>

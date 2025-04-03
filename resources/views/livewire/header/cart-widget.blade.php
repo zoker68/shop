@@ -7,18 +7,18 @@
                         </span>
         <span class="text-white text-[11px] leading-[10px]">{{ __('shop::layout.header.cart.title') }}</span>
         <span
-            class="absolute bg-secondary -top-1 -right-2 text-white text-[11px] w-[18px] h-[18px] leading-[18px] text-center rounded-full overflow-hidden">
+            class="absolute bg-white -top-1 -right-2 text-secondary text-[11px] w-[18px] h-[18px] leading-[18px] text-center rounded-full overflow-hidden">
             {{ $cartCountProducts }}
         </span>
     </a>
     <div
-        class="absolute top-full right-0 bg-white z-20 p-4 w-[300px] rounded-b-[3px] mt-3.5 group-hover:mt-[5px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+        class="absolute top-full right-0 bg-white z-20 p-4 w-[300px] rounded-md mt-3.5 group-hover:mt-[5px] opacity-0 invisible group-hover:opacity-100 group-hover:visible shadow-xl transition-all duration-200">
         <div class="mb-3 border-b border-[#d8d8d8]">
             <h4 class="text-base text-secondary mb-2">{{ trans_choice('shop::layout.header.cart.items', $cartCountProducts) }}</h4>
         </div>
         @foreach($cart->products as $item)
             <div class="relative">
-                <span class="absolute right-0 hover:text-primary transition duration-300 cursor-pointer"
+                <span class="absolute right-0 hover:text-black transition duration-300 cursor-pointer"
                       wire:click="removeFromCart('{{ $item->product->hash }}')">
                     <svg
                         width="18" height="18" viewBox="0 0 32 32">
@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="flex-grow pl-4">
-                        <h5 class="text-base text-secondary hover:text-primary transition duration-300">
+                        <h5 class="text-base text-secondary hover:text-black transition duration-300">
                             {{ $item->product->name }}
                         </h5>
                         <p class="text-[#464545] text-sm">x{{ $item->quantity }} <span
@@ -49,12 +49,12 @@
                 <h4 class="text-base text-secondary uppercase">{{ __('shop::layout.header.cart.sub_total') }}:</h4>
                 <h4 class="text-base ml-2">@money($cart->total_products)</h4>
             </div>
-            <div class="flex mt-4 gap-4">
+            <div class="flex flex-col mt-4 gap-2">
                 <a href="{{ route('cart') }}"
-                   class="w-1/2 rounded-[3px] py-2 px-2.5 border border-primary bg-primary text-white inline-block text-center text-sm hover:bg-transparent hover:text-primary transition duration-300 uppercase"
+                   class="rounded-md py-2 px-2.5 bg-primary hover:bg-black text-white text-center text-sm font-semibold transition duration-300"
                 >{{ __('shop::layout.header.cart.to_cart') }}</a>
                 <a href="{{ route('checkout') }}"
-                   class="w-1/2 rounded-[3px] py-2 px-2.5 border border-primary hover:bg-primary bg-white hover:text-white inline-block text-center text-sm text-primary transition duration-300 uppercase">
+                   class="rounded py-2 px-2.5 bg-secondary hover:bg-black text-white text-center text-sm font-semibold transition duration-300">
                     {{ __('shop::layout.header.cart.checkout') }}
                 </a>
             </div>

@@ -2,7 +2,7 @@
     <form wire:submit="onShipping">
         <div class="container grid grid-cols-12 gap-6 pb-14">
             <div class="col-span-12 md:col-span-6 lg:col-span-8">
-                <h4 class="bg-secondary text-white px-3 py-2">{{ __('shop::checkout.customer.title') }}</h4>
+                <h4 class="bg-secondary text-white px-4 py-3 rounded-t-md">{{ __('shop::checkout.customer.title') }}</h4>
                 @guest()
                     <div>
                         <div class="mt-4">
@@ -87,7 +87,7 @@
                     </div>
                 @endguest
                 @auth()
-                    <div class="grid grid-cols-3 my-4 border">
+                    <div class="grid grid-cols-3 mb-4 border border-[#E9E4E4] border-t-0 p-4 rounded-b-md ">
                         <div class="px-3 py-2">{{ __('shop::checkout.customer.first_name') }}:</div>
                         <div class="px-3 py-2">{{ auth()->user()->name }}</div>
                         <div class="px-3 py-2 text-right"><a href="{{ route('account.profile.index') }}" class="text-primary hover:text-secondary transition duration-300">{{ __('shop::checkout.customer.edit') }}</a></div>

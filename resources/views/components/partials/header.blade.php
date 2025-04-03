@@ -1,5 +1,5 @@
 <!-- top header -->
-<header class="py-3 hidden lg:block">
+<header class="py-7 hidden lg:block">
     <div class="container flex justify-between items-center">
         <!-- logo -->
         <x-shop::partials.logo/>

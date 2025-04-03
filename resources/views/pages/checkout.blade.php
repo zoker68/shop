@@ -1,5 +1,5 @@
 <x-shop::layouts.app>
-    <x-shop::partials.breadcrumbs :data="$breadcrumbs"/>
+    <x-shop::partials.breadcrumbs :data="$breadcrumbs" />
 
     <livewire:shop.checkout :cart="$cart"/>
 

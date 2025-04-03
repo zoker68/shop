@@ -5,7 +5,7 @@
                 <x-shop::partials.flash-alert type="success">{{ session('success') }}</x-shop::partials.flash-alert>
             @endif
             <div class="grid grid-cols-12 gap-6">
-                <div class="col-span-12 md:col-span-4 box_shadow p-6 min-h-[225px]">
+                <div class="col-span-12 md:col-span-4 border border-[#E9E4E4] rounded-md p-6 min-h-[225px]">
                     <div class="flex justify-between items-center">
                         <h4 class="text-lg">{{ __('shop::auth.dashboard.profile.title') }}</h4>
                         <a href="{{ route('account.profile.index') }}" class="text-primary">{{ __('shop::auth.dashboard.profile.edit_link') }}</a>
@@ -17,7 +17,7 @@
                         <p>{{ auth()->user()->phone }}</p>
                     </div>
                 </div>
-                {{--<div class="col-span-12 md:col-span-4 box_shadow p-6 min-h-[225px]">
+                {{--<div class="col-span-12 md:col-span-4 border border-[#E9E4E4] rounded-md p-6 min-h-[225px]">
                     <div class="flex justify-between items-center">
                         <h4 class="text-lg">Shipping Address</h4>
                         <a href="profile-information.html" class="text-primary">Edit</a>
@@ -29,7 +29,7 @@
                         <p>(123) 456-789</p>
                     </div>
                 </div>
-                <div class="col-span-12 md:col-span-4 box_shadow p-6 min-h-[225px]">
+                <div class="col-span-12 md:col-span-4 border border-[#E9E4E4] rounded-md p-6 min-h-[225px]">
                     <div class="flex justify-between items-center">
                         <h4 class="text-lg">Billing Address</h4>
                         <a href="profile-information.html" class="text-primary">Edit</a>
@@ -42,7 +42,7 @@
                     </div>
                 </div>--}}
             </div>
-            <div class="box_shadow px-6 py-8 mt-10">
+            <div class="border border-[#E9E4E4] rounded-md px-6 py-8 mt-10">
                 <h4 class="text-lg mb-6">{{ __('shop::auth.dashboard.orders.title') }}</h4>
                 @forelse($orders as $order)
                     <x-shop::partials.account.order-card :order="$order"/>

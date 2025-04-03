@@ -34,13 +34,13 @@
                 <div class="flex flex-wrap">
                     <div class="w-1/2 lg:px-3">
                         <div class="footer-menu">
-                            <h4 class="text-lg text-secondary font-medium mb-5 mt-2">MY ACCOUNT</h4>
+                            <h4 class="text-lg text-black font-semibold mb-5 mt-2">MY ACCOUNT</h4>
                             <x-fsp::menu code="footer-left"/>
                         </div>
                     </div>
                     <div class="w-1/2 px-3">
                         <div class="footer-menu">
-                            <h4 class="text-lg text-secondary font-medium mb-5 mt-2">INFORMATION</h4>
+                            <h4 class="text-lg text-black font-semibold mb-5 mt-2">INFORMATION</h4>
                             <x-fsp::menu code="footer-right"/>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                 <div>
                     <div class="flex flex-wrap">
                         <div class="w-full">
-                            <h4 class="text-lg text-secondary font-medium mb-5 mt-2">CONTACT</h4>
+                            <h4 class="text-lg text-black font-semibold mb-5 mt-2">CONTACT</h4>
                             <div>
                                 <p class="text-[15px] text-secondary relative pl-8 mb-[13px]">
                                         <span class="absolute left-1 top-1"><svg width="15" height="15"
@@ -71,7 +71,7 @@
                                                       stroke-linejoin="round" stroke-width="2"
                                                       d="M10.554 6.24L7.171 2.335c-.39-.45-1.105-.448-1.558.006L2.831 5.128c-.828.829-1.065 2.06-.586 3.047a29.207 29.207 0 0 0 13.561 13.58c.986.479 2.216.242 3.044-.587l2.808-2.813c.455-.455.456-1.174.002-1.564l-3.92-3.365c-.41-.352-1.047-.306-1.458.106l-1.364 1.366a.462.462 0 0 1-.553.088a14.557 14.557 0 0 1-5.36-5.367a.463.463 0 0 1 .088-.554l1.36-1.361c.412-.414.457-1.054.101-1.465Z"/>
                                             </svg></span>
-                                    +566 477 256, +566 254 575
+                                    <a href="tel:+38669794717">+386 (0) 69 794 717</a>
                                 </p>
                                 <p class="text-[15px] text-secondary relative pl-8 mb-[13px]">
                                         <span class="absolute left-1 top-1"><svg width="15" height="15"
@@ -80,7 +80,7 @@
                                                 <path fill="currentColor"
                                                       d="M224 48H32a8 8 0 0 0-8 8v136a16 16 0 0 0 16 16h176a16 16 0 0 0 16-16V56a8 8 0 0 0-8-8Zm-20.6 16L128 133.1L52.6 64ZM216 192H40V74.2l82.6 75.7a8 8 0 0 0 10.8 0L216 74.2V192Z"/>
                                             </svg></span>
-                                    info@domain.com
+                                    <a href="mailto:info@vase-orodje.si">info@vase-orodje.si</a>
                                 </p>
                             </div>
                         </div>
@@ -124,7 +124,7 @@
     <div class="container">
         <div class="md:flex md:flex-wrap items-center">
             <div class="w-full md:w-1/2 text-center md:text-start mb-2.5 md:mb-0">
-                <p class="text-base text-[#F9F9F9]">© RAFCART - All Rights Reserved</p>
+                <p class="text-base text-[#F9F9F9]"> © {{ date('Y') }} Whootalks d.o.o. </p>
             </div>
             <div class="w-full md:w-1/2">
                 <div class="text-center md:text-right">

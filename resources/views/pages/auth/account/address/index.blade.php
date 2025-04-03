@@ -1,5 +1,5 @@
 <x-shop::layouts.account>
-    <div class="col-span-12 lg:col-span-9 box_shadow px-6 py-8">
+    <div class="col-span-12 lg:col-span-9 border border-[#E9E4E4] p-6 rounded-md">
         <div class="acprof_info_wrap shadow_sm">
 
             @if(session('success'))

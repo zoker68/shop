@@ -6,7 +6,7 @@
 
 <div {{ $attributes->class("pb-4 border-b border-[#E9E4E4] mb-4") }} @if(config('shop.category.filters.hideVariantsMoreThan') == 0 || $propertyIndex < config('shop.category.filters.hideVariantsMoreThan')) x-show="true" @else  x-show="openFilters" @endif>
     <div class="justify-between items-start">
-        <h4 class="flex text-xl font-medium  text-secondary uppercase mb-4">{{$property->name}}</h4>
+        <h4 class="flex text-md font-semibold text-secondary uppercase mb-4">{{$property->name}}</h4>
 
     </div>
     <div class="space-y-3">

@@ -3,14 +3,14 @@
     'cart'
 ])
 
-<h4 class="bg-secondary text-white px-3 py-2">{{ __('shop::checkout.side.cart.title') }}</h4>
-<div class="border border-[#E9E4E4] px-4 py-6 mt-4">
+<h4 class="bg-secondary text-white px-4 py-3 rounded-t-md">{{ __('shop::checkout.side.cart.title') }}</h4>
+<div class="border border-[#E9E4E4] rounded-b-md px-4 py-6 mb-4">
     <h4 class="uppercase border-b border-[#E9E4E4] pb-2">{{ __('shop::checkout.side.cart.products') }}</h4>
-    <div class="grid grid-cols-12 justify-between gap-y-5 gap-1pt-3">
+    <div class="grid grid-cols-12 justify-between gap-y-5 gap-1 pt-3">
         @foreach($cart->products as $item)
-            <div class="col-span-7"><h5>{{ $item->product->name }}</h5></div>
-            <div class="font-semibold">x{{ $item->quantity }}</div>
-            <div class="font-semibold col-span-4 text-right">@money($item->product->price)</div>
+            <div class="col-span-7"><h5 class="font-normal text-sm">{{ $item->product->name }}</h5></div>
+            <div class="font-normal text-sm">x{{ $item->quantity }}</div>
+            <div class="font-normal text-sm col-span-4 text-right">@money($item->product->price)</div>
         @endforeach
     </div>
     <div class="flex justify-between mt-4 pt-3 border-t border-[#E9E4E4]">

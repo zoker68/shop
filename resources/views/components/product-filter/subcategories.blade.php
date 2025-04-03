@@ -7,7 +7,7 @@
 @if($subCategories)
     <div class="pb-4 border-b border-[#E9E4E4] mb-4">
         <div class="flex justify-between items-start">
-            <h4 class="text-xl text-left font-medium mb-3 text-secondary uppercase">{{ __('shop::product-filter.sub_categories') }}</h4>
+            <h4 class="text-md text-left font-semibold mb-3 text-secondary uppercase">{{ __('shop::product-filter.sub_categories') }}</h4>
             <!-- close filter -->
             <button @click="isOpen=false"
                     class="text-primary hidden sm:block lg:hidden closefilter">
@@ -20,11 +20,11 @@
         </div>
         <div class="space-y-2">
             @if ($topCategory->parent)
-            <div class="custom_check flex justify-between items-center font-semibold text-xl hover:text-primary duration-300">
+            <div class="custom_check flex justify-between items-center font-semibold text-md hover:text-secondary duration-300">
                 <a href="{{ route('category', $topCategory->parent) }}">{{ $topCategory->parent->name }}</a>
             </div>
             @endif
-            <div class="custom_check flex justify-between items-center font-semibold text-xl hover:text-primary duration-300 pl-3 @if($currentCategory->id == $topCategory->id) text-primary @endif">
+            <div class="custom_check flex justify-between items-center font-semibold text-md hover:text-secondary duration-300 pl-3 @if($currentCategory->id == $topCategory->id) text-black @endif">
                 <a href="{{ route('category', $topCategory) }}">{{ $topCategory->name }}</a>
             </div>
             @foreach($subCategories as $child)
