@@ -10,11 +10,11 @@ class AIQuery
 {
     const string MODEL = 'gpt-4o-mini';
 
-    private array $prompts = [];
+    protected static array $prompts = [];
 
     private array $query = [];
 
-    private function getPrompts(): array
+    protected function getPrompts(): array
     {
         return [
             'setup' => 'You must be SEO expert. Site name ' . config('app.name') . '. Language for answers ' . config('app.locale') . '. Answer format JSON without wrapping.',
@@ -22,6 +22,11 @@ class AIQuery
             'seo_page' => 'Please provide SEO friendly title and meta description for the following page. The title should not include the site name, it will be added after |. Answer key title, description. Title 50 char, description 200 char',
             'seo_product' => 'Please provide SEO friendly title and meta description for the following product. The title should not include the site name, it will be added after |. Answer key title, description. Title 50 char, description 200 char',
         ];
+    }
+
+    public static function addPrompts(array $prompts): void
+    {
+        static::$prompts = array_merge(static::$prompts, $prompts);
     }
 
     public static function seoTitleDescription(Model|array $model): string
@@ -33,7 +38,7 @@ class AIQuery
         $model = json_encode($model, JSON_UNESCAPED_UNICODE);
 
         return (new self)
-            ->addPrompt('seo')
+            ->sendPrompt('seo')
             ->addQuery($model)
             ->get();
 
@@ -44,7 +49,7 @@ class AIQuery
         $model = json_encode($model, JSON_UNESCAPED_UNICODE);
 
         return (new self)
-            ->addPrompt('seo_page')
+            ->sendPrompt('seo_page')
             ->addQuery($model)
             ->get();
     }
@@ -58,7 +63,7 @@ class AIQuery
         $model = json_encode($model, JSON_UNESCAPED_UNICODE);
 
         return (new self)
-            ->addPrompt('seo_product')
+            ->sendPrompt('seo_product')
             ->addQuery($model)
             ->get();
     }
@@ -70,26 +75,26 @@ class AIQuery
             'messages' => [],
         ];
 
-        $this->prompts = array_merge($this->prompts, $this->getPrompts());
+        static::$prompts = array_merge(static::$prompts, $this->getPrompts());
 
-        $this->addPrompt('setup');
+        $this->sendPrompt('setup');
     }
 
-    private function addPrompt(string $promptName): self
+    protected function sendPrompt(string $promptName): self
     {
-        if (! isset($this->prompts[$promptName])) {
+        if (! isset(static::$prompts[$promptName])) {
             throw new Exception('Prompt "' . $promptName . '" not found');
         }
 
         $this->query['messages'][] = [
             'role' => 'system',
-            'content' => $this->prompts[$promptName],
+            'content' => static::$prompts[$promptName],
         ];
 
         return $this;
     }
 
-    private function addQuery(string $mailText): self
+    protected function addQuery(string $mailText): self
     {
         $this->query['messages'][] = [
             'role' => 'user',
@@ -99,7 +104,7 @@ class AIQuery
         return $this;
     }
 
-    private function get(): string
+    protected function get(): string
     {
         $result = OpenAI::chat()->create($this->query);
 
