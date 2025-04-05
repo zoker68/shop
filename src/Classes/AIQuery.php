@@ -68,7 +68,7 @@ class AIQuery
             ->get();
     }
 
-    private function __construct()
+    protected function __construct()
     {
         $this->query = [
             'model' => self::MODEL,
