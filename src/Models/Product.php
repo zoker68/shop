@@ -322,7 +322,9 @@ class Product extends BaseModel implements Sitemapable
 
         $productData = $this->only('name', 'description');
         $productData['categories'] = $this->categories->pluck('full_name')->toArray();
-        $productData['brand'] = $this->brand->name;
+        if ($this->brand) {
+            $productData['brand'] = $this->brand->name;
+        }
         $productData['properties'] = $this->properties->map(function ($property) {
             return [
                 'name' => $property->name,

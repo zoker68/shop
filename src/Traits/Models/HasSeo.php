@@ -31,6 +31,9 @@ trait HasSeo
         static::$isTraitInitialized = true;
 
         static::created(function (Model $model) {
+            if (! empty($model->seo)) {
+                return;
+            }
             if (method_exists($model, 'generateSeoAI')) {
                 $model->generateSeoAI();
             } else {
