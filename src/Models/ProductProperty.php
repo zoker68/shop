@@ -10,6 +10,8 @@ class ProductProperty extends Pivot
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
