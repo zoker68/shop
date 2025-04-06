@@ -5,19 +5,19 @@ namespace Zoker\Shop\Filament\Resources\PropertyResource\Pages;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ForceDeleteAction;
 use Filament\Actions\RestoreAction;
-use Filament\Resources\Pages\EditRecord;
+use Zoker\Shop\Classes\Bases\BaseEditRecord;
 use Zoker\Shop\Filament\Resources\PropertyResource;
 
-class EditProperty extends EditRecord
+class EditProperty extends BaseEditRecord
 {
     protected static string $resource = PropertyResource::class;
 
-    protected function getHeaderActions(): array
+    protected function presetHeaderActions(): void
     {
-        return [
-            DeleteAction::make(),
-            ForceDeleteAction::make(),
-            RestoreAction::make(),
-        ];
+        $this->addHeaderActions([
+            'delete' => DeleteAction::make(),
+            'forceDelete' => ForceDeleteAction::make(),
+            'restore' => RestoreAction::make(),
+        ]);
     }
 }

@@ -2,17 +2,10 @@
 
 namespace Zoker\Shop\Filament\Resources\ProductResource\Pages;
 
-use Filament\Resources\Pages\CreateRecord;
+use Zoker\Shop\Classes\Bases\BaseCreateRecord;
 use Zoker\Shop\Filament\Resources\ProductResource;
 
-class CreateProduct extends CreateRecord
+class CreateProduct extends BaseCreateRecord
 {
     protected static string $resource = ProductResource::class;
-
-    protected function getHeaderActions(): array
-    {
-        return [
-
-        ];
-    }
 }

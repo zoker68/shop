@@ -3,23 +3,21 @@
 namespace Zoker\Shop\Filament\Resources\OrderResource\Pages;
 
 use Filament\Actions\DeleteAction;
-use Filament\Actions\EditAction;
 use Filament\Actions\ForceDeleteAction;
 use Filament\Actions\RestoreAction;
-use Filament\Resources\Pages\ViewRecord;
+use Zoker\Shop\Classes\Bases\BaseViewRecord;
 use Zoker\Shop\Filament\Resources\OrderResource;
 
-class ViewOrder extends ViewRecord
+class ViewOrder extends BaseViewRecord
 {
     protected static string $resource = OrderResource::class;
 
-    protected function getHeaderActions(): array
+    protected function presetHeaderActions(): void
     {
-        return [
-            //            EditAction::make()->slideOver(),
-            DeleteAction::make(),
-            RestoreAction::make(),
-            ForceDeleteAction::make(),
-        ];
+        $this->addHeaderActions([
+            'delete' => DeleteAction::make(),
+            'forceDelete' => ForceDeleteAction::make(),
+            'restore' => RestoreAction::make(),
+        ]);
     }
 }

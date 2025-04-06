@@ -5,19 +5,19 @@ namespace Zoker\Shop\Filament\Resources\OrderResource\Pages;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ForceDeleteAction;
 use Filament\Actions\RestoreAction;
-use Filament\Resources\Pages\EditRecord;
+use Zoker\Shop\Classes\Bases\BaseEditRecord;
 use Zoker\Shop\Filament\Resources\OrderResource;
 
-class EditOrder extends EditRecord
+class EditOrder extends BaseEditRecord
 {
     protected static string $resource = OrderResource::class;
 
-    protected function getHeaderActions(): array
+    protected function presetHeaderActions(): void
     {
-        return [
-            DeleteAction::make(),
-            ForceDeleteAction::make(),
-            RestoreAction::make(),
-        ];
+        $this->addHeaderActions([
+            'delete' => DeleteAction::make(),
+            'forceDelete' => ForceDeleteAction::make(),
+            'restore' => RestoreAction::make(),
+        ]);
     }
 }

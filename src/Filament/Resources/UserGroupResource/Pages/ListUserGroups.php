@@ -3,17 +3,17 @@
 namespace Zoker\Shop\Filament\Resources\UserGroupResource\Pages;
 
 use Filament\Actions\CreateAction;
-use Filament\Resources\Pages\ListRecords;
+use Zoker\Shop\Classes\Bases\BaseListRecords;
 use Zoker\Shop\Filament\Resources\UserGroupResource;
 
-class ListUserGroups extends ListRecords
+class ListUserGroups extends BaseListRecords
 {
     protected static string $resource = UserGroupResource::class;
 
-    protected function getHeaderActions(): array
+    protected function presetHeaderActions(): void
     {
-        return [
-            CreateAction::make(),
-        ];
+        $this->addHeaderActions([
+            'create' => CreateAction::make(),
+        ]);
     }
 }

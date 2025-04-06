@@ -3,17 +3,17 @@
 namespace Zoker\Shop\Filament\Resources\RegionResource\Pages;
 
 use Filament\Actions\CreateAction;
-use Filament\Resources\Pages\ListRecords;
+use Zoker\Shop\Classes\Bases\BaseListRecords;
 use Zoker\Shop\Filament\Resources\RegionResource;
 
-class ListRegions extends ListRecords
+class ListRegions extends BaseListRecords
 {
     protected static string $resource = RegionResource::class;
 
-    protected function getHeaderActions(): array
+    protected function presetHeaderActions(): void
     {
-        return [
-            CreateAction::make(),
-        ];
+        $this->addHeaderActions([
+            'create' => CreateAction::make(),
+        ]);
     }
 }

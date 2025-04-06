@@ -3,18 +3,18 @@
 namespace Zoker\Shop\Filament\Resources\UserResource\Pages;
 
 use Filament\Actions\DeleteAction;
-use Filament\Resources\Pages\EditRecord;
+use Zoker\Shop\Classes\Bases\BaseEditRecord;
 use Zoker\Shop\Filament\Resources\UserResource;
 
-class EditUser extends EditRecord
+class EditUser extends BaseEditRecord
 {
     protected static string $resource = UserResource::class;
 
-    protected function getHeaderActions(): array
+    protected function presetHeaderActions(): void
     {
-        return [
-            DeleteAction::make(),
-        ];
+        $this->addHeaderActions([
+            'delete' => DeleteAction::make()->requiresConfirmation(),
+        ]);
     }
 
     protected function mutateFormDataBeforeSave(array $data): array

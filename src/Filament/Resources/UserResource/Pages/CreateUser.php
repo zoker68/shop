@@ -2,19 +2,12 @@
 
 namespace Zoker\Shop\Filament\Resources\UserResource\Pages;
 
-use Filament\Resources\Pages\CreateRecord;
+use Zoker\Shop\Classes\Bases\BaseCreateRecord;
 use Zoker\Shop\Filament\Resources\UserResource;
 
-class CreateUser extends CreateRecord
+class CreateUser extends BaseCreateRecord
 {
     protected static string $resource = UserResource::class;
-
-    protected function getHeaderActions(): array
-    {
-        return [
-
-        ];
-    }
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {

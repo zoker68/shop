@@ -2,17 +2,10 @@
 
 namespace Zoker\Shop\Filament\Resources\RegionResource\Pages;
 
-use Filament\Resources\Pages\CreateRecord;
+use Zoker\Shop\Classes\Bases\BaseCreateRecord;
 use Zoker\Shop\Filament\Resources\RegionResource;
 
-class CreateRegion extends CreateRecord
+class CreateRegion extends BaseCreateRecord
 {
     protected static string $resource = RegionResource::class;
-
-    protected function getHeaderActions(): array
-    {
-        return [
-
-        ];
-    }
 }

@@ -2,10 +2,10 @@
 
 namespace Zoker\Shop\Filament\Resources\CategoryResource\Pages;
 
-use Filament\Resources\Pages\CreateRecord;
+use Zoker\Shop\Classes\Bases\BaseCreateRecord;
 use Zoker\Shop\Filament\Resources\CategoryResource;
 
-class CreateCategory extends CreateRecord
+class CreateCategory extends BaseCreateRecord
 {
     protected static string $resource = CategoryResource::class;
 

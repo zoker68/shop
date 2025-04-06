@@ -2,17 +2,10 @@
 
 namespace Zoker\Shop\Filament\Resources\CountryResource\Pages;
 
-use Filament\Resources\Pages\CreateRecord;
+use Zoker\Shop\Classes\Bases\BaseCreateRecord;
 use Zoker\Shop\Filament\Resources\CountryResource;
 
-class CreateCountry extends CreateRecord
+class CreateCountry extends BaseCreateRecord
 {
     protected static string $resource = CountryResource::class;
-
-    protected function getHeaderActions(): array
-    {
-        return [
-
-        ];
-    }
 }

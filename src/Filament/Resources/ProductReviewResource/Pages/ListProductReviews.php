@@ -4,30 +4,30 @@ namespace Zoker\Shop\Filament\Resources\ProductReviewResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Components\Tab;
-use Filament\Resources\Pages\ListRecords;
+use Zoker\Shop\Classes\Bases\BaseListRecords;
 use Zoker\Shop\Filament\Resources\ProductReviewResource;
 use Zoker\Shop\Models\ProductReview;
 
-class ListProductReviews extends ListRecords
+class ListProductReviews extends BaseListRecords
 {
     protected static string $resource = ProductReviewResource::class;
 
-    protected function getHeaderActions(): array
+    protected function presetHeaderActions(): void
     {
-        return [
-            CreateAction::make(),
-        ];
+        $this->addHeaderActions([
+            'create' => CreateAction::make(),
+        ]);
     }
 
-    public function getTabs(): array
+    public function presetTabs(): void
     {
-        return [
+        $this->addTabs([
             'all' => Tab::make(__('shop::product.reviews.admin.list.tab.all')),
             'published' => Tab::make(__('shop::product.reviews.admin.list.tab.published'))
                 ->modifyQueryUsing(fn ($query) => $query->published()),
             'moderation' => Tab::make(__('shop::product.reviews.admin.list.tab.moderation'))
                 ->modifyQueryUsing(fn ($query) => $query->unpublished())
                 ->badge(ProductReview::unpublished()->count()),
-        ];
+        ]);
     }
 }

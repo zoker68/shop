@@ -3,17 +3,17 @@
 namespace Zoker\Shop\Filament\Resources\CategoryResource\Pages;
 
 use Filament\Actions;
-use Filament\Resources\Pages\EditRecord;
+use Zoker\Shop\Classes\Bases\BaseEditRecord;
 use Zoker\Shop\Filament\Resources\CategoryResource;
 
-class EditCategory extends EditRecord
+class EditCategory extends BaseEditRecord
 {
     protected static string $resource = CategoryResource::class;
 
-    protected function getHeaderActions(): array
+    protected function presetHeaderActions(): void
     {
-        return [
-            Actions\DeleteAction::make(),
-        ];
+        $this->addHeaderActions([
+            'delete' => Actions\DeleteAction::make(),
+        ]);
     }
 }

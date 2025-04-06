@@ -2,17 +2,10 @@
 
 namespace Zoker\Shop\Filament\Resources\OrderStatusResource\Pages;
 
-use Filament\Resources\Pages\CreateRecord;
+use Zoker\Shop\Classes\Bases\BaseCreateRecord;
 use Zoker\Shop\Filament\Resources\OrderStatusResource;
 
-class CreateOrderStatus extends CreateRecord
+class CreateOrderStatus extends BaseCreateRecord
 {
     protected static string $resource = OrderStatusResource::class;
-
-    protected function getHeaderActions(): array
-    {
-        return [
-
-        ];
-    }
 }

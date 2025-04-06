@@ -3,17 +3,17 @@
 namespace Zoker\Shop\Filament\Resources\ProductQuestionResource\Pages;
 
 use Filament\Actions\DeleteAction;
-use Filament\Resources\Pages\EditRecord;
+use Zoker\Shop\Classes\Bases\BaseEditRecord;
 use Zoker\Shop\Filament\Resources\ProductQuestionResource;
 
-class EditProductQuestion extends EditRecord
+class EditProductQuestion extends BaseEditRecord
 {
     protected static string $resource = ProductQuestionResource::class;
 
-    protected function getHeaderActions(): array
+    protected function presetHeaderActions(): void
     {
-        return [
-            DeleteAction::make(),
-        ];
+        $this->addHeaderActions([
+            'delete' => DeleteAction::make(),
+        ]);
     }
 }

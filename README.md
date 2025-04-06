@@ -202,6 +202,35 @@ $resource->setListModifyQueryUsing(Closure $callback);
 $resource->setListDefaultGroup(string|Group $group)
 ```
 
+## Extend record pages
+
+### Event
+```text
+backend.record.extend
+```
+### Using
+```php
+Event::listen('backend.record.extend', function ($resource) {
+    if (!$resource instanceof Record) {
+        return;
+    }
+        /* Extend  */
+})
+```
+### Methods for LIST, CREATE, EDIT
+```php
+public function addHeaderActions(array $actions): void
+
+public function removeHeaderAction(string $name): void
+```
+### Methods for LIST
+```php
+public function addTabs(array $tabs): void
+
+public function removeTab(string $name): void
+```
+
+
 # Extend classes (Models, Resources)
 
 ```php

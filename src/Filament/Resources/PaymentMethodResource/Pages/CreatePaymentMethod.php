@@ -2,17 +2,10 @@
 
 namespace Zoker\Shop\Filament\Resources\PaymentMethodResource\Pages;
 
-use Filament\Resources\Pages\CreateRecord;
+use Zoker\Shop\Classes\Bases\BaseCreateRecord;
 use Zoker\Shop\Filament\Resources\PaymentMethodResource;
 
-class CreatePaymentMethod extends CreateRecord
+class CreatePaymentMethod extends BaseCreateRecord
 {
     protected static string $resource = PaymentMethodResource::class;
-
-    protected function getHeaderActions(): array
-    {
-        return [
-
-        ];
-    }
 }

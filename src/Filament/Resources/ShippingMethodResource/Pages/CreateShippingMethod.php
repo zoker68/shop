@@ -2,17 +2,10 @@
 
 namespace Zoker\Shop\Filament\Resources\ShippingMethodResource\Pages;
 
-use Filament\Resources\Pages\CreateRecord;
+use Zoker\Shop\Classes\Bases\BaseCreateRecord;
 use Zoker\Shop\Filament\Resources\ShippingMethodResource;
 
-class CreateShippingMethod extends CreateRecord
+class CreateShippingMethod extends BaseCreateRecord
 {
     protected static string $resource = ShippingMethodResource::class;
-
-    protected function getHeaderActions(): array
-    {
-        return [
-
-        ];
-    }
 }

@@ -4,30 +4,30 @@ namespace Zoker\Shop\Filament\Resources\ProductQuestionResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Components\Tab;
-use Filament\Resources\Pages\ListRecords;
+use Zoker\Shop\Classes\Bases\BaseListRecords;
 use Zoker\Shop\Filament\Resources\ProductQuestionResource;
 use Zoker\Shop\Models\ProductQuestion;
 
-class ListProductQuestion extends ListRecords
+class ListProductQuestion extends BaseListRecords
 {
     protected static string $resource = ProductQuestionResource::class;
 
-    protected function getHeaderActions(): array
+    protected function presetHeaderActions(): void
     {
-        return [
-            CreateAction::make(),
-        ];
+        $this->addHeaderActions([
+            'create' => CreateAction::make(),
+        ]);
     }
 
-    public function getTabs(): array
+    public function presetTabs(): void
     {
-        return [
+        $this->addTabs([
             'all' => Tab::make(__('shop::product.questions.admin.list.tab.all')),
             'published' => Tab::make(__('shop::product.questions.admin.list.tab.published'))
                 ->modifyQueryUsing(fn ($query) => $query->published()),
             'moderation' => Tab::make(__('shop::product.questions.admin.list.tab.moderation'))
                 ->modifyQueryUsing(fn ($query) => $query->unpublished())
                 ->badge(ProductQuestion::unpublished()->count()),
-        ];
+        ]);
     }
 }

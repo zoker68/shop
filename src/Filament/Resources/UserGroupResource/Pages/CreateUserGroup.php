@@ -2,17 +2,10 @@
 
 namespace Zoker\Shop\Filament\Resources\UserGroupResource\Pages;
 
-use Filament\Resources\Pages\CreateRecord;
+use Zoker\Shop\Classes\Bases\BaseCreateRecord;
 use Zoker\Shop\Filament\Resources\UserGroupResource;
 
-class CreateUserGroup extends CreateRecord
+class CreateUserGroup extends BaseCreateRecord
 {
     protected static string $resource = UserGroupResource::class;
-
-    protected function getHeaderActions(): array
-    {
-        return [
-
-        ];
-    }
 }

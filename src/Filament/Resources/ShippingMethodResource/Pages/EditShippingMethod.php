@@ -5,19 +5,19 @@ namespace Zoker\Shop\Filament\Resources\ShippingMethodResource\Pages;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ForceDeleteAction;
 use Filament\Actions\RestoreAction;
-use Filament\Resources\Pages\EditRecord;
+use Zoker\Shop\Classes\Bases\BaseEditRecord;
 use Zoker\Shop\Filament\Resources\ShippingMethodResource;
 
-class EditShippingMethod extends EditRecord
+class EditShippingMethod extends BaseEditRecord
 {
     protected static string $resource = ShippingMethodResource::class;
 
-    protected function getHeaderActions(): array
+    protected function presetHeaderActions(): void
     {
-        return [
-            DeleteAction::make(),
-            ForceDeleteAction::make(),
-            RestoreAction::make(),
-        ];
+        $this->addHeaderActions([
+            'delete' => DeleteAction::make(),
+            'forceDelete' => ForceDeleteAction::make(),
+            'restore' => RestoreAction::make(),
+        ]);
     }
 }

@@ -2,17 +2,10 @@
 
 namespace Zoker\Shop\Filament\Resources\PropertyResource\Pages;
 
-use Filament\Resources\Pages\CreateRecord;
+use Zoker\Shop\Classes\Bases\BaseCreateRecord;
 use Zoker\Shop\Filament\Resources\PropertyResource;
 
-class CreateProperty extends CreateRecord
+class CreateProperty extends BaseCreateRecord
 {
     protected static string $resource = PropertyResource::class;
-
-    protected function getHeaderActions(): array
-    {
-        return [
-
-        ];
-    }
 }
