@@ -16,6 +16,18 @@ class CategoryResource extends BaseResource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $recordTitleAttribute = 'name';
+
+    public static function getModelLabel(): string
+    {
+        return __('shop::category.admin.system.label');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('shop::category.admin.system.plural_title');
+    }
+
     public function presetForm(): void
     {
         $this->addFormFields(Category::getAdminFormSchema());

@@ -20,5 +20,9 @@ return [
         'error' => [
             'slug_exist' => 'This slug is already taken. Please choose another one.',
         ],
+        'system' => [
+            'label' => 'Category',
+            'plural_title' => 'Categories',
+        ],
     ],
 ];

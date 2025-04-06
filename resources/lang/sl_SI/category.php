@@ -20,5 +20,9 @@ return [
         'error' => [
             'slug_exist' => 'Ta URL je že zaseden. Prosimo, izberite drugega.',
         ],
+        'system' => [
+            'label' => 'Kategorija',
+            'plural_title' => 'Kategorije',
+        ],
     ],
 ];

@@ -35,6 +35,8 @@ class BrandResource extends BaseResource
 
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
+    protected static ?string $recordTitleAttribute = 'name';
+
     public static function getModelLabel(): string
     {
         return __('shop::brand.admin.system.label');
