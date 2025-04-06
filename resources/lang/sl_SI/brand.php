@@ -23,5 +23,9 @@ return [
                 'exist' => 'Ta URL je že v uporabi',
             ],
         ],
+        'system' => [
+            'label' => 'Blagovna znamka',
+            'plural_title' => 'Blagovne znamke',
+        ],
     ],
 ];

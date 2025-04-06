@@ -35,6 +35,16 @@ class BrandResource extends BaseResource
 
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
+    public static function getModelLabel(): string
+    {
+        return __('shop::brand.admin.system.label');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('shop::brand.admin.system.plural_title');
+    }
+
     protected function presetForm(): void
     {
         $this->addFormFields([

@@ -23,5 +23,9 @@ return [
                 'exist' => 'This URL is already in use',
             ],
         ],
+        'system' => [
+            'label' => 'Brand',
+            'plural_title' => 'Brands',
+        ],
     ],
 ];
