@@ -41,6 +41,18 @@ class ProductResource extends BaseResource
 
     protected static ?string $navigationGroup = 'Products';
 
+    protected static ?string $recordTitleAttribute = 'name';
+
+    public static function getModelLabel(): string
+    {
+        return __('shop::product.admin.system.label');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('shop::product.admin.system.plural_title');
+    }
+
     protected function presetForm(): void
     {
         $this->setFormColumns(3);

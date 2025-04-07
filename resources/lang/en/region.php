@@ -14,5 +14,9 @@ return [
             'code' => 'Region Code',
             'published' => 'Published',
         ],
+        'system' => [
+            'label' => 'Region',
+            'plural_title' => 'Regions',
+        ],
     ],
 ];

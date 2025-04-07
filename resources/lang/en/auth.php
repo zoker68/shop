@@ -72,6 +72,10 @@ return [
             'updated_at' => 'Last Modified Date',
             'email_verified_at' => 'Email Verified Date',
         ],
+        'system' => [
+            'label' => 'User',
+            'plural_title' => 'Users',
+        ],
     ],
     'address' => [
         'admin' => [
@@ -248,6 +252,10 @@ return [
                 'permissions' => 'Permissions',
                 'created_at' => 'Created Date',
                 'updated_at' => 'Last Modified Date',
+            ],
+            'system' => [
+                'label' => 'User Group',
+                'plural_title' => 'User Groups',
             ],
         ],
     ],

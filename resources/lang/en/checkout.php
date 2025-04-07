@@ -142,6 +142,10 @@ return [
                 ],
                 'days' => 'Estimated delivery time',
             ],
+            'system' => [
+                'label' => 'Shipping method',
+                'plural_title' => 'Shipping methods',
+            ],
         ],
         'error' => [
             'method_not_available' => 'The selected shipping method is not available for your order.',
@@ -153,6 +157,10 @@ return [
     'payment' => [
         'breadcrumbs' => 'Payment Method',
         'admin' => [
+            'system' => [
+                'label' => 'Payment method',
+                'plural_title' => 'Payment methods',
+            ],
             'list' => [
                 'name' => 'Name',
                 'code' => 'Code',

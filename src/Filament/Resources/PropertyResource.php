@@ -30,6 +30,18 @@ class PropertyResource extends BaseResource
 
     protected static ?string $navigationIcon = 'heroicon-o-adjustments-horizontal';
 
+    protected static ?string $recordTitleAttribute = 'name';
+
+    public static function getModelLabel(): string
+    {
+        return __('shop::properties.admin.system.label');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('shop::properties.admin.system.plural_title');
+    }
+
     public function presetForm(): void
     {
         $this->addFormFields([

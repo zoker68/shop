@@ -32,6 +32,18 @@ class OrderStatusResource extends BaseResource
 
     protected static ?string $navigationIcon = 'heroicon-o-check-circle';
 
+    protected static ?string $recordTitleAttribute = 'name';
+
+    public static function getModelLabel(): string
+    {
+        return __('shop::order.status_type.admin.system.label');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('shop::order.status_type.admin.system.plural_title');
+    }
+
     public function presetForm(): void
     {
         $this->addFormFields([

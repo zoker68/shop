@@ -14,5 +14,9 @@ return [
             'code' => 'Koda regije',
             'published' => 'Objavljeno',
         ],
+        'system' => [
+            'label' => 'Regija',
+            'plural_title' => 'Regije',
+        ],
     ],
 ];

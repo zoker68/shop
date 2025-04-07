@@ -16,5 +16,9 @@ return [
             'published' => 'Published',
             'pined' => 'Pined',
         ],
+        'system' => [
+            'label' => 'Country',
+            'plural_title' => 'Countries',
+        ],
     ],
 ];

@@ -6,6 +6,10 @@ return [
         'payment' => 'Payment',
         'shipping' => 'Shipping',
         'admin' => [
+            'system' => [
+                'label' => 'Order Status',
+                'plural_title' => 'Order Statuses',
+            ],
             'form' => [
                 'name' => 'Name',
                 'type' => 'Type',
@@ -21,6 +25,10 @@ return [
         ],
     ],
     'admin' => [
+        'system' => [
+            'label' => 'Order',
+            'plural_title' => 'Orders',
+        ],
         'actions' => [
             'general_status' => [
                 'title' => 'Change Status',

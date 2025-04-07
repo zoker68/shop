@@ -35,6 +35,18 @@ class PaymentMethodResource extends BaseResource
 
     protected static ?string $navigationGroup = 'Checkout';
 
+    protected static ?string $recordTitleAttribute = 'name';
+
+    public static function getModelLabel(): string
+    {
+        return __('shop::checkout.payment.admin.system.label');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('shop::checkout.payment.admin.system.plural_title');
+    }
+
     public function presetForm(): void
     {
         $this->addFormFields([

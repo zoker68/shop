@@ -16,5 +16,9 @@ return [
             'published' => 'Objavljeno',
             'pined' => 'Pripeto',
         ],
+        'system' => [
+            'label' => 'Država',
+            'plural_title' => 'Države',
+        ],
     ],
 ];

@@ -6,6 +6,10 @@ return [
         'payment' => 'Платеж',
         'shipping' => 'Доставка',
         'admin' => [
+            'system' => [
+                'label' => 'Статус заказа',
+                'plural_title' => 'Статусы заказа',
+            ],
             'form' => [
                 'name' => 'Название',
                 'type' => 'Тип',
@@ -21,6 +25,10 @@ return [
         ],
     ],
     'admin' => [
+        'system' => [
+            'label' => 'Заказ',
+            'plural_title' => 'Заказы',
+        ],
         'actions' => [
             'general_status' => [
                 'title' => 'Изменить статус',

@@ -15,5 +15,9 @@ return [
             'type' => 'Vrsta vrednosti',
             'filter' => 'Vrsta filtra',
         ],
+        'system' => [
+            'label' => 'Lastnost',
+            'plural_title' => 'Lastnosti',
+        ],
     ],
 ];

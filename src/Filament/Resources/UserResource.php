@@ -29,6 +29,18 @@ class UserResource extends BaseResource
 
     protected static ?string $navigationIcon = 'heroicon-o-user';
 
+    protected static ?string $recordTitleAttribute = 'name';
+
+    public static function getModelLabel(): string
+    {
+        return __('shop::auth.admin.system.label');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('shop::auth.admin.system.plural_title');
+    }
+
     public function presetForm(): void
     {
         $this->setFormColumns(3);

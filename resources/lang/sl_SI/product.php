@@ -43,6 +43,11 @@ return [
             'must_login' => 'Za postavitev vprašanja se morate prijaviti',
         ],
         'admin' => [
+
+            'system' => [
+                'label' => 'Vprasanje za izdelek',
+                'plural_title' => 'Vprasanja za izdelke',
+            ],
             'list' => [
                 'tab' => [
                     'all' => 'Vse',
@@ -67,6 +72,10 @@ return [
     'reviews' => [
         'title' => 'Ocene izdelkov',
         'admin' => [
+            'system' => [
+                'label' => 'Ocena za izdelek',
+                'plural_title' => 'Ocene za izdelke',
+            ],
             'list' => [
                 'tab' => [
                     'all' => 'Vse',
@@ -119,6 +128,10 @@ return [
         ],
     ],
     'admin' => [
+        'system' => [
+            'label' => 'Izdelek',
+            'plural_title' => 'Izdelki',
+        ],
         'list' => [
             'tab' => [
                 'all' => 'Vse',

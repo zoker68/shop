@@ -72,6 +72,10 @@ return [
             'updated_at' => 'Datum zadnje spremembe',
             'email_verified_at' => 'Datum potrditve e-pošte',
         ],
+        'system' => [
+            'label' => 'Uporabnik',
+            'plural_title' => 'Uporabniki',
+        ],
     ],
     'address' => [
         'admin' => [
@@ -207,6 +211,10 @@ return [
                 'permissions' => 'Dovoljenja',
                 'created_at' => 'Datum ustvarjanja',
                 'updated_at' => 'Datum zadnje spremembe',
+            ],
+            'system' => [
+                'label' => 'Skupina uporabnikov',
+                'plural_title' => 'Skupine uporabnikov',
             ],
         ],
     ],

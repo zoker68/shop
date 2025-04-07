@@ -33,6 +33,16 @@ class OrderResource extends BaseResource
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
 
+    public static function getModelLabel(): string
+    {
+        return __('shop::order.admin.system.label');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('shop::order.admin.system.plural_title');
+    }
+
     public function presetInfolist(): void
     {
         $this->setInfoListEntries([

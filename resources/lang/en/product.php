@@ -43,6 +43,10 @@ return [
             'must_login' => 'You must be logged in to ask a question',
         ],
         'admin' => [
+            'system' => [
+                'label' => 'Question about product',
+                'plural_title' => 'Questions about products',
+            ],
             'list' => [
                 'tab' => [
                     'all' => 'All',
@@ -67,6 +71,10 @@ return [
     'reviews' => [
         'title' => 'Product Reviews',
         'admin' => [
+            'system' => [
+                'label' => 'Review about product',
+                'plural_title' => 'Reviews about products',
+            ],
             'list' => [
                 'tab' => [
                     'all' => 'All',
@@ -119,6 +127,10 @@ return [
         ],
     ],
     'admin' => [
+        'system' => [
+            'label' => 'Product',
+            'plural_title' => 'Products',
+        ],
         'list' => [
             'tab' => [
                 'all' => 'All',

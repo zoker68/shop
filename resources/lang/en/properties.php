@@ -15,5 +15,9 @@ return [
             'type' => 'Value type',
             'filter' => 'Filter type',
         ],
+        'system' => [
+            'label' => 'Property',
+            'plural_title' => 'Properties',
+        ],
     ],
 ];

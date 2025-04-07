@@ -16,5 +16,9 @@ return [
             'published' => 'Опубликовано',
             'pined' => 'Закреплено',
         ],
+        'system' => [
+            'label' => 'Странa',
+            'plural_title' => 'Страны',
+        ],
     ],
 ];

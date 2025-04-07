@@ -119,6 +119,33 @@ return [
     'shipping' => [
         'breadcrumbs' => 'Način dostave',
         'title' => 'Izberite način dostave',
+        'admin' => [
+            'list' => [
+                'name' => 'Ime',
+                'price' => 'Cena',
+                'published' => 'Objavljeno',
+            ],
+            'form' => [
+                'name' => 'Ime',
+                'price' => 'Cena',
+                'published' => 'Objavljeno',
+                'description' => 'Opis',
+                'sort' => 'Razvrsti',
+                'available_from' => [
+                    'label' => 'Znesek od razpoložljivosti',
+                    'description' => 'Znesek naročila, pri katerem je metoda na voljo',
+                ],
+                'available_until' => [
+                    'label' => 'Znesek do razpoložljivosti',
+                    'description' => 'Znesek naročila, do katerega je metoda na voljo',
+                ],
+                'days' => 'Predvideni čas dostave',
+            ],
+            'system' => [
+                'label' => 'Način dostave',
+                'plural_title' => 'Načini dostave',
+            ],
+        ],
         'error' => [
             'method_not_available' => 'Izbrani način dostave ni na voljo za vaše naročilo.',
         ],
@@ -128,6 +155,27 @@ return [
     ],
     'payment' => [
         'breadcrumbs' => 'Način plačila',
+        'admin' => [
+            'system' => [
+                'label' => 'Način plačila',
+                'plural_title' => 'Načini plačila',
+            ],
+            'list' => [
+                'name' => 'Ime',
+                'code' => 'Koda',
+                'published' => 'Objavljeno',
+            ],
+            'form' => [
+                'name' => 'Ime',
+                'code' => 'Koda',
+                'published' => 'Objavljeno',
+                'description' => 'Opis',
+                'sort' => 'Razvrsti',
+                'fee' => 'Fiksna pristojbina',
+                'fee_percent' => 'Delež pristojbine',
+                'handler' => 'Obdelovalec',
+            ],
+        ],
         'title' => 'Izberite način plačila',
         'submit' => 'Izberi način in nadaljuj',
         'fee' => 'Fiksna provizija:',

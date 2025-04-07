@@ -27,6 +27,18 @@ class CountryResource extends BaseResource
 
     protected static ?string $navigationGroup = 'Locations';
 
+    protected static ?string $recordTitleAttribute = 'name';
+
+    public static function getModelLabel(): string
+    {
+        return __('shop::country.admin.system.label');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('shop::country.admin.system.plural_title');
+    }
+
     public function presetForm(): void
     {
         $this->addFormFields([

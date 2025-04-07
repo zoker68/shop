@@ -6,6 +6,10 @@ return [
         'payment' => 'Plačilo',
         'shipping' => 'Pošiljanje',
         'admin' => [
+            'system' => [
+                'label' => 'Status naročila',
+                'plural_title' => 'Statusi naročila',
+            ],
             'form' => [
                 'name' => 'Ime',
                 'type' => 'Vrsta',
@@ -21,6 +25,10 @@ return [
         ],
     ],
     'admin' => [
+        'system' => [
+            'label' => 'Naročilo',
+            'plural_title' => 'Naročila',
+        ],
         'actions' => [
             'general_status' => [
                 'title' => 'Spremeni stanje',

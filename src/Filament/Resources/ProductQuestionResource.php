@@ -23,6 +23,16 @@ class ProductQuestionResource extends BaseResource
 
     protected static ?string $navigationGroup = 'Products';
 
+    public static function getModelLabel(): string
+    {
+        return __('shop::product.questions.admin.system.label');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('shop::product.questions.admin.system.plural_title');
+    }
+
     public function presetForm(): void
     {
         $this->addFormFields(ProductQuestion::getAdminFormSchema());
