@@ -13,7 +13,7 @@ class SyncLogClearCommand extends Command
 
     public function handle(): void
     {
-        SyncLog::where('created_at', '<', now()->subDays(5))->delete();
+        SyncLog::where('created_at', '<', now()->subDays(config('shop.logs.clear.days')))->delete();
 
         $this->comment('Logs cleared');
     }

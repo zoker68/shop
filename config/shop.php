@@ -47,4 +47,10 @@ return [
     ],
 
     'cover_default_url' => null,
+
+    'logs' => [
+        'clear' => [
+            'days' => env('LOGS_CLEAR_DAYS', 5),
+        ],
+    ],
 ];
