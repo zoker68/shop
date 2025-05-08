@@ -26,7 +26,7 @@
         "meilisearch/meilisearch-php": "^1.9",
         "veelasky/laravel-hashid": "^3.1",
         "akaunting/laravel-money": "^6",
-        "zoker/filament-static-pages": "*",
+        "zoker/filament-static-pages": "^1",
         "bkwld/croppa": "^7.0",
         "laravel/cashier": "^15.6",
         "openai-php/laravel": "^0",
