@@ -15,7 +15,7 @@ class BrandFactory extends Factory
         return [
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'name' => $this->faker->name(),
+            'name' => $this->faker->company(),
             'logo' => $this->faker->imageUrl(),
         ];
     }

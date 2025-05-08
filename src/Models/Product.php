@@ -195,17 +195,17 @@ class Product extends BaseModel implements Sitemapable
     /* --------------------- Scopes End --------------------- */
     /* --------------------- Methods Start --------------------- */
 
-    public function getImageUrl(string $coverImage, ?int $width = null, ?int $height = null, ?array $options = null): string
+    public function getImageUrl(string $imagePath, ?int $width = null, ?int $height = null, ?array $options = null): string
     {
-        if (Str::startsWith($coverImage, ['https://', 'http://'])) {
-            return $coverImage;
+        if (Str::startsWith($imagePath, ['https://', 'http://'])) {
+            return $imagePath;
         }
 
         if ($width || $height || $options) {
-            return Croppa::url($coverImage, $width, $height, $options);
+            return Croppa::url($imagePath, $width, $height, $options);
         }
 
-        return Storage::disk(config('shop.disk'))->url($coverImage);
+        return Storage::disk(config('shop.disk'))->url($imagePath);
     }
 
     public function getCoverImage(?int $width = null, ?int $height = null, ?array $options = null): string

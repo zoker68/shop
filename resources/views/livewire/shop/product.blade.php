@@ -11,7 +11,7 @@
 
                         <div class="swiper-product-page mt-4 relative group overflow-hidden">
                             <div class="swiper-wrapper flex">
-                                @foreach($product->images as $image)
+                                @foreach($product->images ?? [] as $image)
                                     <div class="swiper-slide">
                                         <div class="w-full h-[90px] flex justify-center items-center select-image cursor-pointer">
                                             <img loading="lazy" src="{{ $product->getImageUrl($image, 100, 100) }}" data-big-image="{{ $product->getImageUrl($image, 600, 600) }}" alt="{{ $product->name }}"

@@ -64,7 +64,6 @@ class ShopServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Model::unguard();
-        Model::preventLazyLoading(! app()->isProduction());
 
         $this->loadAllData();
 

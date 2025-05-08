@@ -71,6 +71,8 @@ class Product extends Component
         $this->ratings = $this->product->reviews()->with('user')->published()->latest()->get();
         $this->reviews = $this->ratings->whereNotNull('review');
 
+        $this->dispatch('initProductSlider');
+
         return view('shop::livewire.shop.product');
     }
 
