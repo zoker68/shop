@@ -112,7 +112,8 @@ class ProductResource extends BaseResource
                 ->columnStart(1)
                 ->label(__('shop::product.admin.form.brand'))
                 ->relationship('brand', 'name')
-                ->searchable(),
+                ->searchable()
+                ->preload(),
 
             'published' => Toggle::make('published')
                 ->label(__('shop::product.admin.form.published')),
