@@ -32,17 +32,14 @@
         "openai-php/laravel": "^0",
         "spatie/laravel-sitemap": "^7"
     },
-    "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.13"
-    },
     "extra": {
         "laravel": {
             "providers": [
                 "Zoker\\Shop\\Providers\\ShopServiceProvider",
                 "Zoker\\Shop\\Providers\\FilamentPanelProvider"
             ],
-            "aliases": {
-                "Debugbar": "Barryvdh\\Debugbar\\Facade"
+            "branch-alias": {
+                "dev-master": "1-dev"
             }
         }
     }
