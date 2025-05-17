@@ -119,7 +119,7 @@ return [
             'price' => 'Цена',
             'total' => 'Итого',
             'summary' => [
-                'total_products' => 'Общее количество товаров',
+                'total_products' => 'Общая стоимость товаров',
                 'total_shipping' => 'Общая стоимость доставки',
                 'total_payment_fee' => 'Общая стоимость платежных сборов',
                 'total_pre_payment' => 'Итого',
